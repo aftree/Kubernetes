@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="zh" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.72.0" />
+    <meta name="description" content="Documentation for Hugo Learn Theme">
+<meta name="author" content="Mathieu Cornic">
+
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <title>Deployment :: Hugo 主题的 Learn 文档</title>
+
+    
+    <link href="/css/nucleus.css?1592284064" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1592284064" rel="stylesheet">
+    <link href="/css/hybrid.css?1592284064" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1592284064" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1592284064" rel="stylesheet">
+    <link href="/css/auto-complete.css?1592284064" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1592284064" rel="stylesheet">
+    <link href="/css/theme.css?1592284064" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1592284064" rel="stylesheet">
+    
+    <link href="/css/theme-red.css?1592284064" rel="stylesheet">
+    
+    
+
+    <script src="/js/jquery-3.3.1.min.js?1592284064"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/zh/concepts/workloads-controllers/deployment/">
+    <nav id="sidebar" class="showVisitedLinks">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="/">
+
+<svg id="grav-logo" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+	width="100%" height="100%"  viewBox="0 0 285.1 69.9" xml:space="preserve">
+<g>
+	<path d="M35,0c9.6,0,17.9,3.4,24.7,10.3c6.8,6.8,10.3,15,10.3,24.7c0,9.7-3.4,17.9-10.3,24.7c-6.8,6.8-15,10.3-24.7,10.3
+		c-9.7,0-17.9-3.4-24.7-10.3C3.4,52.8,0,44.6,0,34.9c0-9.6,3.4-17.9,10.3-24.7C17.1,3.4,25.3,0,35,0z M22.3,63.7
+		c0.3-7.4,0.3-14.7,0-22.1c-2.1-0.4-4-0.4-5.9,0c-0.2,0.8-0.2,2.5-0.1,4.9c0.1,2.3,0,3.9-0.3,4.8c-1.7-0.6-2.7-2.1-3.1-4.6
+		c-0.1-0.7-0.1-3.3-0.1-8c0-14.5-0.1-23-0.3-25.6c-3.6,4.1-5.6,7-5.9,8.5v10.9c0,4.5,0.1,8.1,0.2,10.9c0,0.4,0,1.3-0.1,2.8
+		c-0.1,1.2,0,2.1,0.1,2.6c0.1,0.6,1.1,2.1,2.8,4.7C13.2,58.7,17.5,62.2,22.3,63.7z M44.6,65.4c0.3-5,0.2-12.9-0.1-23.6
+		c-2.1-0.3-4.1-0.3-5.9,0c-0.2,2-0.2,5.1-0.1,9.5c0.1,4.3,0,7.5-0.1,9.5c-2.9,0.4-5,0.3-6.2-0.1c-0.2-5.6-0.2-15.2-0.1-28.7
+		c0.1-12.4,0-21.8-0.3-28.3c-2.4,0.1-4.3,0.6-5.7,1.3c-0.1,7.7-0.2,17.7-0.1,30.1c0,16.5,0,26.6,0,30.3c2.3,1.1,5.4,1.7,9.4,1.7
+		C38.9,66.9,42.1,66.4,44.6,65.4z M48.1,64.1c9.7-4.6,15.7-12,18-22.2c-1.8-0.2-3.8-0.3-6.1-0.3c-1.6,3.9-2.6,6.3-3.2,7.2
+		c-1.1,1.7-2,2.5-2.7,2.5C54,46,54,39.1,54,30.5c0-11.5,0-18.4,0-20.9c-1.4-1.4-3.3-2.5-5.7-3.4C48.1,6.3,48,6.4,48,6.7
+		c0,3.5,0,13.1,0,28.8C47.9,47.2,48,56.8,48.1,64.1z"/>
+</g>
+<g>
+	<path d="M116.6,51.3h-29c-0.5,0-0.9-0.1-1.3-0.2c-0.4-0.2-0.7-0.4-1-0.7c-0.3-0.3-0.5-0.6-0.7-1c-0.2-0.4-0.2-0.8-0.2-1.3V16.3h6.3
+		V45h25.8V51.3z"/>
+	<path d="M154.8,51.3h-22.9c-0.9,0-1.8-0.2-2.9-0.5c-1-0.3-2-0.8-2.9-1.5c-0.9-0.7-1.6-1.6-2.2-2.8c-0.6-1.1-0.9-2.5-0.9-4.2V19.5
+		c0-0.4,0.1-0.9,0.2-1.2c0.2-0.4,0.4-0.7,0.7-1c0.3-0.3,0.6-0.5,1-0.7c0.4-0.2,0.8-0.2,1.3-0.2h28.6v6.3h-25.4v19.8
+		c0,0.8,0.2,1.5,0.7,1.9s1.1,0.7,1.9,0.7h22.9V51.3z M151.9,37h-20v-6.4h20V37z"/>
+	<path d="M197.3,51.3H191v-8.6h-22.3v8.6h-6.3V33.8c0-2.6,0.4-4.9,1.3-7.1s2.1-4,3.7-5.5c1.6-1.5,3.4-2.8,5.5-3.6
+		c2.1-0.9,4.5-1.3,7-1.3h14.3c0.4,0,0.9,0.1,1.2,0.2c0.4,0.2,0.7,0.4,1,0.7s0.5,0.6,0.7,1c0.2,0.4,0.2,0.8,0.2,1.2V51.3z
+		 M168.7,36.4H191V22.6h-11.2c-0.2,0-0.6,0-1.2,0.1c-0.6,0.1-1.4,0.2-2.2,0.4c-0.8,0.2-1.7,0.6-2.6,1c-0.9,0.5-1.8,1.1-2.5,2
+		c-0.8,0.8-1.4,1.9-1.9,3.1c-0.5,1.2-0.7,2.8-0.7,4.5V36.4z"/>
+	<path d="M241.7,28.1c0,1.4-0.2,2.7-0.5,3.9c-0.4,1.1-0.8,2.1-1.5,3c-0.6,0.9-1.3,1.6-2.1,2.2c-0.8,0.6-1.6,1.1-2.5,1.5
+		c-0.9,0.4-1.8,0.7-2.6,0.9c-0.9,0.2-1.7,0.3-2.5,0.3l13.3,11.5h-9.8l-13.2-11.5h-4.6v-6.3H230c0.8-0.1,1.5-0.2,2.2-0.5
+		c0.7-0.3,1.2-0.6,1.7-1.1c0.5-0.5,0.9-1,1.1-1.6c0.3-0.6,0.4-1.4,0.4-2.2v-4c0-0.4,0-0.6-0.1-0.8c-0.1-0.2-0.2-0.3-0.3-0.4
+		c-0.1-0.1-0.3-0.1-0.4-0.2c-0.2,0-0.3,0-0.4,0h-20.9v28.7h-6.3V19.5c0-0.4,0.1-0.9,0.2-1.2c0.2-0.4,0.4-0.7,0.7-1
+		c0.3-0.3,0.6-0.5,1-0.7c0.4-0.2,0.8-0.2,1.3-0.2H234c1.4,0,2.6,0.3,3.6,0.8s1.8,1.2,2.4,1.9c0.6,0.8,1,1.6,1.3,2.5
+		c0.3,0.9,0.4,1.7,0.4,2.5V28.1z"/>
+	<path d="M285.1,48.6c0,0.5-0.1,0.9-0.3,1.3c-0.2,0.4-0.4,0.7-0.7,1c-0.3,0.3-0.6,0.5-1,0.7c-0.4,0.2-0.8,0.2-1.2,0.2
+		c-0.4,0-0.8-0.1-1.2-0.2c-0.4-0.1-0.8-0.4-1.1-0.7l-23.2-24.2v24.7h-6.3V19c0-0.7,0.2-1.2,0.5-1.8c0.4-0.5,0.8-0.9,1.4-1.2
+		c0.6-0.2,1.2-0.3,1.9-0.2s1.2,0.4,1.6,0.9l23.2,24.2V16.3h6.3V48.6z"/>
+</g>
+</svg>
+
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1592284064"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1592284064"></script>
+<script type="text/javascript">
+    
+        var baseurl = "https:\/\/k8s.lijun.in\/zh";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1592284064"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/zh/concepts/" title="O - Kubernetes Concepts" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/zh/concepts/">
+          O - Kubernetes Concepts
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/zh/concepts/workloads-pods/" title="Workloads - Pods" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/zh/concepts/workloads-pods/">
+          Workloads - Pods
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/zh/concepts/workloads-controllers/" title="Workloads - Controllers" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/zh/concepts/workloads-controllers/">
+          Workloads - Controllers
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/zh/concepts/workloads-controllers/deployment/" title="Deployment" class="dd-item active">
+        <a href="/zh/concepts/workloads-controllers/deployment/">
+        Deployment
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/zh/concepts/workloads-controllers/statefulset/" title="StatefulSet" class="dd-item ">
+        <a href="/zh/concepts/workloads-controllers/statefulset/">
+        StatefulSet
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/zh/concepts/workloads-controllers/replicaset/" title="ReplicaSet" class="dd-item ">
+        <a href="/zh/concepts/workloads-controllers/replicaset/">
+        ReplicaSet
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/zh/concepts/workloads-controllers/replicationcontroller/" title="ReplicationController" class="dd-item ">
+        <a href="/zh/concepts/workloads-controllers/replicationcontroller/">
+        ReplicationController
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/zh/concepts/workloads-controllers/daemonset/" title="DaemonSet" class="dd-item ">
+        <a href="/zh/concepts/workloads-controllers/daemonset/">
+        DaemonSet
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/zh/concepts/workloads-controllers/job/" title="Job" class="dd-item ">
+        <a href="/zh/concepts/workloads-controllers/job/">
+        Job
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/zh/concepts/workloads-controllers/cronjob/" title="CronJob" class="dd-item ">
+        <a href="/zh/concepts/workloads-controllers/cronjob/">
+        CronJob
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/zh/concepts/serviceslb-and-networking/" title="Services,LB and Networking" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/zh/concepts/serviceslb-and-networking/">
+          Services,LB and Networking
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/zh/concepts/serviceslb-and-networking/service/" title="Service" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/zh/concepts/serviceslb-and-networking/service/">
+          Service
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/zh/concepts/serviceslb-and-networking/service/service/" title="Service" class="dd-item ">
+        <a href="/zh/concepts/serviceslb-and-networking/service/service/">
+        Service
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/zh/concepts/storage/" title="Storage" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/zh/concepts/storage/">
+          Storage
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/zh/concepts/configuration/" title="Configuration" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/zh/concepts/configuration/">
+          Configuration
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/zh/basics/" title="O - Kubernetes 架构与组件" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/zh/basics/">
+          O - Kubernetes 架构与组件
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/zh/basics/requirements/" title="Kubernetes概念与术语" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/zh/basics/requirements/">
+          Kubernetes概念与术语
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/zh/basics/installation/" title="Kubernetes安装" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/zh/basics/installation/">
+          Kubernetes安装
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/zh/basics/configuration/" title="Configuration" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/zh/basics/configuration/">
+          Configuration
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/zh/shortcodes/" title="Shortcodes" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/zh/shortcodes/">
+          <b>3. </b>Shortcodes
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/zh/shortcodes/siteparam/" title="Site param" class="dd-item ">
+        <a href="/zh/shortcodes/siteparam/">
+        Site param
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="https://github.com/matcornic/hugo-theme-learn"><i class='fab fa-fw fa-github'></i> GitHub 仓库</a>
+              </li>
+          
+              <li> 
+                  <a class="padding" href="https://k8s.lijun.in/zh/showcase"><i class='fas fa-fw fa-camera'></i> 展示区</a>
+              </li>
+          
+              <li> 
+                  <a class="padding" href="https://gohugo.io/"><i class='fas fa-fw fa-bookmark'></i> Hugo 文档</a>
+              </li>
+          
+              <li> 
+                  <a class="padding" href="https://k8s.lijun.in/zh/credits"><i class='fas fa-fw fa-bullhorn'></i> 鸣谢</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+          <div class="select-style">
+            <select id="select-language" onchange="location = this.value;">
+          
+          
+          
+              
+              
+                  
+                    
+                    
+                      <option id="zh" value="https://k8s.lijun.in/zh/concepts/workloads-controllers/deployment/" selected>简体中文</option>
+                    
+                  
+              
+                  
+              
+          
+        </select>
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="255px" height="255px" viewBox="0 0 255 255" style="enable-background:new 0 0 255 255;" xml:space="preserve">
+          <g>
+            <g id="arrow-drop-down">
+              <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+            </g>
+          </g>
+        </svg>
+        </div>
+        </a>
+        </li>
+      
+      
+      
+        <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      <center>
+    
+    <a class="github-button" href="https://github.com/matcornic/hugo-theme-learn/archive/master.zip" data-icon="octicon-cloud-download" aria-label="Download matcornic/hugo-theme-learn on GitHub">Download</a>
+
+    
+    <a class="github-button" href="https://github.com/matcornic/hugo-theme-learn" data-icon="octicon-star" data-show-count="true" aria-label="Star matcornic/hugo-theme-learn on GitHub">Star</a>
+
+    
+    <a class="github-button" href="https://github.com/matcornic/hugo-theme-learn/fork" data-icon="octicon-repo-forked" data-show-count="true" aria-label="Fork matcornic/hugo-theme-learn on GitHub">Fork</a>
+
+    <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fas fa-heart"></i></a> from <a href="https://getgrav.org">Grav</a> and <a href="https://gohugo.io/">Hugo</a></p>
+</center>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                  
+                  
+                  
+                  <div id="top-github-link">
+                    <a class="github-link" title='Edit this page' href="https://github.com/matcornic/hugo-theme-learn/edit/master/exampleSite/content/Concepts/Workloads%20-%20Controllers/Deployment.zh.md" target="blank">
+                      <i class="fas fa-code-branch"></i>
+                      <span id="top-github-link-text">Edit this page</span>
+                    </a>
+                  </div>
+                  
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/zh/'>Learn Theme for Hugo</a> > <a href='/zh/concepts/'>O - Kubernetes Concepts</a> > <a href='/zh/concepts/workloads-controllers/'>Workloads - Controllers</a> > Deployment
+          
+        
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents"></nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Deployment
+            </h1>
+          
+
+        
+
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">apiVersion</span>: extensions/v1beta1   <span style="color:#75715e"># 接口版本</span>
+<span style="color:#66d9ef">kind</span>: Deployment                 <span style="color:#75715e"># 接口类型</span>
+<span style="color:#66d9ef">metadata</span>:
+  <span style="color:#66d9ef">name</span>: cango-demo               <span style="color:#75715e"># Deployment名称</span>
+  <span style="color:#66d9ef">namespace</span>: cango-prd           <span style="color:#75715e"># 命名空间</span>
+  <span style="color:#66d9ef">labels</span>:
+    <span style="color:#66d9ef">app</span>: cango-demo              <span style="color:#75715e"># 标签</span>
+<span style="color:#66d9ef">spec</span>:
+  <span style="color:#66d9ef">replicas</span>: <span style="color:#ae81ff">3</span>
+   <span style="color:#66d9ef">strategy</span>:                     <span style="color:#75715e"># 部署策略</span>
+    <span style="color:#66d9ef">rollingUpdate</span>:               <span style="color:#75715e"># 由于replicas为3,则整个升级,pod个数在2-4个之间</span>
+      <span style="color:#66d9ef">maxSurge</span>: <span style="color:#ae81ff">1</span>                <span style="color:#75715e"># 滚动升级时会先启动1个pod</span>
+      <span style="color:#66d9ef">maxUnavailable</span>: <span style="color:#ae81ff">1</span>          <span style="color:#75715e"># 滚动升级时允许的最大Unavailable的pod个数</span>
+  <span style="color:#66d9ef">template</span>:         
+    <span style="color:#66d9ef">metadata</span>:
+      <span style="color:#66d9ef">labels</span>:
+        <span style="color:#66d9ef">app</span>: cango-demo          <span style="color:#75715e"># 模板名称必填</span>
+    <span style="color:#66d9ef">sepc</span>:                        <span style="color:#75715e"># 定义容器模板,该模板可以包含多个容器</span>
+      <span style="color:#66d9ef">containers</span>:                                                                   
+        - <span style="color:#66d9ef">name</span>: cango-demo                                                           <span style="color:#75715e"># 镜像名称</span>
+          <span style="color:#66d9ef">image</span>: swr.cn-east<span style="color:#ae81ff">-2.</span>myhuaweicloud.com/cango-prd/cango-demo:<span style="color:#ae81ff">0.0.1</span>-SNAPSHOT <span style="color:#75715e"># 镜像地址</span>
+          <span style="color:#66d9ef">command</span>: [ <span style="color:#e6db74">&#34;/bin/sh&#34;</span>,<span style="color:#e6db74">&#34;-c&#34;</span>,<span style="color:#e6db74">&#34;cat /etc/config/path/to/special-key&#34;</span> ]          <span style="color:#75715e"># 启动命令</span>
+          <span style="color:#66d9ef">args</span>:                                                                      <span style="color:#75715e"># 启动参数</span>
+            - <span style="color:#e6db74">&#39;-storage.local.retention=$(STORAGE_RETENTION)&#39;</span>
+            - <span style="color:#e6db74">&#39;-storage.local.memory-chunks=$(STORAGE_MEMORY_CHUNKS)&#39;</span>
+            - <span style="color:#e6db74">&#39;-config.file=/etc/prometheus/prometheus.yml&#39;</span>
+            - <span style="color:#e6db74">&#39;-alertmanager.url=http://alertmanager:9093/alertmanager&#39;</span>
+            - <span style="color:#e6db74">&#39;-web.external-url=$(EXTERNAL_URL)&#39;</span>
+          <span style="color:#75715e"># 如果command和args均没有写，那么用Docker默认的配置。</span>
+          <span style="color:#75715e"># 如果command写了，但args没有写，那么Docker默认的配置会被忽略而且仅仅执行.yaml文件的command（不带任何参数的）。</span>
+          <span style="color:#75715e"># 如果command没写，但args写了，那么Docker默认配置的ENTRYPOINT的命令行会被执行，但是调用的参数是.yaml中的args。</span>
+          <span style="color:#75715e"># 如果如果command和args都写了，那么Docker默认的配置被忽略，使用.yaml的配置。</span>
+          <span style="color:#66d9ef">imagePullPolicy</span>: IfNotPresent        <span style="color:#75715e"># 如果不存在则拉取</span>
+          <span style="color:#66d9ef">livenessProbe</span>:                       <span style="color:#75715e"># 表示container是否处于live状态。如果LivenessProbe失败，LivenessProbe将会通知kubelet对应的container不健康了。随后kubelet将kill掉container，并根据RestarPolicy进行进一步的操作。默认情况下LivenessProbe在第一次检测之前初始化值为Success，如果container没有提供LivenessProbe，则也认为是Success；</span>
+            <span style="color:#66d9ef">httpGet</span>:
+              <span style="color:#66d9ef">path</span>: /health                    <span style="color:#75715e"># 如果没有心跳检测接口就为/</span>
+              <span style="color:#66d9ef">port</span>: <span style="color:#ae81ff">8080</span>
+              <span style="color:#66d9ef">scheme</span>: HTTP
+            <span style="color:#66d9ef">initialDelaySeconds</span>: <span style="color:#ae81ff">60</span>            <span style="color:#75715e"># 启动后延时多久开始运行检测</span>
+            <span style="color:#66d9ef">timeoutSeconds</span>: <span style="color:#ae81ff">5</span>
+            <span style="color:#66d9ef">successThreshold</span>: <span style="color:#ae81ff">1</span>
+            <span style="color:#66d9ef">failureThreshold</span>: <span style="color:#ae81ff">5</span>
+            <span style="color:#66d9ef">readinessProbe</span>:
+          <span style="color:#66d9ef">readinessProbe</span>:
+            <span style="color:#66d9ef">httpGet</span>:
+              <span style="color:#66d9ef">path</span>: /health                    <span style="color:#75715e"># 如果没有心跳检测接口就为/</span>
+              <span style="color:#66d9ef">port</span>: <span style="color:#ae81ff">8080</span>
+              <span style="color:#66d9ef">scheme</span>: HTTP
+            <span style="color:#66d9ef">initialDelaySeconds</span>: <span style="color:#ae81ff">30</span>            <span style="color:#75715e"># 启动后延时多久开始运行检测</span>
+            <span style="color:#66d9ef">timeoutSeconds</span>: <span style="color:#ae81ff">5</span>
+            <span style="color:#66d9ef">successThreshold</span>: <span style="color:#ae81ff">1</span>
+            <span style="color:#66d9ef">failureThreshold</span>: <span style="color:#ae81ff">5</span>
+          <span style="color:#66d9ef">resources</span>:                           <span style="color:#75715e"># CPU内存限制</span>
+            <span style="color:#66d9ef">requests</span>:
+              <span style="color:#66d9ef">cpu</span>: <span style="color:#ae81ff">2</span>
+              <span style="color:#66d9ef">memory</span>: 2048Mi
+            <span style="color:#66d9ef">limits</span>:
+              <span style="color:#66d9ef">cpu</span>: <span style="color:#ae81ff">2</span>
+              <span style="color:#66d9ef">memory</span>: 2048Mi
+          <span style="color:#66d9ef">env</span>:                                 <span style="color:#75715e"># 通过环境变量的方式，直接传递pod=自定义Linux OS环境变量</span>
+            - <span style="color:#66d9ef">name</span>: LOCAL_KEY                  <span style="color:#75715e"># 本地Key</span>
+              <span style="color:#66d9ef">value</span>: value
+            - <span style="color:#66d9ef">name</span>: CONFIG_MAP_KEY             <span style="color:#75715e"># 局策略可使用configMap的配置Key，</span>
+              <span style="color:#66d9ef">valueFrom</span>:
+                <span style="color:#66d9ef">configMapKeyRef</span>:
+                  <span style="color:#66d9ef">name</span>: special-config         <span style="color:#75715e"># configmap中找到name为special-config</span>
+                  <span style="color:#66d9ef">key</span>: special.type            <span style="color:#75715e"># 找到name为special-config里data下的key</span>
+          <span style="color:#66d9ef">ports</span>:
+            - <span style="color:#66d9ef">name</span>: http
+              <span style="color:#66d9ef">containerPort</span>: <span style="color:#ae81ff">8080</span>              <span style="color:#75715e"># 对service暴露端口</span>
+          <span style="color:#66d9ef">volumeMounts</span>:                        <span style="color:#75715e"># 挂载volumes中定义的磁盘</span>
+          - <span style="color:#66d9ef">name</span>: log-cache
+            <span style="color:#66d9ef">mount</span>: /tmp/log
+          - <span style="color:#66d9ef">name</span>: sdb                          <span style="color:#75715e"># 普通用法，该卷跟随容器销毁，挂载一个目录</span>
+            <span style="color:#66d9ef">mountPath</span>: /data/media    
+          - <span style="color:#66d9ef">name</span>: nfs-client-root              <span style="color:#75715e"># 直接挂载硬盘方法，如挂载下面的nfs目录到/mnt/nfs</span>
+            <span style="color:#66d9ef">mountPath</span>: /mnt/nfs
+          - <span style="color:#66d9ef">name</span>: example-volume-config        <span style="color:#75715e"># 高级用法第1种，将ConfigMap的log-script,backup-script分别挂载到/etc/config目录下的一个相对路径path/to/...下，如果存在同名文件，直接覆盖。</span>
+            <span style="color:#66d9ef">mountPath</span>: /etc/config       
+          - <span style="color:#66d9ef">name</span>: rbd-pvc                      <span style="color:#75715e"># 高级用法第2中，挂载PVC(PresistentVolumeClaim)</span>
+
+          <span style="color:#75715e"># 使用volume将ConfigMap作为文件或目录直接挂载，其中每一个key-value键值对都会生成一个文件，key为文件名，value为内容，</span>
+  <span style="color:#66d9ef">volumes</span>:                                     <span style="color:#75715e"># 定义磁盘给上面volumeMounts挂载</span>
+  - <span style="color:#66d9ef">name</span>: log-cache
+    <span style="color:#66d9ef">emptyDir</span>: {}
+  - <span style="color:#66d9ef">name</span>: sdb                                  <span style="color:#75715e"># 挂载宿主机上面的目录</span>
+    <span style="color:#66d9ef">hostPath</span>:
+      <span style="color:#66d9ef">path</span>: /any/path/it/will/be/replaced
+  - <span style="color:#66d9ef">name</span>: example-volume-config                <span style="color:#75715e"># 供ConfigMap文件内容到指定路径使用</span>
+    <span style="color:#66d9ef">configMap</span>:
+      <span style="color:#66d9ef">name</span>: example-volume-config              <span style="color:#75715e"># ConfigMap中名称</span>
+      <span style="color:#66d9ef">items</span>:
+      - <span style="color:#66d9ef">key</span>: log-script                        <span style="color:#75715e"># ConfigMap中的Key</span>
+        <span style="color:#66d9ef">path</span>: path/to/log-script               <span style="color:#75715e"># 指定目录下的一个相对路径path/to/log-script</span>
+      - <span style="color:#66d9ef">key</span>: backup-script                     <span style="color:#75715e"># ConfigMap中的Key</span>
+        <span style="color:#66d9ef">path</span>: path/to/backup-script            <span style="color:#75715e"># 指定目录下的一个相对路径path/to/backup-script</span>
+  - <span style="color:#66d9ef">name</span>: nfs-client-root                      <span style="color:#75715e"># 供挂载NFS存储类型</span>
+    <span style="color:#66d9ef">nfs</span>:
+      <span style="color:#66d9ef">server</span>: <span style="color:#ae81ff">10.42.0.55</span>                       <span style="color:#75715e"># NFS服务器地址</span>
+      <span style="color:#66d9ef">path</span>: /opt/public                        <span style="color:#75715e"># showmount -e 看一下路径</span>
+  - <span style="color:#66d9ef">name</span>: rbd-pvc                              <span style="color:#75715e"># 挂载PVC磁盘</span>
+    <span style="color:#66d9ef">persistentVolumeClaim</span>:
+      <span style="color:#66d9ef">claimName</span>: rbd-pvc1                      <span style="color:#75715e"># 挂载已经申请的pvc磁盘</span>
+</code></pre></div>
+
+<footer class="footline">
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/zh/concepts/workloads-controllers/" title="Workloads - Controllers"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/zh/concepts/workloads-controllers/statefulset/" title="StatefulSet" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1592284064"></script>
+    <script src="/js/perfect-scrollbar.min.js?1592284064"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1592284064"></script>
+    <script src="/js/jquery.sticky.js?1592284064"></script>
+    <script src="/js/featherlight.min.js?1592284064"></script>
+    <script src="/js/highlight.pack.js?1592284064"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1592284064"></script>
+    <script src="/js/learn.js?1592284064"></script>
+    <script src="/js/hugo-learn.js?1592284064"></script>
+
+    <link href="/mermaid/mermaid.css?1592284064" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1592284064"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-105947713-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>
+
