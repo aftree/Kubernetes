@@ -1,5 +1,12 @@
 ---
-title: "Learn Theme for Hugo"
+title: 文档
+weight: 5
 ---
 
-发撒知道
+title: Kubernetes Concepts
+main_menu: true
+content_type: concept
+weight: 40
+
+
+
