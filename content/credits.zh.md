@@ -1,5 +1,0 @@
----
-title: Credits
-disableToc: true
----
-

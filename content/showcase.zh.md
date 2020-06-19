@@ -1,5 +1,0 @@
----
-title: Showcase
-disableToc: true
----
-
