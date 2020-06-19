@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>😊 - 扩展 Kubernetes on Hugo 主题的 Learn 文档</title>
+    <link>https://lijun.in/concepts/extend-kubernetes/</link>
+    <description>Recent content in 😊 - 扩展 Kubernetes on Hugo 主题的 Learn 文档</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://lijun.in/concepts/extend-kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>扩展 Kubernetes 集群</title>
+      <link>https://lijun.in/concepts/extend-kubernetes/extend-cluster/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/concepts/extend-kubernetes/extend-cluster/</guid>
+      <description>Kubernetes 是高度可配置和可扩展的。因此，极少需要分发或提交补丁代码给 Kubernetes 项目。
+本文档介绍自定义 Kubernetes 集群的选项。本文档的目标读者 text=&amp;quot;cluster operators&amp;rdquo; term_id=&amp;quot;cluster-operator&amp;rdquo; &amp;gt;}} 是希望了解如何使 Kubernetes 集群满足其业务环境需求的集群运维人员。Kubernetes 项目的贡献者 text=&amp;quot;Contributors&amp;rdquo; term_id=&amp;quot;contributor&amp;rdquo; &amp;gt;}} 或潜在的平台开发人员 text=&amp;quot;Platform Developers&amp;rdquo; term_id=&amp;quot;platform-developer&amp;rdquo; &amp;gt;}} 也可以从本文找到有用的信息，如对已存在扩展点和模式的介绍，以及它们的权衡和限制。
+概述 定制方法可以大致分为 配置 和 扩展 。配置 只涉及更改标志参数、本地配置文件或 API 资源；扩展 涉及运行额外的程序或服务。本文档主要内容是关于扩展。
+配置 关于 配置文件 和 标志 的说明文档位于在线文档的参考部分，按照二进制组件各自描述：
+ kubelet kube-apiserver kube-controller-manager kube-scheduler.  在托管的 Kubernetes 服务或受控安装的 Kubernetes 版本中，标志和配置文件可能并不总是可以更改的。而且当它们可以进行更改时，它们通常只能由集群管理员进行更改。此外，标志和配置文件在未来的 Kubernetes 版本中可能会发生变化，并且更改设置后它们可能需要重新启动进程。出于这些原因，只有在没有其他选择的情况下才使用它们。
+内置策略 API ，例如 ResourceQuota、PodSecurityPolicy、NetworkPolicy 和基于角色的权限控制 (RBAC)，是内置的 Kubernetes API。API 通常与托管的 Kubernetes 服务和受控的 Kubernetes 安装一起使用。 它们是声明性的，并使用与其他 Kubernetes 资源（如 Pod ）相同的约定，所以新的集群配置可以重复使用，并以与应用程序相同的方式进行管理。而且，当他们变稳定后，他们和其他 Kubernetes API 一样享受定义支持政策。出于这些原因，在合适的情况下它们优先于 配置文件 和 标志 被使用。</description>
+    </item>
+    
+    <item>
+      <title>Operator 模式</title>
+      <link>https://lijun.in/concepts/extend-kubernetes/operator/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/concepts/extend-kubernetes/operator/</guid>
+      <description>Operator 是 Kubernetes 的扩展软件，它利用自定义资源管理应用及其组件。 Operator 遵循 Kubernetes 的理念，特别是在控制回路方面。
+初衷 Operator 模式旨在捕获（正在管理一个或一组服务的）运维人员的关键目标。 负责特定应用和 service 的运维人员，在系统应该如何运行、如何部署以及出现问题时如何处理等方面有深入的了解。
+在 Kubernetes 上运行工作负载的人们都喜欢通过自动化来处理重复的任务。Operator 模式会封装您编写的（Kubernetes 本身提供功能以外的）任务自动化代码。
+Kubernetes 上的 Operator Kubernetes 为自动化而生。无需任何修改，您即可以从 Kubernetes 核心中获得许多内置的自动化功能。 您可以使用 Kubernetes 自动化部署和运行工作负载， 甚至 可以自动化 Kubernetes 自身。
+Kubernetes text=&amp;quot;控制器&amp;rdquo; term_id=&amp;quot;controller&amp;rdquo; &amp;gt;}} 使您无需修改 Kubernetes 自身的代码，即可以扩展集群的行为。 Operator 是 Kubernetes API 的客户端，充当自定义资源的控制器。
+Operator 示例 使用 Operator 可以自动化的事情包括：
+ 按需部署应用 获取/还原应用状态的备份 处理应用代码的升级以及相关改动。例如，数据库 schema 或额外的配置设置 发布一个 service，要求不支持 Kubernetes API 的应用也能发现它 模拟整个或部分集群中的故障以测试其稳定性 在没有内部成员选举程序的情况下，为分布式应用选择首领角色  想要更详细的了解 Operator？这儿有一个详细的示例：
+ 有一个名为 SampleDB 的自定义资源，您可以将其配置到集群中。 一个包含 Operator 控制器部分的 Deployment，用来确保 Pod 处于运行状态。 Operator 代码的容器镜像。 控制器代码，负责查询控制平面以找出已配置的 SampleDB 资源。 Operator 的核心是告诉 API 服务器，如何使现实与代码里配置的资源匹配。  如果添加新的 SampleDB，Operator 将设置 PersistentVolumeClaims 以提供持久化的数据库存储，设置 StatefulSet 以运行 SampleDB，并设置 Job 来处理初始配置。 如果您删除它，Operator 将建立快照，然后确保 StatefulSet 和 Volume 已被删除。   Operator 也可以管理常规数据库的备份。对于每个 SampleDB 资源，Operator 会确定何时创建（可以连接到数据库并进行备份的）Pod。这些 Pod 将依赖于 ConfigMap 和/或 具有数据库连接详细信息和凭据的 Secret。 由于 Operator 旨在为其管理的资源提供强大的自动化功能，因此它还需要一些额外的支持性代码。在这个示例中，代码将检查数据库是否正运行在旧版本上，如果是，则创建 Job 对象为您升级数据库。  部署 Operator 部署 Operator 最常见的方法是将自定义资源及其关联的控制器添加到您的集群中。跟运行容器化应用一样，Controller 通常会运行在 text=&amp;quot;控制平面&amp;rdquo; term_id=&amp;quot;control-plane&amp;rdquo; &amp;gt;}} 之外。例如，您可以在集群中将控制器作为 Deployment 运行。</description>
+    </item>
+    
+    <item>
+      <title>服务目录</title>
+      <link>https://lijun.in/concepts/extend-kubernetes/service-catalog/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/concepts/extend-kubernetes/service-catalog/</guid>
+      <description>term_id=&amp;quot;service-catalog&amp;rdquo; length=&amp;quot;all&amp;rdquo; prepend=&amp;rdquo;&amp;rdquo; &amp;gt;}}
+服务代理是由开放服务代理 API 规范定义的一组托管服务的终结点，由第三方提供并维护，其中的第三方可以是 AWS，GCP 或 Azure 等云服务提供商。 托管服务的一些示例是 Microsoft Azure Cloud Queue，Amazon Simple Queue Service 和 Google Cloud Pub/Sub，但它们是可以使用应用程序的任何软件产品。
+使用服务目录，集群操作者可以浏览其提供的托管服务列表，提供托管服务实例并与之绑定，以使其可以被 Kubernetes 集群中的应用程序使用。
+示例用例 应用开发者希望使用消息队列作为其在 Kubernetes 集群中运行的应用程序的一部分。 但是，它们不想承受建立这种服务的开销，也不想自行管理。幸运的是，有一家云服务提供商通过它们的服务代理将消息队列作为托管服务提供。
+集群运维人员可以设置服务目录并使用它与云服务提供商的服务代理 通信，以此提供消息队列服务的实例并使其对 Kubernetes 中的应用程序可用。 因此，应用开发者可以不用关心消息队列的实现细节，也不用对其进行管理。它们的应用程序可以简单的将其作为服务使用。
+架构 服务目录使用开放服务代理 API 与服务代理进行通信，并作为 Kubernetes API Server 的中介，以便协商首要规定并获取应用程序使用托管服务的必要凭据。
+它被实现为一个扩展 API 服务和一个控制器管理器，使用 Etcd 作为存储。它还使用了 Kubernetes 1.7+ 版本中提供的 aggregation layer 来呈现其 API。
+API 资源 服务目录安装 servicecatalog.k8s.io API 并提供以下 Kubernetes 资源：
+ ClusterServiceBroker：服务目录的集群内代表，封装了它的服务连接细节。集群运维人员创建和管理这些资源，并希望使用该代理服务在集群中提供新类型的托管服务。 ClusterServiceClass：由特定服务代理提供的托管服务。当新的 ClusterServiceBroker 资源被添加到集群时，服务目录控制器将连接到服务代理以获取可用的托管服务列表。然后为每个托管服务创建对应的新 ClusterServiceClass 资源。 ClusterServicePlan：托管服务的特定产品。例如托管服务可能有不同的计划可用，如免费版本和付费版本，或者可能有不同的配置选项，例如使用 SSD 存储或拥有更多资源。与 ClusterServiceClass 类似，当一个新的 ClusterServiceBroker 被添加到集群时，服务目录会为每个托管服务的每个可用服务计划创建对应的新 ClusterServicePlan 资源。 ServiceInstance：ClusterServiceClass 提供的示例。由集群运维人员创建，以使托管服务的特定实例可供一个或多个集群内应用程序使用。当创建一个新的 ServiceInstance 资源时，服务目录控制器将连接到相应的服务代理并指示它调配服务实例。 ServiceBinding：ServiceInstance 的访问凭据。由希望其应用程序使用服务 ServiceInstance 的集群运维人员创建。创建之后，服务目录控制器将创建一个 Kubernetes Secret，其中包含服务实例的连接细节和凭据，可以挂载到 Pod 中。  认证 服务目录支持这些认证方法：</description>
+    </item>
+    
+  </channel>
+</rss>

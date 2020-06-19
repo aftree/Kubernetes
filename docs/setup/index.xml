@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>💖 - 入门 on Hugo 主题的 Learn 文档</title>
+    <link>https://lijun.in/setup/</link>
+    <description>Recent content in 💖 - 入门 on Hugo 主题的 Learn 文档</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://lijun.in/setup/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>💖 - 使用 kubeadm 创建一个单主集群</title>
+      <link>https://lijun.in/setup/independent/create-cluster-kubeadm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/setup/independent/create-cluster-kubeadm/</guid>
+      <description>kubeadm 能帮助您建立一个小型的符合最佳实践的 Kubernetes 集群。通过使用 kubeadm, 您的集群会符合 Kubernetes 合规性测试的要求. Kubeadm 也支持其他的集群生命周期操作，比如升级、降级和管理启动引导令牌。
+因为您可以在不同类型的机器（比如笔记本、服务器和树莓派等）上安装 kubeadm，因此它非常适合与 Terraform 或 Ansible 这类自动化管理系统集成。
+kubeadm 的简单便捷为大家带来了广泛的用户案例：
+ 新用户可以从 kubeadm 开始来试用 Kubernetes。 熟悉 Kubernetes 的用户可以使用 kubeadm 快速搭建集群并测试他们的应用。 大型的项目可以将 kubeadm 和其他的安装工具一起形成一个比较复杂的系统。  kubeadm 的设计初衷是为新用户提供一种便捷的方式来首次试用 Kubernetes， 同时也方便老用户搭建集群测试他们的应用。 此外 kubeadm 也可以跟其它生态系统与/或安装工具集成到一起，提供更强大的功能。
+您可以很方便地在支持 rpm 或 deb 软件包的操作系统上安装 kubeadm。对应 kubeadm 的 SIG， SIG Cluster Lifecycle， 提供了预编译的这类安装包，当然您也可以自己基于源码为其它操作系统来构造安装包。
+kubeadm 成熟程度    功能 成熟程度     命令行用户体验 beta   功能实现 beta   配置文件 API alpha   自托管 alpha   kubeadm alpha 子命令 alpha   CoreDNS GA   动态 Kubelet 配置 alpha    kubeadm 的整体功能目前还是 Beta 状态，然而很快在 2018 年就会转换成正式发布 (GA) 状态。 一些子功能，比如自托管或者配置文件 API 还在开发过程当中。 随着工具的发展，创建集群的方法可能会有所变化，但是整体部署方案还是比较稳定的。 在 kubeadm alpha 下面的任何命令都只是 alpha 状态，目前只提供初期阶段的服务。</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>😝 - 运行应用 on Hugo 主题的 Learn 文档</title>
+    <link>https://lijun.in/tasks/run-application/</link>
+    <description>Recent content in 😝 - 运行应用 on Hugo 主题的 Learn 文档</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://lijun.in/tasks/run-application/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>运行一个有状态的应用程序</title>
+      <link>https://lijun.in/tasks/run-application/run-replicated-stateful-application/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/run-application/run-replicated-stateful-application/</guid>
+      <description>该页面显示如何使用StatefulSet 控制器去运行一个有状态的应用程序。此例是一主多从的 MySQL 集群。
+请注意 这不是生产配置。 重点是， MySQL 设置保留在不安全的默认值上，使重点放在 Kubernetes 中运行有状态应用程序的常规模式。
+. heading &amp;ldquo;prerequisites&amp;rdquo; %}}  . include &amp;ldquo;task-tutorial-prereqs.md&amp;rdquo; &amp;gt;}} . version-check &amp;gt;}} . include &amp;ldquo;default-storage-class-prereqs.md&amp;rdquo; &amp;gt;}} 本教程假定您熟悉 PersistentVolumes 与 StatefulSets, 以及其他核心概念，例如Pods, Services, 与 ConfigMaps. 熟悉 MySQL 会有所帮助，但是本教程旨在介绍对其他系统应该有用的常规模式。  . heading &amp;ldquo;objectives&amp;rdquo; %}}  使用 StatefulSet 控制器部署复制的 MySQL 拓扑。 发送 MySQL 客户端流量。 观察对宕机的抵抗力。 缩放 StatefulSet 的大小。  部署 MySQL 部署 MySQL 示例，包含一个 ConfigMap，两个 Services，与一个 StatefulSet。
+ConfigMap 从以下的 YAML 配置文件创建 ConfigMap ：</description>
+    </item>
+    
+    <item>
+      <title>使用 kubectl patch 更新 API 对象</title>
+      <link>https://lijun.in/tasks/run-application/update-api-object-kubectl-patch/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/run-application/update-api-object-kubectl-patch/</guid>
+      <description>这个任务展示了如何使用 kubectl patch 就地更新 API 对象。这个任务中的练习演示了一个策略性合并 patch 和一个 JSON 合并 patch。
+. heading &amp;ldquo;prerequisites&amp;rdquo; %}} . include &amp;ldquo;task-tutorial-prereqs.md&amp;rdquo; &amp;gt;}} . version-check &amp;gt;}}
+使用策略合并 patch 更新 Deployment 下面是具有两个副本的 Deployment 的配置文件。每个副本是一个 Pod，有一个容器：
+. codenew file=&amp;quot;application/deployment-patch.yaml&amp;rdquo; &amp;gt;}}
+创建 Deployment：
+kubectl create -f https://k8s.io/examples/application/deployment-patch.yaml 查看与 Deployment 相关的 Pod：
+kubectl get pods 输出显示 Deployment 有两个 Pod。1/1 表示每个 Pod 有一个容器:
+NAME READY STATUS RESTARTS AGE patch-demo-28633765-670qr 1/1 Running 0 23s patch-demo-28633765-j5qs3 1/1 Running 0 23s 把运行的 Pod 的名字记下来。稍后，您将看到这些 Pod 被终止并被新的 Pod 替换。</description>
+    </item>
+    
+    <item>
+      <title>删除 StatefulSet</title>
+      <link>https://lijun.in/tasks/run-application/delete-stateful-set/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/run-application/delete-stateful-set/</guid>
+      <description>本文介绍如何删除 StatefulSet。
+. heading &amp;ldquo;prerequisites&amp;rdquo; %}}  本文假设在您的集群上已经运行了由 StatefulSet 创建的应用。  删除 StatefulSet 您可以像删除 Kubernetes 中的其他资源一样删除 StatefulSet：使用 kubectl delete 命令，并按文件或者名字指定 StatefulSet。
+kubectl delete -f &amp;lt;file.yaml&amp;gt; kubectl delete statefulsets &amp;lt;statefulset-name&amp;gt; 删除 StatefulSet 之后，您可能需要单独删除关联的无头服务。
+kubectl delete service &amp;lt;service-name&amp;gt; 通过 kubectl 删除 StatefulSet 会将其缩容为0，因此删除属于它的所有pods。 如果您只想删除 StatefulSet 而不删除 pods，使用 --cascade=false。
+kubectl delete -f &amp;lt;file.yaml&amp;gt; --cascade=false 通过将 --cascade=false 传递给 kubectl delete，在删除 StatefulSet 对象之后，StatefulSet 管理的 pods 会被保留下来。如果 pods 有一个标签 app=myapp，则可以按照如下方式删除它们：
+kubectl delete pods -l app=myapp Persistent Volumes 删除 StatefulSet 管理的 pods 并不会删除关联的卷。这是为了确保您有机会在删除卷之前从卷中复制数据。在pods离开终止状态后删除 PVC 可能会触发删除支持的 Persistent Volumes，具体取决于存储类和回收策略。声明删除后，您永远不应该假设能够访问卷。</description>
+    </item>
+    
+    <item>
+      <title>强制删除 StatefulSet 类型的 Pods</title>
+      <link>https://lijun.in/tasks/run-application/force-delete-stateful-set-pod/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/run-application/force-delete-stateful-set-pod/</guid>
+      <description>本文介绍了如何删除 StatefulSet 管理的部分 pods，并且解释了这样操作时需要记住的注意事项。
+. heading &amp;ldquo;prerequisites&amp;rdquo; %}}  这是一项相当高级的任务，并且可能会违反 StatefulSet 固有的某些属性。 继续任务之前，请熟悉下面列举的注意事项。  StatefulSet 注意事项 在 StatefulSet 的正常操作中，永远不需要强制删除 StatefulSet 管理的 pod。StatefulSet 控制器负责创建，扩容和删除 StatefulSet 管理的 pods。它尝试确保从序号 0 到 N-1 指定数量的 pods 处于活动状态并准备就绪。StatefulSet 确保在任何时候，集群中最多只有一个具有给定标识的 pod。这就是所谓的由 StatefulSet 提供的最多一个的语义。
+应谨慎进行手动强制删除操作，因为它可能会违反 StatefulSet 固有的至多一个的语义。StatefulSets 可用于运行分布式和集群级的应用，这些应用需要稳定的网络标识和可靠的存储。这些应用通常配置为具有固定标识固定数量的成员集合。具有相同身份的多个成员可能是灾难性的，并且可能导致数据丢失 (e.g. 基于 quorum 系统中的脑裂场景)。
+删除 Pods 您可以使用下面的命令执行优雅地删除 pod:
+kubectl delete pods &amp;lt;pod&amp;gt; 为了使上面的方法能够正常终止，Pod 一定不能设置 pod.Spec.TerminationGracePeriodSeconds 为 0。将 pod.Spec.TerminationGracePeriodSeconds 设置为 0s 的做法是不安全的，强烈建议 StatefulSet 类型的 pods 不要使用。优雅删除是安全的，并且会在 kubelet 从 apiserver 中删除名称之前确保 优雅地关闭 pod 。</description>
+    </item>
+    
+    <item>
+      <title>基于Replication Controller执行滚动升级</title>
+      <link>https://lijun.in/tasks/run-application/rolling-update-replication-controller/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/run-application/rolling-update-replication-controller/</guid>
+      <description>概述 注: 创建副本应用的首选方法是使用[Deployment](/docs/api-reference/. param &amp;ldquo;version&amp;rdquo; &amp;gt;}}/#deployment-v1beta1-apps)，Deployment使用[ReplicaSet](/docs/api-reference/. param &amp;ldquo;version&amp;rdquo; &amp;gt;}}/#replicaset-v1beta1-extensions)来进行副本控制。 更多信息, 查看使用Deployment运行一个无状态应用。
+为了在更新服务的同时不中断业务， kubectl 支持&amp;lsquo;滚动更新&amp;rsquo;，它一次更新一个pod，而不是同时停止整个服务。 有关更多信息，请参阅 滚动更新设计文档 和 滚动更新示例。
+请注意， kubectl rolling-update 仅支持Replication Controllers。 但是，如果使用Replication Controllers部署应用，请考虑将其切换到Deployments. Deployment是一种被推荐使用的更高级别的控制器，它可以对应用进行声明性的自动滚动更新。 如果您仍然希望保留您的Replication Controllers并使用 kubectl rolling-update进行滚动更新， 请继续往下阅读：
+滚动更新可以对replication controller所管理的Pod的配置进行变更，变更可以通过一个新的配置文件来进行，或者，如果只更新镜像，则可以直接指定新的容器镜像。
+滚动更新的工作流程：
+ 通过新的配置创建一个replication controller 在新的控制器上增加副本数，在旧的上面减少副本数，直到副本数达到期望值 删除之前的replication controller  使用kubectl rolling-update命令来进行滚动更新：
+$ kubectl rolling-update NAME \ ([NEW_NAME] --image=IMAGE | -f FILE)  通过配置文件更新 通过配置文件来进行滚动更新，需要在kubectl rolling-update命令后面带上新的配置文件：
+$ kubectl rolling-update NAME -f FILE  这个配置文件必须满足以下条件：
+  指定不同的metadata.name值
+  至少要修改spec.</description>
+    </item>
+    
+    <item>
+      <title>Pod 水平自动伸缩</title>
+      <link>https://lijun.in/tasks/run-application/horizontal-pod-autoscale/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/run-application/horizontal-pod-autoscale/</guid>
+      <description>Pod 水平自动伸缩（Horizontal Pod Autoscaler）特性， 可以基于CPU利用率自动伸缩 replication controller、deployment和 replica set 中的 pod 数量，（除了 CPU 利用率）也可以 基于其他应程序提供的度量指标custom metrics。 pod 自动缩放不适用于无法缩放的对象，比如 DaemonSets。
+Pod 水平自动伸缩特性由 Kubernetes API 资源和控制器实现。资源决定了控制器的行为。 控制器会周期性的获取平均 CPU 利用率，并与目标值相比较后来调整 replication controller 或 deployment 中的副本数量。
+Pod 水平自动伸缩工作机制 Pod 水平自动伸缩的实现是一个控制循环，由 controller manager 的 --horizontal-pod-autoscaler-sync-period 参数 指定周期（默认值为15秒）。
+每个周期内，controller manager 根据每个 HorizontalPodAutoscaler 定义中指定的指标查询资源利用率。 controller manager 可以从 resource metrics API（每个pod 资源指标）和 custom metrics API（其他指标）获取指标。
+ 对于每个 pod 的资源指标（如 CPU），控制器从资源指标 API 中获取每一个 HorizontalPodAutoscaler 指定 的 pod 的指标，然后，如果设置了目标使用率，控制器获取每个 pod 中的容器资源使用情况，并计算资源使用率。 如果使用原始值，将直接使用原始数据（不再计算百分比）。 然后，控制器根据平均的资源使用率或原始值计算出缩放的比例，进而计算出目标副本数。  需要注意的是，如果 pod 某些容器不支持资源采集，那么控制器将不会使用该 pod 的 CPU 使用率。 下面的算法细节章节将会介绍详细的算法。</description>
+    </item>
+    
+    <item>
+      <title>Horizontal Pod Autoscaler演练</title>
+      <link>https://lijun.in/tasks/run-application/horizontal-pod-autoscale-walkthrough/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/run-application/horizontal-pod-autoscale-walkthrough/</guid>
+      <description>Horizontal Pod Autoscaler 可以根据CPU利用率自动伸缩 replication controller、deployment 或者 replica set 中的Pod数量 （也可以基于其他应用程序提供的度量指标，目前这一功能处于 beta 版本）。
+本文将引导您了解如何为 php-apache 服务器配置和使用 Horizontal Pod Autoscaler。 更多 Horizontal Pod Autoscaler 的信息请参阅 Horizontal Pod Autoscaler user guide。
+. heading &amp;ldquo;prerequisites&amp;rdquo; %}} 本文示例需要一个1.2或者更高版本的可运行的 Kubernetes 集群以及 kubectl。 metrics-server 也需要部署到集群中， 它可以通过 resource metrics API 对外提供度量数据，Horizontal Pod Autoscaler 正是根据此 API 来获取度量数据，部署方法请参考 metrics-server 。 如果你正在使用GCE，按照 getting started on GCE guide 操作，metrics-server 会默认启动。
+如果需要为 Horizontal Pod Autoscaler 指定多种资源度量指标，您的 Kubernetes 集群以及 kubectl 至少需要达到1.6版本。 此外，如果要使用自定义度量指标，您的Kubernetes 集群还必须能够与提供这些自定义指标的API服务器通信。 最后，如果要使用与 Kubernetes 对象无关的度量指标，则 Kubernetes 集群版本至少需要达到1.</description>
+    </item>
+    
+    <item>
+      <title>指定应用程序的中断预算（Disruption Budget）</title>
+      <link>https://lijun.in/tasks/run-application/configure-pdb/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/run-application/configure-pdb/</guid>
+      <description>本文展示了如何限制应用程序的并发中断数量，在允许集群管理员管理集群节点的同时保证高可用。
+. heading &amp;ldquo;prerequisites&amp;rdquo; %}}  用户是 Kubernetes 集群中有高可用需求的应用的所有者。   用户应了解如何部署 无状态应用 和/或 有状态应用。   用户应当已经阅读过关于 Pod 中断 的文档。   用户应当与集群所有者或服务提供者确认其遵从 Pod 中断预算（Pod Disruption Budgets）的规则。  用 PodDisruptionBudget 来保护应用  确定想要使用 PodDisruptionBudget (PDB) 来保护的应用。 考虑应用对中断的反应。 以 YAML 文件形式定义 PDB 。 通过 YAML 文件创建 PDB 对象。  确定要保护的应用 用户想要保护通过内置的 Kubernetes 控制器指定的应用，这是最常见的使用场景：
+ Deployment ReplicationController ReplicaSet StatefulSet  在这种情况下，在控制器的 .spec.selector 字段中做记录，并在 PDB 的 .spec.selector 字段中加入同样的选择器。
+用户也可以用 PDB 来保护不受上述控制器控制的 pod，或任意组（arbitrary groups）的 pod， 但是正如 任意控制器和选择器 中描述的，这里存在一些限制。</description>
+    </item>
+    
+    <item>
+      <title>使用Deployment运行一个无状态应用</title>
+      <link>https://lijun.in/tasks/run-application/run-stateless-application-deployment/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/run-application/run-stateless-application-deployment/</guid>
+      <description>本文介绍通过Kubernetes Deployment对象如何去运行一个应用.
+. heading &amp;ldquo;objectives&amp;rdquo; %}}  创建一个nginx deployment. 使用kubectl列举关于deployment信息. 更新deployment.  . heading &amp;ldquo;prerequisites&amp;rdquo; %}} . include &amp;ldquo;task-tutorial-prereqs.md&amp;rdquo; &amp;gt;}} . version-check &amp;gt;}}
+创建和探究一个nginx deployment 你可以通过创建一个Kubernetes Deployment对象来运行一个应用, 可以在一个YAML文件中描述Deployment. 例如, 下面这个YAML文件描述了一个运行nginx:1.7.9 Docker镜像的Deployment:
+. codenew file=&amp;quot;application/deployment.yaml&amp;rdquo; &amp;gt;}}
+  通过YAML文件创建一个Deployment:
+ kubectl apply -f https://k8s.io/examples/application/deployment.yaml    展示Deployment相关信息:
+kubectl describe deployment nginx-deployment user@computer:~/website$ kubectl describe deployment nginx-deployment Name: nginx-deployment Namespace: default CreationTimestamp: Tue, 30 Aug 2016 18:11:37 -0700 Labels: app=nginx Annotations: deployment.</description>
+    </item>
+    
+    <item>
+      <title>弹缩StatefulSet</title>
+      <link>https://lijun.in/tasks/run-application/scale-stateful-set/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/run-application/scale-stateful-set/</guid>
+      <description>本文介绍如何弹缩StatefulSet.
+. heading &amp;ldquo;prerequisites&amp;rdquo; %}}  StatefulSets仅适用于Kubernetes1.5及以上版本. 不是所有Stateful应用都适合弹缩. 在弹缩前您的应用前. 您必须充分了解您的应用, 不适当的弹缩StatefulSet或许会造成应用自身功能的不稳定. 仅当您确定该Stateful应用的集群是完全健康才可执行弹缩操作.  使用 kubectl 弹缩StatefulSets 弹缩请确认 kubectl 已经升级到Kubernetes1.5及以上版本. 如果不确定, 执行 kubectl version 命令并检查使用的 Client Version.
+kubectl 弹缩 首先, 找到您想要弹缩的StatefulSet. 记住, 您需先清楚是否能弹缩该应用.
+kubectl get statefulsets &amp;lt;stateful-set-name&amp;gt; 改变StatefulSet副本数量:
+kubectl scale statefulsets &amp;lt;stateful-set-name&amp;gt; --replicas=&amp;lt;new-replicas&amp;gt; 可使用其他命令: kubectl apply / kubectl edit / kubectl patch 另外, 您可以 in-place updates StatefulSets.
+如果您的StatefulSet开始由 kubectl apply 或 kubectl create --save-config 创建,更新StatefulSet manifests中的 .spec.replicas, 然后执行命令 kubectl apply:
+kubectl apply -f &amp;lt;stateful-set-file-updated&amp;gt; 除此之外, 可以通过命令 kubectl edit 编辑该字段:</description>
+    </item>
+    
+    <item>
+      <title>运行一个单实例有状态应用</title>
+      <link>https://lijun.in/tasks/run-application/run-single-instance-stateful-application/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/run-application/run-single-instance-stateful-application/</guid>
+      <description>本文介绍在 Kubernetes 中使用 PersistentVolume 和 Deployment 如何运行一个单实例有状态应用. 该应用是 MySQL.
+. heading &amp;ldquo;objectives&amp;rdquo; %}}  在环境中通过磁盘创建一个PersistentVolume. 创建一个MySQL Deployment. 在集群内以一个已知的 DNS 名将 MySQL 暴露给其他 pods.  . heading &amp;ldquo;prerequisites&amp;rdquo; %}}   . include &amp;ldquo;task-tutorial-prereqs.md&amp;rdquo; &amp;gt;}} . version-check &amp;gt;}}
+  . include &amp;ldquo;default-storage-class-prereqs.md&amp;rdquo; &amp;gt;}}
+  部署MySQL 注意: 在配置的 yaml 文件中定义密码的做法是不安全的. 具体安全解决方案请参考 Kubernetes Secrets.
+. codenew file=&amp;quot;application/mysql/mysql-deployment.yaml&amp;rdquo; &amp;gt;}} . codenew file=&amp;quot;application/mysql/mysql-pv.yaml&amp;rdquo; &amp;gt;}}
+  部署 YAML 文件中定义的 PV 和 PVC：
+ kubectl apply -f https://k8s.</description>
+    </item>
+    
+  </channel>
+</rss>

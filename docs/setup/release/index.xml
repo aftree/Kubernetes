@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>💖 - Kubernetes 发行说明和版本偏差 on Hugo 主题的 Learn 文档</title>
+    <link>https://lijun.in/setup/release/</link>
+    <description>Recent content in 💖 - Kubernetes 发行说明和版本偏差 on Hugo 主题的 Learn 文档</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://lijun.in/setup/release/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Kubernetes 版本及版本倾斜支持策略</title>
+      <link>https://lijun.in/setup/release/version-skew-policy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/setup/release/version-skew-policy/</guid>
+      <description>本文描述 Kubernetes 各组件之间版本倾斜支持策略。 特定的集群部署工具可能会有额外的限制。
+Supported versions Kubernetes 版本号格式为 x.y.z，其中 x 为大版本号，y 为小版本号，z 为补丁版本号。 版本号格式遵循 Semantic Versioning 规则。 更多信息，请参阅 Kubernetes Release Versioning。
+Kubernetes 项目会维护最近的三个小版本分支。
+一些 bug 修复，包括安全修复，根据其安全性和可用性，有可能会回合到这些分支。 补丁版本会定期或根据需要从这些分支中发布。 最终是否发布是由patch release team 来决定的。Patch release team同时也是release managers. 如需了解更多信息，请查看 Kubernetes Patch releases.
+小版本大约每3个月发布一个，所以每个小版本分支会维护9个月。
+Supported version skew kube-apiserver In highly-available (HA) clusters, the newest and oldest kube-apiserver instances must be within one minor version. 在 高可用（HA）集群 中， 多个 kube-apiserver 实例小版本号最多差1。
+例如：
+ 最新的 kube-apiserver 版本号如果是 1.</description>
+    </item>
+    
+  </channel>
+</rss>

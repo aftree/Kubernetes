@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>😊 - 服务、负载均衡和联网 on Hugo 主题的 Learn 文档</title>
+    <link>https://lijun.in/concepts/services-networking/</link>
+    <description>Recent content in 😊 - 服务、负载均衡和联网 on Hugo 主题的 Learn 文档</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://lijun.in/concepts/services-networking/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Endpoint Slices</title>
+      <link>https://lijun.in/concepts/services-networking/endpoint-slices/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/concepts/services-networking/endpoint-slices/</guid>
+      <description>feature-state for_k8s_version=&amp;quot;v1.17&amp;rdquo; state=&amp;quot;beta&amp;rdquo;
+Endpoint Slices 提供了一种简单的方法来跟踪 Kubernetes 集群中的网络端点（network endpoints）。它们为 Endpoints 提供了一种可伸缩和可拓展的替代方案。
+Endpoint Slice 资源 在 Kubernetes 中，EndpointSlice 包含对一组网络端点的引用。指定选择器后，EndpointSlice 控制器会自动为 Kubernetes 服务创建 EndpointSlice。这些 EndpointSlice 将包含对与服务选择器匹配的所有 Pod 的引用。EndpointSlice 通过唯一的服务和端口组合将网络端点组织在一起。
+例如，这里是 Kubernetes服务 example 的示例 EndpointSlice 资源。
+apiVersion: discovery.k8s.io/v1beta1 kind: EndpointSlice metadata: name: example-abc labels: kubernetes.io/service-name: example addressType: IPv4 ports: - name: http protocol: TCP port: 80 endpoints: - addresses: - &amp;#34;10.1.2.3&amp;#34; conditions: ready: true hostname: pod-1 topology: kubernetes.io/hostname: node-1 topology.kubernetes.io/zone: us-west2-a 默认情况下，由 EndpointSlice 控制器管理的 Endpoint Slice 将有不超过 100 个 endpoints。低于此比例时，Endpoint Slices 应与 Endpoints 和服务进行 1：1 映射，并具有相似的性能。</description>
+    </item>
+    
+    <item>
+      <title>Service 拓扑</title>
+      <link>https://lijun.in/concepts/services-networking/service-topology/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/concepts/services-networking/service-topology/</guid>
+      <description>feature-state for_k8s_version=&amp;quot;v1.17&amp;rdquo; state=&amp;quot;alpha&amp;rdquo; &amp;gt;}}
+Service 拓扑可以让一个服务基于集群的 Node 拓扑进行流量路由。例如，一个服务可以指定流量是被优先路由到一个和客户端在同一个 Node 或者在同一可用区域的端点。
+介绍 默认情况下，发往 ClusterIP 或者 NodePort 服务的流量可能会被路由到任意一个服务后端的地址上。从 Kubernetes 1.7 开始，可以将“外部”流量路由到节点上运行的 pod 上，但不支持 ClusterIP 服务，更复杂的拓扑 — 比如分区路由 — 也还不支持。通过允许 Service 创建者根据源 Node 和目的 Node 的标签来定义流量路由策略，Service 拓扑特性实现了服务流量的路由。
+通过对源 Node 和目的 Node 标签的匹配，运营者可以使用任何符合运营者要求的度量值来指定彼此“较近”和“较远”的节点组。例如，对于在公有云上的运营者来说，更偏向于把流量控制在同一区域内，因为区域间的流量是有费用成本的，而区域内的流量没有。其它常用需求还包括把流量路由到由 DaemonSet 管理的本地 Pod 上，或者把保持流量在连接同一机架交换机的 Node 上，以获得低延时。
+前提条件 为了启用拓扑感知服务路由功能，必须要满足以下一些前提条件：
+ Kubernetes 的版本不低于 1.17 Kube-proxy 运行在 iptables 模式或者 IPVS 模式 启用 端点切片功能  启用 Service 拓扑 要启用 Service 拓扑，就要给 kube-apiserver 和 kube-proxy 启用 ServiceTopology 功能：</description>
+    </item>
+    
+    <item>
+      <title>Services</title>
+      <link>https://lijun.in/concepts/services-networking/service/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/concepts/services-networking/service/</guid>
+      <description>apiVersion: v1 kind: Service # string Required 资源类型 metadata: # Object Required 元数据 name: string # string Required Service名称 namespace: string # string Required 命名空间，默认default labels: # list Required 自定义标签属性列表 - name: string annotations: # list Required 自定义注解属性列表 - name: string spec: # Object Required 详细描述 selector: [] # list Required Label Selector配置，将选择具有指定Label标签的Pod作为管理范围 type: string # string Required Service的类型，指定Service的访问方式，默认为ClusterIP # ClusterIP：虚拟的服务IP地址，改地址用于Kubernetes集群内部的Pod访问，在Node上kube-proxy通过设置iptables规则进行转发 # NodePort: 使用宿主机的端口，使能够访问个Node的外部客户端通过Node的IP地址和端口号就能访问服务 # LoadBalancer: 使用外接负载均衡完成到服务的负载分发，需要在spec.status.loadBalancer字段指定外部负载均衡器的IP地址， # 并同时定义nodePort和clusterIP，用于公有云环境 clusterIP: string # string 虚拟服务IP地址，当type=ClusterIP时，如果不指定，则系统自动分配，也可以手动指定；当type=LoaderBalancer需要指定 sessionAffinity: string # string 是否支持Session，可选值为ClientIP，默认为空 # ClientIP: 表示将同一个客户端（根据IP地址决定）的访问请求都转发到同一个后端Pod ports: # list 需要暴露的端口列表 - name: string # 端口名称 protocol: string # 端口协议 支持tcp和udp，默认为tcp port: int # 服务监听的端口号 targetPort: int # 需要转发到后端Pod的端口号 nodePort: int # 当spec.</description>
+    </item>
+    
+    <item>
+      <title>Pod 与 Service 的 DNS</title>
+      <link>https://lijun.in/concepts/services-networking/dns-pod-service/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/concepts/services-networking/dns-pod-service/</guid>
+      <description>该页面概述了Kubernetes对DNS的支持。
+介绍 Kubernetes DNS 在群集上调度 DNS Pod 和服务，并配置 kubelet 以告知各个容器使用 DNS 服务的 IP 来解析 DNS 名称。
+怎样获取 DNS 名字? 在集群中定义的每个 Service（包括 DNS 服务器自身）都会被指派一个 DNS 名称。 默认，一个客户端 Pod 的 DNS 搜索列表将包含该 Pod 自己的 Namespace 和集群默认域。 通过如下示例可以很好地说明：
+假设在 Kubernetes 集群的 Namespace bar 中，定义了一个Service foo。 运行在Namespace bar 中的一个 Pod，可以简单地通过 DNS 查询 foo 来找到该 Service。 运行在 Namespace quux 中的一个 Pod 可以通过 DNS 查询 foo.bar 找到该 Service。
+以下各节详细介绍了受支持的记录类型和支持的布局。 其中代码部分的布局，名称或查询命令均被视为实现细节，如有更改，恕不另行通知。 有关最新规范请查看 Kubernetes 基于 DNS 的服务发现.
+支持的 DNS 模式 下面各段详细说明支持的记录类型和布局。 如果任何其它的布局、名称或查询，碰巧也能够使用，这就需要研究下它们的实现细节，以免后续修改它们又不能使用了。</description>
+    </item>
+    
+    <item>
+      <title>应用连接到 Service</title>
+      <link>https://lijun.in/concepts/services-networking/connect-applications-service/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/concepts/services-networking/connect-applications-service/</guid>
+      <description>Kubernetes 连接容器模型 既然有了一个持续运行、可复制的应用，我们就能够将它暴露到网络上。 在讨论 Kubernetes 网络连接的方式之前，非常值得与 Docker 中 “正常” 方式的网络进行对比。
+默认情况下，Docker 使用私有主机网络连接，只能与同在一台机器上的容器进行通信。 为了实现容器的跨节点通信，必须在机器自己的 IP 上为这些容器分配端口，为容器进行端口转发或者代理。
+多个开发人员之间协调端口的使用很难做到规模化，那些难以控制的集群级别的问题，都会交由用户自己去处理。 Kubernetes 假设 Pod 可与其它 Pod 通信，不管它们在哪个主机上。 我们给 Pod 分配属于自己的集群私有 IP 地址，所以没必要在 Pod 或映射到的容器的端口和主机端口之间显式地创建连接。 这表明了在 Pod 内的容器都能够连接到本地的每个端口，集群中的所有 Pod 不需要通过 NAT 转换就能够互相看到。 文档的剩余部分将详述如何在一个网络模型之上运行可靠的服务。
+该指南使用一个简单的 Nginx server 来演示并证明谈到的概念。同样的原则也体现在一个更加完整的 Jenkins CI 应用 中。
+在集群中暴露 Pod 我们在之前的示例中已经做过，然而再让我重试一次，这次聚焦在网络连接的视角。 创建一个 Nginx Pod，指示它具有一个容器端口的说明：
+codenew file=&amp;quot;service/networking/run-my-nginx.yaml&amp;rdquo; &amp;gt;}}
+这使得可以从集群中任何一个节点来访问它。检查节点，该 Pod 正在运行：
+kubectl apply -f ./run-my-nginx.yaml kubectl get pods -l run=my-nginx -o wide NAME READY STATUS RESTARTS AGE IP NODE my-nginx-3800858182-jr4a2 1/1 Running 0 13s 10.</description>
+    </item>
+    
+    <item>
+      <title>Ingress</title>
+      <link>https://lijun.in/concepts/services-networking/ingress/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/concepts/services-networking/ingress/</guid>
+      <description>feature-state for_k8s_version=&amp;quot;v1.1&amp;rdquo; state=&amp;quot;beta&amp;rdquo; &amp;gt;}} glossary_definition term_id=&amp;quot;ingress&amp;rdquo; length=&amp;quot;all&amp;rdquo; &amp;gt;}}
+ 节点（Node）: Kubernetes 集群中其中一台工作机器，是集群的一部分。 集群（Cluster）: 一组运行程序（这些程序是容器化的，被 Kubernetes 管理的）的节点。 在此示例中，和在大多数常见的Kubernetes部署方案，集群中的节点都不会是公共网络。 边缘路由器（Edge router）: 在集群中强制性执行防火墙策略的路由器（router）。可以是由云提供商管理的网关，也可以是物理硬件。 集群网络（Cluster network）: 一组逻辑或物理的链接，根据 Kubernetes 网络模型 在集群内实现通信。 服务（Service）：Kubernetes Service标签选择器（selectors）标识的一组 Pod。除非另有说明，否则假定服务只具有在集群网络中可路由的虚拟 IP。  可以将 Ingress 配置为提供服务外部可访问的 URL、负载均衡流量、终止 SSL / TLS，以及提供基于名称的虚拟主机。Ingress 控制器 通常负责通过负载均衡器来实现 Ingress，尽管它也可以配置边缘路由器或其他前端来帮助处理流量。
+Ingress 不会公开任意端口或协议。 将 HTTP 和 HTTPS 以外的服务公开到 Internet 时，通常使用 Service.Type=NodePort 或者 Service.Type=LoadBalancer 类型的服务。
+环境准备 您必须具有 ingress 控制器 才能满足 Ingress 的要求。仅创建 Ingress 资源无效。
+您可能需要部署 Ingress 控制器，例如 ingress-nginx。您可以从许多Ingress 控制器 中进行选择。
+理想情况下，所有 Ingress 控制器都应符合参考规范。但实际上，不同的 Ingress 控制器操作略有不同。</description>
+    </item>
+    
+    <item>
+      <title>Ingress 控制器</title>
+      <link>https://lijun.in/concepts/services-networking/ingress-controllers/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/concepts/services-networking/ingress-controllers/</guid>
+      <description>为了让 Ingress 资源工作，集群必须有一个正在运行的 Ingress 控制器。
+与作为 kube-controller-manager 可执行文件的一部分运行的其他类型的控制器不同，Ingress 控制器不是随集群自动启动的。 基于此页面，您可选择最适合您的集群的 ingress 控制器实现。
+Kubernetes 作为一个项目，目前支持和维护 GCE 和 nginx 控制器。
+其他控制器  [AKS 应用程序网关 Ingress 控制器]使用 Azure 应用程序网关启用AKS 集群 ingress。 Ambassador API 网关， 一个基于 Envoy 的 ingress 控制器，有着来自社区 的支持和来自 Datawire 的商业 支持。 AppsCode Inc. 为最广泛使用的基于 HAProxy 的 ingress 控制器 Voyager 提供支持和维护。 AWS ALB Ingress 控制器通过 AWS 应用 Load Balancer 启用 ingress。 Contour 是一个基于 Envoy 的 ingress 控制器，它由 VMware 提供和支持。 Citrix 为其硬件（MPX），虚拟化（VPX）和 免费容器化 (CPX) ADC 提供了一个 Ingress 控制器，用于裸金属和云部署。 F5 Networks 为 用于 Kubernetes 的 F5 BIG-IP 控制器提供支持和维护。 Gloo 是一个开源的基于 Envoy 的 ingress 控制器，它提供了 API 网关功能，有着来自 solo.</description>
+    </item>
+    
+    <item>
+      <title>网络策略</title>
+      <link>https://lijun.in/concepts/services-networking/network-policies/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/concepts/services-networking/network-policies/</guid>
+      <description>网络策略（NetworkPolicy）是一种关于 text=&amp;quot;Pod&amp;rdquo; term_id=&amp;quot;pod&amp;quot;&amp;gt;}} 间及与其他网络端点间所允许的通信规则的规范。
+NetworkPolicy 资源使用 text=&amp;quot;标签&amp;rdquo; term_id=&amp;quot;label&amp;quot;&amp;gt;}} 选择 Pod，并定义选定 Pod 所允许的通信规则。
+前提 网络策略通过网络插件来实现。要使用网络策略，用户必须使用支持 NetworkPolicy 的网络解决方案。创建一个资源对象，而没有控制器来使它生效的话，是没有任何作用的。
+隔离和非隔离的 Pod 默认情况下，Pod 是非隔离的，它们接受任何来源的流量。
+Pod 可以通过相关的网络策略进行隔离。一旦命名空间中有网络策略选择了特定的 Pod，该 Pod 会拒绝网络策略所不允许的连接。 (命名空间下其他未被网络策略所选择的 Pod 会继续接收所有的流量)
+网络策略不会冲突，它们是附加的。如果任何一个或多个策略选择了一个 Pod, 则该 Pod 受限于这些策略的 ingress/egress 规则的并集。因此评估的顺序并不会影响策略的结果。
+NetworkPolicy 资源 查看 [网络策略](/docs/reference/generated/kubernetes-api/ param &amp;ldquo;version&amp;rdquo; &amp;gt;}}/#networkpolicy-v1-networking-k8s-io) 来了解完整的资源定义。
+下面是一个 NetworkPolicy 的示例:
+apiVersion: networking.k8s.io/v1 kind: NetworkPolicy metadata: name: test-network-policy namespace: default spec: podSelector: matchLabels: role: db policyTypes: - Ingress - Egress ingress: - from: - ipBlock: cidr: 172.</description>
+    </item>
+    
+    <item>
+      <title>使用 HostAliases 向 Pod /etc/hosts 文件添加条目</title>
+      <link>https://lijun.in/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/</guid>
+      <description>当 DNS 配置以及其它选项不合理的时候，通过向 Pod 的 /etc/hosts 文件中添加条目，可以在 Pod 级别覆盖对主机名的解析。在 1.7 版本，用户可以通过 PodSpec 的 HostAliases 字段来添加这些自定义的条目。
+建议通过使用 HostAliases 来进行修改，因为该文件由 Kubelet 管理，并且可以在 Pod 创建/重启过程中被重写。
+默认 hosts 文件内容 让我们从一个 Nginx Pod 开始，给该 Pod 分配一个 IP：
+kubectl run nginx --image nginx --generator=run-pod/v1 pod/nginx created 检查Pod IP：
+kubectl get pods --output=wide NAME READY STATUS RESTARTS AGE IP NODE nginx 1/1 Running 0 13s 10.200.0.4 worker0 主机文件的内容如下所示：
+kubectl exec nginx -- cat /etc/hosts # Kubernetes-managed hosts file.</description>
+    </item>
+    
+    <item>
+      <title>IPv4/IPv6 双协议栈</title>
+      <link>https://lijun.in/concepts/services-networking/dual-stack/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/concepts/services-networking/dual-stack/</guid>
+      <description>feature-state for_k8s_version=&amp;quot;v1.16&amp;rdquo; state=&amp;quot;alpha&amp;rdquo; &amp;gt;}}
+IPv4/IPv6 双协议栈能够将 IPv4 和 IPv6 地址分配给 text=&amp;quot;Pods&amp;rdquo; term_id=&amp;quot;pod&amp;rdquo; &amp;gt;}} 和 text=&amp;quot;Services&amp;rdquo; term_id=&amp;quot;service&amp;rdquo; &amp;gt;}}。
+如果你为 Kubernetes 集群启用了 IPv4/IPv6 双协议栈网络，则该集群将支持同时分配 IPv4 和 IPv6 地址。
+支持的功能 在 Kubernetes 集群上启用 IPv4/IPv6 双协议栈可提供下面的功能：
+ 双协议栈 pod 网络 (每个 pod 分配一个 IPv4 和 IPv6 地址) IPv4 和 IPv6 启用的服务 (每个服务必须是一个单独的地址族) Pod 的集群外出口通过 IPv4 和 IPv6 路由  先决条件 为了使用 IPv4/IPv6 双栈的 Kubernetes 集群，需要满足以下先决条件：
+ Kubernetes 1.16 版本及更高版本 提供商支持双协议栈网络（云提供商或其他提供商必须能够为 Kubernetes 节点提供可路由的 IPv4/IPv6 网络接口） 支持双协议栈的网络插件（如 Kubenet 或 Calico）  启用 IPv4/IPv6 双协议栈 要启用 IPv4/IPv6 双协议栈，为集群的相关组件启用 IPv6DualStack 特性门控，并且设置双协议栈的集群网络分配：</description>
+    </item>
+    
+  </channel>
+</rss>

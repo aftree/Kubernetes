@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>😊 - Kubernetes 架构 on Hugo 主题的 Learn 文档</title>
+    <link>https://lijun.in/concepts/architecture/</link>
+    <description>Recent content in 😊 - Kubernetes 架构 on Hugo 主题的 Learn 文档</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://lijun.in/concepts/architecture/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>节点</title>
+      <link>https://lijun.in/concepts/architecture/nodes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/concepts/architecture/nodes/</guid>
+      <description>在 Kubernetes 中，节点（Node）是执行工作的机器，以前叫做 minion。根据你的集群环境，节点可以是一个虚拟机或者物理机器。每个节点都包含用于运行 pods 的必要服务，并由主控组件管理。节点上的服务包括 容器运行时、kubelet 和 kube-proxy。查阅架构设计文档中 Kubernetes 节点 一节获取更多细节。
+节点状态 一个节点的状态包含以下信息:
+ 地址 条件 容量与可分配 信息  可以使用以下命令显示节点状态和有关节点的其他详细信息：
+kubectl describe node &amp;lt;insert-node-name-here&amp;gt; 下面对每个章节进行详细描述。
+地址 这些字段组合的用法取决于你的云服务商或者裸机配置。
+ HostName：由节点的内核指定。可以通过 kubelet 的 --hostname-override 参数覆盖。 ExternalIP：通常是可以外部路由的节点 IP 地址（从集群外可访问）。 InternalIP：通常是仅可在集群内部路由的节点 IP 地址。  条件 conditions 字段描述了所有 Running 节点的状态。条件的示例包括：
+   节点条件 描述     OutOfDisk True 表示节点的空闲空间不足以用于添加新 pods, 否则为 False   Ready 表示节点是健康的并已经准备好接受 pods；False 表示节点不健康而且不能接受 pods；Unknown 表示节点控制器在最近 40 秒内没有收到节点的消息   MemoryPressure True 表示节点存在内存压力 &amp;ndash; 即节点内存用量低，否则为 False   PIDPressure True 表示节点存在进程压力 &amp;ndash; 即进程过多；否则为 False   DiskPressure True 表示节点存在磁盘压力 &amp;ndash; 即磁盘可用量低，否则为 False   NetworkUnavailable True 表示节点网络配置不正确；否则为 False    节点条件使用一个 JSON 对象表示。例如，下面的响应描述了一个健康的节点。</description>
+    </item>
+    
+    <item>
+      <title>云控制器管理器的基础概念</title>
+      <link>https://lijun.in/concepts/architecture/cloud-controller/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/concepts/architecture/cloud-controller/</guid>
+      <description>云控制器管理器（cloud controller manager，CCM）这个概念 （不要与二进制文件混淆）创建的初衷是为了让特定的云服务供应商代码和 Kubernetes 核心相互独立演化。云控制器管理器与其他主要组件（如 Kubernetes 控制器管理器，API 服务器和调度程序）一起运行。它也可以作为 Kubernetes 的插件启动，在这种情况下，它会运行在 Kubernetes 之上。
+云控制器管理器基于插件机制设计，允许新的云服务供应商通过插件轻松地与 Kubernetes 集成。目前已经有在 Kubernetes 上加入新的云服务供应商计划，并为云服务供应商提供从原先的旧模式迁移到新 CCM 模式的方案。
+本文讨论了云控制器管理器背后的概念，并提供了相关功能的详细信息。
+这是没有云控制器管理器的 Kubernetes 集群的架构：
+设计 在上图中，Kubernetes 和云服务供应商通过几个不同的组件进行了集成，分别是：
+ Kubelet Kubernetes 控制管理器 Kubernetes API 服务器  CCM 整合了前三个组件中的所有依赖于云的逻辑，以创建与云的单一集成点。CCM 的新架构如下所示：
+CCM 的组成部分 CCM 打破了 Kubernetes 控制器管理器（KCM）的一些功能，并将其作为一个单独的进程运行。具体来说，它打破了 KCM 中依赖于云的控制器。KCM 具有以下依赖于云的控制器：
+ 节点控制器 卷控制器 路由控制器 服务控制器  在 1.9 版本中，CCM 运行前述列表中的以下控制器：
+ 节点控制器 路由控制器 服务控制器  注意卷控制器不属于 CCM，由于其中涉及到的复杂性和对现有供应商特定卷的逻辑抽象，因此决定了卷控制器不会被移动到 CCM 之中。
+使用 CCM 支持 volume 的最初计划是使用 Flex volume 来支持可插拔卷，但是现在正在计划一项名为 CSI 的项目以取代 Flex。</description>
+    </item>
+    
+    <item>
+      <title>控制器</title>
+      <link>https://lijun.in/concepts/architecture/controller/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/concepts/architecture/controller/</guid>
+      <description>在机器人技术和自动化中，控制环是一个控制系统状态的不终止的循环。
+这是一个控制环的例子：房间里的温度自动调节器。
+当你设置了温度，告诉了温度自动调节器你的期望状态。房间的实际温度是当前状态。通过对设备的开关控制，温度自动调节器让其当前状态接近期望状态。
+控制器模式 一个控制器至少追踪一种类型的 Kubernetes 资源。这些对象有一个代表期望状态的指定字段。控制器负责确保其追踪的资源对象的当前状态接近期望状态。
+控制器可能会自行执行操作；在 Kubernetes 中更常见的是一个控制器会发送信息给 API 服务器，这会有副作用。看下面这个例子。
+一些内置的控制器，比如命名空间控制器，针对没有指定命名空间的对象。为了简单起见，这篇文章没有详细介绍这些细节。
+通过 API 服务器来控制 控制器是一个 Kubernetes 内置控制器的例子。内置控制器通过和集群 API 服务器交互来管理状态。
+Job 是一种 Kubernetes 资源，它运行一个 ，或者可能是多个 Pod，来执行一个任务然后停止。
+（一旦被调度了），对 kubelet 来说 Pod 对象就会变成了期望状态的一部分。
+在集群中，当 Job 控制器拿到新任务时，它会保证一组 Node 节点上的 kubelet 可以运行正确数量的 Pod 来完成工作。 Job 控制器不会自己运行任何的 Pod 或者容器。Job 控制器是通知 API 服务器来创建或者移除 Pod。 control-plane中的其它组件根据新的消息而反应（调度新的 Pod 并且运行它）并且最终完成工作。
+创建新 Job 后，所期望的状态就是完成这个 Job。Job 控制器会让 Job 的当前状态不断接近期望状态：创建为 Job 要完成工作所需要的 Pod，使 Job 的状态接近完成。
+控制器也会更新配置对象。例如：一旦 Job 的工作完成了，Job 控制器会更新 Job 对象的状态为 Finished。</description>
+    </item>
+    
+    <item>
+      <title>Master 节点通信</title>
+      <link>https://lijun.in/concepts/architecture/master-node-communication/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/concepts/architecture/master-node-communication/</guid>
+      <description>概览 本文对 Master 节点（确切说是 apiserver）和 Kubernetes 集群之间的通信路径进行了分类。目的是为了让用户能够自定义他们的安装，对网络配置进行加固，使得集群能够在不可信的网络上（或者在一个云服务商完全公共的 IP 上）运行。
+Cluster -&amp;gt; Master 所有从集群到 master 的通信路径都终止于 apiserver（其它 master 组件没有被设计为可暴露远程服务）。在一个典型的部署中，apiserver 被配置为在一个安全的 HTTPS 端口（443）上监听远程连接并启用一种或多种形式的客户端身份认证机制。一种或多种客户端身份认证机制应该被启用，特别是在允许使用 匿名请求 或 service account tokens 的时候。
+应该使用集群的公共根证书开通节点，如此它们就能够基于有效的客户端凭据安全的连接 apiserver。例如：在一个默认的 GCE 部署中，客户端凭据以客户端证书的形式提供给 kubelet。请查看 kubelet TLS bootstrapping 获取如何自动提供 kubelet 客户端证书。
+想要连接到 apiserver 的 Pods 可以使用一个 service account 安全的进行连接。这种情况下，当 Pods 被实例化时 Kubernetes 将自动的把公共根证书和一个有效的不记名令牌注入到 pod 里。kubernetes service （所有 namespaces 中）都配置了一个虚拟 IP 地址，用于转发（通过 kube-proxy）请求到 apiserver 的 HTTPS endpoint。
+Master 组件通过非安全（没有加密或认证）端口和集群的 apiserver 通信。这个端口通常只在 master 节点的 localhost 接口暴露，这样，所有在相同机器上运行的 master 组件就能和集群的 apiserver 通信。一段时间以后，master 组件将变为使用带身份认证和权限验证的安全端口（查看#13598）。</description>
+    </item>
+    
+  </channel>
+</rss>

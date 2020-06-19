@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>使用部署工具安装 Kubernetes on Hugo 主题的 Learn 文档</title>
+    <link>https://lijun.in/setup/production-environment/tools/</link>
+    <description>Recent content in 使用部署工具安装 Kubernetes on Hugo 主题的 Learn 文档</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://lijun.in/setup/production-environment/tools/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>使用 Kops 安装 Kubernetes</title>
+      <link>https://lijun.in/setup/production-environment/tools/kops/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/setup/production-environment/tools/kops/</guid>
+      <description>本篇快速入门介绍了如何在 AWS 上轻松安装 Kubernetes 集群。 本篇使用了一个名为 kops 的工具。
+kops 是一个自用的供应系统：
+ 全自动安装流程 使用 DNS 识别集群 自我修复：一切都在自动扩展组中运行 支持多种操作系统（如 Debian、Ubuntu 16.04、CentOS、RHEL、Amazon Linux 和 CoreOS） - 参考 images.md 支持高可用 - 参考 high_availability.md 可以直接提供或者生成 terraform 清单 - 参考 terraform.md  如果您有不同的观点，您可能更喜欢使用 kubeadm 作为构建工具来构建自己的集群。kops 建立在 kubeadm 工作的基础上。
+创建集群 (1/5) 安装 kops 前提条件 您必须安装 kubectl 才能使 kops 工作。
+安装 从下载页面下载 kops（从源代码构建也很容易）：
+在 macOS 上：
+curl -OL https://github.com/kubernetes/kops/releases/download/1.10.0/kops-darwin-amd64 chmod +x kops-darwin-amd64 mv kops-darwin-amd64 /usr/local/bin/kops # 您也可以使用 Homebrew 安装 kops brew update &amp;amp;&amp;amp; brew install kops 在 Linux 上：</description>
+    </item>
+    
+  </channel>
+</rss>

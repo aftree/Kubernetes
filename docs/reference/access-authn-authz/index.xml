@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>😍 - 访问 API on Hugo 主题的 Learn 文档</title>
+    <link>https://lijun.in/reference/access-authn-authz/</link>
+    <description>Recent content in 😍 - 访问 API on Hugo 主题的 Learn 文档</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://lijun.in/reference/access-authn-authz/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>使用准入控制器</title>
+      <link>https://lijun.in/reference/access-authn-authz/admission-controllers/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/reference/access-authn-authz/admission-controllers/</guid>
+      <description>此页面概述了准入控制器。
+什么是准入控制插件？ 准入控制器是一段代码，它会在请求通过认证和授权之后、对象被持久化之前拦截到达 API 服务器的请求。控制器由下面的列表组成，并编译进 kube-apiserver 二进制文件，并且只能由集群管理员配置。在该列表中，有两个特殊的控制器：MutatingAdmissionWebhook 和 ValidatingAdmissionWebhook。它们根据 API 中的配置，分别执行变更和验证准入控制 webhook。
+准入控制器可以执行 “验证” 和/或 “变更” 操作。变更（mutating）控制器可以修改被其接受的对象；验证（validating）控制器则不行。
+准入控制过程分为两个阶段。第一阶段，运行变更准入控制器。第二阶段，运行验证准入控制器。 再次提醒，某些控制器既是变更准入控制器又是验证准入控制器。
+如果任何一个阶段的任何控制器拒绝了该请求，则整个请求将立即被拒绝，并向终端用户返回一个错误。
+最后，除了对对象进行变更外，准入控制器还可以有其它作用：将相关资源作为请求处理的一部分进行变更。 增加使用配额就是一个典型的示例，说明了这样做的必要性。 此类用法都需要相应的回收或回调过程，因为任一准入控制器都无法确定某个请能否通过所有其它准入控制器。
+为什么需要准入控制器？ Kubernetes 的许多高级功能都要求启用一个准入控制器，以便正确地支持该特性。因此，没有正确配置准入控制器的 Kubernetes API 服务器是不完整的，它无法支持您期望的所有特性。
+如何启用一个准入控制器？ Kubernetes API 服务器的 enable-admission-plugins 标志，它指定了一个用于在集群修改对象之前调用的（以逗号分隔的）准入控制插件顺序列表。
+例如，下面的命令就启用了 NamespaceLifecycle 和 LimitRanger 准入控制插件：
+kube-apiserver --enable-admission-plugins=NamespaceLifecycle,LimitRanger ... . note &amp;gt;}}
+根据您 Kubernetes 集群的部署方式以及 API 服务器的启动方式的不同，您可能需要以不同的方式应用设置。 例如，如果将 API 服务器部署为 systemd 服务，你可能需要修改 systemd 单元文件； 如果以自托管方式部署 Kubernetes，你可能需要修改 API 服务器的清单文件。 . /note &amp;gt;}}
+怎么关闭准入控制器？ Kubernetes API 服务器的 disable-admission-plugins 标志，会将传入的（以逗号分隔的）准入控制插件列表禁用，即使是默认启用的插件也会被禁用。</description>
+    </item>
+    
+    <item>
+      <title>动态准入控制</title>
+      <link>https://lijun.in/reference/access-authn-authz/extensible-admission-controllers/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/reference/access-authn-authz/extensible-admission-controllers/</guid>
+      <description>除了内置的 admission 插件，admission 插件可以作为扩展独立开发，并以运行时所配置的 webhook 的形式运行。 此页面描述了如何构建、配置、使用和监视 admission webhook。
+什么是 admission webhook？ Admission webhook 是一种用于接收准入请求并对其进行处理的 HTTP 回调机制。 可以定义两种类型的 admission webhook，即 validating admission webhook 和 mutating admission webhook。 Mutating admission webhook 会先被调用。它们可以更改发送到 API 服务器的对象以执行自定义的设置默认值操作。
+在完成了所有对象修改并且 API 服务器也验证了所传入的对象之后，validating admission webhook 会被调用，并通过拒绝请求的方式来强制实施自定义的策略。
+. note &amp;gt;}} 如果 admission webhook 需要保证它们所看到的是对象的最终状态以实施某种策略。则应使用 validating admission webhook，因为对象被 mutating webhook 看到之后仍然可能被修改。 . /note &amp;gt;}}
+尝试 admission webhook admission webhook 本质上是集群控制平面的一部分。您应该非常谨慎地编写和部署它们。 如果您打算编写或者部署生产级 admission webhook，请阅读用户指南以获取相关说明。 在下文中，我们将介绍如何快速试验 admission webhook。
+先决条件   确保 Kubernetes 集群版本至少为 v1.</description>
+    </item>
+    
+    <item>
+      <title>授权概述</title>
+      <link>https://lijun.in/reference/access-authn-authz/authorization/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/reference/access-authn-authz/authorization/</guid>
+      <description>了解有关 Kubernetes 授权的更多信息，包括使用支持的授权模块创建策略的详细信息。
+在 Kubernetes 中，您必须在授权（授予访问权限）之前进行身份验证（登录），有关身份验证的信息， 请参阅 访问控制概述.
+Kubernetes 期望 REST API 请求中常见的属性。 这意味着 Kubernetes 授权适用于现有的组织范围或云提供商范围的访问控制系统， 除了 Kubernetes API 之外，它还可以处理其他 API。
+确定是允许还是拒绝请求 Kubernetes 使用 API ​​服务器授权 API 请求。它根据所有策略评估所有请求属性来决定允许或拒绝请求。 一个 API 请求的所有部分必须被某些策略允许才能继续。这意味着默认情况下拒绝权限。
+（尽管 Kubernetes 使用 API ​​服务器，但是依赖于特定种类对象的特定字段的访问控制和策略由准入控制器处理。）
+配置多个授权模块时，将按顺序检查每个模块。 如果任何授权模块批准或拒绝请求，则立即返回该决定，并且不会与其他授权模块协商。 如果所有模块对请求没有意见，则拒绝该请求。一个拒绝响应返回 HTTP 状态代码 403 。
+审查您的请求属性 Kubernetes 仅审查以下 API 请求属性：
+ user - 身份验证期间提供的 user 字符串。 group - 经过身份验证的用户所属的组名列表。 extra - 由身份验证层提供的任意字符串键到字符串值的映射。 API - 指示请求是否针对 API 资源。 Request path - 各种非资源端点的路径，如 /api 或 /healthz。 API request verb - API 动词 get，list，create，update，patch，watch，proxy，redirect，delete 和 deletecollection 用于资源请求。要确定资源 API 端点的请求动词，请参阅确定请求动词。 HTTP request verb - HTTP 动词 get，post，put 和 delete 用于非资源请求。 Resource - 正在访问的资源的 ID 或名称（仅限资源请求） - 对于使用 get，update，patch 和 delete 动词的资源请求，您必须提供资源名称。 Subresource - 正在访问的子资源（仅限资源请求）。 Namespace - 正在访问的对象的名称空间（仅适用于命名空间资源请求）。 API group - 正在访问的 API 组（仅限资源请求）。空字符串表示核心 API 组。  确定请求动词 要确定资源 API 端点的请求谓词，请检查所使用的 HTTP 动词以及请求是否对单个资源或资源集合起作用：</description>
+    </item>
+    
+    <item>
+      <title>使用 RBAC 鉴权</title>
+      <link>https://lijun.in/reference/access-authn-authz/rbac/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/reference/access-authn-authz/rbac/</guid>
+      <description>基于角色（Role）的访问控制（RBAC）是一种基于企业中用户的角色来调节控制对计算机或网络资源的访问方法。
+RBAC 使用 rbac.authorization.k8s.io . glossary_tooltip text=&amp;quot;API 组&amp;rdquo; term_id=&amp;quot;api-group&amp;rdquo; &amp;gt;}} 来驱动鉴权操作，允许管理员通过 Kubernetes API 动态配置策略。
+在 1.8 版本中，RBAC 模式是稳定的并通过 rbac.authorization.k8s.io/v1 API 提供支持。
+要启用 RBAC，在启动 API 服务器时添加 --authorization-mode=RBAC 参数。
+API 概述 本节介绍 RBAC API 所声明的四种顶级类型。用户可以像与其他 API 资源交互一样， （通过 kubectl、API 调用等方式）与这些资源交互。例如， 命令 kubectl apply -f (resource).yml 可以用在这里的任何一个例子之上。 尽管如此，建议读者循序渐进阅读下面的章节，由浅入深。
+Role 和 ClusterRole 在 RBAC API 中，一个角色包含一组相关权限的规则。权限是纯粹累加的（不存在拒绝某操作的规则）。 角色可以用 Role 来定义到某个命名空间上， 或者用 ClusterRole 来定义到整个集群作用域。
+一个 Role 只可以用来对某一命名空间中的资源赋予访问权限。 下面的 Role 示例定义到名称为 &amp;ldquo;default&amp;rdquo; 的命名空间，可以用来授予对该命名空间中的 Pods 的读取权限：
+apiVersion: rbac.authorization.k8s.io/v1 kind: Role metadata: namespace: default name: pod-reader rules: - apiGroups: [&amp;#34;&amp;#34;] # &amp;#34;&amp;#34; 指定核心 API 组 resources: [&amp;#34;pods&amp;#34;] verbs: [&amp;#34;get&amp;#34;, &amp;#34;watch&amp;#34;, &amp;#34;list&amp;#34;] ClusterRole 可以授予的权限和 Role 相同， 但是因为 ClusterRole 属于集群范围，所以它也可以授予以下访问权限：</description>
+    </item>
+    
+    <item>
+      <title>使用 Node 鉴权</title>
+      <link>https://lijun.in/reference/access-authn-authz/node/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/reference/access-authn-authz/node/</guid>
+      <description>节点鉴权是一种特殊用途的鉴权模式，专门对 kubelet 发出的 API 请求进行鉴权。
+概述 节点鉴权器允许 kubelet 执行 API 操作。包括：
+读取操作：
+ services endpoints nodes pods secrets、configmaps、以及绑定到 kubelet 的节点的 pod 的持久卷申领和持久卷  写入操作：
+ 节点和节点状态（启用 NodeRestriction 准入插件以限制 kubelet 只能修改自己的节点） Pod 和 Pod 状态 (启用 NodeRestriction 准入插件以限制 kubelet 只能修改绑定到自身的 Pod) 事件  鉴权相关操作：
+ 对于基于 TLS 的启动引导过程时使用的 certificationsigningrequests API 的读/写权限 为委派的身份验证/授权检查创建 tokenreviews 和 subjectaccessreviews 的能力  在将来的版本中，节点鉴权器可能会添加或删除权限，以确保 kubelet 具有正确操作所需的最小权限集。
+为了获得节点鉴权器的授权，kubelet 必须使用一个凭证以表示它在 system:nodes 组中，用户名为 system:node:&amp;lt;nodeName&amp;gt;。 上述的组名和用户名格式要与 kubelet TLS 启动引导过程中为每个 kubelet 创建的标识相匹配。</description>
+    </item>
+    
+    <item>
+      <title>Webhook 模式</title>
+      <link>https://lijun.in/reference/access-authn-authz/webhook/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/reference/access-authn-authz/webhook/</guid>
+      <description>WebHook 是一种 HTTP 回调：某些条件下触发的 HTTP POST 请求；通过 HTTP POST 发送的简单事件通知。一个基于 web 应用实现的 WebHook 会在特定事件发生时把消息发送给特定的 URL。
+具体来说，当在判断用户权限时，Webhook 模式会使 Kubernetes 查询外部的 REST 服务。
+配置文件格式 Webhook 模式需要一个 HTTP 配置文件，通过 --authorization-webhook-config-file=SOME_FILENAME 的参数声明。
+配置文件的格式使用 kubeconfig。在文件中，&amp;ldquo;users&amp;rdquo; 代表着 API 服务器的 webhook，而 &amp;ldquo;cluster&amp;rdquo; 代表着远程服务。
+使用 HTTPS 客户端认证的配置例子：
+# Kubernetes API 版本 apiVersion: v1 # API 对象种类 kind: Config # clusters 代表远程服务。 clusters: - name: name-of-remote-authz-service cluster: # 对远程服务进行身份认证的 CA。 certificate-authority: /path/to/ca.pem # 远程服务的查询 URL。必须使用 &amp;#39;https&amp;#39;。 server: https://authz.example.com/authorize # users 代表 API 服务器的 webhook 配置 users: - name: name-of-api-server user: client-certificate: /path/to/cert.</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes API 访问控制</title>
+      <link>https://lijun.in/reference/access-authn-authz/controlling-access/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/reference/access-authn-authz/controlling-access/</guid>
+      <description>用户通过 kubectl、客户端库或者通过发送 REST 请求访问 API。 用户（自然人）和 Kubernetes 服务账户 都可以被授权进行 API 访问。 请求到达 API 服务器后会经过几个阶段，具体说明如图：
+传输层安全 在典型的 Kubernetes 集群中，API 通过 443 端口提供服务。 API 服务器会提供一份证书。 该证书一般是自签名的， 所以用户机器上的 $USER/.kube/config 目录通常 包含该 API 服务器证书的根证书，用来代替系统默认根证书。 当用户使用 kube-up.sh 创建集群时，该证书通常会被自动写入用户的 $USER/.kube/config。 如果集群中存在多个用户，则创建者需要与其他用户共享证书。
+认证 一旦 TLS 连接建立，HTTP 请求就进入到了认证的步骤。即图中的步骤 1 。 集群创建脚本或集群管理员会为 API 服务器配置一个或多个认证模块。 更具体的认证相关的描述详见这里。
+认证步骤的输入是整个 HTTP 请求，但这里通常只是检查请求头和 / 或客户端证书。
+认证模块支持客户端证书，密码和 Plain Tokens， Bootstrap Tokens，以及 JWT Tokens（用于服务账户）。
+（管理员）可以同时设置多种认证模块，在设置了多个认证模块的情况下，每个模块会依次尝试认证， 直到其中一个认证成功。
+在 GCE 平台中，客户端证书，密码和 Plain Tokens，Bootstrap Tokens，以及 JWT Tokens 同时被启用。
+如果请求认证失败，则请求被拒绝，返回 401 状态码。 如果认证成功，则被认证为具体的 username，该用户名可供随后的步骤中使用。一些认证模块还提供了用户的组成员关系，另一些则没有。</description>
+    </item>
+    
+    <item>
+      <title>使用 ABAC 鉴权</title>
+      <link>https://lijun.in/reference/access-authn-authz/abac/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/reference/access-authn-authz/abac/</guid>
+      <description>基于属性的访问控制（Attribute-based access control - ABAC）定义了访问控制范例，其中通过使用将属性组合在一起的策略来向用户授予访问权限。
+策略文件格式 基于 ABAC 模式，可以这样指定策略文件 --authorization-policy-file=SOME_FILENAME。
+此文件格式是 JSON Lines，不应存在封闭的列表或映射，每行一个映射。
+每一行都是一个策略对象，策略对象是具有以下属性的映射：
+ 版本控制属性：  apiVersion，字符串类型：有效值为abac.authorization.kubernetes.io/v1beta1，允许对策略格式进行版本控制和转换。 kind，字符串类型：有效值为 Policy，允许对策略格式进行版本控制和转换。   spec 配置为具有以下映射的属性：  主体匹配属性：  user，字符串类型；来自 --token-auth-file 的用户字符串，如果你指定 user，它必须与验证用户的用户名匹配。 group，字符串类型；如果指定 group，它必须与经过身份验证的用户的一个组匹配，system:authenticated匹配所有经过身份验证的请求。system:unauthenticated匹配所有未经过身份验证的请求。     资源匹配属性：  apiGroup，字符串类型；一个 API 组。  例： extensions 通配符：*匹配所有 API 组。   namespace，字符串类型；一个命名空间。  例如：kube-system 通配符：*匹配所有资源请求。   resource，字符串类型；资源类型。  例：pods 通配符：*匹配所有资源请求。     非资源匹配属性：  nonResourcePath，字符串类型；非资源请求路径。  例如：/version或 /apis 通配符：  * 匹配所有非资源请求。 /foo/* 匹配 /foo/ 的所有子路径。       readonly，键入布尔值，如果为 true，则表示该策略仅适用于 get、list 和 watch 操作。  .</description>
+    </item>
+    
+    <item>
+      <title>使用启动引导令牌（Bootstrap Tokens）认证</title>
+      <link>https://lijun.in/reference/access-authn-authz/bootstrap-tokens/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/reference/access-authn-authz/bootstrap-tokens/</guid>
+      <description>. toc &amp;gt;}}
+概述 启动引导令牌是一种简单的持有者令牌（Bearer Token），这种令牌是在新建集群或者在现有集群中添加新节点时使用的。 它被设计成能够支持 kubeadm，但是也可以被用在其他的案例中以便用户在 不使用 kubeadm 的情况下启动集群。它也被设计成可以通过 RBAC 策略，结合 Kubelet TLS Bootstrapping 系统进行工作。
+启动引导令牌被定义成一个特定类型的 secrets(bootstrap.kubernetes.io/token)，并存在于 kube-system 命名空间中。然后这些 secrets 会被 API 服务器上的启动引导的认证器读取。 控制器管理器中的控制器 TokenCleaner 能够删除过期的令牌。在节点发现的过程中 Kubernetes 会使用特殊的 ConfigMap 对象。 控制器管理器中的 BootstrapSigner 控制器也会使用启动引导令牌为这类对象生成签名信息。
+目前，启动引导令牌处于 alpha 阶段，但是预期也不会有大的突破性变化。
+令牌格式 启动引导令牌使用 abcdef.0123456789abcdef 的形式。 更加规范地说，它们必须符合正则表达式 [a-z0-9]{6}\.[a-z0-9]{16}。
+令牌的第一部分是 &amp;ldquo;Token ID&amp;rdquo; ，它是公共信息。用于引用某个令牌，并确保不会泄露认证所使用的秘密信息。 第二部分是“令牌秘密（Token Secret）”，它应该被共享给收信的第三方。
+启用启动引导令牌 所有与启动引导令牌相关的特性在 Kubernetes v1.6 版本中默认都是禁用的。
+你可以在 API 服务器上通过 --enable-bootstrap-token-auth 参数启用启动引导令牌。 你可以设置控制管理器的 --controllers 参数来启用启动引导令牌相关的控制器，例如 --controllers=*,tokencleaner,bootstrapsigner 。 在使用 kubeadm 时，这是自动完成的。
+HTTPS 调用中的令牌是这样使用的：</description>
+    </item>
+    
+    <item>
+      <title>管理 Service Accounts</title>
+      <link>https://lijun.in/reference/access-authn-authz/service-accounts-admin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/reference/access-authn-authz/service-accounts-admin/</guid>
+      <description>这是一篇针对service accounts（服务账户）的集群管理员指南。 它呈现了 User Guide to Service Accounts中的信息。
+对授权和用户账户的支持已在规划中，当前并不完备，为了更好地描述 service accounts，有时这些不完善的特性也会被提及。
+用户账户与服务账户 Kubernetes 区分用户账户和服务账户的概念主要基于以下原因：
+ 用户账户是针对人而言的。 服务账户是针对运行在 pod 中的进程而言的。 用户账户是全局性的。 其名称在集群各 namespace 中都是全局唯一的，未来的用户资源不会做 namespace 隔离， 服务账户是 namespace 隔离的。 通常情况下，集群的用户账户可能会从企业数据库进行同步，其创建需要特殊权限，并且涉及到复杂的业务流程。 服务账户创建的目的是为了更轻量，允许集群用户为了具体的任务创建服务账户 ( 即权限最小化原则 )。 对人员和服务账户审计所考虑的因素可能不同。 针对复杂系统的配置可能包含系统组件相关的各种服务账户的定义。 因为服务账户可以定制化地创建，并且有 namespace 级别的名称，这种配置是很轻量的。  服务账户的自动化 三个独立组件协作完成服务账户相关的自动化 :
+ 服务账户准入控制器（Service account admission controller） Token 控制器（Token controller） 服务账户控制器（Service account controller）  服务账户准入控制器 对 pod 的改动通过一个被称为 Admission Controller 的插件来实现。它是 apiserver 的一部分。 当 pod 被创建或更新时，它会同步地修改 pod。 当该插件处于激活状态 ( 在大多数发行版中都是默认的 )，当 pod 被创建或更新时它会进行以下动作：</description>
+    </item>
+    
+  </channel>
+</rss>

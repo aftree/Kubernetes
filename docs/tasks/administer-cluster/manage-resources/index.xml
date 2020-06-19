@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>管理内存，CPU 和 API 资源 on Hugo 主题的 Learn 文档</title>
+    <link>https://lijun.in/tasks/administer-cluster/manage-resources/</link>
+    <description>Recent content in 管理内存，CPU 和 API 资源 on Hugo 主题的 Learn 文档</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://lijun.in/tasks/administer-cluster/manage-resources/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>为命名空间配置默认的内存请求和限制</title>
+      <link>https://lijun.in/tasks/administer-cluster/manage-resources/memory-default-namespace/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/administer-cluster/manage-resources/memory-default-namespace/</guid>
+      <description>本文介绍怎样给命名空间配置默认的内存请求和限制。如果在一个有默认内存限制的命名空间创建容器，该容器没有声明自己的内存限制时，将会被指定默认内存限制。Kubernetes 还为某些情况指定了默认的内存请求，本章后面会进行介绍。
+. heading &amp;ldquo;prerequisites&amp;rdquo; %}} . include &amp;ldquo;task-tutorial-prereqs.md&amp;rdquo; &amp;gt;}} . version-check &amp;gt;}}
+你的集群中的每个节点必须至少有2 GiB的内存。
+创建命名空间 创建一个命名空间，以便本练习中所建的资源与集群的其余资源相隔离。
+kubectl create namespace default-mem-example 创建 LimitRange 和 Pod 这里给出了一个限制范围对象的配置文件。该配置声明了一个默认的内存请求和一个默认的内存限制。
+. codenew file=&amp;quot;admin/resource/memory-defaults.yaml&amp;rdquo; &amp;gt;}}
+在 default-mem-example 命名空间创建限制范围：
+kubectl create -f https://k8s.io/examples/admin/resource/memory-defaults.yaml --namespace=default-mem-example 现在，如果在 default-mem-example 命名空间创建容器，并且该容器没有声明自己的内存请求和限制值，它将被指定一个默认的内存请求256 MiB和一个默认的内存限制512 Mib。
+. codenew file=&amp;quot;admin/resource/memory-defaults-pod.yaml&amp;rdquo; &amp;gt;}}
+创建 Pod
+kubectl create -f https://k8s.io/examples/admin/resource/memory-defaults-pod.yaml --namespace=default-mem-example 查看 Pod 的详情：
+kubectl get pod default-mem-demo --output=yaml --namespace=default-mem-example 输出内容显示该Pod的容器有一个256 MiB的内存请求和一个512 MiB的内存限制。这些都是限制范围声明的默认值。
+containers: - image: nginx imagePullPolicy: Always name: default-mem-demo-ctr resources: limits: memory: 512Mi requests: memory: 256Mi 删除你的 Pod：</description>
+    </item>
+    
+    <item>
+      <title>为命名空间配置默认的CPU请求和限制</title>
+      <link>https://lijun.in/tasks/administer-cluster/manage-resources/cpu-default-namespace/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/administer-cluster/manage-resources/cpu-default-namespace/</guid>
+      <description>本章介绍怎样为命名空间配置默认的 CPU 请求和限制。 一个 Kubernetes 集群可被划分为多个命名空间。如果在配置了 CPU 限制的命名空间创建容器，并且该容器没有声明自己的 CPU 限制，那么这个容器会被指定默认的 CPU 限制。Kubernetes 在一些特定情况还会指定 CPU 请求，本文后续章节将会对其进行解释。
+. heading &amp;ldquo;prerequisites&amp;rdquo; %}} . include &amp;ldquo;task-tutorial-prereqs.md&amp;rdquo; &amp;gt;}} . version-check &amp;gt;}}
+创建命名空间 创建一个命名空间，以便本练习中创建的资源和集群的其余部分相隔离。
+kubectl create namespace default-cpu-example 创建 LimitRange 和 Pod
+这里给出了 LimitRange 对象的配置文件。该配置声明了一个默认的 CPU 请求和一个默认的 CPU 限制。
+. codenew file=&amp;quot;admin/resource/cpu-defaults.yaml&amp;rdquo; &amp;gt;}}
+在命名空间 default-cpu-example 中创建 LimitRange 对象：
+kubectl create -f https://k8s.io/examples/admin/resource/cpu-defaults.yaml --namespace=default-cpu-example 现在如果在 default-cpu-example 命名空间创建一个容器，该容器没有声明自己的 CPU 请求和限制时，将会给它指定默认的 CPU 请求0.5和默认的 CPU 限制值1.
+这里给出了包含一个容器的 Pod 的配置文件。该容器没有声明 CPU 请求和限制。</description>
+    </item>
+    
+    <item>
+      <title>配置命名空间的最小和最大内存约束</title>
+      <link>https://lijun.in/tasks/administer-cluster/manage-resources/memory-constraint-namespace/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/administer-cluster/manage-resources/memory-constraint-namespace/</guid>
+      <description>此页面介绍如何设置在命名空间中运行的容器使用的内存的最小值和最大值。 您可以在 [LimitRange](/docs/reference/generated/kubernetes-api/. param &amp;ldquo;version&amp;rdquo; &amp;gt;}}/#limitrange-v1-core)对象中指定最小和最大内存值。 如果 Pod 不满足 LimitRange 施加的约束，则无法在命名空间中创建它。
+. heading &amp;ldquo;prerequisites&amp;rdquo; %}} . include &amp;ldquo;task-tutorial-prereqs.md&amp;rdquo; &amp;gt;}} . version-check &amp;gt;}}
+集群中每个节点必须至少要有1 GiB 的内存。
+创建命名空间 创建一个命名空间，以便在此练习中创建的资源与群集的其余资源隔离。
+kubectl create namespace constraints-mem-example 创建 LimitRange 和 Pod 下面是 LimitRange 的配置文件：
+. codenew file=&amp;quot;admin/resource/memory-constraints.yaml&amp;rdquo; &amp;gt;}}
+创建 LimitRange:
+kubectl create -f https://k8s.io/examples/admin/resource/memory-constraints.yaml --namespace=constraints-mem-example 查看 LimitRange 的详情：
+kubectl get limitrange mem-min-max-demo-lr --namespace=constraints-mem-example --output=yaml 输出显示预期的最小和最大内存约束。 但请注意，即使您没有在 LimitRange 的配置文件中指定默认值，也会自动创建它们。
+ limits: - default: memory: 1Gi defaultRequest: memory: 1Gi max: memory: 1Gi min: memory: 500Mi type: Container 现在，只要在 constraints-mem-example 命名空间中创建容器，Kubernetes 就会执行下面的步骤：</description>
+    </item>
+    
+    <item>
+      <title>为命名空间配置CPU最小和最大限制</title>
+      <link>https://lijun.in/tasks/administer-cluster/manage-resources/cpu-constraint-namespace/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/administer-cluster/manage-resources/cpu-constraint-namespace/</guid>
+      <description>本章介绍命名空间中可以被容器和Pod使用的CPU资源的最小和最大值。你可以通过 [LimitRange](/docs/reference/generated/kubernetes-api/. param &amp;ldquo;version&amp;rdquo; &amp;gt;}}/#limitrange-v1-core) 对象声明 CPU 的最小和最大值. 如果 Pod 不能满足 LimitRange 的限制，它就不能在命名空间中创建。
+. heading &amp;ldquo;prerequisites&amp;rdquo; %}} . include &amp;ldquo;task-tutorial-prereqs.md&amp;rdquo; &amp;gt;}} . version-check &amp;gt;}}
+你的集群中每个节点至少要有1个CPU。
+创建命名空间 创建一个命名空间，以便本练习中创建的资源和集群的其余资源相隔离。
+kubectl create namespace constraints-cpu-example 创建 LimitRange 和 Pod 这里给出了 LimitRange 的配置文件：
+. codenew file=&amp;quot;admin/resource/cpu-constraints.yaml&amp;rdquo; &amp;gt;}}
+创建 LimitRange:
+kubectl create -f https://k8s.io/examples/admin/resource/cpu-constraints.yaml --namespace=constraints-cpu-example 查看 LimitRange 详情：
+kubectl get limitrange cpu-min-max-demo-lr --output=yaml --namespace=constraints-cpu-example 输出结果显示 CPU 的最小和最大限制符合预期。但需要注意的是，尽管你在 LimitRange 的配置文件中你没有声明默认值，默认值也会被自动创建。
+limits: - default: cpu: 800m defaultRequest: cpu: 800m max: cpu: 800m min: cpu: 200m type: Container 现在不管什么时候在 constraints-cpu-example 命名空间中创建容器，Kubernetes 都会执行下面这些步骤：</description>
+    </item>
+    
+    <item>
+      <title>为命名空间配置内存和 CPU 配额</title>
+      <link>https://lijun.in/tasks/administer-cluster/manage-resources/quota-memory-cpu-namespace/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/administer-cluster/manage-resources/quota-memory-cpu-namespace/</guid>
+      <description>本文介绍怎样为命名空间设置容器可用的内存和 CPU 总量。你可以通过 [ResourceQuota](/docs/reference/generated/kubernetes-api/. param &amp;ldquo;version&amp;rdquo; &amp;gt;}}/#resourcequota-v1-core) 对象设置配额.
+. heading &amp;ldquo;prerequisites&amp;rdquo; %}} . include &amp;ldquo;task-tutorial-prereqs.md&amp;rdquo; &amp;gt;}} . version-check &amp;gt;}}
+集群中每个节点至少有1 GiB的内存。
+创建命名空间 创建一个命名空间，以便本练习中创建的资源和集群的其余部分相隔离。
+kubectl create namespace quota-mem-cpu-example 创建 ResourceQuota 这里给出一个 ResourceQuota 对象的配置文件：
+. codenew file=&amp;quot;admin/resource/quota-mem-cpu.yaml&amp;rdquo; &amp;gt;}}
+创建 ResourceQuota
+kubectl create -f https://k8s.io/examples/admin/resource/quota-mem-cpu.yaml --namespace=quota-mem-cpu-example 查看 ResourceQuota 详情：
+kubectl get resourcequota mem-cpu-demo --namespace=quota-mem-cpu-example --output=yaml ResourceQuota 在 quota-mem-cpu-example 命名空间中设置了如下要求：
+ 每个容器必须有内存请求和限制，以及 CPU 请求和限制。 所有容器的内存请求总和不能超过1 GiB。 所有容器的内存限制总和不能超过2 GiB。 所有容器的 CPU 请求总和不能超过1 cpu。 所有容器的 CPU 限制总和不能超过2 cpu。  创建 Pod 这里给出 Pod 的配置文件：</description>
+    </item>
+    
+    <item>
+      <title>配置命名空间下pod总数</title>
+      <link>https://lijun.in/tasks/administer-cluster/manage-resources/quota-pod-namespace/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/administer-cluster/manage-resources/quota-pod-namespace/</guid>
+      <description>本文主要描述如何配置一个命名空间下可运行的pod总数。资源配额详细信息可查看：资源配额 。
+. heading &amp;ldquo;prerequisites&amp;rdquo; %}} . include &amp;ldquo;task-tutorial-prereqs.md&amp;rdquo; &amp;gt;}} . version-check &amp;gt;}}
+创建一个命名空间 首先创建一个命名空间，这样可以将本次操作中创建的资源与集群其他资源隔离开来。
+kubectl create namespace quota-pod-example 创建资源配额 下面是一个资源配额的配置文件：
+. codenew file=&amp;quot;admin/resource/quota-pod.yaml&amp;rdquo; &amp;gt;}}
+创建这个资源配额：
+kubectl apply -f https://k8s.io/examples/admin/resource/quota-pod.yaml --namespace=quota-pod-example 查看资源配额的详细信息：
+kubectl get resourcequota pod-demo --namespace=quota-pod-example --output=yaml 从输出的信息我们可以看到，该命名空间下pod的配额是2个，目前创建的pods数为0，配额使用率为0。
+spec: hard: pods: &amp;#34;2&amp;#34; status: hard: pods: &amp;#34;2&amp;#34; used: pods: &amp;#34;0&amp;#34; 下面是一个Deployment的配置文件：
+. codenew file=&amp;quot;admin/resource/quota-pod-deployment.yaml&amp;rdquo; &amp;gt;}}
+在配置文件中， replicas: 3 告诉kubernetes尝试创建三个pods，且运行相同的应用。
+创建这个Deployment：
+kubectl apply -f https://k8s.io/examples/admin/resource/quota-pod-deployment.yaml --namespace=quota-pod-example 查看Deployment的详细信息：
+kubectl get deployment pod-quota-demo --namespace=quota-pod-example --output=yaml 从输出的信息我们可以看到，尽管尝试创建三个pod，但是由于配额的限制，只有两个pod能被成功创建。</description>
+    </item>
+    
+  </channel>
+</rss>

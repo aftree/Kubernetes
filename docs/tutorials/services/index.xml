@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>😎 - Services on Hugo 主题的 Learn 文档</title>
+    <link>https://lijun.in/tutorials/services/</link>
+    <description>Recent content in 😎 - Services on Hugo 主题的 Learn 文档</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://lijun.in/tutorials/services/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>使用 Source IP</title>
+      <link>https://lijun.in/tutorials/services/source-ip/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tutorials/services/source-ip/</guid>
+      <description>Kubernetes 集群中运行的应用通过 Service 抽象来互相查找、通信和与外部世界沟通。本文介绍被发送到不同类型 Services 的数据包源 IP 的变化过程，你可以根据你的需求改变这些行为。
+. heading &amp;ldquo;prerequisites&amp;rdquo; %}} . include &amp;ldquo;task-tutorial-prereqs.md&amp;rdquo; &amp;gt;}} . version-check &amp;gt;}}
+术语表 本文使用了下列术语：
+ NAT: 网络地址转换 Source NAT: 替换数据包的源 IP, 通常为节点的 IP Destination NAT: 替换数据包的目的 IP, 通常为 Pod 的 IP VIP: 一个虚拟 IP, 例如分配给每个 Kubernetes Service 的 IP Kube-proxy: 一个网络守护程序，在每个节点上协调 Service VIP 管理  准备工作 你必须拥有一个正常工作的 Kubernetes 1.5 集群来运行此文档中的示例。该示例使用一个简单的 nginx webserver，通过一个HTTP消息头返回它接收到请求的源IP。你可以像下面这样创建它：
+kubectl run source-ip-app --image=k8s.gcr.io/echoserver:1.4 输出结果为
+deployment.apps/source-ip-app created . heading &amp;ldquo;objectives&amp;rdquo; %}}  通过多种类型的 Services 暴露一个简单应用 理解每种 Service 类型如何处理源 IP NAT 理解保留源IP所涉及的折中  Type=ClusterIP 类型 Services 的 Source IP 如果你的 kube-proxy 运行在 iptables 模式下，从集群内部发送到 ClusterIP 的包永远不会进行源地址 NAT，这从 Kubernetes 1.</description>
+    </item>
+    
+  </channel>
+</rss>

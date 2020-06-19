@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>😊 - 调度和驱逐(Scheduling and Eviction) on Hugo 主题的 Learn 文档</title>
+    <link>https://lijun.in/concepts/scheduling-eviction/</link>
+    <description>Recent content in 😊 - 调度和驱逐(Scheduling and Eviction) on Hugo 主题的 Learn 文档</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://lijun.in/concepts/scheduling-eviction/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Kubernetes 调度器</title>
+      <link>https://lijun.in/concepts/scheduling-eviction/kube-scheduler/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/concepts/scheduling-eviction/kube-scheduler/</guid>
+      <description>在 Kubernetes 中，调度 是指将 text=&amp;quot;Pod&amp;rdquo; term_id=&amp;quot;pod&amp;rdquo; &amp;gt;}} 放置到合适的 text=&amp;quot;Node&amp;rdquo; term_id=&amp;quot;node&amp;rdquo; &amp;gt;}} 上，然后对应 Node 上的glossary_tooltip term_id=&amp;quot;kubelet&amp;rdquo; &amp;gt;}} 才能够运行这些 pod。
+调度概览 调度器通过 kubernetes 的 watch 机制来发现集群中新创建且尚未被调度到 Node 上的 Pod。调度器会将发现的每一个未调度的 Pod 调度到一个合适的 Node 上来运行。调度器会依据下文的调度原则来做出调度选择。
+如果你想要理解 Pod 为什么会被调度到特定的 Node 上，或者你想要尝试实现一个自定义的调度器，这篇文章将帮助你了解调度。
+kube-scheduler kube-scheduler 是 Kubernetes 集群的默认调度器，并且是集群 text=&amp;quot;控制面&amp;rdquo; term_id=&amp;quot;control-plane&amp;rdquo; &amp;gt;}} 的一部分。如果你真的希望或者有这方面的需求，kube-scheduler 在设计上是允许你自己写一个调度组件并替换原有的 kube-scheduler。
+对每一个新创建的 Pod 或者是未被调度的 Pod，kube-scheduler 会选择一个最优的 Node 去运行这个 Pod。然而，Pod 内的每一个容器对资源都有不同的需求，而且 Pod 本身也有不同的资源需求。因此，Pod 在被调度到 Node 上之前，根据这些特定的资源调度需求，需要对集群中的 Node 进行一次过滤。
+在一个集群中，满足一个 Pod 调度请求的所有 Node 称之为 可调度节点。如果没有任何一个 Node 能满足 Pod 的资源请求，那么这个 Pod 将一直停留在未调度状态直到调度器能够找到合适的 Node。</description>
+    </item>
+    
+    <item>
+      <title>调度框架</title>
+      <link>https://lijun.in/concepts/scheduling-eviction/scheduling-framework/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/concepts/scheduling-eviction/scheduling-framework/</guid>
+      <description>feature-state for_k8s_version=&amp;quot;1.15&amp;rdquo; state=&amp;quot;alpha&amp;rdquo; &amp;gt;}}
+调度框架是 Kubernetes Scheduler 的一种可插入架构，可以简化调度器的自定义。它向现有的调度器增加了一组新的“插件” API。插件被编译到调度器程序中。这些 API 允许大多数调度功能以插件的形式实现，同时使调度“核心”保持简单且可维护。请参考调度框架的设计提案获取框架设计的更多技术信息。
+框架工作流程 调度框架定义了一些扩展点。调度器插件注册后在一个或多个扩展点处被调用。这些插件中的一些可以改变调度决策，而另一些仅用于提供信息。
+每次调度一个 Pod 的尝试都分为两个阶段，即 调度周期 和 绑定周期。
+调度周期和绑定周期 调度周期为 Pod 选择一个节点，绑定周期将该决策应用于集群。调度周期和绑定周期一起被称为“调度上下文”。
+调度周期是串行运行的，而绑定周期可能是同时运行的。
+如果确定 Pod 不可调度或者存在内部错误，则可以终止调度周期或绑定周期。Pod 将返回队列并重试。
+扩展点 下图显示了一个 Pod 的调度上下文以及调度框架公开的扩展点。在此图片中，“过滤器”等同于“断言”，“评分”相当于“优先级函数”。
+一个插件可以在多个扩展点处注册，以执行更复杂或有状态的任务。
+figure src=&amp;rdquo;/images/docs/scheduling-framework-extensions.png&amp;rdquo; title=&amp;quot;调度框架扩展点&amp;rdquo; &amp;gt;}}
+队列排序 队列排序插件用于对调度队列中的 Pod 进行排序。队列排序插件本质上提供 &amp;ldquo;less(Pod1, Pod2)&amp;rdquo; 函数。一次只能启动一个队列插件。
+前置过滤 前置过滤插件用于预处理 Pod 的相关信息，或者检查集群或 Pod 必须满足的某些条件。如果 PreFilter 插件返回错误，则调度周期将终止。
+过滤 过滤插件用于过滤出不能运行该 Pod 的节点。对于每个节点，调度器将按照其配置顺序调用这些过滤插件。如果任何过滤插件将节点标记为不可行，则不会为该节点调用剩下的过滤插件。节点可以被同时进行评估。
+前置评分 前置评分插件用于执行 “前置评分” 工作，即生成一个可共享状态供评分插件使用。如果 PreScore 插件返回错误，则调度周期将终止。
+评分 评分插件用于对通过过滤阶段的节点进行排名。调度器将为每个节点调用每个评分插件。将有一个定义明确的整数范围，代表最小和最大分数。在标准化评分阶段之后，调度器将根据配置的插件权重合并所有插件的节点分数。
+标准化评分 标准化评分插件用于在调度器计算节点的排名之前修改分数。在此扩展点注册的插件将使用同一插件的评分 结果被调用。每个插件在每个调度周期调用一次。
+例如，假设一个 BlinkingLightScorer 插件基于具有的闪烁指示灯数量来对节点进行排名。</description>
+    </item>
+    
+    <item>
+      <title>调度器性能调优</title>
+      <link>https://lijun.in/concepts/scheduling-eviction/scheduler-perf-tuning/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/concepts/scheduling-eviction/scheduler-perf-tuning/</guid>
+      <description>feature-state for_k8s_version=&amp;quot;1.14&amp;rdquo; state=&amp;quot;beta&amp;rdquo; &amp;gt;}}
+作为 kubernetes 集群的默认调度器，kube-scheduler 主要负责将 Pod 调度到集群的 Node 上。
+在一个集群中，满足一个 Pod 调度请求的所有 Node 称之为 可调度 Node。调度器先在集群中找到一个 Pod 的可调度 Node，然后根据一系列函数对这些可调度 Node打分，之后选出其中得分最高的 Node 来运行 Pod。最后，调度器将这个调度决定告知 kube-apiserver，这个过程叫做 绑定。
+这篇文章将会介绍一些在大规模 Kubernetes 集群下调度器性能优化的方式。
+在大规模集群中，你可以调节调度器的表现来平衡调度的延迟（新 Pod 快速就位）和精度（调度器很少做出糟糕的放置决策）。
+你可以通过设置 kube-scheduler 的 percentageOfNodesToScore 来配置这个调优设置。这个 KubeSchedulerConfiguration 设置决定了调度集群中节点的阈值。
+设置阈值 percentageOfNodesToScore 选项接受从 0 到 100 之间的整数值。0 值比较特殊，表示 kube-scheduler 应该使用其编译后的默认值。 如果你设置 percentageOfNodesToScore 的值超过了 100，kube-scheduler 的表现等价于设置值为 100。
+要修改这个值，编辑 kube-scheduler 的配置文件（通常是 /etc/kubernetes/config/kube-scheduler.yaml），然后重启调度器。
+修改完成后，你可以执行
+kubectl get componentstatuses 来检查该 kube-scheduler 组件是否健康。输出类似如下：
+NAME STATUS MESSAGE ERROR controller-manager Healthy ok scheduler Healthy ok .</description>
+    </item>
+    
+  </channel>
+</rss>

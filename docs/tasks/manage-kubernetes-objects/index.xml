@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>😝 - 管理 Kubernetes 对象 on Hugo 主题的 Learn 文档</title>
+    <link>https://lijun.in/tasks/manage-kubernetes-objects/</link>
+    <description>Recent content in 😝 - 管理 Kubernetes 对象 on Hugo 主题的 Learn 文档</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://lijun.in/tasks/manage-kubernetes-objects/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>使用配置文件对 Kubernetes 对象进行命令式管理</title>
+      <link>https://lijun.in/tasks/manage-kubernetes-objects/imperative-config/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/manage-kubernetes-objects/imperative-config/</guid>
+      <description>可以使用 kubectl 命令行工具以及用 YAML 或 JSON 编写的对象配置文件来创建、更新和删除 Kubernetes 对象。 本文档说明了如何使用配置文件定义和管理对象。
+heading &amp;ldquo;prerequisites&amp;rdquo; %}} 安装 kubectl 。
+include &amp;ldquo;task-tutorial-prereqs.md&amp;rdquo; &amp;gt;}} . version-check &amp;gt;}}
+权衡 kubectl 工具支持三种对象管理：
+ 命令式命令 命令式对象配置 声明式对象配置  参看 Kubernetes 对象管理 讨论每种对象管理的优缺点。
+如何创建对象 您可以使用 kubectl create -f 从配置文件创建一个对象。 请参考 [kubernetes API 参考](/docs/reference/generated/kubernetes-api/. param &amp;ldquo;version&amp;rdquo; &amp;gt;}}/) 有关详细信息。
+ kubectl create -f &amp;lt;filename|url&amp;gt;  如何更新对象 . warning &amp;gt;}}
+使用 replace 命令更新对象会删除所有未在配置文件中指定的规范的某些部分。 不应将其规范由集群部分管理的对象使用，比如类型为 LoadBalancer 的服务，其中 externalIPs 字段独立于配置文件进行管理。 必须将独立管理的字段复制到配置文件中，以防止 replace 删除它们。 . /warning &amp;gt;}}</description>
+    </item>
+    
+  </channel>
+</rss>
