@@ -1,5 +1,5 @@
 ---
-title: 你好 Minikube
+title: 😎 - 你好 Minikube
 content_type: tutorial
 weight: 5
 menu:
@@ -38,17 +38,17 @@ Katacoda provides a free, in-browser Kubernetes environment.
 -->
 本教程向您展示如何使用 [Minikube](/zh/docs/setup/learning-environment/minikube) 和 Katacoda 在 Kubernetes 上运行一个简单的 “Hello World” Node.js 应用程序。Katacoda 提供免费的浏览器内 Kubernetes 环境。
 
-{{< note >}}
+. note >}}
 <!--
 You can also follow this tutorial if you've installed [Minikube locally](/docs/tasks/tools/install-minikube/).
 -->
 如果您已在本地安装 [Minikube](/zh/docs/tasks/tools/install-minikube/)，也可以按照本教程操作。
 
-{{< /note >}}
+. /note >}}
 
 
 
-## {{% heading "objectives" %}}
+##  heading "objectives" %}}
 
 
 <!--
@@ -62,7 +62,7 @@ You can also follow this tutorial if you've installed [Minikube locally](/docs/t
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
 <!--
@@ -70,9 +70,9 @@ This tutorial provides a container image built from the following files:
 -->
 本教程提供了从以下文件构建的容器镜像：
 
-{{< codenew language="js" file="minikube/server.js" >}}
+. codenew language="js" file="minikube/server.js" >}}
 
-{{< codenew language="conf" file="minikube/Dockerfile" >}}
+. codenew language="conf" file="minikube/Dockerfile" >}}
 
 <!--
 For more information on the `docker build` command, read the [Docker documentation](https://docs.docker.com/engine/reference/commandline/build/).
@@ -92,9 +92,9 @@ For more information on the `docker build` command, read the [Docker documentati
 
 1. 点击 **启动终端**
 
-    {{< kat-button >}}
+    . kat-button >}}
 
-    {{< note >}}If you installed Minikube locally, run `minikube start`.{{< /note >}}
+    . note >}}If you installed Minikube locally, run `minikube start`.. /note >}}
 
 <!--
 2. Open the Kubernetes dashboard in a browser:
@@ -157,7 +157,7 @@ Pod runs a Container based on the provided Docker image.
 -->
 
     输出结果类似于这样：
-
+    
     ```
     NAME         READY   UP-TO-DATE   AVAILABLE   AGE
     hello-node   1/1     1            1           1m
@@ -178,7 +178,7 @@ Pod runs a Container based on the provided Docker image.
 -->
 
     输出结果类似于这样：
-
+    
     ```
     NAME                          READY     STATUS    RESTARTS   AGE
     hello-node-5f76cf6ccf-br9b5   1/1       Running   0          1m
@@ -205,9 +205,9 @@ Pod runs a Container based on the provided Docker image.
     ```
 
 <!--
-    {{< note >}}For more information about `kubectl`commands, see the [kubectl overview](/docs/user-guide/kubectl-overview/).{{< /note >}}
+    . note >}}For more information about `kubectl`commands, see the [kubectl overview](/docs/user-guide/kubectl-overview/).. /note >}}
 -->
-   {{< note >}}有关 kubectl 命令的更多信息，请参阅 [kubectl 概述](/zh/docs/user-guide/kubectl-overview/)。{{< /note >}}
+   . note >}}有关 kubectl 命令的更多信息，请参阅 [kubectl 概述](/zh/docs/user-guide/kubectl-overview/)。. /note >}}
 
 <!--
 ## Create a Service
@@ -250,7 +250,7 @@ Kubernetes [*Service*](/docs/concepts/services-networking/service/).
 -->
 
     输出结果类似于这样:
-
+    
     ```
     NAME         TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
     hello-node   LoadBalancer   10.108.144.78   <pending>     8080:30369/TCP   21s
@@ -291,13 +291,13 @@ Kubernetes [*Service*](/docs/concepts/services-networking/service/).
 <!--
 ## Enable addons
 
-Minikube has a set of built-in {{< glossary_tooltip text="addons" term_id="addons" >}} that can be enabled, disabled and opened in the local Kubernetes environment.
+Minikube has a set of built-in . glossary_tooltip text="addons" term_id="addons" >}} that can be enabled, disabled and opened in the local Kubernetes environment.
 
 1. List the currently supported addons:
 -->
 ## 启用插件
 
-Minikube 有一组内置的 {{< glossary_tooltip text="插件" term_id="addons" >}}，可以在本地 Kubernetes 环境中启用、禁用和打开。
+Minikube 有一组内置的 . glossary_tooltip text="插件" term_id="addons" >}}，可以在本地 Kubernetes 环境中启用、禁用和打开。
 
 1. 列出当前支持的插件：
 
@@ -310,7 +310,7 @@ Minikube 有一组内置的 {{< glossary_tooltip text="插件" term_id="addons" 
 -->
 
     输出结果类似于这样：
-
+    
     ```
     addon-manager: enabled
     dashboard: enabled
@@ -346,7 +346,7 @@ Minikube 有一组内置的 {{< glossary_tooltip text="插件" term_id="addons" 
 -->
 
     输出结果类似于这样：
-
+    
     ```
     metrics-server was successfully enabled
     ```
@@ -366,7 +366,7 @@ Minikube 有一组内置的 {{< glossary_tooltip text="插件" term_id="addons" 
 -->
 
     输出结果类似于这样：
-
+    
     ```
     NAME                                        READY     STATUS    RESTARTS   AGE
     pod/coredns-5644d7b6d9-mh9ll                1/1       Running   0          34m
@@ -380,7 +380,7 @@ Minikube 有一组内置的 {{< glossary_tooltip text="插件" term_id="addons" 
     pod/kube-proxy-rnlps                        1/1       Running   0          34m
     pod/kube-scheduler-minikube                 1/1       Running   0          34m
     pod/storage-provisioner                     1/1       Running   0          34m
-
+    
     NAME                           TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)             AGE
     service/metrics-server         ClusterIP   10.96.241.45    <none>        80/TCP              26s
     service/kube-dns               ClusterIP   10.96.0.10      <none>        53/UDP,53/TCP       34m
@@ -404,7 +404,7 @@ Minikube 有一组内置的 {{< glossary_tooltip text="插件" term_id="addons" 
 -->
 
     输出结果类似于这样：
-
+    
     ```
     metrics-server was successfully disabled
     ```
@@ -446,7 +446,7 @@ minikube delete
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 <!--

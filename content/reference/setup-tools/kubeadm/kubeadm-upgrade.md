@@ -55,20 +55,20 @@ renewal see the [certificate management documentation](/docs/tasks/administer-cl
 
 
 ## kubeadm upgrade plan {#cmd-upgrade-plan}
-{{< include "generated/kubeadm_upgrade_plan.md" >}}
+. include "generated/kubeadm_upgrade_plan.md" >}}
 
 ## kubeadm upgrade apply  {#cmd-upgrade-apply}
-{{< include "generated/kubeadm_upgrade_apply.md" >}}
+. include "generated/kubeadm_upgrade_apply.md" >}}
 
 ## kubeadm upgrade diff {#cmd-upgrade-diff}
-{{< include "generated/kubeadm_upgrade_diff.md" >}}
+. include "generated/kubeadm_upgrade_diff.md" >}}
 
 ## kubeadm upgrade node {#cmd-upgrade-node}
-{{< include "generated/kubeadm_upgrade_node.md" >}}
+. include "generated/kubeadm_upgrade_node.md" >}}
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 <!--
 * [kubeadm config](/docs/reference/setup-tools/kubeadm/kubeadm-config/) if you initialized your cluster using kubeadm v1.7.x or lower, to configure your cluster for `kubeadm upgrade` -->

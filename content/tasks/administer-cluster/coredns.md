@@ -25,9 +25,9 @@ This page describes the CoreDNS upgrade process and how to install CoreDNS inste
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 <!-- steps -->
@@ -40,9 +40,9 @@ This page describes the CoreDNS upgrade process and how to install CoreDNS inste
 
 <!--
 [CoreDNS](https://coredns.io) is a flexible, extensible DNS server that can serve as the Kubernetes cluster DNS.
-Like Kubernetes, the CoreDNS project is hosted by the {{< glossary_tooltip text="CNCF" term_id="cncf" >}}.
+Like Kubernetes, the CoreDNS project is hosted by the . glossary_tooltip text="CNCF" term_id="cncf" >}}.
 -->
-[CoreDNS](https://coredns.io) 是一个灵活可扩展的 DNS 服务器，可以作为 Kubernetes 集群 DNS。与 Kubernetes 一样，CoreDNS 项目由 {{< glossary_tooltip text="CNCF" term_id="cncf" >}} 托管。
+[CoreDNS](https://coredns.io) 是一个灵活可扩展的 DNS 服务器，可以作为 Kubernetes 集群 DNS。与 Kubernetes 一样，CoreDNS 项目由 . glossary_tooltip text="CNCF" term_id="cncf" >}} 托管。
 
 <!--
 You can use CoreDNS instead of kube-dns in your cluster by replacing kube-dns in an existing
@@ -120,7 +120,7 @@ your existing Corefile will be retained.
 -->
 ## 使用 kubeadm 安装 kube-dns 而不是 CoreDNS
 
-{{< note >}}
+. note >}}
 
 <!--
 In Kubernetes 1.11, CoreDNS has graduated to General Availability (GA)
@@ -128,7 +128,7 @@ and is installed by default.
 -->
 在 Kubernetes 1.11 中，CoreDNS 已经升级到通用可用性(GA)，并默认安装。
 
-{{< /note >}}
+. /note >}}
 
 <!--
 To install kube-dns on versions prior to 1.13, set the `CoreDNS` feature gate
@@ -177,7 +177,7 @@ When resource utilisation is a concern, it may be useful to tune the configurati
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 <!--

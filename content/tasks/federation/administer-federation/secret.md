@@ -12,9 +12,9 @@ content_type: concept
 
 <!-- overview -->
 
-{{< deprecationfilewarning >}}
-{{< include "federation-deprecation-warning-note.md" >}}
-{{< /deprecationfilewarning >}}
+. deprecationfilewarning >}}
+. include "federation-deprecation-warning-note.md" >}}
+. /deprecationfilewarning >}}
 
 <!--
 This guide explains how to use secrets in Federation control plane.
@@ -152,13 +152,13 @@ For example, you can do that using kubectl by running:
 kubectl --context=federation-cluster delete secret mysecret
 ```
 
-{{< note >}}
+. note >}}
 
 <!--
 At this point, deleting a federated secret will not delete the corresponding secrets from underlying clusters. You must delete the underlying secrets manually. We intend to fix this in the future.
 -->
 此时，删除联邦 secret 不会从集群底层中删除相应的 secret。你必须手动删除底层 secret。我们打算将来解决这个问题。
 
-{{< /note >}}
+. /note >}}
 
 

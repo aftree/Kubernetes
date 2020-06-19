@@ -25,10 +25,10 @@ tags:
 -->
 
 <!--
- {{< glossary_tooltip text="Community members" term_id="member" >}} who collectively manage an ongoing piece or aspect of the larger Kubernetes open source project.
+ . glossary_tooltip text="Community members" term_id="member" >}} who collectively manage an ongoing piece or aspect of the larger Kubernetes open source project.
 -->
 
-共同管理大范畴 Kubernetes 开源项目中某组件或方面的一组{{< glossary_tooltip text="社区成员" term_id="member" >}}。 
+共同管理大范畴 Kubernetes 开源项目中某组件或方面的一组. glossary_tooltip text="社区成员" term_id="member" >}}。 
 
 <!--more--> 
 

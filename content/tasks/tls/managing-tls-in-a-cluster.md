@@ -34,7 +34,7 @@ Kubernetes提供一个 `certificates.k8s.io` API，可让您配置
 `certificates.k8s.io` API使用的协议类似于[ACME
 草稿](https://github.com/ietf-wg-acme/acme/)。
 
-{{< note >}}
+. note >}}
 <!--
 Certificates created using the `certificates.k8s.io` API are signed by a
 dedicated CA. It is possible to configure your cluster to use the cluster root
@@ -46,15 +46,15 @@ these certificates will validate against the cluster root CA.
 指定 CA 颁发。 将集群配置为使用集群根目录
 CA 可以达到这个目的，但是您永远不要依赖它。不要以为
 这些证书将针对群根目录 CA 进行验证。
-{{< /note >}}
+. /note >}}
 
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 
@@ -88,17 +88,17 @@ CA 证书捆绑包将使用默认服务账户自动加载到 pod 中，路径为
 The following section demonstrates how to create a TLS certificate for a
 Kubernetes service accessed through DNS.
 
-{{< note >}}
+. note >}}
 This tutorial uses CFSSL: Cloudflare's PKI and TLS toolkit [click here](https://blog.cloudflare.com/introducing-cfssl/) to know more.
-{{< /note >}}
+. /note >}}
 -->
 ## 请求认证
 
 以下部分演示如何为通过 DNS 访问的 Kubernetes 服务创建 TLS 证书。
 
-{{< note >}}
+. note >}}
 本教程使用 CFSSL：Cloudflare's PKI 和 TLS 工具包[点击此处](https://blog.cloudflare.com/introducing-cfssl/)了解更多信息。
-{{< /note >}}
+. /note >}}
 
 <!--
 ## Download and install CFSSL

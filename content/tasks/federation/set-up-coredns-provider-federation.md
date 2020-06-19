@@ -8,15 +8,16 @@ weight: 130
 ---
 title: Set up CoreDNS as DNS provider for Cluster Federation
 content_type: tutorial
+
 weight: 130
 ---
 -->
 
 <!-- overview -->
 
-{{< deprecationfilewarning >}}
-{{< include "federation-deprecation-warning-note.md" >}}
-{{< /deprecationfilewarning >}}
+. deprecationfilewarning >}}
+. include "federation-deprecation-warning-note.md" >}}
+. /deprecationfilewarning >}}
 
 <!--
 This page shows how to configure and deploy CoreDNS to be used as the
@@ -27,7 +28,7 @@ DNS provider for Cluster Federation.
 
 
 
-## {{% heading "objectives" %}}
+## . heading "objectives" %}}
 
 
 <!--
@@ -43,7 +44,7 @@ DNS provider for Cluster Federation.
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
 <!--
@@ -150,7 +151,7 @@ authoritative by setting `plugins.etcd.zones` as shown above.
  - 启用 `plugins.etcd`，通过设置 `plugins.etcd.enabled` 为 true。 
  - 通过设置 `plugins.etcd.zones` 来配置 CoreDNS 具有权威性的 DNS 域（联邦域）。如上所示。
  - 通过设置 `plugins.etcd.endpoint` 来配置早期部署的 etcd 端点
- 
+
 <!-- 
 Now deploy CoreDNS by running
 
@@ -199,12 +200,12 @@ coredns-provider.conf 的格式如下：
  - `zones` 是 CoreDNS 具有权威性的联邦域，它与 `kubefed init` 的 --dns-zone-name 参数相同。
  - `coredns-endpoints` 是访问 CoreDNS 服务器的端点。这是从 v1.7 开始引入的一个可选参数。
 
-{{< note >}}
+. note >}}
 <!--
 `plugins.etcd.zones` in the CoreDNS configuration and the `--dns-zone-name` flag to `kubefed init` should match.
 -->
 CoreDNS 配置中的 `plugins.etcd.zones` 和 `kubefed init` 的 `--dns-zone-name` 参数应该匹配。 
-{{< /note >}}
+. /note >}}
 
 <!--
 ## Setup CoreDNS server in nameserver resolv.conf chain
@@ -212,7 +213,7 @@ CoreDNS 配置中的 `plugins.etcd.zones` 和 `kubefed init` 的 `--dns-zone-nam
 
 ## 在 nameserver resolv.conf 链中设置 CoreDNS 服务器
 
-{{< note >}}
+. note >}}
 <!--
 The following section applies only to versions prior to v1.7
 and will be automatically taken care of if the `coredns-endpoints`
@@ -222,7 +223,7 @@ section above.
 下面的部分只适用于 v1.7 之前的版本，如果 `coredns-endpoint` 参数是
 在 `coredns-provider.conf` 中配置的，就会自动处理。
 
-{{< /note >}}
+. /note >}}
 
 <!--
 Once the federation control plane is deployed and federated clusters

@@ -9,6 +9,7 @@ content_type: concept
 ---
 title: kubectl Usage Conventions
 reviewers:
+
 - janetkuo
 content_type: concept
 ---
@@ -82,7 +83,7 @@ You can create the following resources using `kubectl run` with the `--generator
 您可以使用带有 `--generator` 参数的 `kubectl run` 命令创建如下资源：
 
 <!--
-{{< table caption="Resources you can create using kubectl run" >}}
+ table caption="Resources you can create using kubectl run" >}}
 | Resource                             | API group          | kubectl command                                   |
 |--------------------------------------|--------------------|---------------------------------------------------|
 | Pod                                  | v1                 | `kubectl run --generator=run-pod/v1`              |
@@ -92,9 +93,9 @@ You can create the following resources using `kubectl run` with the `--generator
 | Job _(deprecated)_                   | batch/v1           | `kubectl run --generator=job/v1`                  |
 | CronJob _(deprecated)_               | batch/v2alpha1     | `kubectl run --generator=cronjob/v2alpha1`        |
 | CronJob _(deprecated)_               | batch/v1beta1      | `kubectl run --generator=cronjob/v1beta1`         |
-{{< /table >}}
+ /table >}}
 -->
-{{< table caption="可以使用 kubectl run 创建的资源" >}}
+ table caption="可以使用 kubectl run 创建的资源" >}}
 | 资源                             | API 组             | kubectl 命令                                      |
 |----------------------------------|--------------------|-------------------------------------------------- |
 | Pod                              | v1                 | `kubectl run --generator=run-pod/v1`              |
@@ -104,13 +105,13 @@ You can create the following resources using `kubectl run` with the `--generator
 | Job _(已弃用)_                   | batch/v1           | `kubectl run --generator=job/v1`                  |
 | CronJob _(已弃用)_               | batch/v2alpha1     | `kubectl run --generator=cronjob/v2alpha1`        |
 | CronJob _(已弃用)_               | batch/v1beta1      | `kubectl run --generator=cronjob/v1beta1`         |
-{{< /table >}}
+ /table >}}
 
-{{< note >}}
+ note >}}
 <!--
 Generators other than `run-pod/v1` are deprecated.
  -->不推荐使用 `run-pod/v1` 以外的其他生成器。
-{{< /note >}}
+ /note >}}
 
 <!--
 If you explicitly set `--generator`, kubectl uses the generator you specified. If you invoke `kubectl run` and don't specify a generator, kubectl automatically selects which generator to use based on the other flags you set. The following table lists flags and the generators that are activated if you didn't specify one yourself:
@@ -118,23 +119,23 @@ If you explicitly set `--generator`, kubectl uses the generator you specified. I
 如果您显式设置了 `--generator` 参数，kubectl 将使用您指定的生成器。如果使用 `kubectl run` 命令但是未指定生成器，kubectl 会根据您设置的其他参数自动选择要使用的生成器。下表列出了如果您自己未指定参数自动使用与之相匹配的生成器：
 
 <!--
-{{< table caption="kubectl run flags and the resource they imply" >}}
+ table caption="kubectl run flags and the resource they imply" >}}
 | Flag                    | Generated Resource    |
 |-------------------------|-----------------------|
 | `--schedule=<schedule>` | CronJob               |
 | `--restart=Always`      | Deployment            |
 | `--restart=OnFailure`   | Job                   |
 | `--restart=Never`       | Pod                   |
-{{< /table >}}
+ /table >}}
 -->
-{{< table caption="kubectl run 参数及其对应的资源" >}}
+ table caption="kubectl run 参数及其对应的资源" >}}
 | 参数                    | 相匹配的资源           |
 |-------------------------|-----------------------|
 | `--schedule=<schedule>` | CronJob               |
 | `--restart=Always`      | Deployment            |
 | `--restart=OnFailure`   | Job                   |
 | `--restart=Never`       | Pod                   |
-{{< /table >}}
+ /table >}}
 
 <!--
 If you don't specify a generator, kubectl pays attention to other flags in the following order:

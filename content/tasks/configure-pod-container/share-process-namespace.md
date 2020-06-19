@@ -19,7 +19,7 @@ weight: 160
 
 <!-- overview -->
 
-{{< feature-state state="stable" for_k8s_version="v1.17" >}}
+. feature-state state="stable" for_k8s_version="v1.17" >}}
 
 <!--
 This page shows how to configure process namespace sharing for a pod. When
@@ -38,10 +38,10 @@ include debugging utilities like a shell.
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 
@@ -58,7 +58,7 @@ Process Namespace Sharing is enabled using the `ShareProcessNamespace` field of
 -->
 进程命名空间共享使用 `v1.PodSpec` 中的 `ShareProcessNamespace` 字段启用。例如：
 
-{{< codenew file="pods/share-process-namespace.yaml" >}}
+. codenew file="pods/share-process-namespace.yaml" >}}
 
 <!--
 1. Create the pod `nginx` on your cluster:

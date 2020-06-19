@@ -8,6 +8,7 @@ content_type: concept
 ---
 weight: 10
 title: Feature Gates
+
 content_type: concept
 ---
 -->
@@ -86,16 +87,16 @@ different Kubernetes components.
 <!--
 ### Feature gates for Alpha or Beta features
 
-{{< table caption="Feature gates for features in Alpha or Beta states" >}}
+. table caption="Feature gates for features in Alpha or Beta states" >}}
 
 | Feature | Default | Stage | Since | Until |
 
-{{< /table >}}
+. /table >}}
 -->
 
 ### Alpha 和 Beta 的特性门控
 
-{{< table caption="处于 Alpha 或 Beta 状态的特性门控" >}}
+. table caption="处于 Alpha 或 Beta 状态的特性门控" >}}
 
 | 特性 | 默认值 | 状态 | 开始(Since) | 结束(Until) |
 |---------|---------|-------|-------|-------|
@@ -209,21 +210,21 @@ different Kubernetes components.
 | `WinDSR` | `false` | Alpha | 1.14 | |
 | `WinOverlay` | `false` | Alpha | 1.14 | |
 
-{{< /table >}}
+. /table >}}
 
 <!--
 ### Feature gates for graduated or deprecated features
 
-{{< table caption="Feature Gates for Graduated or Deprecated Features" >}}
+. table caption="Feature Gates for Graduated or Deprecated Features" >}}
 
 | Feature | Default | Stage | Since | Until |
 
-{{< /table >}}
+. /table >}}
 -->
 
 ### 已毕业和不推荐使用的特性门控
 
-{{< table caption="已毕业或不推荐使用的特性门控" >}}
+. table caption="已毕业或不推荐使用的特性门控" >}}
 
 | 特性 | 默认值 | 状态 | 开始(Since) | 结束(Until) |
 |---------|---------|-------|-------|-------|
@@ -330,7 +331,7 @@ different Kubernetes components.
 | `WatchBookmark` | `true` | Beta | 1.16 | 1.16 |
 | `WatchBookmark` | `true` | GA | 1.17 | - |
 
-{{< /table >}}
+. /table >}}
 
 <!--
 ## Using a feature
@@ -392,14 +393,14 @@ A *Beta* feature means:
 * 对象的架构或语义可能会在随后的 Beta 或稳定版本中以不兼容的方式更改。当发生这种情况时，我们将提供迁移到下一版本的说明。此特性可能需要删除、编辑和重新创建 API 对象。编辑过程可能需要慎重操作，因为这可能会导致依赖该特性的应用程序停机。
 * 推荐仅用于非关键业务用途，因为在后续版本中可能会发生不兼容的更改。如果您具有多个可以独立升级的，则可以放宽此限制。
 
-{{< note >}}
+. note >}}
 <!--
 Please do try *Beta* features and give feedback on them!
 After they exit beta, it may not be practical for us to make more changes.
 -->
 请试用 *Beta* 特性并提供相关反馈！
 一旦特性结束 Beta 状态，我们就不太可能再对特性进行大幅修改。
-{{< /note >}}
+. /note >}}
 
 <!--
 A *General Availability* (GA) feature is also referred to as a *stable* feature. It means:
@@ -564,7 +565,7 @@ Each feature gate is designed for enabling/disabling a specific feature:
 <!--
 - `EnableAggregatedDiscoveryTimeout` (*deprecated*): Enable the five second timeout on aggregated discovery calls.
 - `EnableEquivalenceClassCache`: Enable the scheduler to cache equivalence of nodes when scheduling Pods.
-- `EphemeralContainers`: Enable the ability to add {{< glossary_tooltip text="ephemeral containers"
+- `EphemeralContainers`: Enable the ability to add . glossary_tooltip text="ephemeral containers"
   term_id="ephemeral-container" >}} to running pods.
 - `EvenPodsSpread`: Enable pods to be scheduled evenly across topology domains. See [Pod Topology Spread Constraints](/docs/concepts/workloads/pods/pod-topology-spread-constraints/).
 - `ExpandInUsePersistentVolumes`: Enable expanding in-use PVCs. See [Resizing an in-use PersistentVolumeClaim](/docs/concepts/storage/persistent-volumes/#resizing-an-in-use-persistentvolumeclaim).
@@ -575,7 +576,7 @@ Each feature gate is designed for enabling/disabling a specific feature:
 
 - `EnableAggregatedDiscoveryTimeout` （ *已弃用* ）：对聚集的发现调用启用五秒钟超时设置。
 - `EnableEquivalenceClassCache`：调度 Pod 时，使 scheduler 缓存节点的等效项。
-- `EphemeralContainers`：启用添加 {{< glossary_tooltip text="临时容器" term_id="ephemeral-container" >}} 到正在运行的 Pod 的特性。
+- `EphemeralContainers`：启用添加 . glossary_tooltip text="临时容器" term_id="ephemeral-container" >}} 到正在运行的 Pod 的特性。
 - `EvenPodsSpread`：使 Pod 能够在拓扑域之间平衡调度。请参阅 [Pod 拓扑扩展约束](/docs/concepts/workloads/pods/pod-topology-spread-constraints/)。
 - `ExpandInUsePersistentVolumes`：启用扩展使用中的 PVC。请查阅 [调整使用中的 PersistentVolumeClaim 的大小](/docs/concepts/storage/persistent-volumes/#resizing-an-in-use-persistentvolumeclaim)。
 - `ExpandPersistentVolumes`：启用持久卷的扩展。请查阅[扩展永久卷声明](/docs/concepts/storage/persistent-volumes/#expanding-persistent-volumes-claims)。
@@ -777,7 +778,7 @@ Each feature gate is designed for enabling/disabling a specific feature:
 - `WinOverlay`：允许 kube-proxy 在 Windows 的 overlay 模式下运行。
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 <!--

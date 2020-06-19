@@ -28,10 +28,10 @@ running Container.
 
 
 
-## {{% heading "prerequisites" %}}
+## .% heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 
@@ -51,7 +51,7 @@ runs the nginx image. Here is the configuration file for the Pod:
 
 在本练习中，你将创建包含一个容器的 Pod。容器运行 nginx 镜像。下面是 Pod 的配置文件：
 
-{{< codenew file="application/shell-demo.yaml" >}}
+. codenew file="application/shell-demo.yaml" >}}
 
 <!--
 Create the Pod:
@@ -82,7 +82,7 @@ Get a shell to the running Container:
 ```shell
 kubectl exec -it shell-demo -- /bin/bash
 ```
-{{< note >}}
+. note >}}
 
 <!--
 The double dash symbol "--" is used to separate the arguments you want to pass to the command from the kubectl arguments.
@@ -232,7 +232,7 @@ kubectl exec -it my-pod --container main-app -- /bin/bash
 
 
 
-## {{% heading "whatsnext" %}}
+## .% heading "whatsnext" %}}
 
 
 * [kubectl exec](/docs/reference/generated/kubectl/kubectl-commands/#exec)

@@ -15,6 +15,7 @@ weight: 10
 card:
   name: setup
   weight: 20
+
   title: Install the kubeadm setup tool
 ---
 -->
@@ -30,7 +31,7 @@ For information how to create a cluster with kubeadm once you have performed thi
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
 <!--
@@ -119,21 +120,21 @@ nftables 后端与当前的 kubeadm 软件包不兼容：它会导致重复防�
 如果您系统的 `iptables` 工具使用 nftables 后端，则需要把 `iptables` 工具切换到“旧版”模式来避免这些问题。
 默认情况下，至少在 Debian 10 (Buster)、Ubuntu 19.04、Fedora 29 和较新的发行版本中会出现这种问题。RHEL 8 不支持切换到旧版本模式，因此与当前的 kubeadm 软件包不兼容。
 
-{{< tabs name="iptables_legacy" >}}
-{{% tab name="Debian 或 Ubuntu" %}}
+. tabs name="iptables_legacy" >}}
+. tab name="Debian 或 Ubuntu" %}}
 ```bash
 update-alternatives --set iptables /usr/sbin/iptables-legacy
 update-alternatives --set ip6tables /usr/sbin/ip6tables-legacy
 update-alternatives --set arptables /usr/sbin/arptables-legacy
 update-alternatives --set ebtables /usr/sbin/ebtables-legacy
 ```
-{{% /tab %}}
-{{% tab name="Fedora" %}}
+. /tab %}}
+. tab name="Fedora" %}}
 ```bash
 update-alternatives --set iptables /usr/sbin/iptables-legacy
 ```
-{{% /tab %}}
-{{< /tabs >}}
+. /tab %}}
+. /tabs >}}
 
 <!--
 ## Check required ports
@@ -296,14 +297,14 @@ kubeadm **不能** 帮您安装或者管理 `kubelet` 或 `kubectl`，所以您�
 
 有关安装 `kubectl` 的信息，请参阅[安装和设置 kubectl](/docs/tasks/tools/install-kubectl/)文档。
 
-{{< warning >}}
+. warning >}}
 <!--
 These instructions exclude all Kubernetes packages from any system upgrades.
 This is because kubeadm and Kubernetes require
 [special attention to upgrade](/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade-1-14/).
 -->
 这些指南不包括系统升级时使用的所有 Kubernetes 程序包。这是因为 kubeadm 和 Kubernetes 有[特殊的升级注意事项](/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade-1-14/)。
-{{</ warning >}}
+./ warning >}}
 
 <!--
 For more information on version skews, see:
@@ -316,8 +317,8 @@ For more information on version skews, see:
 * Kubernetes [版本与版本间的偏差策略](/docs/setup/release/version-skew-policy/)
 * Kubeadm-specific [版本偏差策略](/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#version-skew-policy)
 
-{{< tabs name="k8s_install" >}}
-{{% tab name="Ubuntu、Debian 或 HypriotOS" %}}
+. tabs name="k8s_install" >}}
+. tab name="Ubuntu、Debian 或 HypriotOS" %}}
 ```bash
 sudo apt-get update && sudo apt-get install -y apt-transport-https curl
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
@@ -328,8 +329,8 @@ sudo apt-get update
 sudo apt-get install -y kubelet kubeadm kubectl
 sudo apt-mark hold kubelet kubeadm kubectl
 ```
-{{% /tab %}}
-{{% tab name="CentOS、RHEL 或 Fedora" %}}
+. /tab %}}
+. tab name="CentOS、RHEL 或 Fedora" %}}
 ```bash
 cat <<EOF > /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
@@ -385,8 +386,8 @@ systemctl enable --now kubelet
     sysctl --system
     ```
   - 确保在此步骤之前已加载了 `br_netfilter` 模块。这可以通过运行 `lsmod | grep br_netfilter` 来完成。要显示加载它，请调用 `modprobe br_netfilter`。
-{{% /tab %}}
-{{% tab name="Container Linux" %}}
+. /tab %}}
+. tab name="Container Linux" %}}
 <!--
 Install CNI plugins (required for most pod network):
 -->
@@ -435,8 +436,8 @@ Enable and start `kubelet`:
 ```bash
 systemctl enable --now kubelet
 ```
-{{% /tab %}}
-{{< /tabs >}}
+. /tab %}}
+. /tabs >}}
 
 
 <!--
@@ -508,7 +509,7 @@ If you are running into difficulties with kubeadm, please consult our [troublesh
 
 如果您在使用 kubeadm 时遇到困难，请参阅我们的[故障排查文档](/docs/setup/production-environment/tools/kubeadm/troubleshooting-kubeadm/)。
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 <!--

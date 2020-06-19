@@ -28,13 +28,13 @@ tags:
 
 <!--more-->
 
-<!-- CRI-O is an implementation of the {{< glossary_tooltip term_id="cri" >}}
-to enable using {{< glossary_tooltip text="container" term_id="container" >}}
+<!-- CRI-O is an implementation of the . glossary_tooltip term_id="cri" >}}
+to enable using . glossary_tooltip text="container" term_id="container" >}}
 runtimes that are compatible with the Open Container Initiative (OCI)
 [runtime spec](http://www.github.com/opencontainers/runtime-spec). -->
-CRI-O 是 {{< glossary_tooltip term_id="cri" >}} 的实现，可启用与开放容器倡议 Open Container Initiative（OCI）兼容的 {{< glossary_tooltip text="container" term_id="container" >}} 运行环境[运行时规范](http://www.github.com/opencontainers/runtime-spec)。
+CRI-O 是 . glossary_tooltip term_id="cri" >}} 的实现，可启用与开放容器倡议 Open Container Initiative（OCI）兼容的 . glossary_tooltip text="container" term_id="container" >}} 运行环境[运行时规范](http://www.github.com/opencontainers/runtime-spec)。
 
 <!-- Deploying CRI-O allows Kubernetes to use any OCI-compliant runtime as the container
-runtime for running {{< glossary_tooltip text="Pods" term_id="pod" >}}, and to fetch
+runtime for running . glossary_tooltip text="Pods" term_id="pod" >}}, and to fetch
 OCI container images from remote registries. -->
-部署 CRI-O 允许 Kubernetes 使用任何符合 OCI 运行环境，作为容器运行环境去运行 {{< glossary_tooltip text="Pods" term_id="pod" >}}，并从远程注册表获取 OCI 容器镜像。
+部署 CRI-O 允许 Kubernetes 使用任何符合 OCI 运行环境，作为容器运行环境去运行 . glossary_tooltip text="Pods" term_id="pod" >}}，并从远程注册表获取 OCI 容器镜像。

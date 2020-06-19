@@ -1,4 +1,4 @@
-﻿---
+---
 reviewers:
 - janetkuo
 title: 基于Replication Controller执行滚动升级
@@ -13,23 +13,23 @@ reviewers:
 title: Perform Rolling Update Using a Replication Controller
 content_type: concept
 weight: 80
---- 
+---
 -->
 
 ## 概述
 
-**注**: 创建副本应用的首选方法是使用[Deployment](/docs/api-reference/{{< param "version" >}}/#deployment-v1beta1-apps)，Deployment使用[ReplicaSet](/docs/api-reference/{{< param "version" >}}/#replicaset-v1beta1-extensions)来进行副本控制。
+**注**: 创建副本应用的首选方法是使用[Deployment](/docs/api-reference/. param "version" >}}/#deployment-v1beta1-apps)，Deployment使用[ReplicaSet](/docs/api-reference/. param "version" >}}/#replicaset-v1beta1-extensions)来进行副本控制。
 更多信息, 查看[使用Deployment运行一个无状态应用](/docs/tasks/run-application/run-stateless-application-deployment/)。
 
 <!-- 
-{{< note >}}
+. note >}}
 **Note**: The preferred way to create a replicated application is to use a
-[Deployment](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#deployment-v1-apps),
+[Deployment](/docs/reference/generated/kubernetes-api/. param "version" >}}/#deployment-v1-apps),
 which in turn uses a
-[ReplicaSet](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#replicaset-v1-apps).
+[ReplicaSet](/docs/reference/generated/kubernetes-api/. param "version" >}}/#replicaset-v1-apps).
 For more information, see
 [Running a Stateless Application Using a Deployment](/docs/tasks/run-application/run-stateless-application-deployment/).
-{{< /note >}}
+. /note >}}
 -->
 
 为了在更新服务的同时不中断业务， `kubectl` 支持['滚动更新'](/docs/user-guide/kubectl/v1.6/#rolling-update)，它一次更新一个pod，而不是同时停止整个服务。 有关更多信息，请参阅 [滚动更新设计文档](https://git.k8s.io/community/contributors/design-proposals/cli/simple-rolling-update.md) 和 [滚动更新示例](/docs/tasks/run-application/rolling-update-replication-controller/)。
@@ -124,7 +124,7 @@ Replication controller configuration files are described in
 
     // 通过新的配置文件frontend-v2.json来更新frontend-v1的pods
     $ kubectl rolling-update frontend-v1 -f frontend-v2.json
-
+    
     // 将frontend-v2.json数据传到标准输入来更新frontend-v1的pods
     $ cat frontend-v2.json | kubectl rolling-update frontend-v1 -f -
 
@@ -133,7 +133,7 @@ Replication controller configuration files are described in
 
     // Update pods of frontend-v1 using new replication controller data in frontend-v2.json.
     $ kubectl rolling-update frontend-v1 -f frontend-v2.json
-
+    
     // Update pods of frontend-v1 using JSON data passed into stdin.
     $ cat frontend-v2.json | kubectl rolling-update frontend-v1 -f -
 -->
@@ -178,7 +178,7 @@ Moreover, the use of `:latest` is not recommended, see
 
     // 更新frontend-v1的pod到frontend-v2
     $ kubectl rolling-update frontend-v1 frontend-v2 --image=image:v2
-
+    
     // 更新frontend的pods，不更改replication controller的名称
     $ kubectl rolling-update frontend --image=image:v2
 
@@ -187,7 +187,7 @@ Moreover, the use of `:latest` is not recommended, see
 
     // Update the pods of frontend-v1 to frontend-v2
     $ kubectl rolling-update frontend-v1 frontend-v2 --image=image:v2
-
+    
     // Update the pods of frontend, keeping the replication controller name
     $ kubectl rolling-update frontend --image=image:v2
 -->

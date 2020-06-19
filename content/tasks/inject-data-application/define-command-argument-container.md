@@ -15,17 +15,17 @@ weight: 10
 
 <!--
 This page shows how to define commands and arguments when you run a container
-in a {{< glossary_tooltip term_id="pod" >}}.
+in a . glossary_tooltip term_id="pod" >}}.
 -->
-本页将展示如何为 {{< glossary_tooltip term_id="pod" >}} 中的容器设置启动时要执行的命令及其入参。
+本页将展示如何为 . glossary_tooltip term_id="pod" >}} 中的容器设置启动时要执行的命令及其入参。
 
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 
@@ -55,14 +55,14 @@ with your new arguments.
 如果在配置文件中设置了容器启动时要执行的命令及其入参，那么容器镜像中自带的命令与入参将会被覆盖而不再执行。如果配置文件中只是设置了入参，却没有设置其对应的命令，那么容器镜像中自带的命令会使用该新入参作为其执行时的入参。
 
 <!--
-{{< note >}}
+. note >}}
 The `command` field corresponds to `entrypoint` in some container
 runtimes. Refer to the [Notes](#notes) below.
-{{< /note >}}
+. /note >}}
 -->
-{{< note >}}
+. note >}}
 在有些容器运行时中，`command` 字段对应 `entrypoint`，请参阅下面的 [注意](#注意)。
-{{< /note >}}
+. /note >}}
 
 <!--
 In this exercise, you create a Pod that runs one container. The configuration
@@ -70,7 +70,7 @@ file for the Pod defines a command and two arguments:
 -->
 本示例中，将创建一个只包含单个容器的 Pod。在 Pod 配置文件中设置了一个命令与两个入参：
 
-{{< codenew file="pods/commands.yaml" >}}
+. codenew file="pods/commands.yaml" >}}
 
 <!--
 1. Create a Pod based on the YAML configuration file:
@@ -115,6 +115,7 @@ from the Pod:
     tcp://10.3.240.1:443
     ```
 	
+
 <!--
 ## Use environment variables to define arguments
 
@@ -144,14 +145,14 @@ and
 这意味着你可以将那些用来设置环境变量的方法应用于设置命令的入参，其中包括了 [ConfigMaps](/docs/tasks/configure-pod-container/configure-pod-configmap/) 与 [Secrets](/docs/concepts/configuration/secret/)。
 
 <!--
-{{< note >}}
+. note >}}
 The environment variable appears in parentheses, `"$(VAR)"`. This is
 required for the variable to be expanded in the `command` or `args` field.
-{{< /note >}}
+. /note >}}
 -->
-{{< note >}}
+. note >}}
 环境变量需要加上括号，类似于 `"$(VAR)"`。这是在 `command` 或 `args` 字段使用变量的格式要求。
-{{< /note >}}
+. /note >}}
 
 <!--
 ## Run a command in a shell
@@ -237,17 +238,17 @@ Here are some examples:
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 <!--
 * Learn more about [configuring pods and containers](/docs/tasks/).
 * Learn more about [running commands in a container](/docs/tasks/debug-application-cluster/get-shell-running-container/).
-* See [Container](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#container-v1-core).
+* See [Container](/docs/reference/generated/kubernetes-api/. param "version" >}}/#container-v1-core).
 -->
 * 了解更多 [pod 和容器的配置](/docs/tasks/)。
 * 了解更多 [在容器中运行命令](/docs/tasks/debug-application-cluster/get-shell-running-container/)。
-* 请参阅 [有关容器的文档](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#container-v1-core)。
+* 请参阅 [有关容器的文档](/docs/reference/generated/kubernetes-api/. param "version" >}}/#container-v1-core)。
 
 
 

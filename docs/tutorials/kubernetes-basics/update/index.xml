@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>更新你的应用 on Hugo 主题的 Learn 文档</title>
+    <link>https://lijun.in/tutorials/kubernetes-basics/update/</link>
+    <description>Recent content in 更新你的应用 on Hugo 主题的 Learn 文档</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://lijun.in/tutorials/kubernetes-basics/update/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>执行滚动更新</title>
+      <link>https://lijun.in/tutorials/kubernetes-basics/update/update-intro/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tutorials/kubernetes-basics/update/update-intro/</guid>
+      <description>Objectives  Perform a rolling update using kubectl. -- 使用 kubectl 执行滚动更新。   Updating an application -- 更新应用程序 Users expect applications to be available all the time and developers are expected to deploy new versions of them several times a day. In Kubernetes this is done with rolling updates. Rolling updates allow Deployments&#39; update to take place with zero downtime by incrementally updating Pods instances with new ones.</description>
+    </item>
+    
+    <item>
+      <title>交互式教程 - 更新应用</title>
+      <link>https://lijun.in/tutorials/kubernetes-basics/update/update-interactive/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tutorials/kubernetes-basics/update/update-interactive/</guid>
+      <description>  要与终端交互，请使用桌面/平板电脑版本    回到 Kubernetes 的基础›       </description>
+    </item>
+    
+  </channel>
+</rss>

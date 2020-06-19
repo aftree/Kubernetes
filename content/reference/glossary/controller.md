@@ -28,7 +28,7 @@ tags:
 ---
 -->
 
- 控制器通过 {{< glossary_tooltip text="apiserver" term_id="kube-apiserver" >}} 监控集群的公共状态，并致力于将当前状态转变为期望的状态。
+ 控制器通过 . glossary_tooltip text="apiserver" term_id="kube-apiserver" >}} 监控集群的公共状态，并致力于将当前状态转变为期望的状态。
 
 <!--more--> 
 

@@ -29,12 +29,12 @@ Configuring the [aggregation layer](/docs/concepts/extend-kubernetes/api-extensi
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
-{{< note >}}
+. note >}}
 
 <!--
 There are a few setup requirements for getting the aggregation layer working in your environment to support mutual TLS auth between the proxy and extension apiservers. Kubernetes and the kube-apiserver have multiple CAs, so make sure that the proxy is signed by the aggregation layer CA and not by something else, like the master CA. 
@@ -42,15 +42,15 @@ There are a few setup requirements for getting the aggregation layer working in 
 
 要使聚合层在您的环境中正常工作以支持代理服务器和扩展 apiserver 之间的相互 TLS 身份验证，需要满足一些设置要求。Kubernetes 和 kube-apiserver 具有多个 CA，因此请确保代理是由聚合层 CA 签名的，而不是由主 CA 签名的。
 
-{{< caution >}}
+. caution >}}
 
 <!--
 Reusing the same CA for different client types can negatively impact the cluster's ability to function. For more information, see [CA Reusage and Conflicts](#ca-reusage-and-conflicts).
 -->
 对不同的客户端类型重复使用相同的 CA 会对群集的功能产生负面影响。有关更多信息，请参见 [CA重用和冲突](#ca-重用和冲突)。
 
-{{< /caution >}}
-{{< /note >}}
+. /caution >}}
+. /note >}}
 
 
 
@@ -177,7 +177,7 @@ note:
 3.Kube Apiserver 使用任何配置的鉴权方法（例如 RBAC）对请求的 URL 鉴权
 
 kube-apiserver / aggregator -> 聚合的 apiserver:
-   
+
 note:
 4.aggregator 使用`--proxy-client-cert-file`，`--proxy-client-key-file`客户端证书/密钥打开与聚合 Apiserver 的连接以保护通道
 
@@ -440,7 +440,7 @@ For this reason, use different CA certs for the `--client-ca-file` option - to a
 
 因此，请对用于控制平面组件和最终用户鉴权的 `--client-ca-file` 选项和用于聚合 apiserver 鉴权的 `--requestheader-client-ca-file` 选项使用不同的 CA 证书。
 
-{{< warning >}}
+. warning >}}
 
 <!--
 Do **not** reuse a CA that is used in a different context unless you understand the risks and the mechanisms to protect the CA's usage.
@@ -448,7 +448,7 @@ Do **not** reuse a CA that is used in a different context unless you understand 
 
 除非您了解风险和保护 CA 用法的机制，否则 *不要* 重用在不同上下文中使用的 CA。
 
-{{< /warning >}}
+. /warning >}}
 <!--
 If you are not running kube-proxy on a host running the API server, then you must make sure that the system is enabled with the following `kube-apiserver` flag:
 -->
@@ -528,7 +528,7 @@ spec:
 ...
 ```
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 <!--
 * [Setup an extension api-server](/docs/tasks/access-kubernetes-api/setup-extension-api-server/) to work with the aggregation layer.

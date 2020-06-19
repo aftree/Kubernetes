@@ -35,12 +35,12 @@ Stackdriver Logging when running on GCE.
 
 本文介绍了如何设置一个集群，将日志导入[Elasticsearch](https://www.elastic.co/products/elasticsearch)，并使用 [Kibana](https://www.elastic.co/products/kibana) 查看日志，作为在 GCE 上运行应用时使用 Stackdriver Logging 管理日志的替代方案。
 
-{{< note >}}
+. note >}}
 <!--
 You cannot automatically deploy Elasticsearch and Kibana in the Kubernetes cluster hosted on Google Kubernetes Engine. You have to deploy them manually.
 -->
 您不能在 Google Kubernetes Engine 平台运行的 Kubernetes 集群上自动的部署 Elasticsearch 和 Kibana。您必须手动部署它们。
-{{< /note >}}
+. /note >}}
 
 
 
@@ -181,7 +181,7 @@ Here is a typical view of ingested logs from the Kibana viewer:
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 <!--

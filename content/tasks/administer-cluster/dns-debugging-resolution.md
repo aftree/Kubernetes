@@ -13,7 +13,6 @@ content_type: task
 <!-- overview -->
 This page provides hints on diagnosing DNS problems.
 
-
 -->
 
 <!-- overview -->
@@ -22,10 +21,10 @@ This page provides hints on diagnosing DNS problems.
 
 <!--
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-* {{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+* . include "task-tutorial-prereqs.md" >}} . version-check >}}
 * Kubernetes version 1.6 and above.
 * The cluster must be configured to use the `coredns` (or `kube-dns`) addons.
 
@@ -34,10 +33,10 @@ This page provides hints on diagnosing DNS problems.
 
 -->
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-- {{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+- . include "task-tutorial-prereqs.md" >}} . version-check >}}
 - Kubernetes 1.6 或者以上版本。
 - 集群必须使用了 `coredns` (或者 `kube-dns`)插件。
   
@@ -50,7 +49,7 @@ This page provides hints on diagnosing DNS problems.
 
 Create a file named busybox.yaml with the following contents:
 
-{{< codenew file="admin/dns/busybox.yaml" >}}
+. codenew file="admin/dns/busybox.yaml" >}}
 
 Then create a pod using this file and verify its status:
 
@@ -69,7 +68,7 @@ busybox   1/1       Running   0          <some-time>
 
 新建一个名为 busybox.yaml 的文件并填入下列内容：
 
-{{< codenew file="admin/dns/busybox.yaml" >}}
+. codenew file="admin/dns/busybox.yaml" >}}
 
 然后使用这个文件创建一个 Pod 并验证其状态：
 
@@ -579,7 +578,7 @@ for more details on Cluster Federation and multi-site support.
 ## References
 
 - [DNS for Services and Pods](/docs/concepts/services-networking/dns-pod-service/)
-- [Docs for the kube-dns DNS cluster addon](http://releases.k8s.io/{{< param "githubbranch" >}}/cluster/addons/dns/kube-dns/README.md)
+- [Docs for the kube-dns DNS cluster addon](http://releases.k8s.io/. param "githubbranch" >}}/cluster/addons/dns/kube-dns/README.md)
 
 ## What's next
 - [Autoscaling the DNS Service in a Cluster](/docs/tasks/administer-cluster/dns-horizontal-autoscaling/).
@@ -591,7 +590,7 @@ for more details on Cluster Federation and multi-site support.
 ## 参考
 
 - [Services 和 Pods 的 DNS 指南](/docs/concepts/services-networking/dns-pod-service/)
-- [kube-dns DNS 插件文档](http://releases.k8s.io/{{< param "githubbranch" >}}/cluster/addons/dns/kube-dns/README.md)
+- [kube-dns DNS 插件文档](http://releases.k8s.io/. param "githubbranch" >}}/cluster/addons/dns/kube-dns/README.md)
 
 ## 接下来
 

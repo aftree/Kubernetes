@@ -29,7 +29,7 @@ This document walks you through an example of enabling Horizontal Pod Autoscaler
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
 <!--
@@ -116,13 +116,13 @@ The following command will create a Horizontal Pod Autoscaler that maintains bet
 controlled by the php-apache deployment we created in the first step of these instructions.
 Roughly speaking, HPA will increase and decrease the number of replicas
 (via the deployment) to maintain an average CPU utilization across all Pods of 50%
-(since each pod requests 200 milli-cores by [kubectl run](https://github.com/kubernetes/kubernetes/blob/{{< param "githubbranch" >}}/docs/user-guide/kubectl/kubectl_run.md), this means average CPU usage of 100 milli-cores).
+(since each pod requests 200 milli-cores by [kubectl run](https://github.com/kubernetes/kubernetes/blob/. param "githubbranch" >}}/docs/user-guide/kubectl/kubectl_run.md), this means average CPU usage of 100 milli-cores).
 See [here](https://git.k8s.io/community/contributors/design-proposals/autoscaling/horizontal-pod-autoscaler.md#autoscaling-algorithm) for more details on the algorithm.
 -->
 现在，php-apache服务器已经运行，我们将通过 [kubectl autoscale](/docs/reference/generated/kubectl/kubectl-commands#autoscale) 命令创建 Horizontal Pod Autoscaler。 
 以下命令将创建一个 Horizontal Pod Autoscaler 用于控制我们上一步骤中创建的 deployment，使 Pod 的副本数量在维持在1到10之间。
 大致来说，HPA 将通过增加或者减少 Pod 副本的数量（通过 Deployment ）以保持所有 Pod 的平均CPU利用率在50%以内
-（由于每个 Pod 通过 [kubectl run](https://github.com/kubernetes/kubernetes/blob/{{< param "githubbranch" >}}/docs/user-guide/kubectl/kubectl_run.md)
+（由于每个 Pod 通过 [kubectl run](https://github.com/kubernetes/kubernetes/blob/. param "githubbranch" >}}/docs/user-guide/kubectl/kubectl_run.md)
 申请了200 milli-cores CPU，所以50%的 CPU 利用率意味着平均 CPU 利用率为100 milli-cores）。 
 相关算法的详情请参阅[here](https://git.k8s.io/community/contributors/design-proposals/autoscaling/horizontal-pod-autoscaler.md#autoscaling-algorithm)。
 
@@ -203,15 +203,15 @@ php-apache   7         7         7            7           19m
 ```
 
 <!--
-{{< note >}}
+. note >}}
 It may take a few minutes to stabilize the number of replicas. Since the amount
 of load is not controlled in any way it may happen that the final number of replicas
 will differ from this example.
-{{< /note >}}
+. /note >}}
 -->
-{{< note >}}
+. note >}}
 有时最终副本的数量可能需要几分钟才能稳定下来。 由于环境的差异，不同环境中最终的副本数量可能与本示例中的数量不同。
-{{< /note >}}
+. /note >}}
 
 <!--
 ## Stop load
@@ -254,13 +254,13 @@ Here CPU utilization dropped to 0, and so HPA autoscaled the number of replicas 
 这时，CPU利用率已经降到0，所以 HPA 将自动缩减副本数量至1。
 
 <!--
-{{< note >}}
+. note >}}
 Autoscaling the replicas may take a few minutes.
-{{< /note >}}
+. /note >}}
 -->
-{{< note >}}
+. note >}}
 自动伸缩完成副本数量的改变可能需要几分钟的时间。
-{{< /note >}}
+. /note >}}
 
 
 
@@ -675,7 +675,7 @@ can use the following file to create it declaratively:
 -->
 除了使用 `kubectl autoscale` 命令，也可以文件创建 HorizontalPodAutoscaler ：
 
-{{< codenew file="application/hpa/php-apache.yaml" >}}
+. codenew file="application/hpa/php-apache.yaml" >}}
 
 <!--
 We will create the autoscaler by executing the following command:

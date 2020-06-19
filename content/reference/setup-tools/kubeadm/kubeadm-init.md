@@ -24,7 +24,7 @@ This command initializes a Kubernetes control-plane node.
 
 <!-- body -->
 
-{{< include "generated/kubeadm_init.md" >}}
+. include "generated/kubeadm_init.md" >}}
 
 <!--
 ### Init workflow {#init-workflow}
@@ -163,11 +163,11 @@ What this example would do is write the manifest files for the control plane and
 -->
 ### 结合一份配置文件来使用 kubeadm init {#config-file}
 
-{{< caution >}}
+. caution >}}
 <!--
 The config file is still considered beta and may change in future versions.
 -->配置文件的功能仍然处于 alpha 状态并且在将来的版本中可能会改变。
-{{< /caution >}}
+. /caution >}}
 
 <!--
 It's possible to configure `kubeadm init` with a configuration file instead of command
@@ -442,7 +442,7 @@ As they come up they should find each other and form the cluster. The same `--to
 -->2.  使用这个令牌同时启动控制平面节点和工作节点。它们一旦运行起来应该就会互相寻找对方并且建立集群。同样的 `--token` 参数可以同时用于 `kubeadm init` 和 `kubeadm join` 命令。
 
 <!-- 3.  Similar can be done for `--certificate-key` when joining additional control-plane nodes. The key can be generated using: -->3.  当加入其他控制平面节点时，可以对 `--certificate-key` 执行类似的操作。可以使用以下方式生成密钥：
-   
+
    ```shell
    kubeadm alpha certs certificate-key
    ```
@@ -463,7 +463,7 @@ provisioned). For details, see the [kubeadm join](/docs/reference/setup-tools/ku
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 <!--
 * [kubeadm init phase](/docs/reference/setup-tools/kubeadm/kubeadm-init-phase/) to understand more about

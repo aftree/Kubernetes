@@ -10,10 +10,10 @@ content_type: task
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 
@@ -32,17 +32,17 @@ content_type: task
 
 在这个练习中，你将创建一个包含一个容器的pod。这是该pod的配置文件：
 
-{{< codenew file="pods/inject/dapi-volume.yaml" >}}
+. codenew file="pods/inject/dapi-volume.yaml" >}}
 
 在配置文件中，你可以看到Pod有一个`downwardAPI`类型的Volume，并且挂载到容器中的`/etc`。
 
-查看`downwardAPI`下面的`items`数组。每个数组元素都是一个[DownwardAPIVolumeFile](/docs/resources-reference/{{< param "version" >}}/#downwardapivolumefile-v1-core)。
+查看`downwardAPI`下面的`items`数组。每个数组元素都是一个[DownwardAPIVolumeFile](/docs/resources-reference/. param "version" >}}/#downwardapivolumefile-v1-core)。
 第一个元素指示Pod的`metadata.labels`字段的值保存在名为`labels`的文件中。
 第二个元素指示Pod的`annotations`字段的值保存在名为`annotations`的文件中。
 
-{{< note >}}
+. note >}}
 本示例中的字段是Pod字段，不是Pod中容器的字段。
-{{< /note >}}
+. /note >}}
 
 创建 Pod：
 
@@ -149,7 +149,7 @@ drwxrwxrwt    3 root     root           120 Dec  5 07:00 ..
 
 前面的练习中，你将Pod字段保存到DownwardAPIVolumeFile中。接下来这个练习，你将存储容器字段。这里是包含一个容器的pod的配置文件：
 
-{{< codenew file="pods/inject/dapi-volume-resources.yaml" >}}
+. codenew file="pods/inject/dapi-volume-resources.yaml" >}}
 
 在这个配置文件中，你可以看到Pod有一个`downwardAPI`类型的Volume,并且挂载到容器的`/etc`目录。
 
@@ -213,9 +213,9 @@ kubectl exec -it kubernetes-downwardapi-volume-example-2 -- sh
 * `spec.nodeName` - 节点名称, 版本要求 v1.4.0-alpha.3
 * `status.hostIP` - 节点IP, 版本要求 v1.7.0-alpha.1
 
-{{< note >}}
+. note >}}
 如果容器未指定CPU和memory limits，则Downward API默认为节点可分配值。
-{{< /note >}}
+. /note >}}
 
 ## 投射密钥到指定路径并且指定文件权限
 
@@ -229,14 +229,14 @@ kubectl exec -it kubernetes-downwardapi-volume-example-2 -- sh
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
-* [PodSpec](/docs/resources-reference/{{< param "version" >}}/#podspec-v1-core)
-* [Volume](/docs/resources-reference/{{< param "version" >}}/#volume-v1-core)
-* [DownwardAPIVolumeSource](/docs/resources-reference/{{< param "version" >}}/#downwardapivolumesource-v1-core)
-* [DownwardAPIVolumeFile](/docs/resources-reference/{{< param "version" >}}/#downwardapivolumefile-v1-core)
-* [ResourceFieldSelector](/docs/resources-reference/{{< param "version" >}}/#resourcefieldselector-v1-core)
+* [PodSpec](/docs/resources-reference/. param "version" >}}/#podspec-v1-core)
+* [Volume](/docs/resources-reference/. param "version" >}}/#volume-v1-core)
+* [DownwardAPIVolumeSource](/docs/resources-reference/. param "version" >}}/#downwardapivolumesource-v1-core)
+* [DownwardAPIVolumeFile](/docs/resources-reference/. param "version" >}}/#downwardapivolumefile-v1-core)
+* [ResourceFieldSelector](/docs/resources-reference/. param "version" >}}/#resourcefieldselector-v1-core)
 
 
 

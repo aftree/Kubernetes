@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>😎 - 配置 on Hugo 主题的 Learn 文档</title>
+    <link>https://lijun.in/tutorials/configuration/</link>
+    <description>Recent content in 😎 - 配置 on Hugo 主题的 Learn 文档</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://lijun.in/tutorials/configuration/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>使用 ConfigMap 来配置 Redis</title>
+      <link>https://lijun.in/tutorials/configuration/configure-redis-using-configmap/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tutorials/configuration/configure-redis-using-configmap/</guid>
+      <description>这篇文档基于使用 ConfigMap 来配置 Containers 这个任务，提供了一个使用 ConfigMap 来配置 Redis 的真实案例。
+. heading &amp;ldquo;objectives&amp;rdquo; %}}    创建一个包含以下内容的 kustomization.yaml 文件： 一个 ConfigMap 生成器 一个使用 ConfigMap 的 Pod 资源配置   使用 kubectl apply -k ./ 应用整个路径的配置 验证配置已经被正确应用。  . heading &amp;ldquo;prerequisites&amp;rdquo; %}}  . include &amp;ldquo;task-tutorial-prereqs.md&amp;rdquo; &amp;gt;}} . version-check &amp;gt;}}   此页面上显示的示例适用于 kubectl 1.14和在其以上的版本。 理解使用ConfigMap来配置Containers。  真实世界的案例：使用 ConfigMap 来配置 Redis 按照下面的步骤，您可以使用ConfigMap中的数据来配置Redis缓存。
+ 根据docs/user-guide/configmap/redis/redis-config来创建一个ConfigMap：  . codenew file=&amp;quot;pods/config/redis-config&amp;rdquo; &amp;gt;}}
+curl -OL https://k8s.</description>
+    </item>
+    
+  </channel>
+</rss>

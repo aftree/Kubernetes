@@ -29,18 +29,18 @@ Not just that, you can even run multiple schedulers simultaneously alongside the
 让我们通过一个例子讲述如何在 Kubernetes 中运行多个调度器。
 
 <!--
-A detailed description of how to implement a scheduler is outside the scope of this document. Please refer to the kube-scheduler implementation in[pkg/scheduler](https://github.com/kubernetes/kubernetes/tree/{{< param "githubbranch" >}}/pkg/scheduler)in the Kubernetes source directory for a canonical example.
+A detailed description of how to implement a scheduler is outside the scope of this document. Please refer to the kube-scheduler implementation in[pkg/scheduler](https://github.com/kubernetes/kubernetes/tree/. param "githubbranch" >}}/pkg/scheduler)in the Kubernetes source directory for a canonical example.
 -->
 关于实现调度器的具体细节描述超出了本文范围。
-请参考 kube-scheduler 的实现，规范示例代码位于 [pkg/scheduler](https://github.com/kubernetes/kubernetes/tree/{{< param "githubbranch" >}}/pkg/scheduler)。
+请参考 kube-scheduler 的实现，规范示例代码位于 [pkg/scheduler](https://github.com/kubernetes/kubernetes/tree/. param "githubbranch" >}}/pkg/scheduler)。
 
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 
@@ -104,7 +104,7 @@ Now that we have our scheduler in a container image, we can just create a pod co
 [Deployment](/docs/concepts/workloads/controllers/deployment/) 管理一个 [Replica Set](/docs/concepts/workloads/controllers/replicaset/)，Replica Set 再管理 pod，从而使调度器能够适应故障。
 以下是 Deployment 配置，被保存为 `my-scheduler.yaml`：
 
-{{< codenew file="admin/sched/my-scheduler.yaml" >}}
+. codenew file="admin/sched/my-scheduler.yaml" >}}
 
 <!--
 An important thing to note here is that the name of the scheduler specified as an argument to the scheduler command in the container spec should be unique. This is the name that is matched against the value of the optional `spec.schedulerName` on pods, to determine whether this scheduler is responsible for scheduling a particular pod.
@@ -214,7 +214,7 @@ Now that our second scheduler is running, let's create some pods, and direct the
 -->
  -  Pod spec 没有任何调度器名称
 
-  {{< codenew file="admin/sched/pod1.yaml" >}}
+  . codenew file="admin/sched/pod1.yaml" >}}
 
 <!--
   When no scheduler name is supplied, the pod is automatically scheduled using the  default-scheduler.
@@ -235,7 +235,7 @@ kubectl create -f pod1.yaml
 -->
  -  Pod spec 设置为 `default-scheduler`
 
-  {{< codenew file="admin/sched/pod2.yaml" >}}
+  . codenew file="admin/sched/pod2.yaml" >}}
 
 <!--
   A scheduler is specified by supplying the scheduler name as a value to `spec.schedulerName`. In this case, we supply the name of the  default scheduler which is `default-scheduler`.
@@ -256,7 +256,7 @@ kubectl create -f pod2.yaml
 -->
  -  Pod spec 设置为 `my-scheduler`
 
-  {{< codenew file="admin/sched/pod3.yaml" >}}
+  . codenew file="admin/sched/pod3.yaml" >}}
 
 <!--
   In this case, we specify that this pod should be scheduled using the scheduler that we  deployed - `my-scheduler`. Note that the value of `spec.schedulerName` should match the name supplied to the scheduler  command as an argument in the deployment config for the scheduler.

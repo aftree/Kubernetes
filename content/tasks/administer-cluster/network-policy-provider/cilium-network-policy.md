@@ -17,10 +17,10 @@ For background on Cilium, read the [Introduction to Cilium](https://cilium.readt
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 
@@ -119,7 +119,7 @@ configuration because it automatically connects to the minikube's etcd instance.
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 <!-- Once your cluster is running, you can follow the
 [Declare Network Policy](/docs/tasks/administer-cluster/declare-network-policy/)

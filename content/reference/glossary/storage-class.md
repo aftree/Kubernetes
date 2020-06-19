@@ -37,8 +37,8 @@ tags:
 <!--more--> 
 
 <!--
-StorageClasses can map to quality-of-service levels, backup policies, or to arbitrary policies determined by cluster administrators. Each StorageClass contains the fields `provisioner`, `parameters`, and `reclaimPolicy`, which are used when a {{< glossary_tooltip text="Persistent Volume" term_id="persistent-volume" >}} belonging to the class needs to be dynamically provisioned. Users can request a particular class using the name of a StorageClass object.
+StorageClasses can map to quality-of-service levels, backup policies, or to arbitrary policies determined by cluster administrators. Each StorageClass contains the fields `provisioner`, `parameters`, and `reclaimPolicy`, which are used when a . glossary_tooltip text="Persistent Volume" term_id="persistent-volume" >}} belonging to the class needs to be dynamically provisioned. Users can request a particular class using the name of a StorageClass object.
 -->
 
-StorageClass 可以映射到服务质量等级（QoS）、备份策略、或者管理员随机定义的策略。每个 StorageClass 对象包含的域有  `provisioner`、 `parameters` 和 `reclaimPolicy`，属于该存储类别的 {{< glossary_tooltip text="永久卷" term_id="persistent-volume" >}} 需要动态分配时就要用到这些域参数。通过 StorageClass 对象的名称，用户可以请求他们需要的特定存储类别。 
+StorageClass 可以映射到服务质量等级（QoS）、备份策略、或者管理员随机定义的策略。每个 StorageClass 对象包含的域有  `provisioner`、 `parameters` 和 `reclaimPolicy`，属于该存储类别的 . glossary_tooltip text="永久卷" term_id="persistent-volume" >}} 需要动态分配时就要用到这些域参数。通过 StorageClass 对象的名称，用户可以请求他们需要的特定存储类别。 
 

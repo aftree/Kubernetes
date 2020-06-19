@@ -15,7 +15,7 @@ weight: 40
 
 <!-- overview -->
 
-{{< feature-state for_k8s_version="1.12" state="stable" >}}
+. feature-state for_k8s_version="1.12" state="stable" >}}
 
 <!--
 The kubeadm `ClusterConfiguration` object exposes the field `extraArgs` that can override the default flags passed to control plane
@@ -48,12 +48,12 @@ For more details on each field in the configuration you can navigate to our
 -->
 有关配置中的每个字段的详细信息，您可以导航到我们的 [API 参考页面](https://godoc.org/k8s.io/kubernetes/cmd/kubeadm/app/apis/kubeadm/v1beta2#ClusterConfiguration)。
 
-{{< note >}}
+. note >}}
 <!-- 
 You can generate a `ClusterConfiguration` object with default values by running `kubeadm config print init-defaults` and saving the output to a file of your choice. 
 -->
 您可以通过运行 `kubeadm config print init-defaults` 并将输出保存到您选择的文件中，以默认值形式生成 `ClusterConfiguration` 对象。
-{{< /note >}}
+. /note >}}
 
 
 

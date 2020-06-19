@@ -136,7 +136,7 @@ deployment.apps/hostnames created
 ```
 
 `kubectl` commands will print the type and name of the resource created or mutated, which can then be used in subsequent commands.
-{{< note >}}
+. note >}}
 This is the same as if you started the `Deployment` with the following YAML:
 
 ```yaml
@@ -161,7 +161,7 @@ spec:
         - containerPort: 9376
           protocol: TCP
 ```
-{{< /note >}}
+. /note >}}
 
 Confirm your `Pods` are running:
 
@@ -186,7 +186,7 @@ deployment.apps/hostnames created
 ```
 
 `kubectl` 命令将打印创建或变更的资源的类型和名称，它们可以在后续命令中使用。
-{{< note >}}
+. note >}}
 这与您使用以下 YAML 启动 `Deployment` 相同：
 
 ```yaml
@@ -211,7 +211,7 @@ spec:
         - containerPort: 9376
           protocol: TCP
 ```
-{{< /note >}}
+. /note >}}
 
 确认您的 `Pods` 是运行状态:
 
@@ -380,9 +380,9 @@ own cluster.
 
 You can also try this from a `Node` in the cluster:
 
-{{< note >}}
+. note >}}
 10.0.0.10 is my DNS `Service`, yours might be different).
-{{< /note >}}
+. /note >}}
 
 ```shell
 u@node$ nslookup hostnames.default.svc.cluster.local 10.0.0.10
@@ -455,9 +455,9 @@ Address 1: 10.0.1.175 hostnames.default.svc.cluster.local
 
 您也可以在集群中的 Node 上尝试此操作：
 
-{{< note >}}
+. note >}}
 10.0.0.10 是我的 DNS `Service`，您的可能不同）.
-{{< /note >}}
+. /note >}}
 
 ```shell
 u@node$ nslookup hostnames.default.svc.cluster.local 10.0.0.10
@@ -725,9 +725,9 @@ At this point, we know that your `Service` exists and has selected your `Pods`.
 Let's check that the `Pods` are actually working - we can bypass the `Service`
 mechanism and go straight to the `Pods`.
 
-{{< note >}}
+. note >}}
 These commands use the `Pod` port (9376), rather than the `Service` port (80).
-{{< /note >}}
+. /note >}}
 
 ```shell
 u@pod$ wget -qO- 10.244.0.5:9376
@@ -764,9 +764,9 @@ pods](/docs/tasks/debug-application-cluster/debug-pod-replication-controller/#de
 
 到了这步，我们知道您的 `Service` 存在并选择了您的 `Pods`。让我们检查一下 `Pod` 是否真的在工作 - 我们可以绕过 `Service` 机制，直接进入 `Pod`。
 
-{{< note >}}
+. note >}}
 这些命令使用的是 `Pod` 端口（9376），而不是 `Service` 端口（80）。
-{{< /note >}}
+. /note >}}
 
 ```shell
 u@pod$ wget -qO- 10.244.0.5:9376
@@ -1169,7 +1169,7 @@ Contact us on
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 <!--

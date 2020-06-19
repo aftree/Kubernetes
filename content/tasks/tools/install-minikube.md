@@ -14,6 +14,7 @@ content_type: task
 weight: 20
 card:
   name: tasks
+
   weight: 10
 ---
 -->
@@ -28,11 +29,11 @@ This page shows you how to install [Minikube](/docs/tutorials/hello-minikube), a
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< tabs name="minikube_before_you_begin" >}}
-{{% tab name="Linux" %}}
+. tabs name="minikube_before_you_begin" >}}
+. tab name="Linux" %}}
 
 <!--
 To check if virtualization is supported on Linux, run the following command and verify that the output is non-empty:
@@ -44,9 +45,9 @@ To check if virtualization is supported on Linux, run the following command and 
 grep -E --color 'vmx|svm' /proc/cpuinfo
 ```
 
-{{% /tab %}}
+. /tab %}}
 
-{{% tab name="macOS" %}}
+. tab name="macOS" %}}
 
 <!--
 To check if virtualization is supported on macOS, run the following command on your terminal.
@@ -64,9 +65,9 @@ If you see `VMX` in the output (should be colored), the VT-x feature is enabled 
 
 如果你在输出结果中看到了 `VMX` （应该会高亮显示）的字眼，说明您的电脑已启用 VT-x 特性。
 
-{{% /tab %}}
+. /tab %}}
 
-{{% tab name="Windows" %}}
+. tab name="Windows" %}}
 <!--
 To check if virtualization is supported on Windows 8 and above, run the following command on your Windows terminal or command prompt.
 -->
@@ -99,8 +100,8 @@ Hyper-V Requirements:     A hypervisor has been detected. Features required for 
 ```
 
 
-{{% /tab %}}
-{{< /tabs >}}
+. /tab %}}
+. /tabs >}}
 
 
 
@@ -112,8 +113,8 @@ Hyper-V Requirements:     A hypervisor has been detected. Features required for 
 
 ## 安装 minikube
 
-{{< tabs name="tab_with_md" >}}
-{{% tab name="Linux" %}}
+. tabs name="tab_with_md" >}}
+. tab name="Linux" %}}
 
 <!--
 ### Install kubectl
@@ -160,7 +161,7 @@ Minikube 还支持使用一个 `--vm-driver=none` 选项，让 Kubernetes 组件
 如果你在 Debian 系的 OS 中使用了 `none` 这种驱动方式，请使用 `.deb` 包安装 Docker，不要使用 snap 包的方式，Minikube 不支持这种方式。
 你可以从 [Docker](https://www.docker.com/products/docker-desktop) 下载 `.deb` 包。
 
-{{< caution >}}
+. caution >}}
 <!--
 The `none` VM driver can result in security and data loss issues.
 Before using `--vm-driver=none`, consult [this documentation](https://minikube.sigs.k8s.io/docs/reference/drivers/none/) for more information.
@@ -168,7 +169,7 @@ Before using `--vm-driver=none`, consult [this documentation](https://minikube.s
 
 `none` VM 驱动方式存在导致安全和数据丢失的问题。
 使用 `--vm-driver=none` 之前，请参考[这个文档](https://minikube.sigs.k8s.io/docs/reference/drivers/none/)获取详细信息。
-{{< /caution >}}
+. /caution >}}
 
 <!--
 Minikube also supports a `vm-driver=podman` similar to the Docker driver. Podman run as superuser privilege (root user) is the best way to ensure that your containers have full access to any feature available on your system.
@@ -177,12 +178,12 @@ Minikube also supports a `vm-driver=podman` similar to the Docker driver. Podman
 Minikube 还支持另外一个类似于 Docker 驱动的方式 `vm-driver=podman`。
 使用超级用户权限（root 用户）运行 Podman 可以最好的确保容器具有足够的权限使用你操作系统上的所有特性。
 
-{{< caution >}}
+. caution >}}
 <!--
 The `podman` driver requires running the containers as root because regular user accounts don’t have full access to all operating system features that their containers might need to run.
 -->
 `Podman` 驱动方式需要以 root 用户身份运行容器，因为普通用户帐户没有足够的权限使用容器运行可能需要的操作系统上的所有特性。
-{{< /caution >}}
+. /caution >}}
 
 <!--
 ### Install Minikube using a package
@@ -239,8 +240,8 @@ As yet another alternative, you can install Minikube using Linux [Homebrew](http
 brew install minikube
 ```
 
-{{% /tab %}}
-{{% tab name="macOS" %}}
+. /tab %}}
+. tab name="macOS" %}}
 
 <!--
 ### Install kubectl
@@ -302,8 +303,8 @@ Here's an easy way to add the Minikube executable to your path:
 sudo mv minikube /usr/local/bin
 ```
 
-{{% /tab %}}
-{{% tab name="Windows" %}}
+. /tab %}}
+. tab name="Windows" %}}
 
 <!--
 ### Install kubectl
@@ -329,12 +330,12 @@ If you do not already have a hypervisor installed, install one of these now:
 
 • [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 
-{{< note >}}
+. note >}}
 <!--
 Hyper-V can run on three versions of Windows 10: Windows 10 Enterprise, Windows 10 Professional, and Windows 10 Education.
 -->
 Hyper-V 可以运行在三个版本的 Windows 10 上：企业版、专业版和教育版（Enterprise, Professional, Education）。
-{{< /note >}}
+. /note >}}
 
 <!--
 ### Install Minikube using Chocolatey
@@ -377,8 +378,8 @@ To install Minikube manually on Windows, download [`minikube-windows-amd64`](htt
 
 想在 Windows 上手动安装 Minikube，下载 [`minikube-windows-amd64`](https://github.com/kubernetes/minikube/releases/latest) 并将其重命名为 `minikube.exe`，然后将其添加至 path 即可。
 
-{{% /tab %}}
-{{< /tabs >}}
+. /tab %}}
+. /tabs >}}
 
 
 
@@ -393,7 +394,7 @@ To confirm successful installation of both a hypervisor and Minikube, you can ru
 
 要确认 hypervisor 和 Minikube 均已成功安装，可以运行以下命令来启动本地 Kubernetes 集群：
 
-{{< note >}}
+. note >}}
 <!--
 For setting the `--vm-driver` with `minikube start`, enter the name of the hypervisor you installed in lowercase letters where `<driver_name>` is mentioned below. A full list of `--vm-driver` values is available in [specifying the VM driver documentation](https://kubernetes.io/docs/setup/learning-environment/minikube/#specifying-the-vm-driver).
 -->
@@ -401,7 +402,7 @@ For setting the `--vm-driver` with `minikube start`, enter the name of the hyper
 通过 `minikube start` 设置 `--vm-driver`。在下面提到 `<driver_name>` 的地方，用小写字母，输入你安装的 hypervisor 的名称。
 [指定 VM 驱动程序](https://kubernetes.io/docs/setup/learning-environment/minikube/#specifying-the-vm-driver) 列举了 `--vm-driver` 值的完整列表
 
-{{< /note >}}
+. /note >}}
 
 ```shell
 minikube start --vm-driver=<driver_name>
@@ -473,7 +474,7 @@ minikube delete
 ```
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 

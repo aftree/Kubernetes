@@ -1,4 +1,4 @@
 ---
-title: "扩展 Kubernetes"
+title: "😝 - 扩展 Kubernetes"
 weight: 90
 ---

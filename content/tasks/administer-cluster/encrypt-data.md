@@ -21,10 +21,10 @@ This page shows how to enable and configure encryption of secret data at rest.
 本文展示如何启用和配置静态 Secret 数据的加密
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-* {{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+* . include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 <!--
 * Kubernetes version 1.7.0 or later is required
@@ -41,12 +41,12 @@ This page shows how to enable and configure encryption of secret data at rest.
 
 
 
-{{< toc >}}
+. toc >}}
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 

@@ -22,10 +22,10 @@ for Pods running in a cluster.
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 
@@ -102,14 +102,14 @@ jsonpath 解释如下：
 - `.containers[*]`: 对于每个容器
 - `.image`: 获取镜像
 
-{{< note >}}
+. note >}}
 <!--
 When fetching a single Pod by name, e.g. `kubectl get pod nginx`,
 the `.items[*]` portion of the path should be omitted because a single
 Pod is returned instead of a list of items.
 -->
 **注意：** 按名字获取单个 Pod 时，例如 `kubectl get pod nginx`，路径的 `.items[*]` 部分应该省略，因为返回的是一个 Pod 而不是一个项目列表。
-{{< /note >}}
+. /note >}}
 
 <!--
 ## List Containers by Pod
@@ -177,7 +177,7 @@ kubectl get pods --all-namespaces -o go-template --template="{{range .items}}{{r
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 <!--

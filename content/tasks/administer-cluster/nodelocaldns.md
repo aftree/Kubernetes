@@ -23,10 +23,10 @@ This page provides an overview of NodeLocal DNSCache feature in Kubernetes.
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
- {{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+ . include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
  <!-- steps -->
@@ -95,9 +95,9 @@ This is the path followed by DNS Queries after NodeLocal DNSCache is enabled:
 
 
 <!--
-{{< figure src="/images/docs/nodelocaldns.svg" alt="NodeLocal DNSCache flow" title="Nodelocal DNSCache flow" caption="This image shows how NodeLocal DNSCache handles DNS queries." >}}
+. figure src="/images/docs/nodelocaldns.svg" alt="NodeLocal DNSCache flow" title="Nodelocal DNSCache flow" caption="This image shows how NodeLocal DNSCache handles DNS queries." >}}
 -->
-{{< figure src="/images/docs/nodelocaldns.svg" alt="NodeLocal DNSCache 流" title="Nodelocal DNSCache 流" caption="此图显示了 NodeLocal DNSCache 如何处理 DNS 查询。" >}}
+. figure src="/images/docs/nodelocaldns.svg" alt="NodeLocal DNSCache 流" title="Nodelocal DNSCache 流" caption="此图显示了 NodeLocal DNSCache 如何处理 DNS 查询。" >}}
 
 <!--
 ## Configuration

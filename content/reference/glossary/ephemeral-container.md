@@ -9,7 +9,7 @@ aka:
 tags:
 - fundamental
 ---
-  您可以在 {{< glossary_tooltip term_id="pod" >}} 中临时运行的一种 {{< glossary_tooltip term_id="container" >}} 类型 
+  您可以在 . glossary_tooltip term_id="pod" >}} 中临时运行的一种 . glossary_tooltip term_id="container" >}} 类型 
 
 <!--
 ---
@@ -24,7 +24,7 @@ aka:
 tags:
 - fundamental
 ---
-A {{< glossary_tooltip term_id="container" >}} type that you can temporarily run inside a {{< glossary_tooltip term_id="pod" >}}.
+A . glossary_tooltip term_id="container" >}} type that you can temporarily run inside a . glossary_tooltip term_id="pod" >}}.
 -->
 
 <!--more-->

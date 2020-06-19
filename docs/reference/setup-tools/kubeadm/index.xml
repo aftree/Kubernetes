@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kubeadm on Hugo 主题的 Learn 文档</title>
+    <link>https://lijun.in/reference/setup-tools/kubeadm/</link>
+    <description>Recent content in Kubeadm on Hugo 主题的 Learn 文档</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://lijun.in/reference/setup-tools/kubeadm/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>kubeadm 概述</title>
+      <link>https://lijun.in/reference/setup-tools/kubeadm/kubeadm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/reference/setup-tools/kubeadm/kubeadm/</guid>
+      <description>kubeadm 通过执行必要的操作来启动和运行一个最小可用的集群。它被故意设计为只关心启动集群，而不是准备节点环境的工作。同样的，诸如安装各种各样的可有可无的插件，例如 Kubernetes 控制面板、监控解决方案以及特定云提供商的插件，这些都不在它负责的范围。
+相反，我们期望由一个基于 kubeadm 从更高层设计的更加合适的工具来做这些事情；并且，理想情况下，使用 kubeadm 作为所有部署的基础将会使得创建一个符合期望的集群变得容易。
+接下可以做什么  kubeadm init 启动一个 Kubernetes 主节点   kubeadm join 启动一个 Kubernetes 工作节点并且将其加入到集群   kubeadm upgrade 更新一个 Kubernetes 集群到新版本   kubeadm config 如果你使用 kubeadm v1.7.x 或者更低版本，你需要对你的集群做一些配置以便使用 kubeadm upgrade 命令   kubeadm token 使用 kubeadm join 来管理令牌   kubeadm reset 还原之前使用 kubeadm init 或者 kubeadm join 对节点产生的改变   kubeadm version 打印出 kubeadm 版本   kubeadm alpha 预览一组可用的新功能以便从社区搜集反馈  </description>
+    </item>
+    
+    <item>
+      <title>kubeadm init</title>
+      <link>https://lijun.in/reference/setup-tools/kubeadm/kubeadm-init/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/reference/setup-tools/kubeadm/kubeadm-init/</guid>
+      <description>此命令初始化一个 Kubernetes 控制平面节点。
+. include &amp;ldquo;generated/kubeadm_init.md&amp;rdquo; &amp;gt;}}
+Init 命令的工作流程 kubeadm init 命令通过执行下列步骤来启动一个 Kubernetes 控制平面节点。
+ 在做出变更前运行一系列的预检项来验证系统状态。一些检查项目仅仅触发警告，其它的则会被视为错误并且退出 kubeadm，除非问题得到解决或者用户指定了 --ignore-preflight-errors=&amp;lt;list-of-errors&amp;gt; 参数。  生成一个自签名的 CA 证书 (或者使用现有的证书，如果提供的话) 来为集群中的每一个组件建立身份标识。如果用户已经通过 --cert-dir 配置的证书目录（默认为 /etc/kubernetes/pki）提供了他们自己的 CA 证书以及/或者密钥， 那么将会跳过这个步骤，正如文档使用自定义证书所述。如果指定了 --apiserver-cert-extra-sans 参数, APIServer 的证书将会有额外的 SAN 条目，如果必要的话，将会被转为小写。  将 kubeconfig 文件写入 /etc/kubernetes/ 目录以便 kubelet、控制器管理器和调度器用来连接到 API 服务器，它们每一个都有自己的身份标识，同时生成一个名为 admin.conf 的独立的 kubeconfig 文件，用于管理操作。  为 API 服务器、控制器管理器和调度器生成静态 Pod 的清单文件。假使没有提供一个外部的 etcd 服务的话，也会为 etcd 生成一份额外的静态 Pod 清单文件。  静态 Pod 的清单文件被写入到 /etc/kubernetes/manifests 目录; kubelet 会监视这个目录以便在系统启动的时候创建 Pod。</description>
+    </item>
+    
+    <item>
+      <title>kubeadm join</title>
+      <link>https://lijun.in/reference/setup-tools/kubeadm/kubeadm-join/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/reference/setup-tools/kubeadm/kubeadm-join/</guid>
+      <description>此命令用来初始化 Kubernetes 工作节点并将其加入集群。
+. include &amp;ldquo;generated/kubeadm_join.md&amp;rdquo; &amp;gt;}}
+加入流程 kubeadm join 初始化 Kubernetes 工作节点并将其加入集群。 该操作过程包含下面几个步骤：
+  kubeadm 从 API 服务器下载必要的集群信息。 默认情况下，它使用引导令牌和 CA 密钥哈希来验证数据的真实性。 也可以通过文件或 URL 直接发现根 CA。
+  如果调用 kubeadm 时启用了 --feature-gates=DynamicKubeletConfig，它首先从主机上检索 kubelet 初始化配置并将其写入磁盘。 当 kubelet 启动时，kubeadm 更新节点的 Node.spec.configSource 属性。 进一步了解动态 kubelet 配置 请参考 使用配置文件设置 Kubelet 参数 和 重新配置集群中节点的 Kubelet。
+  一旦知道集群信息，kubelet 就可以开始 TLS 引导过程。 TLS 引导程序使用共享令牌与 Kubernetes API 服务器进行临时的身份验证，以提交证书签名请求 (CSR)； 默认情况下，控制平面自动对该 CSR 请求进行签名。
+  最后，kubeadm 配置本地 kubelet 使用分配给节点的确定标识连接到 API 服务器。</description>
+    </item>
+    
+    <item>
+      <title>kubeadm upgrade</title>
+      <link>https://lijun.in/reference/setup-tools/kubeadm/kubeadm-upgrade/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/reference/setup-tools/kubeadm/kubeadm-upgrade/</guid>
+      <description>kubeadm upgrade 是一个对用户友好的命令，它将复杂的升级逻辑包装在一个命令后面，支持升级的规划和实际执行。
+kubeadm 升级指南 本文档概述了使用 kubeadm 执行升级的步骤。 有关 kubeadm 旧版本，请参阅 Kubernetes 网站的旧版文档。
+您可以使用 kubeadm upgrade diff 来查看将应用于静态 pod 清单的更改。
+要在 Kubernetes v1.13.0 及更高版本中使用 kube-dns 进行升级，请遵循本指南。
+在 Kubernetes v1.15.0 和更高版本中，kubeadm upgrade apply 和 kubeadm upgrade node 也将自动续订该节点上的 kubeadm 托管证书，包括存储在 kubeconfig 文件中的证书。 要选择退出，可以传递参数 --certificate-renewal=false。有关证书续订的更多详细信息请参见证书管理文档。
+kubeadm upgrade plan . include &amp;ldquo;generated/kubeadm_upgrade_plan.md&amp;rdquo; &amp;gt;}}
+kubeadm upgrade apply  . include &amp;ldquo;generated/kubeadm_upgrade_apply.md&amp;rdquo; &amp;gt;}}
+kubeadm upgrade diff . include &amp;ldquo;generated/kubeadm_upgrade_diff.md&amp;rdquo; &amp;gt;}}
+kubeadm upgrade node . include &amp;ldquo;generated/kubeadm_upgrade_node.</description>
+    </item>
+    
+    <item>
+      <title>kubeadm config</title>
+      <link>https://lijun.in/reference/setup-tools/kubeadm/kubeadm-config/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/reference/setup-tools/kubeadm/kubeadm-config/</guid>
+      <description>从 v1.8.0 开始，kubeadm 将集群的配置上传到名为 kube-system 的 ConfigMap 对象中，对象位于 kube-system 命名空间内。并在以后的升级中读取这个 ConfigMap 配置对象。 这样可以保证系统组件的正确配置，提供无缝的用户体验。
+您可以执行 kubeadm config view 来查看 ConfigMap。如果使用 kubeadm v1.7.x 或更低版本来初始化群集，必须先使用 kubeadm config upload 创建 ConfigMap，然后才能使用 kubeadm upgrade。
+在 Kubernetes v1.11.0 中，添加了一些新命令。你可以使用 kubeadm config print-default 打印默认配置，可以用 kubeadm config migrate 来将旧的配置文件转换到较新的版本，还可以使用 kubeadm config images list 和 kubeadm config images pull 列出并拉取 kubeadm 所需的镜像。
+kubeadm config upload from-file kubeadm config view . include &amp;ldquo;generated/kubeadm_config_view.md&amp;rdquo; &amp;gt;}}
+kubeadm config print init-defaults . include &amp;ldquo;generated/kubeadm_config_print_init-defaults.</description>
+    </item>
+    
+    <item>
+      <title>kubeadm reset</title>
+      <link>https://lijun.in/reference/setup-tools/kubeadm/kubeadm-reset/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/reference/setup-tools/kubeadm/kubeadm-reset/</guid>
+      <description>该命令尽力还原由 kubeadm init 或 kubeadm join 所做的更改。
+. include &amp;ldquo;generated/kubeadm_reset.md&amp;rdquo; &amp;gt;}}
+Reset 工作流程 kubeadm reset 负责从使用 kubeadm init 或 kubeadm join 命令创建的文件中清除节点本地文件系统。对于控制平面节点，reset 还从 etcd 集群中删除该节点的本地 etcd 堆成员，还从 kubeadm ClusterStatus 对象中删除该节点的信息。 ClusterStatus 是一个 kubeadm 管理的 Kubernetes API 对象，该对象包含 kube-apiserver 端点列表。
+kubeadm reset phase 可用于执行上述工作流程的各个阶段。 要跳过阶段列表，您可以使用 --skip-phases 参数，该参数的工作方式类似于 kubeadm join 和 kubeadm init 阶段运行器。
+外部 etcd 清理 如果使用了外部 etcd，kubeadm reset 将不会删除任何 etcd 中的数据。这意味着，如果再次使用相同的 etcd 端点运行 kubeadm init，您将看到先前集群的状态。
+要清理 etcd 中的数据，建议您使用 etcdctl 这样的客户端，例如：</description>
+    </item>
+    
+    <item>
+      <title>kubeadm 令牌</title>
+      <link>https://lijun.in/reference/setup-tools/kubeadm/kubeadm-token/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/reference/setup-tools/kubeadm/kubeadm-token/</guid>
+      <description>如使用引导令牌进行身份验证所描述的，引导令牌用于在即将加入集群的节点和主节点间建立双向认证。
+kubeadm init 创建了一个有效期为 24 小时的令牌，下面的命令允许您管理令牌，也可以创建和管理新的令牌。
+kubeadm token create . include &amp;ldquo;generated/kubeadm_token_create.md&amp;rdquo; &amp;gt;}}
+kubeadm token delete . include &amp;ldquo;generated/kubeadm_token_delete.md&amp;rdquo; &amp;gt;}}
+kubeadm token generate . include &amp;ldquo;generated/kubeadm_token_generate.md&amp;rdquo; &amp;gt;}}
+kubeadm token list . include &amp;ldquo;generated/kubeadm_token_list.md&amp;rdquo; &amp;gt;}}
+. heading &amp;ldquo;whatsnext&amp;rdquo; %}}  kubeadm join 引导 Kubernetes 工作节点并将其加入群集  </description>
+    </item>
+    
+    <item>
+      <title>kubeadm version</title>
+      <link>https://lijun.in/reference/setup-tools/kubeadm/kubeadm-version/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/reference/setup-tools/kubeadm/kubeadm-version/</guid>
+      <description>此命令用来查询 kubeadm 的版本。
+. include &amp;ldquo;generated/kubeadm_version.md&amp;rdquo; &amp;gt;}}</description>
+    </item>
+    
+    <item>
+      <title>kubeadm alpha</title>
+      <link>https://lijun.in/reference/setup-tools/kubeadm/kubeadm-alpha/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/reference/setup-tools/kubeadm/kubeadm-alpha/</guid>
+      <description>. caution &amp;gt;}}
+kubeadm alpha 提供了一组可用于收集社区反馈的功能的预览。请尝试一下这些功能并给我们反馈！ . /caution &amp;gt;}}
+kubeadm alpha certs renew 使用 all 子命令来更新所有 Kubernetes 证书或有选择性地更新它们。有关证书到期和续订的更多详细信息，请参见证书管理文档。
+. tabs name=&amp;quot;tab-certs-renew&amp;rdquo; &amp;gt;}} . tab name=&amp;quot;renew&amp;rdquo; include=&amp;quot;generated/kubeadm_alpha_certs_renew.md&amp;rdquo; /&amp;gt;}} . tab name=&amp;quot;all&amp;rdquo; include=&amp;quot;generated/kubeadm_alpha_certs_renew_all.md&amp;rdquo; /&amp;gt;}} . tab name=&amp;quot;admin.conf&amp;rdquo; include=&amp;quot;generated/kubeadm_alpha_certs_renew_admin.conf.md&amp;rdquo; /&amp;gt;}} . tab name=&amp;quot;apiserver-etcd-client&amp;rdquo; include=&amp;quot;generated/kubeadm_alpha_certs_renew_apiserver-etcd-client.md&amp;rdquo; /&amp;gt;}} . tab name=&amp;quot;apiserver-kubelet-client&amp;rdquo; include=&amp;quot;generated/kubeadm_alpha_certs_renew_apiserver-kubelet-client.md&amp;rdquo; /&amp;gt;}} . tab name=&amp;quot;apiserver&amp;rdquo; include=&amp;quot;generated/kubeadm_alpha_certs_renew_apiserver.md&amp;rdquo; /&amp;gt;}} . tab name=&amp;quot;controller-manager.conf&amp;rdquo; include=&amp;quot;generated/kubeadm_alpha_certs_renew_controller-manager.conf.md&amp;rdquo; /&amp;gt;}} . tab name=&amp;quot;etcd-healthcheck-client&amp;rdquo; include=&amp;quot;generated/kubeadm_alpha_certs_renew_etcd-healthcheck-client.md&amp;rdquo; /&amp;gt;}} . tab name=&amp;quot;etcd-peer&amp;rdquo; include=&amp;quot;generated/kubeadm_alpha_certs_renew_etcd-peer.md&amp;rdquo; /&amp;gt;}} . tab name=&amp;quot;etcd-server&amp;rdquo; include=&amp;quot;generated/kubeadm_alpha_certs_renew_etcd-server.</description>
+    </item>
+    
+    <item>
+      <title>kubeadm init phase</title>
+      <link>https://lijun.in/reference/setup-tools/kubeadm/kubeadm-init-phase/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/reference/setup-tools/kubeadm/kubeadm-init-phase/</guid>
+      <description>kubeadm init phase 能确保调用引导过程的原子步骤。因此，如果希望自定义应用，则可以让 kubeadm 做一些工作，然后填补空白。
+kubeadm init phase 与 kubeadm init 工作流程一致，后台都使用相同的代码。
+kubeadm init phase preflight 使用此命令可以在控制平面节点上执行启动前检查。
+. tabs name=&amp;quot;tab-preflight&amp;rdquo; &amp;gt;}} . tab name=&amp;quot;preflight&amp;rdquo; include=&amp;quot;generated/kubeadm_init_phase_preflight.md&amp;rdquo; /&amp;gt;}} . /tabs &amp;gt;}}
+kubeadm init phase kubelet-start 此阶段将检查 kubelet 配置文件和环境文件，然后启动 kubelet。
+. tabs name=&amp;quot;tab-kubelet-start&amp;rdquo; &amp;gt;}} . tab name=&amp;quot;kubelet-start&amp;rdquo; include=&amp;quot;generated/kubeadm_init_phase_kubelet-start.md&amp;rdquo; /&amp;gt;}} . /tabs &amp;gt;}}
+kubeadm init phase certs 该阶段可用于创建 kubeadm 所需的所有证书。
+. tabs name=&amp;quot;tab-certs&amp;rdquo; &amp;gt;}} . tab name=&amp;quot;certs&amp;rdquo; include=&amp;quot;generated/kubeadm_init_phase_certs.md&amp;rdquo; /&amp;gt;}} . tab name=&amp;quot;all&amp;rdquo; include=&amp;quot;generated/kubeadm_init_phase_certs_all.md&amp;rdquo; /&amp;gt;}} .</description>
+    </item>
+    
+    <item>
+      <title>kubeadm join phase</title>
+      <link>https://lijun.in/reference/setup-tools/kubeadm/kubeadm-join-phase/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/reference/setup-tools/kubeadm/kubeadm-join-phase/</guid>
+      <description>kubeadm join phase 使您能够调用 join 过程的基本原子步骤。因此，如果希望执行自定义操作，可以让 kubeadm 做一些工作，然后由用户来补足剩余操作。
+kubeadm join phase 与 kubeadm join 工作流程 一致，后台都使用相同的代码。
+kubeadm join phase . tabs name=&amp;quot;tab-phase&amp;rdquo; &amp;gt;}} . tab name=&amp;quot;phase&amp;rdquo; include=&amp;quot;generated/kubeadm_join_phase.md&amp;rdquo; /&amp;gt;}} . /tabs &amp;gt;}}
+kubeadm join phase preflight 使用此命令可以在即将加入集群的节点上执行启动前检查。
+. tabs name=&amp;quot;tab-preflight&amp;rdquo; &amp;gt;}} . tab name=&amp;quot;preflight&amp;rdquo; include=&amp;quot;generated/kubeadm_join_phase_preflight.md&amp;rdquo; /&amp;gt;}} . /tabs &amp;gt;}}
+kubeadm join phase control-plane-prepare 使用此阶段，您可以准备一个作为控制平面的节点。
+. tabs name=&amp;quot;tab-control-plane-prepare&amp;rdquo; &amp;gt;}} . tab name=&amp;quot;control-plane-prepare&amp;rdquo; include=&amp;quot;generated/kubeadm_join_phase_control-plane-prepare.md&amp;rdquo; /&amp;gt;}} . tab name=&amp;quot;all&amp;rdquo; include=&amp;quot;generated/kubeadm_join_phase_control-plane-prepare_all.md&amp;rdquo; /&amp;gt;}} . tab name=&amp;quot;download-certs&amp;rdquo; include=&amp;quot;generated/kubeadm_join_phase_control-plane-prepare_download-certs.</description>
+    </item>
+    
+    <item>
+      <title>kubeadm reset phase</title>
+      <link>https://lijun.in/reference/setup-tools/kubeadm/kubeadm-reset-phase/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/reference/setup-tools/kubeadm/kubeadm-reset-phase/</guid>
+      <description>kubeadm reset phase 使您能够调用 reset 过程的基本原子步骤。因此，如果希望执行自定义操作，可以让 kubeadm 做一些工作，然后由用户来补足剩余操作。
+kubeadm reset phase 与 kubeadm reset 工作流程 一致，后台都使用相同的代码。
+kubeadm reset phase . tabs name=&amp;quot;tab-phase&amp;rdquo; &amp;gt;}} . tab name=&amp;quot;phase&amp;rdquo; include=&amp;quot;generated/kubeadm_reset_phase.md&amp;rdquo; /&amp;gt;}} . /tabs &amp;gt;}}
+kubeadm reset phase preflight 使用此阶段，您可以在要重置的节点上执行启动前检查阶段。
+. tabs name=&amp;quot;tab-preflight&amp;rdquo; &amp;gt;}} . tab name=&amp;quot;preflight&amp;rdquo; include=&amp;quot;generated/kubeadm_reset_phase_preflight.md&amp;rdquo; /&amp;gt;}} . /tabs &amp;gt;}}
+kubeadm reset phase update-cluster-status 使用此阶段，您可以从 ClusterStatus 对象中删除此控制平面节点。
+. tabs name=&amp;quot;tab-update-cluster-status&amp;rdquo; &amp;gt;}} . tab name=&amp;quot;update-cluster-status&amp;rdquo; include=&amp;quot;generated/kubeadm_reset_phase_update-cluster-status.md&amp;rdquo; /&amp;gt;}} . /tabs &amp;gt;}}
+kubeadm reset phase remove-etcd-member 使用此阶段，您可以从 etcd 集群中删除此控制平面节点的 etcd 成员。</description>
+    </item>
+    
+    <item>
+      <title>kubeadm upgrade phase</title>
+      <link>https://lijun.in/reference/setup-tools/kubeadm/kubeadm-upgrade-phase/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/reference/setup-tools/kubeadm/kubeadm-upgrade-phase/</guid>
+      <description>在 Kubernetes v1.15.0 版本中，kubeadm 引入了对 kubeadm upgrade node 阶段的初步支持。其他 kubeadm upgrade 子命令如 apply 等阶段将在未来发行版中添加。
+kubeadm upgrade node phase 使用此阶段，可以选择执行辅助控制平面或工作节点升级的单独步骤。请注意，kubeadm upgrade apply 命令仍然必须在主控制平面节点上调用。
+. tabs name=&amp;quot;tab-phase&amp;rdquo; &amp;gt;}} . tab name=&amp;quot;phase&amp;rdquo; include=&amp;quot;generated/kubeadm_upgrade_node_phase.md&amp;rdquo; /&amp;gt;}} . tab name=&amp;quot;control-plane&amp;rdquo; include=&amp;quot;generated/kubeadm_upgrade_node_phase_control-plane.md&amp;rdquo; /&amp;gt;}} . tab name=&amp;quot;kubelet-config&amp;rdquo; include=&amp;quot;generated/kubeadm_upgrade_node_phase_kubelet-config.md&amp;rdquo; /&amp;gt;}} . /tabs &amp;gt;}}
+接下来  kubeadm init 引导一个 Kubernetes 控制平面节点 kubeadm join 将节点加入到群集 kubeadm reset 还原 kubeadm init 或 kubeadm join 命令对主机所做的任何更改 kubeadm upgrade 升级 kubeadm 节点 kubeadm alpha 尝试实验性功能  </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -10,7 +10,7 @@ content_type: tutorial
 
 
 
-## {{% heading "objectives" %}}
+## . heading "objectives" %}}
 
 
 * 在环境中通过磁盘创建一个PersistentVolume.
@@ -20,12 +20,12 @@ content_type: tutorial
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-* {{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+* . include "task-tutorial-prereqs.md" >}} . version-check >}}
 
-* {{< include "default-storage-class-prereqs.md" >}}
+* . include "default-storage-class-prereqs.md" >}}
 
 
 
@@ -36,8 +36,8 @@ content_type: tutorial
 注意: 在配置的 yaml 文件中定义密码的做法是不安全的. 具体安全解决方案请参考
 [Kubernetes Secrets](/docs/concepts/configuration/secret/).
 
-{{< codenew file="application/mysql/mysql-deployment.yaml" >}}
-{{< codenew file="application/mysql/mysql-pv.yaml" >}}
+. codenew file="application/mysql/mysql-deployment.yaml" >}}
+. codenew file="application/mysql/mysql-pv.yaml" >}}
 
 1. 部署 YAML 文件中定义的 PV 和 PVC：
 
@@ -50,7 +50,7 @@ content_type: tutorial
 1. 展示 Deployment 相关信息:
 
         kubectl describe deployment mysql
-
+    
         Name:                 mysql
         Namespace:            default
         CreationTimestamp:    Tue, 01 Nov 2016 11:18:45 -0700
@@ -91,14 +91,14 @@ content_type: tutorial
 1. 列举出 Deployment 创建的 pods:
 
         kubectl get pods -l app=mysql
-
+    
         NAME                   READY     STATUS    RESTARTS   AGE
         mysql-63082529-2z3ki   1/1       Running   0          3m
 
 1. 查看 PersistentVolumeClaim:
 
         kubectl describe pvc mysql-pv-claim
-
+    
         Name:         mysql-pv-claim
         Namespace:    default
         StorageClass:
@@ -163,7 +163,7 @@ kubectl delete pv mysql-pv-volume
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 * 了解更多 Deployment 对象请参考 [Deployment objects](/docs/concepts/workloads/controllers/deployment/).

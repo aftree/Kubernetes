@@ -29,10 +29,10 @@ and provides recommendations on overall security.
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-* {{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+* . include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 
@@ -265,20 +265,20 @@ credentials from the API servers to their etcd server, such as mutual auth via T
 and it is often recommended to isolate the etcd servers behind a firewall that only the API servers
 may access.
 
-{{< caution >}}
+. caution >}}
 Allowing other components within the cluster to access the master etcd instance with
 read or write access to the full keyspace is equivalent to granting cluster-admin access. Using
 separate etcd instances for non-master components or using etcd ACLs to restrict read and write
 access to a subset of the keyspace is strongly recommended.
-{{< /caution >}}
+. /caution >}}
 -->
 ### 限制访问 etcd
 
 对于 API 来说，拥有 etcd 后端的写访问权限，相当于获得了整个集群的 root 权限，并且可以使用写访问权限来相当快速地升级。从 API 服务器访问它们的 etcd 服务器，管理员应该使用广受信任的凭证，如通过 TLS 客户端证书的相互认证。往往，我们建议将 etcd 服务器隔离到只有API服务器可以访问的防火墙后面。
 
-{{< caution >}}
+. caution >}}
 允许集群中其它组件拥有读或写全空间的权限去访问 etcd 实例，相当于授予群集管理员访问的权限。对于非 master 组件，强烈推荐使用单独的 etcd 实例，或者使用 etcd 的访问控制列表去限制只能读或者写空间的一个子集。
-{{< /caution >}}
+. /caution >}}
 
 <!--
 ### Enable audit logging

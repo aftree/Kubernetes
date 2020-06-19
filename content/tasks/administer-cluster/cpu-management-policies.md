@@ -18,7 +18,7 @@ content_type: task
 
 <!-- overview -->
 
-{{< feature-state for_k8s_version="v1.12" state="beta" >}}
+. feature-state for_k8s_version="v1.12" state="beta" >}}
 
 <!--
 Kubernetes keeps many aspects of how pods execute on nodes abstracted
@@ -33,10 +33,10 @@ directives.
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 
@@ -120,35 +120,35 @@ using the [cpuset cgroup controller](https://www.kernel.org/doc/Documentation/cg
 `static` 策略针对具有整数型 CPU `requests` 的 `Guaranteed` pod ，它允许该类 pod 中的容器访问节点上的独占 CPU 资源。这种独占性是使用 [cpuset cgroup 控制器](https://www.kernel.org/doc/Documentation/cgroup-v1/cpusets.txt) 来实现的。
 
 <!--
-{{< note >}}
+. note >}}
 System services such as the container runtime and the kubelet itself can continue to run on these exclusive CPUs.  The exclusivity only extends to other pods.
-{{< /note >}}
+. /note >}}
 --->
-{{< note >}}
+. note >}}
 诸如容器运行时和 kubelet 本身的系统服务可以继续在这些独占 CPU 上运行。独占性仅针对其他 pod。
-{{< /note >}}
+. /note >}}
 
 <!--
-{{< note >}}
+. note >}}
 The alpha version of this policy does not guarantee static
 exclusive allocations across Kubelet restarts.
-{{< /note >}}
+. /note >}}
 --->
-{{< note >}}
+. note >}}
 该策略的 alpha 版本不保证 Kubelet 重启前后的静态独占性分配。
-{{< /note >}}
+. /note >}}
 
 <!--
-{{< note >}}
+. note >}}
 CPU Manager doesn't support offlining and onlining of
 CPUs at runtime. Also, if the set of online CPUs changes on the node,
 the node must be drained and CPU manager manually reset by deleting the
 state file `cpu_manager_state` in the kubelet root directory.
-{{< /note >}}
+. /note >}}
 --->
-{{< note >}}
+. note >}}
 CPU 管理器不支持运行时下线和上线 CPUs。此外，如果节点上的在线 CPUs 集合发生变化，则必须驱逐节点上的 pods，并通过删除 kubelet 根目录中的状态文件 `cpu_manager_state`  来手动重置 CPU 管理器。
-{{< /note >}}
+. /note >}}
 
 <!--
 This policy manages a shared pool of CPUs that initially contains all CPUs in the
@@ -172,16 +172,16 @@ exclusive CPUs.
 的 CPU 集合。`Guaranteed` pod 中的容器，如果声明了非整数值的 CPU `requests` ，也将运行在共享池的 CPU 上。只有 `Guaranteed` pod 中，指定了整数型 CPU `requests` 的容器，才会被分配独占 CPU 资源。
 
 <!--
-{{< note >}}
+. note >}}
 The kubelet requires a CPU reservation greater than zero be made
 using either `--kube-reserved` and/or `--system-reserved`  or `--reserved-cpus` when the static
 policy is enabled. This is because zero CPU reservation would allow the shared
 pool to become empty.
-{{< /note >}}
+. /note >}}
 --->
-{{< note >}}
+. note >}}
 当启用 static 策略时，要求使用 `--kube-reserved` 和/或 `--system-reserved` 或 `--reserved-cpus` 来保证预留的 CPU 值大于零。 这是因为零预留 CPU 值可能使得共享池变空。
-{{< /note >}}
+. /note >}}
 
 <!--
 As `Guaranteed` pods whose containers fit the requirements for being statically

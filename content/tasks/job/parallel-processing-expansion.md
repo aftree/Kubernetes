@@ -39,7 +39,7 @@ First, download the following template of a job to a file called `job-tmpl.yaml`
 -->
 首先，将以下作业模板下载到名为 `job-tmpl.yaml` 的文件中。
 
-{{< codenew file="application/job/job-tmpl.yaml" >}}
+. codenew file="application/job/job-tmpl.yaml" >}}
 
 <!--
 Unlike a *pod template*, our *job template* is not a Kubernetes API type.  It is just

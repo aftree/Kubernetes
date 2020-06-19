@@ -60,7 +60,7 @@ Pod 使用来自 Google [容器仓库](https://cloud.google.com/container-regist
 ## 快速入门
 
 
-{{< codenew file="application/cassandra/cassandra-service.yaml" >}}
+. codenew file="application/cassandra/cassandra-service.yaml" >}}
 
 如果你希望直接跳到我们使用的命令，以下是全部步骤：
 
@@ -77,7 +77,7 @@ Pod 使用来自 Google [容器仓库](https://cloud.google.com/container-regist
 kubectl apply -f https://k8s.io/examples/application/cassandra/cassandra-service.yaml
 ```
 
-{{< codenew file="application/cassandra/cassandra-statefulset.yaml" >}}
+. codenew file="application/cassandra/cassandra-statefulset.yaml" >}}
 
 ```
 # 创建 statefulset

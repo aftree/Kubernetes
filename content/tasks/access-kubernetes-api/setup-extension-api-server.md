@@ -12,6 +12,7 @@ weight: 15
 ---
 title: Setup an extension API server
 reviewers:
+
 - lavalamp
 - cheftako
 - chenopis
@@ -29,7 +30,7 @@ Setting up an extension API server to work the aggregation layer allows the Kube
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
 <!--
@@ -41,10 +42,10 @@ Setting up an extension API server to work the aggregation layer allows the Kube
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 
@@ -98,7 +99,7 @@ Alternatively, you can use an existing 3rd party solution, such as [apiserver-bu
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 <!--

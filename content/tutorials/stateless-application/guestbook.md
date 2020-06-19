@@ -10,6 +10,7 @@ weight: 20
 ---
 title: "Example: Deploying PHP Guestbook application with Redis"
 reviewers:
+
 - ahmetb
 content_type: tutorial
 weight: 20
@@ -37,7 +38,7 @@ This tutorial shows you how to build and deploy a simple, multi-tier web applica
 
 
 
-## {{% heading "objectives" %}}
+## . heading "objectives" %}}
 
 
 <!--
@@ -56,12 +57,12 @@ This tutorial shows you how to build and deploy a simple, multi-tier web applica
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}}
+. include "task-tutorial-prereqs.md" >}}
 
-{{< version-check >}}
+. version-check >}}
 
 
 
@@ -89,7 +90,7 @@ The manifest file, included below, specifies a Deployment controller that runs a
 -->
 下面包含的清单文件指定了一个 Deployment 控制器，该控制器运行一个 Redis 主节点 Pod 副本。
 
-{{< codenew file="application/guestbook/redis-master-deployment.yaml" >}}
+. codenew file="application/guestbook/redis-master-deployment.yaml" >}}
 
 <!--
 1. Launch a terminal window in the directory you downloaded the manifest files.
@@ -129,14 +130,14 @@ The manifest file, included below, specifies a Deployment controller that runs a
      kubectl logs -f POD-NAME
      ```
 
-{{< note >}}
+. note >}}
 
 <!--
 Replace POD-NAME with the name of your Pod.
 -->
 将 POD-NAME 替换为您的 Pod 名称。
 
-{{< /note >}}
+. /note >}}
 
 <!--
 ### Creating the Redis Master Service
@@ -149,7 +150,7 @@ The guestbook applications needs to communicate to the Redis master to write its
 -->
 留言板应用程序需要往 Redis 主节点中写数据。因此，需要创建 [Service](/zh/docs/concepts/services-networking/service/) 来代理 Redis 主节点 Pod 的流量。Service 定义了访问 Pod 的策略。
 
-{{< codenew file="application/guestbook/redis-master-service.yaml" >}}
+. codenew file="application/guestbook/redis-master-service.yaml" >}}
 
 <!--
 1. Apply the Redis Master Service from the following `redis-master-service.yaml` file:
@@ -180,14 +181,14 @@ The guestbook applications needs to communicate to the Redis master to write its
       redis-master   ClusterIP   10.0.0.151   <none>        6379/TCP   8s
       ```
 
-{{< note >}}
+. note >}}
 
 <!--
 This manifest file creates a Service named `redis-master` with a set of labels that match the labels previously defined, so the Service routes network traffic to the Redis master Pod.
 -->
 这个清单文件创建了一个名为 `Redis-master` 的 Service，其中包含一组与前面定义的标签匹配的标签，因此服务将网络流量路由到 Redis 主节点 Pod 上。
 
-{{< /note >}}
+. /note >}}
 
 <!--
 ## Start up the Redis Slaves
@@ -217,7 +218,7 @@ If there are not any replicas running, this Deployment would start the two repli
 如果没有任何副本正在运行，则此 Deployment 将启动容器集群上的两个副本。相反，
 如果有两个以上的副本在运行，那么它的规模就会缩小，直到运行两个副本为止。
 
-{{< codenew file="application/guestbook/redis-slave-deployment.yaml" >}}
+. codenew file="application/guestbook/redis-slave-deployment.yaml" >}}
 
 <!--
 1. Apply the Redis Slave Deployment from the `redis-slave-deployment.yaml` file:
@@ -262,7 +263,7 @@ The guestbook application needs to communicate to Redis slaves to read data. To 
 为了便于 Redis 从节点可发现，
 您需要设置一个 Service。Service 为一组 Pod 提供负载均衡。
 
-{{< codenew file="application/guestbook/redis-slave-service.yaml" >}}
+. codenew file="application/guestbook/redis-slave-service.yaml" >}}
 
 <!--
 1. Apply the Redis Slave Service from the following `redis-slave-service.yaml` file:
@@ -312,7 +313,7 @@ The guestbook application has a web frontend serving the HTTP requests written i
 
 ### 创建留言板前端 Deployment
 
-{{< codenew file="application/guestbook/frontend-deployment.yaml" >}}
+. codenew file="application/guestbook/frontend-deployment.yaml" >}}
 
 <!--
 1. Apply the frontend Deployment from the `frontend-deployment.yaml` file:
@@ -361,7 +362,7 @@ If you want guests to be able to access your guestbook, you must configure the f
 -->
 如果您希望客人能够访问您的留言板，您必须将前端服务配置为外部可见的，以便客户机可以从容器集群之外请求服务。Minikube 只能通过 `NodePort` 公开服务。
 
-{{< note >}}
+. note >}}
 
 <!--
 Some cloud providers, like Google Compute Engine or Google Kubernetes Engine, support external load balancers. If your cloud provider supports load balancers and you want to use it, simply delete or comment out `type: NodePort`, and uncomment `type: LoadBalancer`.
@@ -369,9 +370,9 @@ Some cloud providers, like Google Compute Engine or Google Kubernetes Engine, su
 一些云提供商，如 Google Compute Engine 或 Google Kubernetes Engine，支持外部负载均衡器。如果您的云提供商支持负载均衡器，并且您希望使用它，
 只需删除或注释掉 `type: NodePort`，并取消注释 `type: LoadBalancer` 即可。
 
-{{< /note >}}
+. /note >}}
 
-{{< codenew file="application/guestbook/frontend-service.yaml" >}}
+. codenew file="application/guestbook/frontend-service.yaml" >}}
 
 <!--
 1. Apply the frontend Service from the `frontend-service.yaml` file:
@@ -553,7 +554,7 @@ Scaling up or down is easy because your servers are defined as a Service that us
 
 
 
-## {{% heading "cleanup" %}}
+## . heading "cleanup" %}}
 
 
 <!--
@@ -607,7 +608,7 @@ Deleting the Deployments and Services also deletes any running Pods. Use labels 
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 <!--

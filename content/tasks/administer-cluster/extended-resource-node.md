@@ -22,10 +22,10 @@ resources that would otherwise be unknown to Kubernetes.
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 
@@ -92,12 +92,12 @@ curl --header "Content-Type: application/json-patch+json" \
 http://localhost:8001/api/v1/nodes/<your-node-name>/status
 ```
 
-{{< note >}}
+. note >}}
 In the preceding request, `~1` is the encoding for the character / in
 the patch path. The operation path value in JSON-Patch is interpreted as a
 JSON-Pointer. For more details, see
 [IETF RFC 6901](https://tools.ietf.org/html/rfc6901), section 3.
-{{< /note >}}
+. /note >}}
 
 The output shows that the Node has a capacity of 4 dongles:
 
@@ -163,9 +163,9 @@ curl --header "Content-Type: application/json-patch+json" \
 http://localhost:8001/api/v1/nodes/<your-node-name>/status
 ```
 
-{{< note >}}
+. note >}}
 在前面的请求中，`~1` 为 patch 路径中 “/” 符号的编码。JSON-Patch 中的操作路径值被解析为 JSON 指针。 更多细节，请查看 [IETF RFC 6901](https://tools.ietf.org/html/rfc6901) 的第 3 部分。
-{{< /note >}}
+. /note >}}
 
 输出显示该节点的 dongle 资源容量（capacity）为 4：
 
@@ -346,7 +346,7 @@ kubectl describe node <your-node-name> | grep dongle
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 (你不应该看到任何输出)

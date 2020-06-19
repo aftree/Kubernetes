@@ -14,22 +14,22 @@ weight: 40
 
 <!-- overview -->
 
-{{< feature-state state="stable" >}}
+. feature-state state="stable" >}}
 
 <!--
 This page shows how to assign extended resources to a Container.
 -->
 本文介绍如何为容器指定扩展资源。
 
-{{< feature-state state="stable" >}}
+. feature-state state="stable" >}}
 
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 <!--
 Before you do this exercise, do the exercise in
@@ -63,7 +63,7 @@ Here is the configuration file for a Pod that has one Container:
 
 下面是包含一个容器的 Pod 配置文件：
 
-{{< codenew file="pods/resource/extended-resource-pod.yaml" >}}
+. codenew file="pods/resource/extended-resource-pod.yaml" >}}
 
 <!--
 In the configuration file, you can see that the Container requests 3 dongles.
@@ -118,7 +118,7 @@ two dongles.
 
 下面是包含一个容器的 Pod 配置文件，容器请求了 2 个 dongles。
 
-{{< codenew file="pods/resource/extended-resource-pod-2.yaml" >}}
+. codenew file="pods/resource/extended-resource-pod-2.yaml" >}}
 
 <!--
 Kubernetes will not be able to satisfy the request for two dongles, because the first Pod
@@ -196,7 +196,7 @@ kubectl delete pod extended-resource-demo-2
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 <!--

@@ -9,13 +9,14 @@ content_type: task
 ---
 title: Install Service Catalog using SC
 reviewers:
+
 - chenopis
 content_type: task
 ---
 -->
 
 <!-- overview -->
-{{< glossary_definition term_id="service-catalog" length="all" prepend="Service Catalog is" >}}
+. glossary_definition term_id="service-catalog" length="all" prepend="Service Catalog is" >}}
 
 <!--
 Use the [Service Catalog Installer](https://github.com/GoogleCloudPlatform/k8s-service-catalog#installation) tool to easily install or uninstall Service Catalog on your Kubernetes cluster. This CLI tool is installed as `sc` in your local environment.
@@ -26,7 +27,7 @@ Use the [Service Catalog Installer](https://github.com/GoogleCloudPlatform/k8s-s
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 <!--
 * Understand the key concepts of [Service Catalog](/docs/concepts/service-catalog/).
@@ -37,7 +38,8 @@ Use the [Service Catalog Installer](https://github.com/GoogleCloudPlatform/k8s-s
 * The kubectl user must be bound to the *cluster-admin* role for it to install Service Catalog. To ensure that this is true, run the following command:
 
         kubectl create clusterrolebinding cluster-admin-binding --clusterrole=cluster-admin --user=<user-name>
--->
+
+    -->
 * 了解[服务目录](/docs/concepts/service-catalog/)的主要概念。
 * 安装 [Go 1.6+](https://golang.org/dl/) 以及设置 `GOPATH`。
 * 安装生成 SSL 工件所需的 [cfssl](https://github.com/cloudflare/cfssl) 工具。
@@ -118,7 +120,7 @@ sc uninstall
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 <!--
 * View [sample service brokers](https://github.com/openservicebrokerapi/servicebroker/blob/master/gettingStarted.md#sample-service-brokers).

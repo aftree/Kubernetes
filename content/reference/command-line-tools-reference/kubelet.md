@@ -4,7 +4,7 @@ content_template: templates/tool-reference
 weight: 28
 ---
 
-## {{% heading "synopsis" %}}
+## . heading "synopsis" %}}
 
 
 <!--
@@ -45,7 +45,7 @@ kubelet [flags]
 
 
 
-## {{% heading "options" %}}
+## . heading "options" %}}
 
 
    <table style="width: 100%; table-layout: fixed;">

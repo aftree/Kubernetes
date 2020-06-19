@@ -74,9 +74,9 @@ To protect your cluster data, Dashboard deploys with a minimal RBAC configuratio
 <!--
 The sample user created in the tutorial will have administrative privileges and is for educational purposes only.
 -->
-{{< warning >}}
+. warning >}}
 在教程中创建的样本用户将具有管理特权，并且仅用于教育目的。
-{{< /warning >}}
+. /warning >}}
 
 <!--
 ### Command line proxy
@@ -104,9 +104,9 @@ UI _只能_ 通过执行这条命令的机器进行访问。更多选项参见 `
 <!--
 Kubeconfig Authentication method does NOT support external identity providers or x509 certificate-based authentication.
 -->
-{{< note >}}
+. note >}}
 Kubeconfig 身份验证方法不支持外部身份提供程序或基于 x509 证书的身份验证。
-{{< /note >}}
+. /note >}}
 
 <!--
 ## Welcome view
@@ -182,7 +182,7 @@ The deploy wizard expects that you provide the following information:
   Other Services that are only visible from inside the cluster are called internal Services.
 -->
   其它只能对集群内部可见的 Service 称为内部 Service。
-  
+
 <!--
   Irrespective of the Service type, if you choose to create a Service and your container listens on a port (incoming), you need to specify two ports. The Service will be created mapping the port (incoming) to the target port seen by the container. This Service will route to your deployed Pods. Supported protocols are TCP and UDP. The internal DNS name for this Service will be the value you specified as application name above.
  -->
@@ -213,7 +213,7 @@ release=1.0
 tier=frontend
 environment=pod
 track=stable
-```
+  ```
 
 <!--
 - **Namespace**: Kubernetes supports multiple virtual clusters backed by the same physical cluster. These virtual clusters are called [namespaces](/docs/tasks/administer-cluster/namespaces/). They let you partition resources into logically named groups.
@@ -243,7 +243,7 @@ Dashboard 通过下拉菜单提供所有可用的命名空间，并允许您创�
   Dashboard offers all available secrets in a dropdown list, and allows you to create a new secret. The secret name must follow the DNS domain name syntax, e.g. `new.image-pull.secret`. The content of a secret must be base64-encoded and specified in a  [`.dockercfg`](/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod) file. The secret name may consist of a maximum of 253 characters.
 -->
   Dashboard 通过下拉菜单提供所有可用的 secret，并允许您创建新的 secret。secret 名称必须遵循 DNS 域名语法，比如 `new.image-pull.secret`。secret 的内容必须是 base64 编码的，并且在一个 [`.dockercfg`](/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod) 文件中声明。secret 名称最大可以包含 253 个字符。
-  
+
 <!--
   In case the creation of the image pull secret is successful, it is selected by default. If the creation fails, no secret is applied.
 -->
@@ -371,7 +371,7 @@ Pod 列表和详细信息页面可以链接到 Dashboard 内置的日志查看�
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 <!--

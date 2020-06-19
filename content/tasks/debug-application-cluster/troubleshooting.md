@@ -66,7 +66,7 @@ practical instructions for getting started. [Tasks](/docs/tasks/) show how to
 accomplish commonly used tasks, and [Tutorials](/docs/tutorials/) are more
 comprehensive walkthroughs of real-world, industry-specific, or end-to-end
 development scenarios. The [Reference](/docs/reference/) section provides
-detailed documentation on the [Kubernetes API](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/)
+detailed documentation on the [Kubernetes API](/docs/reference/generated/kubernetes-api/. param "version" >}}/)
 and command-line interfaces (CLIs), such as [`kubectl`](/docs/user-guide/kubectl-overview/).
 -->
 
@@ -75,7 +75,7 @@ and command-line interfaces (CLIs), such as [`kubectl`](/docs/user-guide/kubectl
 网站上的文档针对回答各类问题进行了结构化组织和分类。
 [概念](/docs/concepts/)部分解释了 Kubernetes 体系结构以及每个组件的工作方式，[安装](/docs/setup/)部分提供了入门的实用说明。
 [任务](/docs/tasks/)部分展示了如何完成常用任务，[入门](/docs/tutorials/)部分则是对现实世界、特定行业或端到端开发场景的更全面的演练。
-[参考](/docs/reference/)部分提供了详细的 [Kubernetes API](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/) 文档和命令行 (CLI) 接口，例如[`kubectl`](/docs/user-guide/kubectl-overview/)。
+[参考](/docs/reference/)部分提供了详细的 [Kubernetes API](/docs/reference/generated/kubernetes-api/. param "version" >}}/) 文档和命令行 (CLI) 接口，例如[`kubectl`](/docs/user-guide/kubectl-overview/)。
 
 <!--
 You may also find the Stack Overflow topics relevant:

@@ -8,6 +8,7 @@ weight: 20
 ---
 title: Configure Default CPU Requests and Limits for a Namespace
 content_type: task
+
 weight: 20
 ---
 -->
@@ -25,10 +26,10 @@ under certain conditions that are explained later in this topic.
 一个 Kubernetes 集群可被划分为多个命名空间。如果在配置了 CPU 限制的命名空间创建容器，并且该容器没有声明自己的 CPU 限制，那么这个容器会被指定默认的 CPU 限制。Kubernetes 在一些特定情况还会指定 CPU 请求，本文后续章节将会对其进行解释。
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 <!-- steps -->
@@ -63,7 +64,7 @@ a default CPU request and a default CPU limit.
 
 这里给出了 LimitRange 对象的配置文件。该配置声明了一个默认的 CPU 请求和一个默认的 CPU 限制。
 
-{{< codenew file="admin/resource/cpu-defaults.yaml" >}}
+. codenew file="admin/resource/cpu-defaults.yaml" >}}
 
 <!--
 Create the LimitRange in the default-cpu-example namespace:
@@ -89,7 +90,7 @@ does not specify a CPU request and limit.
 
 这里给出了包含一个容器的 Pod 的配置文件。该容器没有声明 CPU 请求和限制。
 
-{{< codenew file="admin/resource/cpu-defaults-pod.yaml" >}}
+. codenew file="admin/resource/cpu-defaults-pod.yaml" >}}
 
 <!--
 Create the Pod.
@@ -143,7 +144,7 @@ specifies a CPU limit, but not a request:
 
 这是包含一个容器的 Pod 的配置文件。该容器声明了 CPU 限制，而没有声明 CPU 请求。
 
-{{< codenew file="admin/resource/cpu-defaults-pod-2.yaml" >}}
+. codenew file="admin/resource/cpu-defaults-pod-2.yaml" >}}
 
 <!--
 Create the Pod:
@@ -193,7 +194,7 @@ specifies a CPU request, but not a limit:
 
 这里给出了包含一个容器的 Pod 的配置文件。该容器声明了 CPU 请求，而没有声明 CPU 限制。
 
-{{< codenew file="admin/resource/cpu-defaults-pod-3.yaml" >}}
+. codenew file="admin/resource/cpu-defaults-pod-3.yaml" >}}
 
 <!--
 Create the Pod:
@@ -259,7 +260,7 @@ it can be allowed to run in a namespace that is restricted by a quota.
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 <!--

@@ -1,7 +1,7 @@
 ---
 reviewers:
 - derekwaynecarr
-title: 管理巨页（HugePages）
+title: 😝 - 管理巨页（HugePages）
 content_type: task
 ---
 <!--
@@ -14,7 +14,7 @@ content_type: task
 --->
 
 <!-- overview -->
-{{< feature-state state="stable" >}}
+. feature-state state="stable" >}}
 
 <!--
 Kubernetes supports the allocation and consumption of pre-allocated huge pages
@@ -25,7 +25,7 @@ can consume huge pages and the current limitations.
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
 <!--

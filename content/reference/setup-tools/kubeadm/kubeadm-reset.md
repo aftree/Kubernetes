@@ -19,7 +19,7 @@ weight: 60
 
 
 <!-- body -->
-{{< include "generated/kubeadm_reset.md" >}}
+. include "generated/kubeadm_reset.md" >}}
 
 <!-- ### Reset workflow {#reset-workflow} -->
 ### Reset 工作流程 {#reset-workflow}
@@ -54,7 +54,7 @@ etcdctl del "" --prefix
 更多详情请参考 [etcd 文档](https://github.com/coreos/etcd/tree/master/etcdctl)。
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 <!-- * [kubeadm init](/docs/reference/setup-tools/kubeadm/kubeadm-init/) to bootstrap a Kubernetes control-plane node
 * [kubeadm join](/docs/reference/setup-tools/kubeadm/kubeadm-join/) to bootstrap a Kubernetes worker node and join it to the cluster -->

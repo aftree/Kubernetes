@@ -57,7 +57,7 @@ kops 是一个命令行工具，可以帮助您创建、销毁、升级和维护
   * 直接提供或者生成 Terraform 清单文件的能力
 
 <!--
-You can also build your own cluster using {{< glossary_tooltip term_id="kubeadm" >}} as a building block. `kops` builds on the kubeadm work.
+You can also build your own cluster using . glossary_tooltip term_id="kubeadm" >}} as a building block. `kops` builds on the kubeadm work.
 -->
 
-您也可以将自己的集群作为一个构造块，使用 {{< glossary_tooltip term_id="kubeadm" >}} 构造集群。`kops` 是建立在 kubeadm 之上的。
+您也可以将自己的集群作为一个构造块，使用 . glossary_tooltip term_id="kubeadm" >}} 构造集群。`kops` 是建立在 kubeadm 之上的。

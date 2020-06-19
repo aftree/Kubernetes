@@ -29,10 +29,10 @@ tags:
 -->
 
 <!--
- A command line tool for communicating with a {{< glossary_tooltip text="Kubernetes API" term_id="kubernetes-api" >}} server.
+ A command line tool for communicating with a . glossary_tooltip text="Kubernetes API" term_id="kubernetes-api" >}} server.
 -->
 
- kubectl 是用来和 {{< glossary_tooltip text="Kubernetes API" term_id="kubernetes-api" >}} 服务器进行通信的命令行工具。
+ kubectl 是用来和 . glossary_tooltip text="Kubernetes API" term_id="kubernetes-api" >}} 服务器进行通信的命令行工具。
 
 <!--more--> 
 

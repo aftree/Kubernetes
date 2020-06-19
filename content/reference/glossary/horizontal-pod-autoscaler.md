@@ -31,7 +31,7 @@ tags:
 <!--more--> 
 
 <!--
-HPA is typically used with {{< glossary_tooltip text="Replication Controllers" term_id="replication-controller" >}}, {{< glossary_tooltip text="Deployments" term_id="deployment" >}}, or Replica Sets. It cannot be applied to objects that cannot be scaled, for example {{< glossary_tooltip text="DaemonSets" term_id="daemonset" >}}.
+HPA is typically used with . glossary_tooltip text="Replication Controllers" term_id="replication-controller" >}}, . glossary_tooltip text="Deployments" term_id="deployment" >}}, or Replica Sets. It cannot be applied to objects that cannot be scaled, for example . glossary_tooltip text="DaemonSets" term_id="daemonset" >}}.
 -->
 
-HPA 通常用于 {{< glossary_tooltip text="Replication Controllers" term_id="replication-controller" >}}、{{< glossary_tooltip text="Deployments" term_id="deployment" >}} 或者 Replica Sets 上。HPA 不能用于不支持扩缩的对象，例如 {{< glossary_tooltip text="DaemonSets" term_id="daemonset" >}}。
+HPA 通常用于 . glossary_tooltip text="Replication Controllers" term_id="replication-controller" >}}、. glossary_tooltip text="Deployments" term_id="deployment" >}} 或者 Replica Sets 上。HPA 不能用于不支持扩缩的对象，例如 . glossary_tooltip text="DaemonSets" term_id="daemonset" >}}。

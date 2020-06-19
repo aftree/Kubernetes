@@ -7,6 +7,7 @@ weight: 120
 ---
 title: Assign Pods to Nodes
 content_type: task
+
 weight: 120
 ---
 -->
@@ -19,10 +20,10 @@ Kubernetes cluster.
 此页面显示如何将 Kubernetes Pod 分配给 Kubernetes 集群中的特定节点。
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 
@@ -74,12 +75,12 @@ Kubernetes cluster.
     The output is similar to this:
     -->
     输出类似如下：
-
+    
         NAME      STATUS    AGE     VERSION            LABELS
         worker0   Ready     1d      v1.6.0+fff5156     ...,disktype=ssd,kubernetes.io/hostname=worker0
         worker1   Ready     1d      v1.6.0+fff5156     ...,kubernetes.io/hostname=worker1
         worker2   Ready     1d      v1.6.0+fff5156     ...,kubernetes.io/hostname=worker2
-
+    
     <!--
     In the preceding output, you can see that the `worker0` node has a
     `disktype=ssd` label.
@@ -99,7 +100,7 @@ a `disktype=ssd` label.
 该 pod 配置文件描述了一个拥有节点选择器 `disktype: ssd` 的 pod。这表明该 pod 将被调度到
 有 `disktype=ssd` 标签的节点。
 
-{{< codenew file="pods/pod-nginx.yaml" >}}
+. codenew file="pods/pod-nginx.yaml" >}}
 
 <!--
 1. Use the configuration file to create a pod that will get scheduled on your
@@ -126,7 +127,7 @@ a `disktype=ssd` label.
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 <!--
 Learn more about

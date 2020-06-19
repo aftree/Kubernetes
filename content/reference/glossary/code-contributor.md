@@ -23,6 +23,7 @@ short_description: >
 
 aka: 
 tags:
+
 - community
 - user-type
 ---
@@ -37,7 +38,7 @@ tags:
 <!--more--> 
 
 <!--
-They are also an active {{< glossary_tooltip text="community member" term_id="member" >}} who participates in one or more {{< glossary_tooltip text="Special Interest Groups (SIGs)" term_id="sig" >}}.
+They are also an active . glossary_tooltip text="community member" term_id="member" >}} who participates in one or more . glossary_tooltip text="Special Interest Groups (SIGs)" term_id="sig" >}}.
 -->
 
-代码贡献者也是加入一个或多个 {{< glossary_tooltip text="特别兴趣小组 (SIGs)" term_id="sig" >}} 的活跃的 {{< glossary_tooltip text="社区成员" term_id="member" >}}。
+代码贡献者也是加入一个或多个 . glossary_tooltip text="特别兴趣小组 (SIGs)" term_id="sig" >}} 的活跃的 . glossary_tooltip text="社区成员" term_id="member" >}}。

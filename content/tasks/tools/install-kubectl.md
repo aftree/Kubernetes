@@ -22,7 +22,7 @@ weight: 10
  在 Kubernetes 上使用 Kubernetes 命令行工具 [kubectl](/docs/user-guide/kubectl/) 部署和管理应用程序。使用 kubectl，您可以检查集群资源；创建、删除和更新组件；查看您的新集群；并启动实例应用程序。
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 <!--
 You must use a kubectl version that is within one minor version difference of your cluster. For example, a v1.2 client should work with v1.1, v1.2, and v1.3 master. Using the latest version of kubectl helps avoid unforeseen issues.
@@ -45,15 +45,15 @@ Here are a few methods to install kubectl.
 <!--
 ## Install kubectl binary using native package management
 
-{{< tabs name="kubectl_install" >}}
-{{< tab name="Ubuntu, Debian or HypriotOS" codelang="bash" >}}
+. tabs name="kubectl_install" >}}
+. tab name="Ubuntu, Debian or HypriotOS" codelang="bash" >}}
 sudo apt-get update && sudo apt-get install -y apt-transport-https
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
 sudo apt-get update
 sudo apt-get install -y kubectl
-{{< /tab >}}
-{{< tab name="CentOS, RHEL or Fedora" codelang="bash" >}}cat <<EOF > /etc/yum.repos.d/kubernetes.repo
+. /tab >}}
+. tab name="CentOS, RHEL or Fedora" codelang="bash" >}}cat <<EOF > /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
 name=Kubernetes
 baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
@@ -63,20 +63,20 @@ repo_gpgcheck=1
 gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
 EOF
 yum install -y kubectl
-{{< /tab >}}
-{{< /tabs >}}
+. /tab >}}
+. /tabs >}}
 -->
 ## 使用本地软件包管理软件安装 kubectl 二进制文件
 
-{{< tabs name="kubectl_install" >}}
-{{< tab name="Ubuntu, Debian or HypriotOS" codelang="bash" >}}
+. tabs name="kubectl_install" >}}
+. tab name="Ubuntu, Debian or HypriotOS" codelang="bash" >}}
 sudo apt-get update && sudo apt-get install -y apt-transport-https
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
 sudo apt-get update
 sudo apt-get install -y kubectl
-{{< /tab >}}
-{{< tab name="CentOS, RHEL or Fedora" codelang="bash" >}}cat <<EOF > /etc/yum.repos.d/kubernetes.repo
+. /tab >}}
+. tab name="CentOS, RHEL or Fedora" codelang="bash" >}}cat <<EOF > /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
 name=Kubernetes
 baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
@@ -86,8 +86,8 @@ repo_gpgcheck=1
 gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
 EOF
 yum install -y kubectl
-{{< /tab >}}
-{{< /tabs >}}
+. /tab >}}
+. /tabs >}}
 
 
 <!--
@@ -203,9 +203,9 @@ If you are on Windows and using [Powershell Gallery](https://www.powershellgalle
     install-kubectl.ps1 [-DownloadLocation <path>]
     ```
 
-    {{< note >}}
+    . note >}}
     If you do not specify a `DownloadLocation`, `kubectl` will be installed in the user's temp Directory.
-    {{< /note >}}
+    . /note >}}
 
     The installer creates `$HOME/.kube` and instructs it to create a config file
 
@@ -215,9 +215,9 @@ If you are on Windows and using [Powershell Gallery](https://www.powershellgalle
     kubectl version
     ```
 
-    {{< note >}}
+    . note >}}
     Updating the installation is performed by rerunning the two commands listed in step 1.
-    {{< /note >}}
+    . /note >}}
 -->
 ## 从 PSGallery 通过 Powershell 安装 kubectl
 
@@ -230,9 +230,9 @@ If you are on Windows and using [Powershell Gallery](https://www.powershellgalle
     install-kubectl.ps1 [-DownloadLocation <path>]
     ```
 
-    {{< note >}}
+    . note >}}
     如果你没有指定 `DownloadLocation`，那么 `kubectl` 将安装在用户的临时目录中。
-    {{< /note >}}
+    . /note >}}
 
     安装程序创建 `$ HOME/.kube` 并指示它创建配置文件
 
@@ -241,9 +241,9 @@ If you are on Windows and using [Powershell Gallery](https://www.powershellgalle
     kubectl version
     ```
 
-    {{< note >}}
+    . note >}}
     通过重新运行步骤1中列出的两个命令来执行更新安装。
-    {{< /note >}}
+    . /note >}}
 
 <!--
 ## Install with Chocolatey on Windows
@@ -283,9 +283,9 @@ If you are on Windows and using [Chocolatey](https://chocolatey.org) package man
     New-Item config -type file
     ```
 
-    {{< note >}}
+    . note >}}
     Edit the config file with a text editor of your choice, such as Notepad.
-    {{< /note >}}
+    . /note >}}
 -->
 ## 在 Windows 上用 Chocolatey 安装 kubectl
 
@@ -324,9 +324,9 @@ If you are on Windows and using [Chocolatey](https://chocolatey.org) package man
     New-Item config -type file
     ```
 
-    {{< note >}}
+    . note >}}
     使用您偏爱的编辑器编辑配置文件，例如 Notepad。
-    {{< /note >}}
+    . /note >}}
 
 <!--
 ## Download as part of the Google Cloud SDK
@@ -366,8 +366,8 @@ kubectl 可以作为 Google Cloud SDK 的一部分进行安装。
 <!--
 ## Install kubectl binary using curl
 
-{{< tabs name="kubectl_install_curl" >}}
-{{% tab name="macOS" %}}
+. tabs name="kubectl_install_curl" >}}
+. tab name="macOS" %}}
 1. Download the latest release:
 
     ```		 
@@ -376,10 +376,10 @@ kubectl 可以作为 Google Cloud SDK 的一部分进行安装。
 
     To download a specific version, replace the `$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)` portion of the command with the specific version.
 
-    For example, to download version {{< param "fullversion" >}} on macOS, type:
+    For example, to download version . param "fullversion" >}} on macOS, type:
 
     ```
-    curl -LO https://storage.googleapis.com/kubernetes-release/release/{{< param "fullversion" >}}/bin/darwin/amd64/kubectl
+    curl -LO https://storage.googleapis.com/kubernetes-release/release/. param "fullversion" >}}/bin/darwin/amd64/kubectl
     ```
 
 2. Make the kubectl binary executable.
@@ -393,8 +393,8 @@ kubectl 可以作为 Google Cloud SDK 的一部分进行安装。
     ```
     sudo mv ./kubectl /usr/local/bin/kubectl
     ```
-{{% /tab %}}
-{{% tab name="Linux" %}}
+. /tab %}}
+. tab name="Linux" %}}
 
 1. Download the latest release with the command:
 
@@ -404,10 +404,10 @@ kubectl 可以作为 Google Cloud SDK 的一部分进行安装。
 
     To download a specific version, replace the `$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)` portion of the command with the specific version.
 
-    For example, to download version {{< param "fullversion" >}} on Linux, type:
+    For example, to download version . param "fullversion" >}} on Linux, type:
 
     ```
-    curl -LO https://storage.googleapis.com/kubernetes-release/release/{{< param "fullversion" >}}/bin/linux/amd64/kubectl
+    curl -LO https://storage.googleapis.com/kubernetes-release/release/. param "fullversion" >}}/bin/linux/amd64/kubectl
     ```
 
 2. Make the kubectl binary executable.
@@ -421,26 +421,26 @@ kubectl 可以作为 Google Cloud SDK 的一部分进行安装。
     ```
     sudo mv ./kubectl /usr/local/bin/kubectl
     ```
-{{% /tab %}}
-{{% tab name="Windows" %}}
-1. Download the latest release {{< param "fullversion" >}} from [this link](https://storage.googleapis.com/kubernetes-release/release/{{< param "fullversion" >}}/bin/windows/amd64/kubectl.exe).
+. /tab %}}
+. tab name="Windows" %}}
+1. Download the latest release . param "fullversion" >}} from [this link](https://storage.googleapis.com/kubernetes-release/release/. param "fullversion" >}}/bin/windows/amd64/kubectl.exe).
 
     Or if you have `curl` installed, use this command:
 
     ```
-    curl -LO https://storage.googleapis.com/kubernetes-release/release/{{< param "fullversion" >}}/bin/windows/amd64/kubectl.exe
+    curl -LO https://storage.googleapis.com/kubernetes-release/release/. param "fullversion" >}}/bin/windows/amd64/kubectl.exe
     ```
 
     To find out the latest stable version (for example, for scripting), take a look at [https://storage.googleapis.com/kubernetes-release/release/stable.txt](https://storage.googleapis.com/kubernetes-release/release/stable.txt).
 
 2. Add the binary in to your PATH.
-{{% /tab %}}
-{{< /tabs >}}
+. /tab %}}
+. /tabs >}}
 -->
 ## 通过 curl 命令安装 kubectl 可执行文件
 
-{{< tabs name="kubectl_install_curl" >}}
-{{% tab name="macOS" %}}
+. tabs name="kubectl_install_curl" >}}
+. tab name="macOS" %}}
 1. 通过以下命令下载 kubectl 的最新版本：
 
     ```		 
@@ -449,10 +449,10 @@ kubectl 可以作为 Google Cloud SDK 的一部分进行安装。
 
     若需要下载特定版本的 kubectl，请将上述命令中的 `$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)` 部分替换成为需要下载的 kubectl 的具体版本即可。
 
-     例如，如果需要下载 {{< param "fullversion" >}} 版本在 macOS 系统上,需要使用如下命令：
+     例如，如果需要下载 . param "fullversion" >}} 版本在 macOS 系统上,需要使用如下命令：
 
     ```
-    curl -LO https://storage.googleapis.com/kubernetes-release/release/{{< param "fullversion" >}}/bin/darwin/amd64/kubectl
+    curl -LO https://storage.googleapis.com/kubernetes-release/release/. param "fullversion" >}}/bin/darwin/amd64/kubectl
     ```
 
 2. 修改所下载的 kubectl 二进制文件为可执行模式。
@@ -467,8 +467,8 @@ kubectl 可以作为 Google Cloud SDK 的一部分进行安装。
     ```
     sudo mv ./kubectl /usr/local/bin/kubectl
     ```
-{{% /tab %}}
-{{% tab name="Linux" %}}
+. /tab %}}
+. tab name="Linux" %}}
 
 1. 通过以下命令下载 kubectl 的最新版本：
 
@@ -478,10 +478,10 @@ kubectl 可以作为 Google Cloud SDK 的一部分进行安装。
 
     若需要下载特定版本的 kubectl，请将上述命令中的 `$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)` 部分替换成为需要下载的 kubectl 的具体版本即可。
 
-    例如，如果需要下载用于 Linux 的 {{< param "fullversion" >}} 版本，需要使用如下命令：
+    例如，如果需要下载用于 Linux 的 . param "fullversion" >}} 版本，需要使用如下命令：
 
     ```
-    curl -LO https://storage.googleapis.com/kubernetes-release/release/{{< param "fullversion" >}}/bin/linux/amd64/kubectl
+    curl -LO https://storage.googleapis.com/kubernetes-release/release/. param "fullversion" >}}/bin/linux/amd64/kubectl
     ```
 
 2. 修改所下载的 kubectl 二进制文件为可执行模式。
@@ -495,21 +495,21 @@ kubectl 可以作为 Google Cloud SDK 的一部分进行安装。
     ```
     sudo mv ./kubectl /usr/local/bin/kubectl
     ```
-{{% /tab %}}
-{{% tab name="Windows" %}}
-1. 从[本链接](https://storage.googleapis.com/kubernetes-release/release/{{< param "fullversion" >}}/bin/windows/amd64/kubectl.exe)下载 kubectl 的最新版 {{< param "fullversion" >}}。
+. /tab %}}
+. tab name="Windows" %}}
+1. 从[本链接](https://storage.googleapis.com/kubernetes-release/release/. param "fullversion" >}}/bin/windows/amd64/kubectl.exe)下载 kubectl 的最新版 . param "fullversion" >}}。
 
     或者如果您已经在系统中安装了 `curl` 工具，也可以通过以下命令下载：
 
     ```
-    curl -LO https://storage.googleapis.com/kubernetes-release/release/{{< param "fullversion" >}}/bin/windows/amd64/kubectl.exe
+    curl -LO https://storage.googleapis.com/kubernetes-release/release/. param "fullversion" >}}/bin/windows/amd64/kubectl.exe
     ```
 
 若要查找最新的稳定版本（例如脚本等），请查看 [https://storage.googleapis.com/kubernetes-release/release/stable.txt](https://storage.googleapis.com/kubernetes-release/release/stable.txt).
 
 2. 将 kubectl 可执行文件添加到你的 PATH 目录。
-{{% /tab %}}
-{{< /tabs >}}
+. /tab %}}
+. /tabs >}}
 
 
 
@@ -694,7 +694,7 @@ plugins=(kubectl)
 ```
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 <!--
 [Learn how to launch and expose your application.](/docs/tasks/access-application-cluster/service-access-application-cluster/)

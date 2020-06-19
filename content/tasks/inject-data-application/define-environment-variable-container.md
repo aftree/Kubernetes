@@ -23,10 +23,10 @@ in a Kubernetes Pod.
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 
@@ -57,7 +57,7 @@ Pod:
 本示例中，将创建一个只包含单个容器的 Pod。Pod 的配置文件中设置环境变量的名称为 `DEMO_GREETING`，
 其值为 `"Hello from the environment"`。下面是 Pod 的配置文件内容：
 
-{{< codenew file="pods/inject/envars.yaml" >}}
+. codenew file="pods/inject/envars.yaml" >}}
 
 <!--
 1. Create a Pod based on the YAML configuration file:
@@ -91,7 +91,7 @@ Pod:
 1. Get a shell to the container running in your Pod:
 -->
 1. 进入该 Pod 下的容器并打开一个命令终端：
-    
+   
     ```shell
     kubectl exec -it envar-demo -- /bin/bash
     ```
@@ -125,18 +125,18 @@ Pod:
 1. 通过键入 `exit` 退出命令终端。
 
 <!--
-{{< note >}}
+. note >}}
 The environment variables set using the `env` or `envFrom` field
 will override any environment variables specified in the container image.
-{{< /note >}}
+. /note >}}
 -->
-{{< note >}}
+. note >}}
 通过 `env` 或 `envFrom` 字段设置的环境变量将覆盖容器镜像中指定的所有环境变量。
-{{< /note >}}
+. /note >}}
 
-{{< note >}}
+. note >}}
 环境变量之间可能出现互相依赖或者循环引用的情况，使用之前需注意引用顺序
-{{< /note >}}
+. /note >}}
 
 <!--
 ## Using environment variables inside of your config
@@ -174,17 +174,17 @@ Upon creation, the command `echo Warm greetings to The Most Honorable Kubernetes
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 <!--
 * Learn more about [environment variables](/docs/tasks/inject-data-application/environment-variable-expose-pod-information/).
 * Learn about [using secrets as environment variables](/docs/user-guide/secrets/#using-secrets-as-environment-variables).
-* See [EnvVarSource](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#envvarsource-v1-core).
+* See [EnvVarSource](/docs/reference/generated/kubernetes-api/. param "version" >}}/#envvarsource-v1-core).
 -->
 
 * 有关环境变量的更多信息，请参阅[这里](/docs/tasks/inject-data-application/environment-variable-expose-pod-information/)。
 * 有关如何通过环境变量来使用 Secret，请参阅[这里](/docs/user-guide/secrets/#using-secrets-as-environment-variables)。
-* 关于 [EnvVarSource](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#envvarsource-v1-core) 资源的信息。
+* 关于 [EnvVarSource](/docs/reference/generated/kubernetes-api/. param "version" >}}/#envvarsource-v1-core) 资源的信息。
 
 

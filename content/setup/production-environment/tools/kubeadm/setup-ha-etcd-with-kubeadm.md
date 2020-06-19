@@ -16,7 +16,7 @@ weight: 70
 
 <!-- overview -->
 
-{{< note >}}
+. note >}}
 <!--
 While kubeadm is being used as the management tool for external etcd nodes
 in this guide, please note that kubeadm does not plan to support certificate rotation
@@ -25,7 +25,7 @@ or upgrades for such nodes. The long term plan is to empower the tool
 aspects.
 -->
 在本指南中，当 kubeadm 用作为外部 etcd 节点管理工具，请注意 kubeadm 不计划支持此类节点的证书更换或升级。对于长期规划是使用 [etcdadm](https://github.com/kubernetes-sigs/etcdadm) 增强工具来管理这方面。
-{{< /note >}}
+. /note >}}
 
 <!--
 Kubeadm defaults to running a single member etcd cluster in a static pod managed
@@ -39,7 +39,7 @@ when using kubeadm to set up a kubernetes cluster.
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
 <!--
@@ -76,12 +76,12 @@ The general approach is to generate all certs on one node and only distribute th
 -->
 一般来说，是在一个节点上生成所有证书并且只分发这些*必要*的文件到其它节点上。
 
-{{< note >}}
+. note >}}
 <!--
 kubeadm contains all the necessary crytographic machinery to generate the certificates described below; no other cryptographic tooling is required for this example.
 -->
 kubeadm 包含生成下述证书所需的所有必要的密码学工具；在这个例子中，不需要其他加密工具。
-{{< /note >}}
+. /note >}}
 
 <!--
 1. Configure the kubelet to be a service manager for etcd.
@@ -303,6 +303,7 @@ kubeadm 包含生成下述证书所需的所有必要的密码学工具；在这
     1.Ensure all expected files exist
 
         The complete list of required files on `$HOST0` is:
+    
     -->
 1. 确保已经所有预期的文件都存在
 
@@ -416,7 +417,7 @@ kubeadm 包含生成下述证书所需的所有必要的密码学工具；在这
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 <!--

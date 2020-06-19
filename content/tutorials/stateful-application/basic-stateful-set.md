@@ -23,7 +23,7 @@ demonstrates how to create, delete, scale, and update the Pods of StatefulSets.
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
 <!--
@@ -37,7 +37,7 @@ following Kubernetes concepts.
 * [Cluster DNS](/zh/docs/concepts/services-networking/dns-pod-service/)
 * [Headless Services](/zh/docs/concepts/services-networking/service/#headless-services)
 * [PersistentVolumes](/zh/docs/concepts/storage/persistent-volumes/)
-* [PersistentVolume Provisioning](https://github.com/kubernetes/examples/tree/{{< param "githubbranch" >}}/staging/persistent-volume-provisioning/)
+* [PersistentVolume Provisioning](https://github.com/kubernetes/examples/tree/. param "githubbranch" >}}/staging/persistent-volume-provisioning/)
 * [StatefulSets](/zh/docs/concepts/workloads/controllers/statefulset/)
 * [kubectl CLI](/zh/docs/user-guide/kubectl/)
 
@@ -52,7 +52,7 @@ tutorial.
 
 
 
-## {{% heading "objectives" %}}
+## . heading "objectives" %}}
 
 
 <!--
@@ -91,7 +91,7 @@ StatefulSets 旨在与有状态的应用及分布式系统一起使用。然而�
 
 作为开始，使用如下示例创建一个 StatefulSet。它和 [StatefulSets](/zh/docs/concepts/abstractions/controllers/statefulsets/) 概念中的示例相似。它创建了一个 [Headless Service](/zh/docs/user-guide/services/#headless-services) `nginx` 用来发布 StatefulSet `web` 中的 Pod 的 IP 地址。
 
-{{< codenew file="application/web/web.yaml" >}}
+. codenew file="application/web/web.yaml" >}}
 
 <!--
 Download the example above, and save it to a file named `web.yaml`
@@ -104,7 +104,7 @@ of the StatefulSet's Pods.
 下载上面的例子并保存为文件 `web.yaml`。
 
 
-你需要使用两个终端窗口。在第一个终端中，使用 [`kubectl get`](/zh/docs/user-guide/kubectl/{{< param "version" >}}/#get)  来查看 StatefulSet 的 Pods 的创建情况。
+你需要使用两个终端窗口。在第一个终端中，使用 [`kubectl get`](/zh/docs/user-guide/kubectl/. param "version" >}}/#get)  来查看 StatefulSet 的 Pods 的创建情况。
 
 ```shell
 kubectl get pods -w -l app=nginx
@@ -412,7 +412,7 @@ web-0
 web-1
 ```
 
-{{< note >}}
+. note >}}
 <!--
 If you instead see 403 Forbidden responses for the above curl command,
 you will need to fix the permissions of the directory mounted by the `volumeMounts`
@@ -429,7 +429,7 @@ before retrying the curl command above.
 -->
 
 在你重新尝试上面的 curl 命令之前。
-{{< /note >}}
+. /note >}}
 
 <!--
 In one terminal, watch the StatefulSet's Pods.
@@ -506,7 +506,7 @@ In one terminal window, watch the Pods in the StatefulSet.
 
 ## 扩容/缩容 StatefulSet
 
-扩容/缩容 StatefulSet 指增加或减少它的副本数。这通过更新 `replicas` 字段完成。你可以使用[`kubectl scale`](/zh/docs/user-guide/kubectl/{{< param "version" >}}/#scale) 或者[`kubectl patch`](/zh/docs/user-guide/kubectl/{{< param "version" >}}/#patch)来扩容/缩容一个 StatefulSet。
+扩容/缩容 StatefulSet 指增加或减少它的副本数。这通过更新 `replicas` 字段完成。你可以使用[`kubectl scale`](/zh/docs/user-guide/kubectl/. param "version" >}}/#scale) 或者[`kubectl patch`](/zh/docs/user-guide/kubectl/. param "version" >}}/#patch)来扩容/缩容一个 StatefulSet。
 
 
 ### 扩容
@@ -1368,7 +1368,7 @@ Pod.
 
 `Parallel` pod 管理策略告诉 StatefulSet 控制器并行的终止所有 Pod，在启动或终止另一个 Pod 前，不必等待这些 Pod 变成 Running 和 Ready 或者完全终止状态。
 
-{{< codenew file="application/web/web-parallel.yaml" >}}
+. codenew file="application/web/web-parallel.yaml" >}}
 
 <!--
 Download the example above, and save it to a file named `web-parallel.yaml`
@@ -1520,7 +1520,7 @@ kubectl delete svc nginx
 
 
 
-## {{% heading "cleanup" %}}
+## . heading "cleanup" %}}
 
 
 <!--

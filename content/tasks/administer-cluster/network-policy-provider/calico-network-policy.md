@@ -11,7 +11,7 @@ weight: 10
 本页展示了两种在 Kubernetes 上快速创建 Calico 集群的方法。
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 <!-- Decide whether you want to deploy a [cloud](#creating-a-calico-cluster-with-google-kubernetes-engine-gke) or [local](#creating-a-local-calico-cluster-with-kubeadm) cluster. -->
 
@@ -67,6 +67,7 @@ weight: 10
 
     Calico 的 pods 名以 `calico` 打头，检查确认每个 pods 状态为 `Running`。
     
+
 <!-- 
 
 ## Creating a local Calico cluster with kubeadm
@@ -84,7 +85,7 @@ To get a local single-host Calico cluster in fifteen minutes using kubeadm, refe
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 <!-- Once your cluster is running, you can follow the [Declare Network Policy](/docs/tasks/administer-cluster/declare-network-policy/) to try out Kubernetes NetworkPolicy. -->
 集群运行后，您可以按照 [声明 Network Policy](/docs/tasks/administer-cluster/declare-network-policy/) 去尝试使用 Kubernetes NetworkPolicy。

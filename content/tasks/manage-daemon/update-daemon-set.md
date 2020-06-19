@@ -24,7 +24,7 @@ This page shows how to perform a rolling update on a DaemonSet.
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
 <!--
@@ -277,16 +277,16 @@ make room for new DaemonSet pods.
 一旦找到这些节点，从节点上删除一些非 DaemonSet pods，为新的 DaemonSet pods 腾出空间。
 
 <!--
-{{< note >}}
+. note >}}
 This will cause service disruption when deleted pods are not controlled by any controllers or pods are not
 replicated. This does not respect [PodDisruptionBudget](/docs/tasks/configure-pod-container/configure-pod-disruption-budget/)
 either.
-{{< /note >}}
+. /note >}}
 --->
-{{< note >}}
+. note >}}
 当所删除的 pods 不受任何控制器管理，也不是多副本的 pods，上述操作将导致服务中断。
 同时，上述操作也不会考虑 [PodDisruptionBudget](/docs/tasks/configure-pod-container/configure-pod-disruption-budget/) 所施加的约束。
-{{< /note >}}
+. /note >}}
 
 <!--
 #### Broken rollout
@@ -323,7 +323,7 @@ progress.
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 <!--

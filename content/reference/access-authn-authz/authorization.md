@@ -277,7 +277,7 @@ with different/greater permissions.
 他们可以创建在该命名空间内访问其权限的 Pod 。
 他们可以创建用户无法自己读取 secret 的 Pod ，或者在具有不同/更高权限的服务帐户下运行的 Pod 。
 
-{{< caution >}}
+. caution >}}
 <!--
 System administrators, use care when granting access to pod
 creation.  A user granted permission to create pods (or controllers that create
@@ -291,10 +291,10 @@ mode.
 读取命名空间中的所有 secret；读取命名空间中的所有 ConfigMap；
 并模拟命名空间中的任何服务帐户并执行帐户可以执行的任何操作。
 无论采用何种授权方式，这都适用。
-{{< /caution >}}
+. /caution >}}
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 <!--
 * To learn more about Authentication, see **Authentication** in [Controlling Access to the Kubernetes API](/docs/reference/access-authn-authz/controlling-access/).

@@ -22,9 +22,9 @@ toc_hide: true
 Be sure to also [create an entry in the table of contents](/docs/home/contribute/write-new-topic/#creating-an-entry-in-the-table-of-contents) for your new document.
 -->
 
-{{< note >}}
+. note >}}
 还要确保为新文档[在目录中创建一个条目](/docs/home/contribute/write-new-topic/#creating-an-entry-in-the-table-of-contents)。
-{{< /note >}}
+. /note >}}
 
 <!--
 This page shows how to ...
@@ -33,17 +33,17 @@ This page shows how to ...
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
 <!--
-* {{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+* . include "task-tutorial-prereqs.md" >}} . version-check >}}
 * Do this.
 * Do this too.
 -->
 
 
-* {{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+* . include "task-tutorial-prereqs.md" >}} . version-check >}}
 * 做这个。
 * 也做这个。
 
@@ -85,7 +85,7 @@ Here's an interesting thing to know about the steps you just did.
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 <!--

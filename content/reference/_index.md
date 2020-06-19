@@ -1,6 +1,6 @@
 ---
-title: 参考
-linkTitle: "参考"
+title: 😍 - 参考
+linkTitle: "😍 - 参考"
 main_menu: true
 weight: 70
 content_type: concept

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>使用自定义资源 on Hugo 主题的 Learn 文档</title>
+    <link>https://lijun.in/tasks/access-kubernetes-api/custom-resources/</link>
+    <description>Recent content in 使用自定义资源 on Hugo 主题的 Learn 文档</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://lijun.in/tasks/access-kubernetes-api/custom-resources/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>用户自定义资源版本</title>
+      <link>https://lijun.in/tasks/access-kubernetes-api/custom-resources/custom-resource-definition-versioning/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/access-kubernetes-api/custom-resources/custom-resource-definition-versioning/</guid>
+      <description>本页介绍了如何添加版本信息到 [CustomResourceDefinitions](/docs/reference/generated/kubernetes-api/. param &amp;ldquo;version&amp;rdquo; &amp;gt;}}/#customresourcedefinition-v1beta1-apiextensions)，如何表示 CustomResourceDefinitions 的稳定水平或者用 API 之间的表征的转换提高您的 API 到一个新的版本。它还描述了如何将对象从一个版本升级到另一个版本。
+. heading &amp;ldquo;prerequisites&amp;rdquo; %}} . include &amp;ldquo;task-tutorial-prereqs.md&amp;rdquo; &amp;gt;}} . version-check &amp;gt;}}
+ 确保您的 Kubernetes 集群的主版本为apiextensions.k8s.io/v1的1.16.0或更高版本，apiextensions.k8s.io/v1beta1的1.11.0或更高版本。   阅读 custom resources。  概览 . feature-state state=&amp;quot;stable&amp;rdquo; for_kubernetes_version=&amp;quot;1.16&amp;rdquo; &amp;gt;}}
+CustomResourceDefinition API 提供了用于引入和升级的工作流程到 CustomResourceDefinition 的新版本。
+创建 CustomResourceDefinition 时，会在 CustomResourceDefinition spec.versions 列表设置适当的稳定级和版本号。例如v1beta1表示第一个版本尚未稳定。所有自定义资源对象将首先存储在这个版本
+创建 CustomResourceDefinition 后，客户端可以开始使用 v1beta1 API。
+稍后可能需要添加新版本，例如 v1。
+增加一个新版本：
+ 选择一种转化策略。由于自定义资源对象需要能够两种版本都可用，这意味着它们有时会以与存储版本不同的版本。为了能够做到这一点， 有时必须在它们存储的版本和提供的版本。如果转换涉及结构变更，并且需要自定义逻辑，转换应该使用 webhook。如果没有结构变更， 则使用 None 默认转换策略，不同版本时只有apiVersion字段有变更。 如果使用转换 Webhook，请创建并部署转换 Webhook。希望看到更多详细信息，请参见 Webhook conversion。 更新 CustomResourceDefinition，来将新版本包含在具有served：true的 spec.</description>
+    </item>
+    
+  </channel>
+</rss>

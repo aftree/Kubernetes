@@ -26,10 +26,10 @@ allocated as much CPU as it requests.
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 <!--
 Each node in your cluster must have at least 1 CPU.
@@ -39,7 +39,7 @@ A few of the steps on this page require you to run the
 service in your cluster. If you have the metrics-server
 running, you can skip those steps.
 
-If you are running {{< glossary_tooltip term_id="minikube" >}}, run the
+If you are running . glossary_tooltip term_id="minikube" >}}, run the
 following command to enable metrics-server:
 -->
 
@@ -48,7 +48,7 @@ following command to enable metrics-server:
 此页面上的一些步骤要求您在集群中运行[metrics-server](https://github.com/kubernetes-incubator/metrics-server)
 服务。如果您的集群中已经有正在运行的 metrics-server 服务，那么您可以跳过这些步骤。
 
-如果您正在运行{{< glossary_tooltip term_id="minikube" >}}，请运行以下命令启用 metrics-server：
+如果您正在运行. glossary_tooltip term_id="minikube" >}}，请运行以下命令启用 metrics-server：
 
 
 ```shell
@@ -86,11 +86,11 @@ v1beta1.metrics.k8s.io
 <!-- 
 ## Create a namespace
 
-Create a {{< glossary_tooltip term_id="namespace" >}} so that the resources you
+Create a . glossary_tooltip term_id="namespace" >}} so that the resources you
 create in this exercise are isolated from the rest of your cluster.
 -->
 ## 创建一个命名空间
-创建一个命名空间 {{< glossary_tooltip term_id="namespace" >}}，以便在本练习中创建的资源与集群的其余部分资源隔离。
+创建一个命名空间 . glossary_tooltip term_id="namespace" >}}，以便在本练习中创建的资源与集群的其余部分资源隔离。
 
 ```shell
 kubectl create namespace cpu-example
@@ -105,7 +105,7 @@ in the Container resource manifest. To specify a CPU limit, include `resources:l
 In this exercise, you create a Pod that has one container. The container has a request
 of 0.5 CPU and a limit of 1 CPU. Here is the configuration file for the Pod:
 
-{{< codenew file="pods/resource/cpu-request-limit.yaml" >}}
+. codenew file="pods/resource/cpu-request-limit.yaml" >}}
 
 The `args` section of the configuration file provides arguments for the container when it starts.
 The `-cpus "2"` argument tells the Container to attempt to use 2 CPUs.
@@ -121,7 +121,7 @@ Create the Pod:
 在本练习中，您将创建一个具有一个容器的 Pod。容器将会请求 0.5 个 CPU，而且最多限制使用 1 个 CPU。
 这是 Pod 的配置文件：
 
-{{< codenew file="pods/resource/cpu-request-limit.yaml" >}}
+. codenew file="pods/resource/cpu-request-limit.yaml" >}}
 
 配置文件的 `args` 部分提供了容器启动时的参数。
 -cpus "2"参数告诉容器尝试使用 2 个 CPU。
@@ -190,18 +190,18 @@ Recall that by setting `-cpu "2"`, you configured the Container to attempt to us
 
 
 <!-- 
-{{< note >}}
+. note >}}
 Another possible explanation for the CPU use being below 1.0 is that the Node might not have
 enough CPU resources available. Recall that the prerequisites for this exercise require each of
 your Nodes to have at least 1 CPU. If your Container runs on a Node that has only 1 CPU, the Container
 cannot use more than 1 CPU regardless of the CPU limit specified for the Container.
-{{< /note >}}
+. /note >}}
 -->
 
-{{< note >}}
+. note >}}
 CPU 使用率低于1.0的另一种可能的解释是，节点可能没有足够的 CPU 资源可用。回想一下，此练习的先决条件需要
 您的节点至少具有 1 个 CPU。如果您的容器在只有 1 个 CPU 的节点上运行，则容器无论为容器指定的 CPU 限制如何，都不能使用超过 1 个 CPU。
-{{< /note >}}
+. /note >}}
 
 <!-- 
 ## CPU units
@@ -260,7 +260,7 @@ the capacity of any Node in your cluster. Here is the configuration file for a P
 that has one Container. The Container requests 100 CPU, which is likely to exceed the
 capacity of any Node in your cluster.
 
-{{< codenew file="pods/resource/cpu-request-limit-2.yaml" >}}
+. codenew file="pods/resource/cpu-request-limit-2.yaml" >}}
 
 Create the Pod:
 -->
@@ -277,7 +277,7 @@ Pod 调度基于请求。仅在以下情况下，Pod 将会在节点上运行：
 
 这是 Pod 的配置文件，Pod 中有一个容器。容器请求 100 个 CPU，这可能会超出集群中任何节点的容量。
 
-{{< codenew file="pods/resource/cpu-request-limit-2.yaml" >}}
+. codenew file="pods/resource/cpu-request-limit-2.yaml" >}}
 
 使用如下命令创建该 Pod 	
 
@@ -354,7 +354,7 @@ could use all of the CPU resources available on the Node where it is running.
 
 * The Container is running in a namespace that has a default CPU limit, and the
 Container is automatically assigned the default limit. Cluster administrators can use a
-[LimitRange](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#limitrange-v1-core/)
+[LimitRange](/docs/reference/generated/kubernetes-api/. param "version" >}}/#limitrange-v1-core/)
 to specify a default value for the CPU limit.
 -->
 ## 如果没有指定 CPU 限制
@@ -364,7 +364,7 @@ to specify a default value for the CPU limit.
 * 容器在可以使用的 CPU 资源上没有上限。容器可以使用运行该节点的所有可用 CPU 资源。
 
 * 容器在具有默认 CPU 限制的命名空间中运行，并且系统会自动为容器分配默认限制。集群管理员可以使用
-[LimitRange](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#limitrange-v1-core/)
+[LimitRange](/docs/reference/generated/kubernetes-api/. param "version" >}}/#limitrange-v1-core/)
 指定 CPU 限制的默认值。
 
 
@@ -408,7 +408,7 @@ kubectl delete namespace cpu-example
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 <!-- 

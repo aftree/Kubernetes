@@ -65,9 +65,9 @@ Metrics API 在[k8s.io/metrics](https://github.com/kubernetes/metrics/blob/maste
 <!--
 The API requires metrics server to be deployed in the cluster. Otherwise it will be not available.
 -->
-{{< note >}}
+. note >}}
 Metrics API 需要在集群中部署 Metrics Server。否则它将不可用。
-{{< /note >}}
+. /note >}}
 
 <!--
 ## Metrics Server

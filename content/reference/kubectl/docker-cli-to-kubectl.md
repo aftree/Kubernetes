@@ -10,9 +10,10 @@ reviewers:
 title: kubectl for Docker Users
 content_type: concept
 reviewers:
+
 - brendandburns
 - thockin
---- 
+---
 -->
 
 <!-- overview -->
@@ -53,7 +54,7 @@ kubectl:
 ```shell
 # start the pod running nginx
 kubectl run --image=nginx nginx-app --port=80 --env="DOMAIN=cluster"
-``` 
+```
 -->
 ```shell
 # 启动运行 nginx 的 Pod
@@ -63,18 +64,18 @@ kubectl run --image=nginx nginx-app --port=80 --env="DOMAIN=cluster"
 deployment "nginx-app" created
 ```
 
-{{< note >}}
+ note >}}
 <!--
 `kubectl` commands print the type and name of the resource created or mutated, which can then be used in subsequent commands. You can expose a new Service after a Deployment is created.
 -->
 `kubectl` 命令打印创建或突变资源的类型和名称，然后可以在后续命令中使用。部署后，您可以公开新服务。
-{{< /note >}}
+ /note >}}
 
 <!-- 
 ```shell
 # expose a port through with a service
 kubectl expose deployment nginx-app --port=80 --name=nginx-http
-``` 
+```
 -->
 ```shell
 # 通过服务公开端口
@@ -382,12 +383,12 @@ kubectl get po -l run=nginx-app
 # Return nothing
 ```
 
-{{< note >}}
+ note >}}
 <!-- 
 When you use kubectl, you don't delete the pod directly.You have to first delete the Deployment that owns the pod. If you delete the pod directly, the Deployment recreates the pod. 
 -->
 请注意，我们不直接删除 pod。使用 kubectl 命令，我们要删除拥有该 pod 的 Deployment。如果我们直接删除 pod，Deployment 将会重新创建该 pod。
-{{< /note >}}
+ /note >}}
 
 ## docker login
 

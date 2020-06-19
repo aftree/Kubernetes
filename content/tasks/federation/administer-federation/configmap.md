@@ -11,9 +11,9 @@ content_type: task
 
 <!-- overview -->
 
-{{< deprecationfilewarning >}}
-{{< include "federation-deprecation-warning-note.md" >}}
-{{< /deprecationfilewarning >}}
+. deprecationfilewarning >}}
+. include "federation-deprecation-warning-note.md" >}}
+. /deprecationfilewarning >}}
 <!--
 This guide explains how to use ConfigMaps in a Federation control plane.
 
@@ -30,10 +30,10 @@ ConfigMap](/docs/tasks/configure-pod-container/configure-pod-configmap/) 非常�
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-* {{< include "federated-task-tutorial-prereqs.md" >}}
+* . include "federated-task-tutorial-prereqs.md" >}}
 <!--
 * You should also have a basic
 [working knowledge of Kubernetes](/docs/tutorials/kubernetes-basics/) in
@@ -136,12 +136,12 @@ kubectl --context=federation-cluster delete configmap
 kubectl --context=federation-cluster delete configmap
 ```
 
-{{< note >}}
+. note >}}
 <!--
 Deleting a Federated ConfigMap does not delete the corresponding ConfigMaps from underlying clusters. You must delete the underlying ConfigMaps manually.
 -->
 要注意的是这时删除联邦 ConfigMap 并不会删除底层集群中对应的 ConfigMap。您必须自己手动删除底层集群中的 ConfigMap。
-{{< /note >}}
+. /note >}}
 
 
 

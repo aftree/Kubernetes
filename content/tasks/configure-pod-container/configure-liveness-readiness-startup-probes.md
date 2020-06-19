@@ -36,10 +36,10 @@ kubelet 使用启动探测器可以知道应用程序容器什么时候启动了
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 
@@ -61,7 +61,7 @@ In this exercise, you create a Pod that runs a Container based on the
 
 在这篇练习中，会创建一个 Pod，其中运行一个基于 `k8s.gcr.io/busybox` 镜像的容器。下面是这个 Pod 的配置文件。
 
-{{< codenew file="pods/probe/exec-liveness.yaml" >}}
+. codenew file="pods/probe/exec-liveness.yaml" >}}
 
 <!--
 In the configuration file, you can see that the Pod has a single Container.
@@ -178,7 +178,7 @@ image.
 
 另外一种类型的存活探测方式是使用 HTTP GET 请求。下面是一个 Pod 的配置文件，其中运行一个基于 `k8s.gcr.io/liveness` 镜像的容器。
 
-{{< codenew file="pods/probe/http-liveness.yaml" >}}
+. codenew file="pods/probe/http-liveness.yaml" >}}
 
 <!--
 In the configuration file, you can see that the Pod has a single Container.
@@ -268,7 +268,7 @@ can’t it is considered a failure.
 
 第三种类型的存活探测是使用 TCP 套接字。通过配置，kubelet 会尝试在指定端口和容器建立套接字链接。如果能建立链接，这个容器就被看作是健康的，如果不能则这个容器就被看作是有问题的。
 
-{{< codenew file="pods/probe/tcp-liveness-readiness.yaml" >}}
+. codenew file="pods/probe/tcp-liveness-readiness.yaml" >}}
 
 <!--
 As you can see, configuration for a TCP check is quite similar to an HTTP check.
@@ -307,12 +307,12 @@ kubectl describe pod goproxy
 ## Use a named port
 
 You can use a named
-[ContainerPort](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#containerport-v1-core)
+[ContainerPort](/docs/reference/generated/kubernetes-api/. param "version" >}}/#containerport-v1-core)
 for HTTP or TCP liveness checks:
 -->
 ## 使用命名端口 {#use-a-named-port}
 
-对于 HTTP 或者 TCP 存活检测可以使用命名的[容器端口](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#containerport-v1-core)。
+对于 HTTP 或者 TCP 存活检测可以使用命名的[容器端口](/docs/reference/generated/kubernetes-api/. param "version" >}}/#containerport-v1-core)。
 
 ```yaml
 ports:
@@ -394,12 +394,12 @@ Services.
 
 有时候，应用程序会暂时性的不能提供通信服务。例如，应用程序在启动时可能需要加载很大的数据或配置文件，或是启动后要依赖等待外部服务。在这种情况下，既不想杀死应用程序，也不想给它发送请求。Kubernetes 提供了就绪探测器来发现并缓解这些情况。容器所在 Pod 上报还未就绪的信息，并且不接受通过 Kubernetes Service 的流量。
 
-{{< note >}}
+. note >}}
 <!--
 Readiness probes runs on the container during its whole lifecycle.
 -->
 就绪探测器在容器的整个生命周期中保持运行状态。
-{{< /note >}}
+. /note >}}
 
 <!--
 Readiness probes are configured similarly to liveness probes. The only difference
@@ -433,19 +433,19 @@ HTTP 和 TCP 的就绪探测器配置也和存活探测器的配置一样的。
 -->
 ## 配置探测器 {#configure-probes}
 
-{{< comment >}}
+. comment >}}
 <!--
 Eventually, some of this section could be moved to a concept topic.
 -->
 最后，本节的一些内容可以放到某个概念主题里。
-{{< /comment >}}
+. /comment >}}
 
 <!--
-[Probes](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#probe-v1-core) have a number of fields that
+[Probes](/docs/reference/generated/kubernetes-api/. param "version" >}}/#probe-v1-core) have a number of fields that
 you can use to more precisely control the behavior of liveness and readiness
 checks:
 -->
-[探测器](/zh/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#probe-v1-core)有很多配置字段，可以使用这些字段精确的控制存活和就绪检测的行为：
+[探测器](/zh/docs/reference/generated/kubernetes-api/. param "version" >}}/#probe-v1-core)有很多配置字段，可以使用这些字段精确的控制存活和就绪检测的行为：
 
 <!--
 * `initialDelaySeconds`: Number of seconds after the container has started
@@ -468,7 +468,7 @@ Defaults to 3. Minimum value is 1.
 * `failureThreshold`：当 Pod 启动了并且探测到失败，Kubernetes 的重试次数。存活探测情况下的放弃就意味着重新启动容器。就绪探测情况下的放弃 Pod 会被打上未就绪的标签。默认值是 3。最小值是 1。
 
 <!--
-[HTTP probes](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#httpgetaction-v1-core)
+[HTTP probes](/docs/reference/generated/kubernetes-api/. param "version" >}}/#httpgetaction-v1-core)
 have additional fields that can be set on `httpGet`:
 
 * `host`: Host name to connect to, defaults to the pod IP. You probably want to
@@ -479,7 +479,7 @@ set "Host" in httpHeaders instead.
 * `port`: Name or number of the port to access on the container. Number must be
 in the range 1 to 65535.
 -->
-[HTTP 探测器](/zh/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#httpgetaction-v1-core)可以在 `httpGet` 上配置额外的字段：
+[HTTP 探测器](/zh/docs/reference/generated/kubernetes-api/. param "version" >}}/#httpgetaction-v1-core)可以在 `httpGet` 上配置额外的字段：
 
 * `host`：连接使用的主机名，默认是 Pod 的 IP。也可以在 HTTP 头中设置 “Host” 来代替。
 * `scheme` ：用于设置连接主机的方式（HTTP 还是 HTTPS）。默认是 HTTP。
@@ -508,7 +508,7 @@ to resolve it.
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 <!--
@@ -520,13 +520,13 @@ to resolve it.
 <!--
 ### Reference
 
-* [Pod](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#pod-v1-core)
-* [Container](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#container-v1-core)
-* [Probe](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#probe-v1-core)
+* [Pod](/docs/reference/generated/kubernetes-api/. param "version" >}}/#pod-v1-core)
+* [Container](/docs/reference/generated/kubernetes-api/. param "version" >}}/#container-v1-core)
+* [Probe](/docs/reference/generated/kubernetes-api/. param "version" >}}/#probe-v1-core)
 -->
 ### 参考 {#reference}
-* [Pod](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#pod-v1-core)
-* [容器](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#container-v1-core)
-* [探测器](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#probe-v1-core)
+* [Pod](/docs/reference/generated/kubernetes-api/. param "version" >}}/#pod-v1-core)
+* [容器](/docs/reference/generated/kubernetes-api/. param "version" >}}/#container-v1-core)
+* [探测器](/docs/reference/generated/kubernetes-api/. param "version" >}}/#probe-v1-core)
 
 

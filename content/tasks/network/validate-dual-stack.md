@@ -22,7 +22,7 @@ This document shares how to validate IPv4/IPv6 dual-stack enabled Kubernetes clu
 这篇文章分享了如何验证 IPv4/IPv6 双协议栈的 Kubernetes 集群。
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
 <!--
@@ -158,7 +158,7 @@ Create the following Service without the `ipFamily` field set. When this field i
 在不设置 `ipFamily` 字段的情况下创建以下服务。
 如果未设置此字段，则服务会通过 kube-controller-manager 上的 `--service-cluster-ip-range` 标志从第一个配置的范围中获取 IP。
 
-{{< codenew file="service/networking/dual-stack-default-svc.yaml" >}}
+. codenew file="service/networking/dual-stack-default-svc.yaml" >}}
 
 <!--
 By viewing the YAML for the Service you can observe that the Service has the `ipFamily` field has set to reflect the address family of the first configured range set via `--service-cluster-ip-range` flag on kube-controller-manager.
@@ -201,7 +201,7 @@ Create the following Service with the `ipFamily` field set to `IPv6`.
 -->
 在 `ipFamily` 字段设置为 `IPv6` 的情况下创建一下服务。
 
-{{< codenew file="service/networking/dual-stack-ipv6-svc.yaml" >}}
+. codenew file="service/networking/dual-stack-ipv6-svc.yaml" >}}
 
 <!--
 Validate that the Service gets a cluster IP address from the IPv6 address block. You may then validate access to the service via the IP and port.
@@ -224,7 +224,7 @@ If the cloud provider supports the provisioning of IPv6 enabled external load ba
 -->
 如果云提供商支持配置启用 IPv6 的外部负载均衡器，则将 `ipFamily` 字段设置为 `IPv6` 并将 `type` 字段设置为 `LoadBalancer`的方式创建以下服务
 
-{{< codenew file="service/networking/dual-stack-ipv6-lb-svc.yaml" >}}
+. codenew file="service/networking/dual-stack-ipv6-lb-svc.yaml" >}}
 
 <!--
 Validate that the Service receives a `CLUSTER-IP` address from the IPv6 address block along with an `EXTERNAL-IP`. You may then validate access to the service via the IP and port. 

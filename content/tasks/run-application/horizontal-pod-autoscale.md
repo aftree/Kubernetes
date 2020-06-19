@@ -120,13 +120,13 @@ for instructions. The HorizontalPodAutoscaler can also fetch metrics directly fr
 可以从[metrics-server](/docs/tasks/debug-application-cluster/resource-metrics-pipeline/#metrics-server) 获取更多信息。
 另外，控制器也可以直接从 Heapster 获取指标。
 
-{{< note >}}
-{{< feature-state state="deprecated" for_k8s_version="1.11" >}}
+. note >}}
+. feature-state state="deprecated" for_k8s_version="1.11" >}}
 <!--
 Fetching metrics from Heapster is deprecated as of Kubernetes 1.11.
 -->
 自 Kubernetes 1.11起，从 Heapster 获取指标特性已废弃。
-{{< /note >}}
+. /note >}}
 
 <!--
 See [Support for metrics APIs](#support-for-metrics-apis) for more details.
@@ -418,7 +418,7 @@ upscale delay.
 - `--horizontal-pod-autoscaler-downscale-stabilization`: 这个 `kube-controller-manager` 的参数表示缩容冷却时间。
   即自从上次缩容执行结束后，多久可以再次执行缩容，默认时间是5分钟(`5m0s`)。
 
-{{< note >}}
+. note >}}
 <!--
 When tuning these parameter values, a cluster operator should be aware of the possible
 consequences. If the delay (cooldown) value is set too long, there could be complaints
@@ -429,7 +429,7 @@ usual.
 当启用这个参数时，集群操作员需要明白其可能的影响。
 如果延迟（冷却）时间设置的太长，那么 Horizontal Pod Autoscaler 可能会不能很好的改变负载。
 如果延迟（冷却）时间设备的太短，那么副本数量有可能跟以前一样抖动。
-{{< /note >}}
+. /note >}}
 
 <!--
 ## Support for multiple metrics
@@ -452,7 +452,7 @@ Horizontal Pod Autoscaler 会跟据每个指标计算，并生成一个缩放建
 -->
 ## 自定义指标支持
 
-{{< note >}}
+. note >}}
 <!--
 Kubernetes 1.2 added alpha support for scaling based on application-specific metrics using special annotations.
 Support for these annotations was removed in Kubernetes 1.6 in favor of the new autoscaling API.  While the old method for collecting
@@ -463,7 +463,7 @@ annotations for specifying which custom metrics to scale on are no longer honore
 自从 Kubernetes 1.6 起，由于缩放 API 的引入，这些 annotation 就不再支持了。
 虽然收集自定义指标的旧方法仍然可用，但是 Horizontal Pod Autoscaler 调度器将不会再使用这些指标，
 同时，Horizontal Pod Autoscaler 也不再使用之前的用于指定用户自定义指标的 annotation 了。
-{{< /note >}}
+. /note >}}
 
 <!--
 Kubernetes 1.6 adds support for making use of custom metrics in the Horizontal Pod Autoscaler.
@@ -545,7 +545,7 @@ and [the walkthrough for using external metrics](/docs/tasks/run-application/hor
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 <!--

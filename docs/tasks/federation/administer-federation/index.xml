@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>管理联邦控制平面 on Hugo 主题的 Learn 文档</title>
+    <link>https://lijun.in/tasks/federation/administer-federation/</link>
+    <description>Recent content in 管理联邦控制平面 on Hugo 主题的 Learn 文档</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://lijun.in/tasks/federation/administer-federation/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>联邦 ConfigMap</title>
+      <link>https://lijun.in/tasks/federation/administer-federation/configmap/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/federation/administer-federation/configmap/</guid>
+      <description>. deprecationfilewarning &amp;gt;}} . include &amp;ldquo;federation-deprecation-warning-note.md&amp;rdquo; &amp;gt;}} . /deprecationfilewarning &amp;gt;}}
+本指南介绍如何在联邦控制平面中使用 ConfigMap。
+联邦 ConfigMap 与传统 Kubernetes ConfigMap 非常相似且提供相同的功能。 在联邦控制平面中创建它们可以确保它们在联邦的所有集群中同步。
+. heading &amp;ldquo;prerequisites&amp;rdquo; %}}  . include &amp;ldquo;federated-task-tutorial-prereqs.md&amp;rdquo; &amp;gt;}}   通常我们还期望您拥有基本的 Kubernetes 应用知识， 特别是 ConfigMap 相关的应用知识。  创建联邦 ConfigMap 联邦 ConfigMap 的 API 100% 兼容传统 Kubernetes ConfigMap 的 API。您可以通过向联邦 apiserver 发送请求来创建 ConfigMap。 您可以通过使用 kubectl 运行下面的指令来创建联邦 ConfigMap：
+kubectl --context=federation-cluster create -f myconfigmap.yaml --context=federation-cluster 参数告诉 kubectl 将请求提交到联邦 apiserver 而不是发送给某一个 Kubernetes 集群。
+一旦联邦 ConfigMap 被创建，联邦控制平面就会在所有底层 Kubernetes 集群中创建匹配的 ConfigMap。 您可以通过检查底层每个集群来对其进行验证，例如：</description>
+    </item>
+    
+    <item>
+      <title>联邦 DaemonSet</title>
+      <link>https://lijun.in/tasks/federation/administer-federation/daemonset/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/federation/administer-federation/daemonset/</guid>
+      <description>. deprecationfilewarning &amp;gt;}} . include &amp;ldquo;federation-deprecation-warning-note.md&amp;rdquo; &amp;gt;}} . /deprecationfilewarning &amp;gt;}}
+本指南说明了如何在联邦控制平面中使用 DaemonSet。
+联邦控制平面中的 DaemonSet（在本指南中称为 “联邦 DaemonSet”）与传统的 Kubernetes DaemonSet 非常类似，并提供相同的功能。在联邦控制平面中创建联邦 DaemonSet 可以确保它们同步到联邦的所有集群中。
+. heading &amp;ldquo;prerequisites&amp;rdquo; %}}  . include &amp;ldquo;federated-task-tutorial-prereqs.md&amp;rdquo; &amp;gt;}}   你还应该具备基本的 Kubernetes 应用知识，特别是 DaemonSet 相关的应用知识。  创建联邦 Daemonset 联邦 Daemonset 的 API 和传统的 Kubernetes Daemonset API 是 100% 兼容的。您可以通过向联邦 apiserver 发送请求来创建一个 DaemonSet。
+您可以通过使用 kubectl 运行下面的指令来创建联邦 Daemonset：
+kubectl --context=federation-cluster create -f mydaemonset.yaml --context=federation-cluster 参数告诉 kubectl 发送请求到联邦 apiserver 而不是某个 Kubernetes 集群。</description>
+    </item>
+    
+    <item>
+      <title>联邦 Deployment</title>
+      <link>https://lijun.in/tasks/federation/administer-federation/deployment/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/federation/administer-federation/deployment/</guid>
+      <description>. deprecationfilewarning &amp;gt;}} . include &amp;ldquo;federation-deprecation-warning-note.md&amp;rdquo; &amp;gt;}} . /deprecationfilewarning &amp;gt;}}
+本指南说明了如何在联邦控制平面中使用 Deployment。
+联邦控制平面中的 Deployment（在本指南中称为 “联邦 Deployment”）与传统的 Kubernetes Deployment 非常类似，并提供相同的功能。在联邦控制平面中创建联邦 Deployment 确保所需的副本数存在于注册的群集中。
+. feature-state for_k8s_version=&amp;quot;1.5&amp;rdquo; state=&amp;quot;alpha&amp;rdquo; &amp;gt;}}
+一些特性（例如完整的 rollout 兼容性）仍在开发中。
+. heading &amp;ldquo;prerequisites&amp;rdquo; %}}  . include &amp;ldquo;federated-task-tutorial-prereqs.md&amp;rdquo; &amp;gt;}}   您还应当拥有基本的 Kubernetes 应用知识，特别是在 Deployments 方面。  创建联邦 Deployment 联邦 Deployment 的 API 和传统的 Kubernetes Deployment API 是兼容的。 您可以通过向联邦 apiserver 发送请求来创建一个 Deployment。
+您可以通过使用 kubectl 运行下面的指令：
+kubectl --context=federation-cluster create -f mydeployment.yaml --context=federation-cluster 参数告诉 kubectl 发送请求到联邦 apiserver 而不是某个 Kubernetes 集群。</description>
+    </item>
+    
+    <item>
+      <title>联邦 Job</title>
+      <link>https://lijun.in/tasks/federation/administer-federation/job/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/federation/administer-federation/job/</guid>
+      <description>. deprecationfilewarning &amp;gt;}} . include &amp;ldquo;federation-deprecation-warning-note.md&amp;rdquo; &amp;gt;}} . /deprecationfilewarning &amp;gt;}}
+本指南解释了如何在联邦控制平面中使用 job。
+联邦控制平面中的一次性任务（在本指南中称为“联邦一次性任务”）类似于传统的 Kubernetes 一次性任务，并且提供相同的功能。 在联邦控制平面中创建 job 可以确保在已注册的集群中存在所需的并行性和完成数。
+. heading &amp;ldquo;prerequisites&amp;rdquo; %}}  . include &amp;ldquo;federated-task-tutorial-prereqs.md&amp;rdquo; &amp;gt;}} 你需要具备基本的 Kubernetes 的工作知识，特别是 job。  创建一个联邦 job 用于联邦 job 的 API 与用于传统 Kubernetes job 的 API 完全兼容。您可以通过向联邦 apiserver 发送请求来创建 job。
+你可以使用 kubectl 来运行：
+kubectl --context=federation-cluster create -f myjob.yaml --context=federation-cluster 参数告诉 kubectl 将请求提交到联邦 API 服务器，而不是发送到 Kubernetes 集群。
+一旦创建了联邦 job，联邦控制平面将在所有底层 Kubernetes 集群中创建一个 job。 你可以通过检查每个集群底层来验证这一点，例如：
+kubectl --context=gce-asia-east1a get job myjob 前面的示例假设你的客户端中为该区域中的集群配置了一个名为 gce-asia-east1a 的上下文。</description>
+    </item>
+    
+    <item>
+      <title>联邦 ReplicaSet</title>
+      <link>https://lijun.in/tasks/federation/administer-federation/replicaset/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/federation/administer-federation/replicaset/</guid>
+      <description>. deprecationfilewarning &amp;gt;}} . include &amp;ldquo;federation-deprecation-warning-note.md&amp;rdquo; &amp;gt;}} . /deprecationfilewarning &amp;gt;}}
+本指南阐述了如何在联邦控制平面中使用 ReplicaSet。 在联邦控制平面中的 ReplicaSet (在本指南中称为”联邦 ReplicaSet”) 和传统的 Kubernetes ReplicaSet 很相似，提供了一样的功能。在联邦控制平面中创建联邦 ReplicaSet 可以确保在联邦的所有集群中都有预期数量的副本。
+. heading &amp;ldquo;prerequisites&amp;rdquo; %}}  . include &amp;ldquo;federated-task-tutorial-prereqs.md&amp;rdquo; &amp;gt;}}   你还应该具备基本的 Kubernetes 应用知识，特别是 ReplicaSets 相关的应用知识。  创建联邦 ReplicaSet 联邦 ReplicaSet 的 API 和传统的 Kubernetes ReplicaSet API 是 100% 兼容的。您可以通过请求联邦 apiserver 来创建联邦 ReplicaSet。
+您可以通过使用 kubectl 运行下面的指令来创建联邦 ReplicaSet：
+kubectl --context=federation-cluster create -f myrs.yaml --context=federation-cluster 参数告诉 kubectl 发送请求到联邦 apiserver 而不是某个 Kubernetes 集群。</description>
+    </item>
+    
+    <item>
+      <title>联邦 Secret</title>
+      <link>https://lijun.in/tasks/federation/administer-federation/secret/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/federation/administer-federation/secret/</guid>
+      <description>. deprecationfilewarning &amp;gt;}} . include &amp;ldquo;federation-deprecation-warning-note.md&amp;rdquo; &amp;gt;}} . /deprecationfilewarning &amp;gt;}}
+本指南解释了如何在联邦控制平面中使用 secret。
+联邦控制平面中的 Secret（在本指南中称为“联邦 secret”）与提供相同功能的传统 Kubernetes Secret 非常相似。 在联邦控制平面中创建它们可以确保它们跨联邦中的所有集群同步。
+先决条件 本指南假设你有一个正在运行的 Kubernetes 集群联邦安装。 如果没有，请访问联邦管理指南，了解如何启动联邦集群（或者让集群管理员为你做这件事）。 其他教程，例如这里 Kelsey Hightower，也可以帮助您。
+你还应该具有一个基本的 Kubernetes 工作知识， 特别是 Secret。
+创建联邦 Secret 用于联邦 Secret 的 API 与用于传统的 Kubernetes Secret 的 API 100% 兼容。 您可以通过向联邦 apiserver 发送请求来创建一个 Secret。
+你可以使用 kubectl 来运行：
+kubectl --context=federation-cluster create -f mysecret.yaml --context=federation-cluster 参数通知 kubectl 将请求提交给联邦 apiserver，而不是将其发送到 Kubernetes 集群。
+创建联邦命名空间后，联邦控制平面将在所有基础 Kubernetes 集群中创建匹配的命名空间。您可以通过检查每个基础集群来验证这一点，例如：
+kubectl --context=gce-asia-east1a get secret mysecret 以上假设您在客户端中为该区域中的集群配置了名为 “gce-asia-east1a” 的上下文。 集群底层中的这些 secret 将与联邦 secret 匹配。</description>
+    </item>
+    
+    <item>
+      <title>联邦事件</title>
+      <link>https://lijun.in/tasks/federation/administer-federation/events/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/federation/administer-federation/events/</guid>
+      <description>. deprecationfilewarning &amp;gt;}} . include &amp;ldquo;federation-deprecation-warning-note.md&amp;rdquo; &amp;gt;}} . /deprecationfilewarning &amp;gt;}}
+本指南介绍如何在联邦控制平面中使用事件来帮助调试。
+先决条件 本指南假定您正在运行 Kubernetes 集群联邦安装。 如果没有，请转到联邦管理员指南，了解如何启动集群联邦（或让集群管理员为您执行此操作）。 其他教程，例如这个由 Kelsey Hightower，也可为您提供帮助。
+你还应该具备 kubernetes 基本工作知识。
+查看联邦事件 联邦控制平面中的事件（本指南中称为“联邦事件”）与提供相同功能的传统 Kubernetes 事件非常相似。 联邦事件仅存储在联邦控制平面中，不会传递给基础 Kubernetes 集群。
+联邦控制器在处理 API 资源时创建事件，以便向用户显示它们所处的状态。您可以通过运行以下命令从联邦 apiserver 获取所有事件：
+kubectl --context=federation-cluster get events 标准的 kubectl get，update，delete 命令都可以正常工作。</description>
+    </item>
+    
+    <item>
+      <title>联邦命名空间</title>
+      <link>https://lijun.in/tasks/federation/administer-federation/namespaces/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/federation/administer-federation/namespaces/</guid>
+      <description>. deprecationfilewarning &amp;gt;}} . include &amp;ldquo;federation-deprecation-warning-note.md&amp;rdquo; &amp;gt;}} . /deprecationfilewarning &amp;gt;}}
+本指南介绍如何在联邦控制平面中使用命名空间。
+联邦控制平面中的命名空间（本指南中称为“联邦命名空间”）与提供相同功能的传统 Kubernetes 命名空间非常相似。 在联邦控制平面中创建它们可确保它们在联邦中的所有集群之间同步
+. heading &amp;ldquo;prerequisites&amp;rdquo; %}}  . include &amp;ldquo;federated-task-tutorial-prereqs.md&amp;rdquo; &amp;gt;}} 您还需要具备基本的 Kubernetes 工作知识， 特别是命名空间。  创建联邦命名空间 联邦命名空间的 API 与传统 Kubernetes 命名空间的 API 100％ 兼容。您可以通过向联邦身份验证程序发送请求来创建命名空间。
+您可以通过运行以下命令使用 kubectl 执行此操作：
+kubectl --context=federation-cluster create -f myns.yaml --context=federation-cluster 参数通知 kubectl 将请求提交给联邦 apiserver，而不是将其发送到 Kubernetes 集群。
+创建联邦命名空间后，联邦控制平面将在所有基础 Kubernetes 集群中创建匹配的命名空间。您可以通过检查每个基础集群来验证这一点，例如：
+kubectl --context=gce-asia-east1a get namespaces myns 以上假设您在客户端中为该区域中的集群配置了名为 “gce-asia-east1a” 的上下文。 基础命名空间的名称和规范将与您在上面创建的联邦命名空间的名称和规范相匹配。
+更新联邦命名空间 您可以像更新 Kubernetes 命名空间一样更新联邦命名空间，只需将请求发送到联邦身份验证程序，而不是将其发送到指定的 Kubernetes 集群。 联邦控制平面将确保每当更新联邦命名空间时，它都会更新所有基础集群中的相应命名空间以与其匹配。</description>
+    </item>
+    
+  </channel>
+</rss>

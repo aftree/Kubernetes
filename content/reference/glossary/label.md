@@ -33,9 +33,9 @@ tags:
 <!--more--> 
 
 <!--
-Labels are key/value pairs that are attached to objects such as {{< glossary_tooltip text="Pods" term_id="pod" >}}. They are used to organize and to select subsets of objects.
+Labels are key/value pairs that are attached to objects such as . glossary_tooltip text="Pods" term_id="pod" >}}. They are used to organize and to select subsets of objects.
 -->
 
-标签是一些关联到 {{< glossary_tooltip text="Pods" term_id="pod" >}} 这类对象上的键值对。
+标签是一些关联到 . glossary_tooltip text="Pods" term_id="pod" >}} 这类对象上的键值对。
 它们通常用来组织和选择对象子集。
 

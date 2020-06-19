@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>😍 - 参考 on Hugo 主题的 Learn 文档</title>
+    <link>https://lijun.in/reference/</link>
+    <description>Recent content in 😍 - 参考 on Hugo 主题的 Learn 文档</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://lijun.in/reference/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>😍 - 标准化词汇表</title>
+      <link>https://lijun.in/reference/glossary/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/reference/glossary/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>工具</title>
+      <link>https://lijun.in/reference/tools/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/reference/tools/</guid>
+      <description>Kubernetes 包含一些内置工具，可以帮助用户更好的使用 Kubernetes 系统。
+Kubectl kubectl 是 Kubernetes 命令行工具，可以用来操控 Kubernetes 集群。
+Kubeadm kubeadm 是一个命令行工具，可以用来在物理机、云服务器或虚拟机（目前处于 alpha 阶段）上轻松部署一个安全可靠的 Kubernetes 集群。
+Kubefed kubefed 是一个命令行工具，可以用来帮助用户管理联邦集群。
+Minikube minikube 是一个可以方便用户在其工作站点本地部署一个单节点 Kubernetes 集群的工具，用于开发和测试。
+Dashboard Dashboard, 是 Kubernetes 基于 Web 的用户管理界面，允许用户部署容器化应用到 Kubernetes 集群，进行故障排查以及管理集群和集群资源。
+Helm Kubernetes Helm 是一个管理预先配置 Kubernetes 资源包的工具，这里的资源在 Helm 中也被称作 Kubernetes charts。
+使用 Helm：
+ 查找并使用已经打包为 Kubernetes charts 的流行软件 分享您自己的应用作为 Kubernetes charts 为 Kubernetes 应用创建可重复执行的构建 为您的 Kubernetes 清单文件提供更智能化的管理 管理 Helm 软件包的发布  Kompose Kompose 一个转换工具，用来帮助 Docker Compose 用户迁移至 Kubernetes。</description>
+    </item>
+    
+  </channel>
+</rss>

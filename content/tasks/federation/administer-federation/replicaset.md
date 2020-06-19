@@ -11,9 +11,9 @@ content_type: task
 
 <!-- overview -->
 
-{{< deprecationfilewarning >}}
-{{< include "federation-deprecation-warning-note.md" >}}
-{{< /deprecationfilewarning >}}
+. deprecationfilewarning >}}
+. include "federation-deprecation-warning-note.md" >}}
+. /deprecationfilewarning >}}
 
 <!--
 This guide explains how to use ReplicaSets in the Federation control plane.
@@ -29,10 +29,10 @@ replicas exist across the registered clusters.
 ReplicaSet](/docs/concepts/workloads/controllers/replicaset/) 很相似，提供了一样的功能。在联邦控制平面中创建联邦 ReplicaSet 可以确保在联邦的所有集群中都有预期数量的副本。
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-* {{< include "federated-task-tutorial-prereqs.md" >}}
+* . include "federated-task-tutorial-prereqs.md" >}}
 <!--
 * You should also have a basic
 [working knowledge of Kubernetes](/docs/tutorials/kubernetes-basics/) in
@@ -208,12 +208,12 @@ kubectl --context=federation-cluster delete rs myrs
 kubectl --context=federation-cluster delete rs myrs
 ```
 
-{{< note >}}
+. note >}}
 <!--
 At this point, deleting a federated ReplicaSet will not delete the corresponding ReplicaSets from underlying clusters. You must delete the underlying ReplicaSets manually. We intend to fix this in the future.
 -->
 要注意的是这时删除联邦 ReplicaSet 并不会删除底层集群中对应的 ReplicaSet。您必须自己手动删除底层集群中的 ReplicaSet。我们打算在将来修复这个问题。
-{{< /note >}}
+. /note >}}
 
 
 

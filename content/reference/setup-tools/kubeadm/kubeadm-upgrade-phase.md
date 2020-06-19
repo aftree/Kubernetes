@@ -24,11 +24,11 @@ be called on a primary control-plane node.
 
 使用此阶段，可以选择执行辅助控制平面或工作节点升级的单独步骤。请注意，`kubeadm upgrade apply` 命令仍然必须在主控制平面节点上调用。
 
-{{< tabs name="tab-phase" >}}
-{{< tab name="phase" include="generated/kubeadm_upgrade_node_phase.md" />}}
-{{< tab name="control-plane" include="generated/kubeadm_upgrade_node_phase_control-plane.md" />}}
-{{< tab name="kubelet-config" include="generated/kubeadm_upgrade_node_phase_kubelet-config.md" />}}
-{{< /tabs >}}
+. tabs name="tab-phase" >}}
+. tab name="phase" include="generated/kubeadm_upgrade_node_phase.md" />}}
+. tab name="control-plane" include="generated/kubeadm_upgrade_node_phase_control-plane.md" />}}
+. tab name="kubelet-config" include="generated/kubeadm_upgrade_node_phase_kubelet-config.md" />}}
+. /tabs >}}
 
 <!--
 ## What's next

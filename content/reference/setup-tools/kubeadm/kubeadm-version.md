@@ -18,5 +18,5 @@ This command prints the version of kubeadm.
 
 
 <!-- body -->
-{{< include "generated/kubeadm_version.md" >}}
+. include "generated/kubeadm_version.md" >}}
 

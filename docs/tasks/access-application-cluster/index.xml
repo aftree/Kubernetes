@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>😝 - 访问集群中的应用程序 on Hugo 主题的 Learn 文档</title>
+    <link>https://lijun.in/tasks/access-application-cluster/</link>
+    <description>Recent content in 😝 - 访问集群中的应用程序 on Hugo 主题的 Learn 文档</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://lijun.in/tasks/access-application-cluster/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>网页界面 (Dashboard)</title>
+      <link>https://lijun.in/tasks/access-application-cluster/web-ui-dashboard/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/access-application-cluster/web-ui-dashboard/</guid>
+      <description>Dashboard 是基于网页的 Kubernetes 用户界面。您可以使用 Dashboard 将容器应用部署到 Kubernetes 集群中，也可以对容器应用排错，还能管理集群资源。您可以使用 Dashboard 获取运行在集群中的应用的概览信息，也可以创建或者修改 Kubernetes 资源（如 Deployment，Job，DaemonSet 等等）。例如，您可以对 Deployment 实现弹性伸缩、发起滚动升级、重启 Pod 或者使用向导创建新的应用。
+Dashboard 同时展示了 Kubernetes 集群中的资源状态信息和所有报错信息。
+部署 Dashboard UI 默认情况下不会部署 Dashboard。可以通过以下命令部署：
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml 访问 Dashboard UI 为了保护您的集群数据，默认情况下，Dashboard 会使用最少的 RBAC 配置进行部署。 当前，Dashboard 仅支持使用 Bearer 令牌登录。 要为此样本演示创建令牌，您可以按照创建示例用户上的指南进行操作。
+. warning &amp;gt;}} 在教程中创建的样本用户将具有管理特权，并且仅用于教育目的。 . /warning &amp;gt;}}
+命令行代理 您可以使用 kubectl 命令行工具访问 Dashboard，命令如下：
+kubectl proxy kubectl 会使得 Dashboard 可以通过 http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/ 访问。
+UI 只能 通过执行这条命令的机器进行访问。更多选项参见 kubectl proxy --help。
+. note &amp;gt;}} Kubeconfig 身份验证方法不支持外部身份提供程序或基于 x509 证书的身份验证。 .</description>
+    </item>
+    
+    <item>
+      <title>访问集群</title>
+      <link>https://lijun.in/tasks/access-application-cluster/access-cluster/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/access-application-cluster/access-cluster/</guid>
+      <description>本文阐述多种与集群交互的方法。
+. toc &amp;gt;}}
+使用 kubectl 完成集群的第一次访问 当您第一次访问 Kubernetes API 的时候，我们建议您使用 Kubernetes CLI，kubectl。
+访问集群时，您需要知道集群的地址并且拥有访问的凭证。通常，这些在您通过 Getting started guide 安装集群时都是自动安装好的，或者其他人安装时也应该提供了凭证和集群地址。
+通过以下命令检查 kubectl 是否知道集群地址及凭证：
+$ kubectl config view 有许多 例子 介绍了如何使用 kubectl，可以在 kubectl手册 中找到更完整的文档。
+直接访问 REST API Kubectl 处理 apiserver 的定位和身份验证。 如果要使用 curl 或 wget 等 http 客户端或浏览器直接访问 REST API，可以通过多种方式查找和验证：
+ 以代理模式运行 kubectl。  推荐此方式。 使用已存储的 apiserver 地址。 使用自签名的证书来验证 apiserver 的身份。杜绝 MITM 攻击。 对 apiserver 进行身份验证。 未来可能会实现智能化的客户端负载均衡和故障恢复。   直接向 http 客户端提供位置和凭据。  可选的方案。 适用于代理可能引起混淆的某些客户端类型。 需要引入根证书到您的浏览器以防止 MITM 攻击。    使用 kubectl 代理 以下命令以反向代理的模式运行kubectl。它处理 apiserver 的定位和验证。 像这样运行：</description>
+    </item>
+    
+    <item>
+      <title>使用端口转发来访问集群中的应用</title>
+      <link>https://lijun.in/tasks/access-application-cluster/port-forward-access-application-cluster/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/access-application-cluster/port-forward-access-application-cluster/</guid>
+      <description>本文展示如何使用 kubectl port-forward 连接到在 Kubernetes 集群中运行的 Redis 服务。这种类型的连接对数据库调试很有用。
+. heading &amp;ldquo;prerequisites&amp;rdquo; %}}  . include &amp;ldquo;task-tutorial-prereqs.md&amp;rdquo; &amp;gt;}} . version-check &amp;gt;}}   安装 redis-cli。  创建 Redis deployment 和服务   创建一个 Redis deployment：
+ kubectl apply -f https://k8s.io/examples/application/guestbook/redis-master-deployment.yaml    查看输出是否成功，以验证是否成功创建 deployment： deployment.apps/redis-master created  查看 pod 状态，检查其是否准备就绪： kubectl get pods  输出显示创建的 pod： NAME READY STATUS RESTARTS AGE redis-master-765d459796-258hz 1/1 Running 0 50s  查看 deployment 状态： kubectl get deployment  输出显示创建的 deployment： NAME DESIRED CURRENT UP-TO-DATE AVAILABLE AGE redis-master 1 1 1 1 55s  查看 replicaset 状态： kubectl get rs  输出显示创建的 replicaset： NAME DESIRED CURRENT READY AGE redis-master-765d459796 1 1 1 1m   创建一个 Redis 服务：</description>
+    </item>
+    
+    <item>
+      <title>使用服务来访问集群中的应用</title>
+      <link>https://lijun.in/tasks/access-application-cluster/service-access-application-cluster/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/access-application-cluster/service-access-application-cluster/</guid>
+      <description>本文展示如何创建一个 Kubernetes 服务对象，能让外部客户端访问在集群中运行的应用。该服务为一个应用的两个运行实例提供负载均衡。
+. heading &amp;ldquo;prerequisites&amp;rdquo; %}} . include &amp;ldquo;task-tutorial-prereqs.md&amp;rdquo; &amp;gt;}} . version-check &amp;gt;}}
+. heading &amp;ldquo;objectives&amp;rdquo; %}}  运行 Hello World 应用的两个实例。 创建一个服务对象来暴露 node port。 使用服务对象来访问正在运行的应用。  为运行在两个 pod 中的应用创建一个服务 这是应用程序部署的配置文件：
+. codenew file=&amp;quot;service/access/hello-application.yaml&amp;rdquo; &amp;gt;}}
+ 在您的集群中运行一个 Hello World 应用： 使用上面的文件创建应用程序 Deployment： kubectl apply -f https://k8s.io/examples/service/access/hello-application.yaml 上面的命令创建一个 Deployment 对象和一个关联的 ReplicaSet 对象。这个 ReplicaSet 有两个 Pod，每个 Pod 都运行着 Hello World 应用。
+   展示 Deployment 的信息： kubectl get deployments hello-world kubectl describe deployments hello-world    展示您的 ReplicaSet 对象信息： kubectl get replicasets kubectl describe replicasets    创建一个服务对象来暴露 deployment： kubectl expose deployment hello-world --type=NodePort --name=example-service    展示服务信息： kubectl describe services example-service   输出类似于：</description>
+    </item>
+    
+    <item>
+      <title>创建一个外部负载均衡器</title>
+      <link>https://lijun.in/tasks/access-application-cluster/create-external-load-balancer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/access-application-cluster/create-external-load-balancer/</guid>
+      <description>本文展示如何创建一个外部负载均衡器。
+. note &amp;gt;}}
+此功能仅适用于支持外部负载均衡器的云提供商或环境。 . /note &amp;gt;}}
+创建服务时，您可以选择自动创建云网络负载均衡器。这提供了一个外部可访问的 IP 地址，可将流量分配到集群节点上的正确端口上 假设集群在支持的环境中运行，并配置了正确的云负载平衡器提供商包。
+有关如何配置和使用 Ingress 资源为服务提供外部可访问的 URL、负载均衡流量、终止 SSL 等功能，请查看 Ingress 文档。
+. heading &amp;ldquo;prerequisites&amp;rdquo; %}}  . include &amp;ldquo;task-tutorial-prereqs.md&amp;rdquo; &amp;gt;}} . version-check &amp;gt;}}  配置文件 要创建外部负载均衡器，请将以下内容添加到 服务配置文件：
+type: LoadBalancer 您的配置文件可能会如下所示：
+apiVersion: v1 kind: Service metadata: name: example-service spec: selector: app: example ports: - port: 8765 targetPort: 9376 type: LoadBalancer 使用 kubectl 您也可以使用 kubectl expose 命令及其 --type=LoadBalancer 参数创建服务：
+kubectl expose rc example --port=8765 --target-port=9376 \  --name=example-service --type=LoadBalancer 此命令通过使用与引用资源（在上面的示例的情况下，名为 example 的 replication controller）相同的选择器来创建一个新的服务。</description>
+    </item>
+    
+    <item>
+      <title>配置你的云平台防火墙</title>
+      <link>https://lijun.in/tasks/access-application-cluster/configure-cloud-provider-firewall/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/access-application-cluster/configure-cloud-provider-firewall/</guid>
+      <description>许多云服务提供商（比如 谷歌计算引擎）定义防火墙以防止服务无意间暴露到互联网上。 当暴露服务给外网时，你可能需要在防火墙上开启一个或者更多的端口来支持服务。 本文描述了这个过程，以及其他云服务商的具体信息。
+. heading &amp;ldquo;prerequisites&amp;rdquo; %}} . include &amp;ldquo;task-tutorial-prereqs.md&amp;rdquo; &amp;gt;}} . version-check &amp;gt;}}
+负载均衡（LoadBalancer）服务的访问限制 当以 spec.type: LoadBalancer 方式配置服务时，你可以使用 spec.loadBalancerSourceRanges 来指定允许访问负载均衡器的 ip 段。 这个字段采用 CIDR 的 IP 段， kubernetes 使用该段配置防火墙。目前只有 谷歌计算引擎，谷歌云原生引擎，亚马逊弹性原生云服务 和 微软云原生平台支持此功能。 如果云服务提供商不支持这个功能，这个字段将被忽略。
+假设内部子网为假设10.0.0.0/8，在下面这个例子中，将创建一个仅能由群集内部IP访问的负载均衡器。此负载均衡器不允许来自 kubernetes 集群外部客户端的访问。
+apiVersion: v1 kind: Service metadata: name: myapp spec: ports: - port: 8765 targetPort: 9376 selector: app: example type: LoadBalancer loadBalancerSourceRanges: - 10.0.0.0/8 在下面这个例子中，将创建一个只能被 IP 为 130.211.204.1 和 130.211.204.2 的客户端访问的负载据衡器。
+apiVersion: v1 kind: Service metadata: name: myapp spec: ports: - port: 8765 targetPort: 9376 selector: app: example type: LoadBalancer loadBalancerSourceRanges: - 130.</description>
+    </item>
+    
+    <item>
+      <title>列出集群中所有运行容器的镜像</title>
+      <link>https://lijun.in/tasks/access-application-cluster/list-all-running-container-images/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/access-application-cluster/list-all-running-container-images/</guid>
+      <description>本文展示如何使用 kubectl 来列出集群中所有运行 pod 的容器的镜像
+. heading &amp;ldquo;prerequisites&amp;rdquo; %}} . include &amp;ldquo;task-tutorial-prereqs.md&amp;rdquo; &amp;gt;}} . version-check &amp;gt;}}
+在本练习中，您将使用 kubectl 来获取集群中运行的所有 Pod，并格式化输出来提取每个 pod 中的容器列表。
+列出所有命名空间下的所有容器  使用 kubectl get pods --all-namespaces 获取所有命名空间下的所有 Pod 使用 -o jsonpath={..image} 来格式化输出，以仅包含容器镜像名称。 这将以递归方式从返回的 json 中解析出 image 字段。  参阅 jsonpath reference 来获取更多关于如何使用 jsonpath 的信息。   使用标准化工具来格式化输出：tr, sort, uniq  使用 tr 以用换行符替换空格 使用 sort 来对结果进行排序 使用 uniq 来聚合镜像计数    kubectl get pods --all-namespaces -o jsonpath=&amp;#34;{.</description>
+    </item>
+    
+    <item>
+      <title>为集群配置 DNS</title>
+      <link>https://lijun.in/tasks/access-application-cluster/configure-dns-cluster/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/access-application-cluster/configure-dns-cluster/</guid>
+      <description>Kubernetes 提供 DNS 集群插件，大多数支持的环境默认情况下都会启用。
+有关如何为 Kubernetes 集群配置 DNS 的详细信息，请参阅 Kubernetes DNS 插件示例.</description>
+    </item>
+    
+    <item>
+      <title>使用 Service 把前端连接到后端</title>
+      <link>https://lijun.in/tasks/access-application-cluster/connecting-frontend-backend/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/access-application-cluster/connecting-frontend-backend/</guid>
+      <description>本任务会描述如何创建前端微服务和后端微服务。后端微服务是一个 hello 欢迎程序。 前端和后端的连接是通过 Kubernetes 服务对象（Service object）完成的。
+. heading &amp;ldquo;objectives&amp;rdquo; %}}  使用部署对象（Deployment object）创建并运行一个微服务 从后端将流量路由到前端 使用服务对象把前端应用连接到后端应用  . heading &amp;ldquo;prerequisites&amp;rdquo; %}}   . include &amp;ldquo;task-tutorial-prereqs.md&amp;rdquo; &amp;gt;}} . version-check &amp;gt;}}
+  本任务使用 外部负载均衡服务， 所以需要对应的可支持此功能的环境。如果你的环境不能支持，你可以使用 NodePort 类型的服务代替。
+  使用部署对象（Deployment）创建后端 后端是一个简单的 hello 欢迎微服务应用。这是后端应用的 Deployment 配置文件：
+. codenew file=&amp;quot;service/access/hello.yaml&amp;rdquo; &amp;gt;}}
+创建后端 Deployment：
+kubectl apply -f https://k8s.io/examples/service/access/hello.yaml 查看后端的 Deployment 信息：
+kubectl describe deployment hello 输出类似于：
+Name: hello Namespace: default CreationTimestamp: Mon, 24 Oct 2016 14:21:02 -0700 Labels: app=hello tier=backend track=stable Selector: app=hello,tier=backend,track=stable Replicas: 7 updated | 7 total | 7 available | 0 unavailable StrategyType: RollingUpdate MinReadySeconds: 0 RollingUpdateStrategy: 1 max unavailable, 1 max surge OldReplicaSets: &amp;lt;none&amp;gt; NewReplicaSet: hello-3621623197 (7/7 replicas created) Events: .</description>
+    </item>
+    
+    <item>
+      <title>同 Pod 内的容器使用共享卷通信</title>
+      <link>https://lijun.in/tasks/access-application-cluster/communicate-containers-same-pod-shared-volume/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/access-application-cluster/communicate-containers-same-pod-shared-volume/</guid>
+      <description>本文旨在说明如何让一个 Pod 内的两个容器使用一个卷（Volume）进行通信。
+. heading &amp;ldquo;prerequisites&amp;rdquo; %}} . include &amp;ldquo;task-tutorial-prereqs.md&amp;rdquo; &amp;gt;}} . version-check &amp;gt;}}
+创建一个包含两个容器的 Pod 在这个练习中，你会创建一个包含两个容器的 Pod。两个容器共享一个卷用于他们之间的通信。 Pod 的配置文件如下：
+. codenew file=&amp;quot;pods/two-container-pod.yaml&amp;rdquo; &amp;gt;}}
+在配置文件中，你可以看到 Pod 有一个共享卷，名为 shared-data。
+配置文件中的第一个容器运行了一个 nginx 服务器。共享卷的挂载路径是 /usr/share/nginx/html。 第二个容器是基于 debian 镜像的，有一个 /pod-data 的挂载路径。第二个容器运行了下面的命令然后终止。
+echo Hello from the debian container &amp;gt; /pod-data/index.html  注意，第二个容器在 nginx 服务器的根目录下写了 index.html 文件。
+创建一个包含两个容器的 Pod：
+kubectl apply -f https://k8s.io/examples/pods/two-container-pod.yaml  查看 Pod 和容器的信息：
+kubectl get pod two-containers --output=yaml  这是输出的一部分：
+apiVersion: v1 kind: Pod metadata: .</description>
+    </item>
+    
+    <item>
+      <title>配置对多集群的访问</title>
+      <link>https://lijun.in/tasks/access-application-cluster/configure-access-multiple-clusters/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/access-application-cluster/configure-access-multiple-clusters/</guid>
+      <description>本文展示如何使用配置文件来配置对多个集群的访问。 在将集群、用户和上下文定义在一个或多个配置文件中之后，用户可以使用 kubectl config use-context 命令快速地在集群之间进行切换。
+. note &amp;gt;}} 用于配置集群访问的文件有时被称为 kubeconfig 文件。 这是一种引用配置文件的通用方式，并不意味着存在一个名为 kubeconfig 的文件。 . /note &amp;gt;}}
+. heading &amp;ldquo;prerequisites&amp;rdquo; %}} 需要安装 kubectl 命令行工具。
+定义集群、用户和上下文 假设用户有两个集群，一个用于正式开发工作，一个用于其它临时用途（scratch）。 在 development 集群中，前端开发者在名为 frontend 的名字空间下工作， 存储开发者在名为 storage 的名字空间下工作。 在 scratch 集群中， 开发人员可能在默认名字空间下工作，也可能视情况创建附加的名字空间。 访问开发集群需要通过证书进行认证。 访问其它临时用途的集群需要通过用户名和密码进行认证。
+创建名为 config-exercise 的目录。 在 config-exercise 目录中，创建名为 config-demo 的文件，其内容为：
+apiVersion: v1 kind: Config preferences: {} clusters: - cluster: name: development - cluster: name: scratch users: - name: developer - name: experimenter contexts: - context: name: dev-frontend - context: name: dev-storage - context: name: exp-scratch 配置文件描述了集群、用户名和上下文。 config-demo 文件中含有描述两个集群、两个用户和三个上下文的框架。</description>
+    </item>
+    
+  </channel>
+</rss>

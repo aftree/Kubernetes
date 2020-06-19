@@ -24,9 +24,9 @@ and behind the scene both use the same code.
 
 ## kubeadm reset phase {#cmd-reset-phase}
 
-{{< tabs name="tab-phase" >}}
-{{< tab name="phase" include="generated/kubeadm_reset_phase.md" />}}
-{{< /tabs >}}
+. tabs name="tab-phase" >}}
+. tab name="phase" include="generated/kubeadm_reset_phase.md" />}}
+. /tabs >}}
 
 ## kubeadm reset phase preflight {#cmd-reset-phase-preflight}
 
@@ -35,9 +35,9 @@ Using this phase you can execute preflight checks on a node that is being reset.
 -->
 使用此阶段，您可以在要重置的节点上执行启动前检查阶段。
 
-{{< tabs name="tab-preflight" >}}
-{{< tab name="preflight" include="generated/kubeadm_reset_phase_preflight.md" />}}
-{{< /tabs >}}
+. tabs name="tab-preflight" >}}
+. tab name="preflight" include="generated/kubeadm_reset_phase_preflight.md" />}}
+. /tabs >}}
 
 <!--
 ## kubeadm reset phase update-cluster-status
@@ -49,9 +49,9 @@ Using this phase you can remove this control-plane node from the ClusterStatus o
 -->
 使用此阶段，您可以从 ClusterStatus 对象中删除此控制平面节点。
 
-{{< tabs name="tab-update-cluster-status" >}}
-{{< tab name="update-cluster-status" include="generated/kubeadm_reset_phase_update-cluster-status.md" />}}
-{{< /tabs >}}
+. tabs name="tab-update-cluster-status" >}}
+. tab name="update-cluster-status" include="generated/kubeadm_reset_phase_update-cluster-status.md" />}}
+. /tabs >}}
 
 <!--
 ## kubeadm reset phase remove-etcd-member
@@ -63,9 +63,9 @@ Using this phase you can remove this control-plane node's etcd member from the e
 -->
 使用此阶段，您可以从 etcd 集群中删除此控制平面节点的 etcd 成员。
 
-{{< tabs name="tab-remove-etcd-member" >}}
-{{< tab name="remove-etcd-member" include="generated/kubeadm_reset_phase_remove-etcd-member.md" />}}
-{{< /tabs >}}
+. tabs name="tab-remove-etcd-member" >}}
+. tab name="remove-etcd-member" include="generated/kubeadm_reset_phase_remove-etcd-member.md" />}}
+. /tabs >}}
 
 <!--
 ## kubeadm reset phase cleanup-node
@@ -77,9 +77,9 @@ Using this phase you can perform cleanup on this node.
 -->
 使用此阶段，您可以在此节点上执行清理工作。
 
-{{< tabs name="tab-cleanup-node" >}}
-{{< tab name="cleanup-node" include="generated/kubeadm_reset_phase_cleanup-node.md" />}}
-{{< /tabs >}}
+. tabs name="tab-cleanup-node" >}}
+. tab name="cleanup-node" include="generated/kubeadm_reset_phase_cleanup-node.md" />}}
+. /tabs >}}
 
 <!--
 ## What's next

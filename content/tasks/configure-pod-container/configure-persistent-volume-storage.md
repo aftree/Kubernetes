@@ -38,7 +38,7 @@ bound to a suitable PersistentVolume.
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
 <!--
@@ -106,7 +106,7 @@ hostPath 类型的 PersistentVolume 使用节点上的文件或目录来模拟�
 In a production cluster, you would not use hostPath. Instead a cluster administrator
 would provision a network resource like a Google Compute Engine persistent disk,
 an NFS share, or an Amazon Elastic Block Store volume. Cluster administrators can also
-use [StorageClasses](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#storageclass-v1-storage)
+use [StorageClasses](/docs/reference/generated/kubernetes-api/. param "version" >}}/#storageclass-v1-storage)
 to set up
 [dynamic provisioning](https://kubernetes.io/blog/2016/10/dynamic-provisioning-and-storage-in-kubernetes).
 
@@ -114,11 +114,11 @@ Here is the configuration file for the hostPath PersistentVolume:
 -->
 
 在生产集群中，您不会使用 hostPath。集群管理员会提供网络存储资源，比如 Google Compute Engine 持久盘卷、NFS 共享卷或 Amazon Elastic Block Store 卷。
-集群管理员还可以使用 [StorageClasses](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#storageclass-v1-storage) 来设置[动态提供存储](https://kubernetes.io/blog/2016/10/dynamic-provisioning-and-storage-in-kubernetes)。
+集群管理员还可以使用 [StorageClasses](/docs/reference/generated/kubernetes-api/. param "version" >}}/#storageclass-v1-storage) 来设置[动态提供存储](https://kubernetes.io/blog/2016/10/dynamic-provisioning-and-storage-in-kubernetes)。
 
 下面是 hostPath PersistentVolume 的配置文件：
 
-{{< codenew file="pods/storage/pv-volume.yaml" >}}
+. codenew file="pods/storage/pv-volume.yaml" >}}
 
 <!--
 The configuration file specifies that the volume is at `/mnt/data` on the
@@ -177,7 +177,7 @@ Pod 使用 PersistentVolumeClaim 来请求物理存储。
 
 下面是 PersistentVolumeClaim 的配置文件：
 
-{{< codenew file="pods/storage/pv-claim.yaml" >}}
+. codenew file="pods/storage/pv-claim.yaml" >}}
 
 <!--
 Create the PersistentVolumeClaim:
@@ -242,7 +242,7 @@ Here is the configuration file for the Pod:
 
 下面是 Pod 的 配置文件：
 
-{{< codenew file="pods/storage/pv-pod.yaml" >}}
+. codenew file="pods/storage/pv-pod.yaml" >}}
 
 <!--
 Notice that the Pod's configuration file specifies a PersistentVolumeClaim, but
@@ -340,18 +340,18 @@ each Container.
 当 Pod 使用带有 GID 注解的 PersistentVolume 时，注解的 GID 会被应用于 Pod 中的所有容器，应用的方法与 Pod 的安全上下文中指定的 GID 相同。
 每个 GID，无论是来自 PersistentVolume 注解还是来自 Pod 的规范，都应用于每个容器中运行的第一个进程。
 
-{{< note >}}
+. note >}}
 <!--
 When a Pod consumes a PersistentVolume, the GIDs associated with the
 PersistentVolume are not present on the Pod resource itself.
 -->
 当 Pod 使用 PersistentVolume 时，与 PersistentVolume 关联的 GID 不会在 Pod 本身的资源对象上出现。
-{{< /note >}}
+. /note >}}
 
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 <!--
@@ -368,10 +368,10 @@ PersistentVolume are not present on the Pod resource itself.
 
 ### 参考
 
-* [PersistentVolume](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#persistentvolume-v1-core)
-* [PersistentVolumeSpec](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#persistentvolumespec-v1-core)
-* [PersistentVolumeClaim](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#persistentvolumeclaim-v1-core)
-* [PersistentVolumeClaimSpec](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#persistentvolumeclaimspec-v1-core)
+* [PersistentVolume](/docs/reference/generated/kubernetes-api/. param "version" >}}/#persistentvolume-v1-core)
+* [PersistentVolumeSpec](/docs/reference/generated/kubernetes-api/. param "version" >}}/#persistentvolumespec-v1-core)
+* [PersistentVolumeClaim](/docs/reference/generated/kubernetes-api/. param "version" >}}/#persistentvolumeclaim-v1-core)
+* [PersistentVolumeClaimSpec](/docs/reference/generated/kubernetes-api/. param "version" >}}/#persistentvolumeclaimspec-v1-core)
 
 
 

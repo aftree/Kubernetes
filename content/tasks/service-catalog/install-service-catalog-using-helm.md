@@ -12,7 +12,7 @@ content_type: task
 -->
 
 <!-- overview -->
-{{< glossary_definition term_id="service-catalog" length="all" prepend="Service Catalog is" >}}
+. glossary_definition term_id="service-catalog" length="all" prepend="Service Catalog is" >}}
 
 <!--
 Use [Helm](https://helm.sh/) to install Service Catalog on your Kubernetes cluster. Up to date information on this process can be found at the [kubernetes-incubator/service-catalog](https://github.com/kubernetes-incubator/service-catalog/blob/master/docs/install.md) repo.
@@ -22,13 +22,13 @@ Use [Helm](https://helm.sh/) to install Service Catalog on your Kubernetes clust
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 <!--
 * Understand the key concepts of [Service Catalog](/docs/concepts/service-catalog/).
 * Service Catalog requires a Kubernetes cluster running version 1.7 or higher.
 * You must have a Kubernetes cluster with cluster DNS enabled.
-    * If you are using a cloud-based Kubernetes cluster or {{< glossary_tooltip text="Minikube" term_id="minikube" >}}, you may already have cluster DNS enabled.
+    * If you are using a cloud-based Kubernetes cluster or . glossary_tooltip text="Minikube" term_id="minikube" >}}, you may already have cluster DNS enabled.
     * If you are using `hack/local-up-cluster.sh`, ensure that the `KUBE_ENABLE_CLUSTER_DNS` environment variable is set, then run the install script.
 * [Install and setup kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) v1.7 or higher. Make sure it is configured to connect to the Kubernetes cluster.
 * Install [Helm](http://helm.sh/) v2.7.0 or newer.
@@ -38,7 +38,7 @@ Use [Helm](https://helm.sh/) to install Service Catalog on your Kubernetes clust
 * 理解 [Service Catalog](/docs/concepts/service-catalog/) 的关键概念。
 * Service Catalog 需要 Kubernetes 集群版本在 1.7 或更高版本。
 * 您必须启用 Kubernetes 集群的 DNS 功能。
-    * 如果使用基于云的 Kubernetes 集群或 {{< glossary_tooltip text="Minikube" term_id="minikube" >}}，则可能已经启用了集群 DNS。
+    * 如果使用基于云的 Kubernetes 集群或 . glossary_tooltip text="Minikube" term_id="minikube" >}}，则可能已经启用了集群 DNS。
     * 如果您正在使用 `hack/local-up-cluster.sh`，请确保设置了 `KUBE_ENABLE_CLUSTER_DNS` 环境变量，然后运行安装脚本。
 * [安装和设置 v1.7 或更高版本的 kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)，确保将其配置为连接到 Kubernetes 集群。
 * 安装 v2.7.0 或更高版本的 [Helm](http://helm.sh/)。
@@ -114,12 +114,12 @@ By default, `helm init` installs the Tiller Pod into the `kube-system` namespace
 -->
 默认情况下，`helm init` 将 Tiller Pod 安装到 `kube-system` 命名空间，Tiller 配置为使用 `default` 服务帐户。
 
-{{< note >}}
+. note >}}
 <!--
 If you used the `--tiller-namespace` or `--service-account` flags when running `helm init`, the `--serviceaccount` flag in the following command needs to be adjusted to reference the appropriate namespace and ServiceAccount name.
 -->
 如果在运行 `helm init` 时使用了 `--tiller-namespace` 或 `--service-account` 参数，则需要调整以下命令中的 `--serviceaccount` 参数以引用相应的 namespace 和 ServiceAccount 名称。
-{{< /note >}}
+. /note >}}
 
 <!--
 Configure Tiller to have `cluster-admin` access:
@@ -142,20 +142,20 @@ Install Service Catalog from the root of the Helm repository using the following
 -->
 使用以下命令从 Helm 存储库的根目录安装 Service Catalog：
 
-{{< tabs name="helm-versions" >}} 
-{{% tab name="Helm version 3" %}}
+. tabs name="helm-versions" >}} 
+. tab name="Helm version 3" %}}
 ```shell
 helm install catalog svc-cat/catalog --namespace catalog
 ```
-{{% /tab %}}
-{{% tab name="Helm version 2" %}}
+. /tab %}}
+. tab name="Helm version 2" %}}
 ```shell
 helm install svc-cat/catalog --name catalog --namespace catalog
 ```
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 <!--
 * View [sample service brokers](https://github.com/openservicebrokerapi/servicebroker/blob/master/gettingStarted.md#sample-service-brokers).

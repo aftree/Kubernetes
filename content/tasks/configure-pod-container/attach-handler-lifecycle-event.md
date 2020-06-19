@@ -26,10 +26,10 @@ Kubernetes 将发送一个 preStop 事件。
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 
@@ -51,7 +51,7 @@ Here is the configuration file for the Pod:
 -->
 下面是对应 Pod 的配置文件
 
-{{< codenew file="pods/lifecycle-events.yaml" >}}
+. codenew file="pods/lifecycle-events.yaml" >}}
 
 <!--
 In the configuration file, you can see that the postStart command writes a `message`
@@ -131,22 +131,22 @@ Kubernetes 在容器结束前立即发送 preStop 事件。除非 Pod 宽限期�
 [Pods 的结束](/docs/user-guide/pods/#termination-of-pods)。
 
 <!--
-{{< note >}}
+. note >}}
 Kubernetes only sends the preStop event when a Pod is *terminated*.
 This means that the preStop hook is not invoked when the Pod is *completed*.
 This limitation is tracked in [issue #55087](https://github.com/kubernetes/kubernetes/issues/55807).
-{{< /note >}}
+. /note >}}
 -->
-{{< note >}}
+. note >}}
 Kubernetes 只有在 Pod *结束（Terminated）* 的时候才会发送 preStop 事件，这意味着在 Pod *完成（Completed）* 时
 preStop 的事件处理逻辑不会被触发。这个限制在
 [issue #55087](https://github.com/kubernetes/kubernetes/issues/55807) 中被追踪。
-{{< /note >}}
+. /note >}}
 
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 <!--
@@ -160,15 +160,15 @@ preStop 的事件处理逻辑不会被触发。这个限制在
 <!--
 ### Reference
 
-* [Lifecycle](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#lifecycle-v1-core)
-* [Container](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#container-v1-core)
-* See `terminationGracePeriodSeconds` in [PodSpec](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#podspec-v1-core)
+* [Lifecycle](/docs/reference/generated/kubernetes-api/. param "version" >}}/#lifecycle-v1-core)
+* [Container](/docs/reference/generated/kubernetes-api/. param "version" >}}/#container-v1-core)
+* See `terminationGracePeriodSeconds` in [PodSpec](/docs/reference/generated/kubernetes-api/. param "version" >}}/#podspec-v1-core)
 -->
 ### 参考
 
-* [Lifecycle](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#lifecycle-v1-core)
-* [Container](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#container-v1-core)
-* 参阅 [PodSpec](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#podspec-v1-core) 中关于`terminationGracePeriodSeconds` 的部分
+* [Lifecycle](/docs/reference/generated/kubernetes-api/. param "version" >}}/#lifecycle-v1-core)
+* [Container](/docs/reference/generated/kubernetes-api/. param "version" >}}/#container-v1-core)
+* 参阅 [PodSpec](/docs/reference/generated/kubernetes-api/. param "version" >}}/#podspec-v1-core) 中关于`terminationGracePeriodSeconds` 的部分
 
 
 

@@ -51,21 +51,21 @@ The upgrade workflow at high level is the following:
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
 <!--
 - You need to have a kubeadm Kubernetes cluster running version 1.16.0 or later.
 - [Swap must be disabled](https://serverfault.com/questions/684771/best-way-to-disable-swap-in-linux).
 - The cluster should use a static control plane and etcd pods or external etcd.
-- Make sure you read the [release notes]({{< latest-release-notes >}}) carefully.
+- Make sure you read the [release notes](. latest-release-notes >}}) carefully.
 - Make sure to back up any important components, such as app-level state stored in a database.
   `kubeadm upgrade` does not touch your workloads, only components internal to Kubernetes, but backups are always a best practice.
 -->
 - 您需要有一个由 `kubeadm` 创建并运行着 1.16.0 或更高版本的 Kubernetes 集群。
 - [禁用 Swap](https://serverfault.com/questions/684771/best-way-to-disable-swap-in-linux)。
 - 集群应使用静态的控制平面和 etcd pod 或者 外部 etcd。
-- 务必仔细认真阅读[发行说明]({{< latest-release-notes >}})。
+- 务必仔细认真阅读[发行说明](. latest-release-notes >}})。
 - 务必备份所有重要组件，例如存储在数据库中应用层面的状态。
   `kubeadm upgrade` 不会影响您的工作负载，只会涉及 Kubernetes 内部的组件，但备份终究是好的。
 
@@ -96,35 +96,35 @@ The upgrade workflow at high level is the following:
 <!--
 1.  Find the latest stable 1.17 version:
 
-    {{< tabs name="k8s_install_versions" >}}
-    {{% tab name="Ubuntu, Debian or HypriotOS" %}}
+    . tabs name="k8s_install_versions" >}}
+    . tab name="Ubuntu, Debian or HypriotOS" %}}
     apt update
     apt-cache policy kubeadm
     # find the latest 1.17 version in the list
     # it should look like 1.17.x-00, where x is the latest patch
-    {{% /tab %}}
-    {{% tab name="CentOS, RHEL or Fedora" %}}
+    . /tab %}}
+    . tab name="CentOS, RHEL or Fedora" %}}
     yum list --showduplicates kubeadm --disableexcludes=kubernetes
     # find the latest 1.17 version in the list
     # it should look like 1.17.x-0, where x is the latest patch
-    {{% /tab %}}
-    {{< /tabs >}}
+    . /tab %}}
+    . /tabs >}}
 -->
 1.  找到最新的稳定版 1.17:
 
-    {{< tabs name="k8s_install_versions" >}}
-    {{% tab name="Ubuntu, Debian or HypriotOS" %}}
+    . tabs name="k8s_install_versions" >}}
+    . tab name="Ubuntu, Debian or HypriotOS" %}}
     apt update
     apt-cache policy kubeadm
     # 在列表中查找最新的 1.17 版本
     # 它看起来应该是 1.17.x-00 ，其中 x 是最新的补丁
-    {{% /tab %}}
-    {{% tab name="CentOS, RHEL or Fedora" %}}
+    . /tab %}}
+    . tab name="CentOS, RHEL or Fedora" %}}
     yum list --showduplicates kubeadm --disableexcludes=kubernetes
     # 在列表中查找最新的 1.17 版本
     # 它看起来应该是 1.17.x-0 ，其中 x 是最新的补丁
-    {{% /tab %}}
-    {{< /tabs >}}
+    . /tab %}}
+    . /tabs >}}
 
 <!--
 ## Upgrade the first control plane node
@@ -134,33 +134,33 @@ The upgrade workflow at high level is the following:
 <!--
 1.  On your first control plane node, upgrade kubeadm:
 
-    {{< tabs name="k8s_install_kubeadm_first_cp" >}}
-    {{% tab name="Ubuntu, Debian or HypriotOS" %}}
+    . tabs name="k8s_install_kubeadm_first_cp" >}}
+    . tab name="Ubuntu, Debian or HypriotOS" %}}
     # replace x in 1.17.x-00 with the latest patch version
     apt-mark unhold kubeadm && \
     apt-get update && apt-get install -y kubeadm=1.17.x-00 && \
     apt-mark hold kubeadm
-    {{% /tab %}}
-    {{% tab name="CentOS, RHEL or Fedora" %}}
+    . /tab %}}
+    . tab name="CentOS, RHEL or Fedora" %}}
     # replace x in 1.17.x-0 with the latest patch version
     yum install -y kubeadm-1.17.x-0 --disableexcludes=kubernetes
-    {{% /tab %}}
-    {{< /tabs >}}
+    . /tab %}}
+    . /tabs >}}
 -->
 1.  在第一个控制平面节点上，升级 kubeadm :
 
-    {{< tabs name="k8s_install_kubeadm_first_cp" >}}
-    {{% tab name="Ubuntu, Debian or HypriotOS" %}}
+    . tabs name="k8s_install_kubeadm_first_cp" >}}
+    . tab name="Ubuntu, Debian or HypriotOS" %}}
     # 用最新的修补程序版本替换 1.17.x-00 中的 x
     apt-mark unhold kubeadm && \
     apt-get update && apt-get install -y kubeadm=1.17.x-00 && \
     apt-mark hold kubeadm
-    {{% /tab %}}
-    {{% tab name="CentOS, RHEL or Fedora" %}}
+    . /tab %}}
+    . tab name="CentOS, RHEL or Fedora" %}}
     # 用最新的修补程序版本替换 1.17.x-0 中的 x
     yum install -y kubeadm-1.17.x-0 --disableexcludes=kubernetes
-    {{% /tab %}}
-    {{< /tabs >}}
+    . /tab %}}
+    . /tabs >}}
 
 <!--
 1.  Verify that the download works and has the expected version:
@@ -360,24 +360,24 @@ The upgrade workflow at high level is the following:
 
     ```shell
     kubectl uncordon $CP_NODE
-    ``` 
+    ```
 
 <!--
 1.  Upgrade the kubelet and kubectl on the control plane node:
 -->
 1.  升级控制平面节点上的 kubelet 和 kubectl ：
-    {{< tabs name="k8s_install_kubelet" >}}
-    {{% tab name="Ubuntu, Debian or HypriotOS" %}}
+    . tabs name="k8s_install_kubelet" >}}
+    . tab name="Ubuntu, Debian or HypriotOS" %}}
     # 用最新的修补程序版本替换 1.17.x-00 中的 x
     apt-mark unhold kubelet kubectl && \
     apt-get update && apt-get install -y kubelet=1.17.x-00 kubectl=1.17.x-00 && \
     apt-mark hold kubelet kubectl
-    {{% /tab %}}
-    {{% tab name="CentOS, RHEL or Fedora" %}}
+    . /tab %}}
+    . tab name="CentOS, RHEL or Fedora" %}}
     # 用最新的修补程序版本替换 1.17.x-00 中的 x
     yum install -y kubelet-1.17.x-0 kubectl-1.17.x-0 --disableexcludes=kubernetes
-    {{% /tab %}}
-    {{< /tabs >}}
+    . /tab %}}
+    . /tabs >}}
 
 
 <!--
@@ -433,33 +433,33 @@ without compromising the minimum required capacity for running your workloads.
 <!--
 1.  Upgrade kubeadm on all worker nodes:
 
-    {{< tabs name="k8s_install_kubeadm_worker_nodes" >}}
-    {{% tab name="Ubuntu, Debian or HypriotOS" %}}
+    . tabs name="k8s_install_kubeadm_worker_nodes" >}}
+    . tab name="Ubuntu, Debian or HypriotOS" %}}
     # replace x in 1.17.x-00 with the latest patch version
     apt-mark unhold kubeadm && \
     apt-get update && apt-get install -y kubeadm=1.17.x-00 && \
     apt-mark hold kubeadm
-    {{% /tab %}}
-    {{% tab name="CentOS, RHEL or Fedora" %}}
+    . /tab %}}
+    . tab name="CentOS, RHEL or Fedora" %}}
     # replace x in 1.17.x-0 with the latest patch version
     yum install -y kubeadm-1.17.x-0 --disableexcludes=kubernetes
-    {{% /tab %}}
-    {{< /tabs >}}
+    . /tab %}}
+    . /tabs >}}
 -->
 1.  在所有工作节点升级 kubeadm :
 
-    {{< tabs name="k8s_install_kubeadm_worker_nodes" >}}
-    {{% tab name="Ubuntu, Debian or HypriotOS" %}}
+    . tabs name="k8s_install_kubeadm_worker_nodes" >}}
+    . tab name="Ubuntu, Debian or HypriotOS" %}}
     # 用最新的修补程序版本替换 1.17.x-00 中的 x
     apt-mark unhold kubeadm && \
     apt-get update && apt-get install -y kubeadm=1.17.x-00 && \
     apt-mark hold kubeadm
-    {{% /tab %}}
-    {{% tab name="CentOS, RHEL or Fedora" %}}
+    . /tab %}}
+    . tab name="CentOS, RHEL or Fedora" %}}
     # 用最新的修补程序版本替换 1.17.x-00 中的 x
     yum install -y kubeadm-1.17.x-0 --disableexcludes=kubernetes
-    {{% /tab %}}
-    {{< /tabs >}}
+    . /tab %}}
+    . /tabs >}}
 
 <!--
 ### Cordon the node
@@ -532,33 +532,33 @@ without compromising the minimum required capacity for running your workloads.
 <!--
 1.  Upgrade the Kubernetes package version by running the Linux package manager for your distribution:
 
-    {{< tabs name="k8s_kubelet_and_kubectl" >}}
-    {{% tab name="Ubuntu, Debian or HypriotOS" %}}
+    . tabs name="k8s_kubelet_and_kubectl" >}}
+    . tab name="Ubuntu, Debian or HypriotOS" %}}
     # replace x in 1.17.x-00 with the latest patch version
     apt-mark unhold kubelet kubectl && \
     apt-get update && apt-get install -y kubelet=1.17.x-00 kubectl=1.17.x-00 && \
     apt-mark hold kubelet kubectl
-    {{% /tab %}}
-    {{% tab name="CentOS, RHEL or Fedora" %}}
+    . /tab %}}
+    . tab name="CentOS, RHEL or Fedora" %}}
     # replace x in 1.17.x-0 with the latest patch version
     yum install -y kubelet-1.17.x-0 kubectl-1.17.x-0 --disableexcludes=kubernetes
-    {{% /tab %}}
-    {{< /tabs >}}
+    . /tab %}}
+    . /tabs >}}
 -->
 1.  通过运行适用于您的 Linux 发行版包管理器升级 Kubernetes 软件包版本： 
 
-    {{< tabs name="k8s_kubelet_and_kubectl" >}}
-    {{% tab name="Ubuntu, Debian or HypriotOS" %}}
+    . tabs name="k8s_kubelet_and_kubectl" >}}
+    . tab name="Ubuntu, Debian or HypriotOS" %}}
     # 用最新的修补程序版本替换 1.17.x-00 中的 xs
     apt-mark unhold kubelet kubectl && \
     apt-get update && apt-get install -y kubelet=1.17.x-00 kubectl=1.17.x-00 && \
     apt-mark hold kubelet kubectl
-    {{% /tab %}}
-    {{% tab name="CentOS, RHEL or Fedora" %}}
+    . /tab %}}
+    . tab name="CentOS, RHEL or Fedora" %}}
     # 用最新的修补程序版本替换 1.17.x-00 中的 x
     yum install -y kubelet-1.17.x-0 kubectl-1.17.x-0 --disableexcludes=kubernetes
-    {{% /tab %}}
-    {{< /tabs >}}
+    . /tab %}}
+    . /tabs >}}
 
 <!--
 1. Restart the kubelet

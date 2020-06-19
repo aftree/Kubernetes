@@ -36,7 +36,7 @@ JSONPath 模板由 {} 包起来的 JSONPath 表达式组成。Kubectl 使用 JSO
 2. 使用 `range`，`end` 运算符来迭代列表。
 3. 使用负片索引后退列表。负索引不会"环绕"列表，并且只要 `-index + listLength> = 0` 就有效。
 
-{{< note >}}
+ note >}}
 <!-- 
 - The `$` operator is optional since the expression always starts from the root object by default.
 
@@ -46,7 +46,7 @@ JSONPath 模板由 {} 包起来的 JSONPath 表达式组成。Kubectl 使用 JSO
 
 - 结果对象将作为其 String() 函数输出。
 
-{{< /note >}}
+ /note >}}
 
 <!-- 
 Given the JSON input: 

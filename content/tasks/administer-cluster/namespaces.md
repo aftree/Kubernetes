@@ -14,13 +14,13 @@ content_type: task
 --- -->
 
 <!-- overview -->
-<!-- This page shows how to view, work in, and delete {{< glossary_tooltip text="namespaces" term_id="namespace" >}}. The page also shows how to use Kubernetes namespaces to subdivide your cluster. -->
+<!-- This page shows how to view, work in, and delete . glossary_tooltip text="namespaces" term_id="namespace" >}}. The page also shows how to use Kubernetes namespaces to subdivide your cluster. -->
 
-本页展示了如何查看、使用和删除{{< glossary_tooltip text="namespaces" term_id="namespace" >}}。本页同时展示了如何使用 Kubernetes 命名空间去细分集群。
+本页展示了如何查看、使用和删除. glossary_tooltip text="namespaces" term_id="namespace" >}}。本页同时展示了如何使用 Kubernetes 命名空间去细分集群。
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 <!-- * Have an [existing Kubernetes cluster](/docs/setup/).
 * Have a basic understanding of Kubernetes _[Pods](/docs/concepts/workloads/pods/pod/)_, _[Services](/docs/concepts/services-networking/service/)_, and _[Deployments](/docs/concepts/workloads/controllers/deployment/)_. -->
@@ -181,12 +181,12 @@ More information on `finalizers` can be found in the namespace [design doc](http
 kubectl delete namespaces <insert-some-namespace-name>
 ```
 
-{{< warning >}}
+. warning >}}
 <!-- This deletes _everything_ under the namespace! -->
 
 这会删除命名空间下的 _所有内容_ ！
 
-{{< /warning >}}
+. /warning >}}
 
 <!-- This delete is asynchronous, so for a time you will see the namespace in the `Terminating` state. -->
 
@@ -252,7 +252,7 @@ Pods, Services, and Deployments that run the production site. -->
 
 文件 [`namespace-dev.json`](/examples/admin/namespace-dev.json) 描述了 development 命名空间:
 
-{{< codenew language="json" file="admin/namespace-dev.json" >}}
+. codenew language="json" file="admin/namespace-dev.json" >}}
 
 <!-- Create the `development` namespace using kubectl. -->
 
@@ -555,16 +555,16 @@ across namespaces, you need to use the fully qualified domain name (FQDN). -->
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 <!-- * Learn more about [setting the namespace preference](/docs/concepts/overview/working-with-objects/namespaces/#setting-the-namespace-preference).
 * Learn more about [setting the namespace for a request](/docs/concepts/overview/working-with-objects/namespaces/#setting-the-namespace-for-a-request)
-* See [namespaces design](https://github.com/kubernetes/community/blob/{{< param "githubbranch" >}}/contributors/design-proposals/architecture/namespaces.md). -->
+* See [namespaces design](https://github.com/kubernetes/community/blob/. param "githubbranch" >}}/contributors/design-proposals/architecture/namespaces.md). -->
 
 
 * 了解更多 [设置命名空间首选项](/docs/concepts/overview/working-with-objects/namespaces/#setting-the-namespace-preference) 的内容。
 * 了解更多 [设置请求的命名空间](/docs/concepts/overview/working-with-objects/namespaces/#setting-the-namespace-for-a-request) 的内容。
-* 参见 [命名空间设计](https://github.com/kubernetes/community/blob/{{< param "githubbranch" >}}/contributors/design-proposals/architecture/namespaces.md)。
+* 参见 [命名空间设计](https://github.com/kubernetes/community/blob/. param "githubbranch" >}}/contributors/design-proposals/architecture/namespaces.md)。
 
 
 

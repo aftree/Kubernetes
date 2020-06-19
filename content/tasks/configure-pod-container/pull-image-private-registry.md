@@ -23,10 +23,10 @@ private Docker registry or repository.
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-* {{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+* . include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 <!--
 * To do this exercise, you need a
@@ -87,12 +87,12 @@ The output contains a section similar to this:
 }
 ```
 
-{{< note >}}
+. note >}}
 <!--
 If you use a Docker credentials store, you won't see that `auth` entry but a `credsStore` entry with the name of the store as value.
 -->
 如果使用 Docker 凭证仓库，则不会看到 `auth` 条目，看到的将是以仓库名称作为值的 `credsStore` 条目。
-{{< /note >}}
+. /note >}}
 
 <!--
 ## Create a Secret in the cluster that holds your authorization token
@@ -227,7 +227,7 @@ Here is a configuration file for a Pod that needs access to your Docker credenti
 
 下面是一个 Pod 配置文件，它需要访问 `regcred` 中的 Docker 凭据：
 
-{{< codenew file="pods/private-reg-pod.yaml" >}}
+. codenew file="pods/private-reg-pod.yaml" >}}
 
 <!--
 Download the above file:
@@ -268,21 +268,21 @@ kubectl get pod private-reg
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 <!--
 * Learn more about [Secrets](/docs/concepts/configuration/secret/).
 * Learn more about [using a private registry](/docs/concepts/containers/images/#using-a-private-registry).
 * See [kubectl create secret docker-registry](/docs/reference/generated/kubectl/kubectl-commands/#-em-secret-docker-registry-em-).
-* See [Secret](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#secret-v1-core).
-* See the `imagePullSecrets` field of [PodSpec](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#podspec-v1-core).
+* See [Secret](/docs/reference/generated/kubernetes-api/. param "version" >}}/#secret-v1-core).
+* See the `imagePullSecrets` field of [PodSpec](/docs/reference/generated/kubernetes-api/. param "version" >}}/#podspec-v1-core).
 -->
 
 * 进一步了解 [Secrets](/docs/concepts/configuration/secret/)。
 * 进一步了解 [使用私有仓库](/docs/concepts/containers/images/#using-a-private-registry)。
 * 参考 [kubectl create secret docker-registry](/docs/reference/generated/kubectl/kubectl-commands/#-em-secret-docker-registry-em-)。
-* 参考 [Secret](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#secret-v1-core)。
-* 参考 [PodSpec](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#podspec-v1-core) 中的 `imagePullSecrets` 字段 。
+* 参考 [Secret](/docs/reference/generated/kubernetes-api/. param "version" >}}/#secret-v1-core)。
+* 参考 [PodSpec](/docs/reference/generated/kubernetes-api/. param "version" >}}/#podspec-v1-core) 中的 `imagePullSecrets` 字段 。
 
 

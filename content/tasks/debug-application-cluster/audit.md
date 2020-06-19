@@ -9,7 +9,7 @@ title: Auditing
 
 <!-- overview -->
 
-{{< feature-state state="beta" >}}
+. feature-state state="beta" >}}
 
 <!--
 Kubernetes auditing provides a security-relevant chronological set of records documenting
@@ -39,7 +39,7 @@ Kubernetes 审计功能提供了与安全相关的按时间顺序排列的记录
 
 
 
-{{< toc >}}
+. toc >}}
 
 <!-- body -->
 
@@ -77,7 +77,7 @@ Each request can be recorded with an associated "stage". The known stages are:
 - `ResponseComplete` - 当响应消息体完成并且没有更多数据需要传输的时候。
 - `Panic` - 当 panic 发生时生成。
 
-{{< note >}}
+. note >}}
 <!--
 The audit logging feature increases the memory consumption of the API
 server because some context required for auditing is stored for each request.
@@ -85,7 +85,7 @@ Additionally, memory consumption depends on the audit logging configuration.
 -->
 **注意** 审计日志记录功能会增加 API server 的内存消耗，因为需要为每个请求存储审计所需的某些上下文。
 此外，内存消耗取决于审计日志记录的配置。
-{{< /note >}}
+. /note >}}
 
 <!--
 ## Audit Policy
@@ -128,7 +128,7 @@ Below is an example audit policy file:
 
 以下是一个审计策略文件的示例：
 
-{{< codenew file="audit/audit-policy.yaml" >}}
+. codenew file="audit/audit-policy.yaml" >}}
 
 <!--
 You can use a minimal audit policy file to log all requests at the `Metadata` level:
@@ -172,7 +172,7 @@ In both cases, audit events structure is defined by the API in the
 
 在这两种情况下，审计事件结构均由 `audit.k8s.io` API 组中的 API 定义。当前版本的 API 是 [`v1beta1`][auditing-api]。
 
-{{< note >}}
+. note >}}
 <!--
 In case of patches, request body is a JSON array with patch operations, not a JSON object
 with an appropriate Kubernetes API object. For example, the following request body is a valid patch
@@ -194,7 +194,7 @@ request to `/apis/batch/v1/namespaces/some-namespace/jobs/some-job-name`.
   }
 ]
 ```
-{{< /note >}}
+. /note >}}
 
 <!--
 ### Log backend
@@ -600,8 +600,8 @@ Kubernetes 可能会在创建新的日志文件时删除旧的日志文件; 您�
 
 [kube-apiserver]: /docs/admin/kube-apiserver
 [auditing-proposal]: https://github.com/kubernetes/community/blob/master/contributors/design-proposals/api-machinery/auditing.md
-[auditing-api]: https://github.com/kubernetes/kubernetes/blob/{{< param "githubbranch" >}}/staging/src/k8s.io/apiserver/pkg/apis/audit/v1beta1/types.go
-[gce-audit-profile]: https://github.com/kubernetes/kubernetes/blob/{{< param "githubbranch" >}}/cluster/gce/gci/configure-helper.sh#L735
+[auditing-api]: https://github.com/kubernetes/kubernetes/blob/. param "githubbranch" >}}/staging/src/k8s.io/apiserver/pkg/apis/audit/v1beta1/types.go
+[gce-audit-profile]: https://github.com/kubernetes/kubernetes/blob/. param "githubbranch" >}}/cluster/gce/gci/configure-helper.sh#L735
 [kubeconfig]: /docs/tasks/access-application-cluster/configure-access-multiple-clusters/
 [fluentd]: http://www.fluentd.org/
 [fluentd_install_doc]: https://docs.fluentd.org/v/0.12/articles/quickstart#step1-installing-fluentd

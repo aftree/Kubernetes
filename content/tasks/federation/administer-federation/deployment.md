@@ -11,9 +11,9 @@ content_type: task
 
 <!-- overview -->
 
-{{< deprecationfilewarning >}}
-{{< include "federation-deprecation-warning-note.md" >}}
-{{< /deprecationfilewarning >}}
+. deprecationfilewarning >}}
+. include "federation-deprecation-warning-note.md" >}}
+. /deprecationfilewarning >}}
 
 <!--
 This guide explains how to use Deployments in the Federation control plane.
@@ -29,7 +29,7 @@ replicas exist across the registered clusters.
 联邦控制平面中的 Deployment（在本指南中称为 “联邦 Deployment”）与传统的 [Kubernetes
 Deployment](/docs/concepts/workloads/controllers/deployment/) 非常类似，并提供相同的功能。在联邦控制平面中创建联邦 Deployment 确保所需的副本数存在于注册的群集中。
 
-{{< feature-state for_k8s_version="1.5" state="alpha" >}}
+. feature-state for_k8s_version="1.5" state="alpha" >}}
 
 <!--
 Some features
@@ -38,10 +38,10 @@ Some features
 一些特性（例如完整的 rollout 兼容性）仍在开发中。
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-* {{< include "federated-task-tutorial-prereqs.md" >}}
+* . include "federated-task-tutorial-prereqs.md" >}}
 <!--
 * You should also have a basic
 [working knowledge of Kubernetes](/docs/tutorials/kubernetes-basics/) in
@@ -116,14 +116,14 @@ if you have 3 registered clusters and you create a Federated Deployment with
 `spec.replicas = 9`, then each Deployment in the 3 clusters will have
 `spec.replicas=3`.
 To modify the number of replicas in each cluster, you can specify
-[FederatedReplicaSetPreference](https://github.com/kubernetes/federation/blob/{{< param "githubbranch" >}}/apis/federation/types.go)
+[FederatedReplicaSetPreference](https://github.com/kubernetes/federation/blob/. param "githubbranch" >}}/apis/federation/types.go)
 as an annotation with key `federation.kubernetes.io/deployment-preferences`
 on Federated Deployment.
 -->
 ### 在底层集群中分布副本
 
 默认情况下，副本会被平均分布到所有的底层集群中。例如：如果您有 3 个注册的集群并且创建了一个副本数为 9(`spec.replicas = 9`) 的联邦 Deployment，那么这 3 个集群中的每个 Deployment 都将有 3 个副本 (`spec.replicas=3`)。
-为修改每个集群中的副本数，您可以在联邦 Deployment 中以注解的形式指定 [FederatedReplicaSetPreference](https://github.com/kubernetes/federation/blob/{{< param "githubbranch" >}}/apis/federation/types.go)，其中注解的键为 `federation.kubernetes.io/deployment-preferences`。  
+为修改每个集群中的副本数，您可以在联邦 Deployment 中以注解的形式指定 [FederatedReplicaSetPreference](https://github.com/kubernetes/federation/blob/. param "githubbranch" >}}/apis/federation/types.go)，其中注解的键为 `federation.kubernetes.io/deployment-preferences`。  
 
 
 <!--

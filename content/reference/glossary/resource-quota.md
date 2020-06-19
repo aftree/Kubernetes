@@ -31,10 +31,10 @@ tags:
 -->
 
 <!--
- Provides constraints that limit aggregate resource consumption per {{< glossary_tooltip term_id="namespace" >}}.
+ Provides constraints that limit aggregate resource consumption per . glossary_tooltip term_id="namespace" >}}.
 -->
 
-资源配额提供了限制每个 {{< glossary_tooltip text="命名空间" term_id="namespace">}} 的资源消耗总和的约束。
+资源配额提供了限制每个 . glossary_tooltip text="命名空间" term_id="namespace">}} 的资源消耗总和的约束。
 
 <!--more--> 
 

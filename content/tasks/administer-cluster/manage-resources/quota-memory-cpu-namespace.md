@@ -17,21 +17,21 @@ weight: 50
 <!--
 This page shows how to set quotas for the total amount memory and CPU that
 can be used by all Containers running in a namespace. You specify quotas in a
-[ResourceQuota](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#resourcequota-v1-core)
+[ResourceQuota](/docs/reference/generated/kubernetes-api/. param "version" >}}/#resourcequota-v1-core)
 object.
 -->
 
-本文介绍怎样为命名空间设置容器可用的内存和 CPU 总量。你可以通过 [ResourceQuota](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#resourcequota-v1-core)
+本文介绍怎样为命名空间设置容器可用的内存和 CPU 总量。你可以通过 [ResourceQuota](/docs/reference/generated/kubernetes-api/. param "version" >}}/#resourcequota-v1-core)
 对象设置配额.
 
 
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 <!--
 Each node in your cluster must have at least 1 GiB of memory.
@@ -69,7 +69,7 @@ Here is the configuration file for a ResourceQuota object:
 
 这里给出一个 ResourceQuota 对象的配置文件：
 
-{{< codenew file="admin/resource/quota-mem-cpu.yaml" >}}
+. codenew file="admin/resource/quota-mem-cpu.yaml" >}}
 
 <!--
 Create the ResourceQuota:
@@ -119,7 +119,7 @@ Here is the configuration file for a Pod:
 
 这里给出 Pod 的配置文件：
 
-{{< codenew file="admin/resource/quota-mem-cpu-pod.yaml" >}}
+. codenew file="admin/resource/quota-mem-cpu-pod.yaml" >}}
 
 
 <!--
@@ -184,7 +184,7 @@ Here is the configuration file for a second Pod:
 
 这里给出了第二个 Pod 的配置文件：
 
-{{< codenew file="admin/resource/quota-mem-cpu-pod-2.yaml" >}}
+. codenew file="admin/resource/quota-mem-cpu-pod-2.yaml" >}}
 
 <!--
 In the configuration file, you can see that the Pod has a memory request of 700 MiB.
@@ -248,7 +248,7 @@ kubectl delete namespace quota-mem-cpu-example
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 <!--

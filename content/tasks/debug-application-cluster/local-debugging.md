@@ -34,7 +34,7 @@ This document describes using `telepresence` to develop and debug services runni
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
 <!--
@@ -106,7 +106,7 @@ Running this command spawns a shell. In the shell, start your service. You can t
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 <!--

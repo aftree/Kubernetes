@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>😝 - 监控、日志和排错 on Hugo 主题的 Learn 文档</title>
+    <link>https://lijun.in/tasks/debug-application-cluster/</link>
+    <description>Recent content in 😝 - 监控、日志和排错 on Hugo 主题的 Learn 文档</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://lijun.in/tasks/debug-application-cluster/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Auditing</title>
+      <link>https://lijun.in/tasks/debug-application-cluster/audit/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/debug-application-cluster/audit/</guid>
+      <description>. feature-state state=&amp;quot;beta&amp;rdquo; &amp;gt;}}
+Kubernetes 审计功能提供了与安全相关的按时间顺序排列的记录集，记录单个用户、管理员或系统其他组件影响系统的活动顺序。 它能帮助集群管理员处理以下问题：
+ 发生了什么？ 什么时候发生的？ 谁触发的？ 活动发生在哪个（些）对象上？ 在哪观察到的？ 它从哪触发的？ 活动的后续处理行为是什么？  . toc &amp;gt;}}
+Kube-apiserver 执行审计。每个执行阶段的每个请求都会生成一个事件，然后根据特定策略对事件进行预处理并写入后端。 您可以在 设计方案 中找到更多详细信息。 该策略确定记录的内容并且在后端存储记录。当前的后端支持日志文件和 webhook。
+每个请求都可以用相关的 &amp;ldquo;stage&amp;rdquo; 记录。已知的 stage 有：
+  RequestReceived - 事件的 stage 将在审计处理器接收到请求后，并且在委托给其余处理器之前生成。
+  ResponseStarted - 在响应消息的头部发送后，但是响应消息体发送前。这个 stage 仅为长时间运行的请求生成（例如 watch）。
+  ResponseComplete - 当响应消息体完成并且没有更多数据需要传输的时候。
+  Panic - 当 panic 发生时生成。
+  . note &amp;gt;}}
+注意 审计日志记录功能会增加 API server 的内存消耗，因为需要为每个请求存储审计所需的某些上下文。 此外，内存消耗取决于审计日志记录的配置。 . /note &amp;gt;}}</description>
+    </item>
+    
+    <item>
+      <title>StackDriver 中的事件</title>
+      <link>https://lijun.in/tasks/debug-application-cluster/events-stackdriver/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/debug-application-cluster/events-stackdriver/</guid>
+      <description>Kubernetes 事件是一种对象，它为用户提供了洞察集群内发生的事情的能力，例如调度程序做出了什么决定，或者为什么某些 Pod 被逐出节点。 您可以在应用程序自检和调试中阅读有关使用事件调试应用程序的更多信息。
+因为事件是 API 对象，所以它们存储在主节点上的 apiserver 中。 为了避免主节点磁盘空间被填满，将强制执行保留策略：事件在最后一次发生的一小时后将会被删除。 为了提供更长的历史记录和聚合能力，应该安装第三方解决方案来捕获事件。
+本文描述了一个将 Kubernetes 事件导出为 Stackdriver Logging 的解决方案，在这里可以对它们进行处理和分析。
+. note &amp;gt;}}
+不能保证集群中发生的所有事件都将导出到 Stackdriver。 事件不能导出的一种可能情况是事件导出器没有运行（例如，在重新启动或升级期间）。 在大多数情况下，可以将事件用于设置 metrics 和 alerts 等目的，但您应该注意潜在的不准确性。 . /note &amp;gt;}}
+部署 Google Kubernetes Engine 在 Google Kubernetes Engine 中，如果启用了云日志，那么事件导出器默认部署在主节点运行版本为 1.7 及更高版本的集群中。 为了防止干扰您的工作负载，事件导出器没有设置资源，并且处于尽力而为的 QoS 类型中，这意味着它将在资源匮乏的情况下第一个被杀死。 如果要导出事件，请确保有足够的资源给事件导出器 Pod 使用。 这可能会因为工作负载的不同而有所不同，但平均而言，需要大约 100MB 的内存和 100m 的 CPU。
+部署到现有集群 使用下面的命令将事件导出器部署到您的集群：
+kubectl create -f https://k8s.io/examples/debug/event-exporter.yaml 由于事件导出器访问 Kubernetes API，因此它需要权限才能访问。 以下的部署配置为使用 RBAC 授权。 它设置服务帐户和集群角色绑定，以允许事件导出器读取事件。 为了确保事件导出器 Pod 不会从节点中退出，您可以另外设置资源请求。 如前所述，100MB 内存和 100m CPU 应该就足够了。</description>
+    </item>
+    
+    <item>
+      <title>使用 crictl 对 Kubernetes 节点进行调试</title>
+      <link>https://lijun.in/tasks/debug-application-cluster/crictl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/debug-application-cluster/crictl/</guid>
+      <description>. feature-state for_k8s_version=&amp;quot;v1.11&amp;rdquo; state=&amp;quot;stable&amp;rdquo; &amp;gt;}}
+crictl 是 CRI 兼容的容器运行时命令行接口。 您可以使用它来检查和调试 Kubernetes 节点上的容器运行时和应用程序。 crictl和它的源代码在 cri-tools 代码库。
+. heading &amp;ldquo;prerequisites&amp;rdquo; %}} crictl 需要带有 CRI 运行时的 Linux 操作系统。
+安装 crictl 您可以从 cri-tools 发布页面下载一个压缩的 crictl 归档文件，用于几种不同的架构。 下载与您的 kubernetes 版本相对应的版本。 提取它并将其移动到系统路径上的某个位置，例如/usr/local/bin/。
+一般用法 crictl 命令有几个子命令和运行时参数。 有关详细信息，请使用 crictl help 或 crictl &amp;lt;subcommand&amp;gt; help 获取帮助信息。
+crictl 默认连接到 unix:///var/run/dockershim.sock。 对于其他的运行时，您可以用多种不同的方法设置端点：
+ 通过设置参数 --runtime-endpoint 和 --image-endpoint 通过设置环境变量 CONTAINER_RUNTIME_ENDPOINT 和 IMAGE_SERVICE_ENDPOINT 通过在配置文件中设置端点 --config=/etc/crictl.yaml  您还可以在连接到服务器并启用或禁用调试时指定超时值，方法是在配置文件中指定 timeout 或 debug 值，或者使用 --timeout 和 --debug 命令行参数。</description>
+    </item>
+    
+    <item>
+      <title>使用 ElasticSearch 和 Kibana 进行日志管理</title>
+      <link>https://lijun.in/tasks/debug-application-cluster/logging-elasticsearch-kibana/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/debug-application-cluster/logging-elasticsearch-kibana/</guid>
+      <description>在 Google Compute Engine (GCE) 平台上，默认的日志管理支持目标是 Stackdriver Logging，在 使用 Stackdriver Logging 管理日志中详细描述了这一点。
+本文介绍了如何设置一个集群，将日志导入Elasticsearch，并使用 Kibana 查看日志，作为在 GCE 上运行应用时使用 Stackdriver Logging 管理日志的替代方案。
+. note &amp;gt;}}
+您不能在 Google Kubernetes Engine 平台运行的 Kubernetes 集群上自动的部署 Elasticsearch 和 Kibana。您必须手动部署它们。 . /note &amp;gt;}}
+要使用 Elasticsearch 和 Kibana 处理集群日志，您应该在使用 kube-up.sh 脚本创建集群时设置下面所示的环境变量：
+KUBE_LOGGING_DESTINATION=elasticsearch 您还应该确保设置了 KUBE_ENABLE_NODE_LOGGING=true （这是 GCE 平台的默认设置）。
+现在，当您创建集群时，将有一条消息将指示每个节点上运行的 Fluentd 日志收集守护进程以 ElasticSearch 为日志输出目标：
+$ cluster/kube-up.sh ... Project: kubernetes-satnam Zone: us-central1-b ... calling kube-up Project: kubernetes-satnam Zone: us-central1-b +++ Staging server tars to Google Storage: gs://kubernetes-staging-e6d0e81793/devel +++ kubernetes-server-linux-amd64.</description>
+    </item>
+    
+    <item>
+      <title>使用 Falco 审计</title>
+      <link>https://lijun.in/tasks/debug-application-cluster/falco/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/debug-application-cluster/falco/</guid>
+      <description>使用 Falco 采集审计事件 Falco是一个开源项目，用于为云原生平台提供入侵和异常检测。本节介绍如何设置 Falco、如何将审计事件发送到 Falco 公开的 Kubernetes Audit 端点、以及 Falco 如何应用一组规则来自动检测可疑行为。
+安装 Falco 使用以下方法安装 Falco ：
+ [独立安装 Falco][falco_installation] [Kubernetes DaemonSet][falco_installation] [Falco Helm Chart][falco_helm_chart]  安装完成 Falco 后，请确保将其配置为公开 Audit Webhook。为此，请使用以下配置：
+webserver: enabled: true listen_port: 8765 k8s_audit_endpoint: /k8s_audit ssl_enabled: false ssl_certificate: /etc/falco/falco.pem 此配置通常位于 /etc/falco/falco.yaml 文件中。如果 Falco 作为 Kubernetes DaemonSet 安装，请编辑 falco-config ConfigMap 并添加此配置。
+配置 Kubernetes 审计   为 kube-apiserver webhook 审计后端创建一个kubeconfig文件。
+ cat &amp;lt;&amp;lt;EOF &amp;gt; /etc/kubernetes/audit-webhook-kubeconfig apiVersion: v1 kind: Config clusters: - cluster: server: http://&amp;lt;ip_of_falco&amp;gt;:8765/k8s_audit name: falco contexts: - context: cluster: falco user: &amp;quot;&amp;quot; name: default-context current-context: default-context preferences: {} users: [] EOF     使用以下选项启动 kube-apiserver：</description>
+    </item>
+    
+    <item>
+      <title>在本地开发和调试服务</title>
+      <link>https://lijun.in/tasks/debug-application-cluster/local-debugging/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/debug-application-cluster/local-debugging/</guid>
+      <description>Kubernetes 应用程序通常由多个独立的服务组成，每个服务都在自己的容器中运行。 在远端的 Kubernetes 集群上开发和调试这些服务可能很麻烦，需要在运行的容器上打开 shell，然后在远端 shell 中运行您所需的工具。
+telepresence 是一种工具，用于在本地轻松开发和调试服务，同时将服务代理到远程 Kubernetes 集群。 使用 telepresence 可以为本地服务使用自定义工具（如调试器和 IDE），并提供对 Configmap、Secrets 和远程集群上运行的服务的完全访问。
+ Kubernetes 集群安装完毕 配置好 kubectl 与集群交互 Telepresence 安装完毕  打开终端，不带参数运行 telepresence，以打开 telepresence shell。这个 shell 在本地运行，使您可以完全访问本地文件系统。
+telepresence shell 的使用方式多种多样。 例如，在你的笔记本电脑上写一个 shell 脚本，然后直接在 shell 中实时运行它。 您也可以在远端 shell 上执行此操作，但这样可能无法使用首选的代码编辑器，并且在容器终止时脚本将被删除。
+开发和调试现有的服务 在 Kubernetes 上开发应用程序时，通常对单个服务进行编程或调试。 服务可能需要访问其他服务以进行测试和调试。 一种选择是使用连续部署管道，但即使最快的部署管道也会在程序或调试周期中引入延迟。
+使用 --swap-deployment 选项将现有部署与 Telepresence 代理交换。交换允许您在本地运行服务并能够连接到远端的 Kubernetes 集群。远端的集群中的服务现在就可以访问本地运行的实例。
+到运行 telepresence 并带有 --swap-deployment 选项，请输入：
+telepresence --swap-deployment $DEPLOYMENT_NAME
+这里的 $DEPLOYMENT_NAME 是您现有的部署名称。
+运行此命令将生成 shell。在 shell 中，启动您的服务。 然后，您就可以在本地对源代码进行编辑、保存并能看到更改立即生效。您还可以在调试器或任何其他本地开发工具中运行服务。</description>
+    </item>
+    
+    <item>
+      <title>应用故障排查</title>
+      <link>https://lijun.in/tasks/debug-application-cluster/debug-application/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/debug-application-cluster/debug-application/</guid>
+      <description>本指南帮助用户来调试kubernetes上那些没有正常运行的应用。 本指南不能调试集群。如果想调试集群的话，请参阅这里。
+. toc &amp;gt;}}
+诊断问题 故障排查的第一步是先给问题分下类。这个问题是什么？Pods，Replication Controller或者Service？
+ Debugging Pods Debugging Replication Controllers Debugging Services  Debugging Pods 调试pod的第一步是看一下这个pod的信息，用如下命令查看一下pod的当前状态和最近的事件：
+$ kubectl describe pods ${POD_NAME} 查看一下pod中的容器所处的状态。这些容器的状态都是Running吗？最近有没有重启过？
+后面的调试都是要依靠pods的状态的。
+pod停留在pending状态 如果一个pod卡在Pending状态，则表示这个pod没有被调度到一个节点上。通常这是因为资源不足引起的。 敲一下kubectl describe ...这个命令，输出的信息里面应该有显示为什么没被调度的原因。 常见原因如下：
+  资源不足: 你可能耗尽了集群上所有的CPU和内存，此时，你需要删除pods，调整资源请求，或者增加节点。 更多信息请参阅Compute Resources document
+  使用了hostPort: 如果绑定一个pod到hostPort，那么能创建的pod个数就有限了。 多数情况下，hostPort是非必要的，而应该采用服务来暴露pod。 如果确实需要使用hostPort，那么能创建的pod的数量就是节点的个数。
+  pod停留在waiting状态 如果一个pod卡在Waiting状态，则表示这个pod已经调试到节点上，但是没有运行起来。 再次敲一下kubectl describe ...这个命令来查看相关信息。 最常见的原因是拉取镜像失败。可以通过以下三种方式来检查：
+ 使用的镜像名字正确吗？ 镜像仓库里有没有这个镜像？ 用docker pull &amp;lt;image&amp;gt;命令手动拉下镜像试试。  pod处于crashing状态或者unhealthy 首先，看一下容器的log:
+$ kubectl logs ${POD_NAME} ${CONTAINER_NAME} 如果容器是crashed的，用如下命令可以看到crash的log:
+$ kubectl logs --previous ${POD_NAME} ${CONTAINER_NAME} 或者，用exec在容器内运行一些命令：</description>
+    </item>
+    
+    <item>
+      <title>应用自测与调试</title>
+      <link>https://lijun.in/tasks/debug-application-cluster/debug-application-introspection/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/debug-application-cluster/debug-application-introspection/</guid>
+      <description>运行应用时，不可避免的需要定位问题。 前面我们介绍了如何使用 kubectl get pods 来查询 pod 的简单信息。 除此之外，还有一系列的方法来获取应用的更详细信息。
+使用 kubectl describe pod 命令获取 pod 详情 与之前的例子类似，我们使用一个 Deployment 来创建两个 pod。
+. codenew file=&amp;quot;application/nginx-with-request.yaml&amp;rdquo; &amp;gt;}}
+使用如下命令创建 deployment：
+kubectl apply -f https://k8s.io/examples/application/nginx-with-request.yaml deployment.apps/nginx-deployment created 使用如下命令查看 pod 状态：
+kubectl get pods NAME READY STATUS RESTARTS AGE nginx-deployment-1006230814-6winp 1/1 Running 0 11s nginx-deployment-1006230814-fmgu3 1/1 Running 0 11s 我们可以使用 kubectl describe pod 命令来查询每个 pod 的更多信息，比如：
+kubectl describe pod nginx-deployment-1006230814-6winp Name:	nginx-deployment-1006230814-6winp Namespace:	default Node:	kubernetes-node-wul5/10.240.0.9 Start Time:	Thu, 24 Mar 2016 01:39:49 +0000 Labels:	app=nginx,pod-template-hash=1006230814 Annotations: kubernetes.</description>
+    </item>
+    
+    <item>
+      <title>排错</title>
+      <link>https://lijun.in/tasks/debug-application-cluster/troubleshooting/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/debug-application-cluster/troubleshooting/</guid>
+      <description>有时候事情会出错。本指南旨在正确解决这些问题。它包含两个部分：
+ 应用排错 - 用于部署代码到 Kubernetes 并想知道代码为什么不能正常运行的用户。 集群排错 - 用于集群管理员以及 Kubernetes 集群表现异常的用户。  您也应该查看所用版本的已知问题。
+获取帮助 如果您的问题在上述指南中没有得到答案，您还有另外几种方式从 Kubernetes 团队获得帮助。
+提问 网站上的文档针对回答各类问题进行了结构化组织和分类。 概念部分解释了 Kubernetes 体系结构以及每个组件的工作方式，安装部分提供了入门的实用说明。 任务部分展示了如何完成常用任务，入门部分则是对现实世界、特定行业或端到端开发场景的更全面的演练。 参考部分提供了详细的 [Kubernetes API](/docs/reference/generated/kubernetes-api/. param &amp;ldquo;version&amp;rdquo; &amp;gt;}}/) 文档和命令行 (CLI) 接口，例如kubectl。
+您还可以找到堆栈溢出相关的主题：
+ Kubernetes Google Kubernetes Engine  求救！我的问题还没有解决！我需要立即得到帮助！ 堆栈溢出 社区中的其他人可能已经问过和您类似的问题，这或许能帮助解决您的问题。 Kubernetes 团队还会监视带有 Kubernetes 标签的帖子。 如果现有的问题对您没有帮助，请问一个新问题!
+Slack Kubernetes 团队在 Slack 中建有 #kubernetes-users 频道。 您可以在这里参加与 Kubernetes 团队的讨论。 Slack 需要注册，但 Kubernetes 团队公开邀请任何人在这里注册。 欢迎您随时来问任何问题。
+一旦注册完成，您就可以浏览各种感兴趣的频道列表。 例如，Kubernetes 新人可能还想加入 #kubernetes-novice 频道。作为另一个例子，开发人员应该加入 #kubernetes-dev 频道。</description>
+    </item>
+    
+    <item>
+      <title>确定 Pod 失败的原因</title>
+      <link>https://lijun.in/tasks/debug-application-cluster/determine-reason-pod-failure/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/debug-application-cluster/determine-reason-pod-failure/</guid>
+      <description>本文介绍如何编写和读取容器的终止消息。
+终止消息为容器提供了一种方法，可以将有关致命事件的信息写入某个位置，在该位置可以通过仪表板和监控软件等工具轻松检索和显示致命事件。 在大多数情况下，您放入终止消息中的信息也应该写入常规 Kubernetes 日志。
+. heading &amp;ldquo;prerequisites&amp;rdquo; %}} . include &amp;ldquo;task-tutorial-prereqs.md&amp;rdquo; &amp;gt;}} . version-check &amp;gt;}}
+读写终止消息 在本练习中，您将创建运行一个容器的 Pod。 配置文件指定在容器启动时要运行的命令。
+. codenew file=&amp;quot;debug/termination.yaml&amp;rdquo; &amp;gt;}}
+   kubectl create -f https://k8s.io/examples/debug/termination.yaml  YAML 文件中，在 cmd 和 args 字段，你可以看到容器休眠 10 秒然后将 &amp;ldquo;Sleep expired&amp;rdquo; 写入 /dev/termination-log 文件。 容器写完 &amp;ldquo;Sleep expired&amp;rdquo; 消息后，它就终止了。
+   kubectl get pod termination-demo  重复前面的命令直到 Pod 不再运行。
+   kubectl get pod --output=yaml   apiVersion: v1 kind: Pod .</description>
+    </item>
+    
+    <item>
+      <title>节点健康监测</title>
+      <link>https://lijun.in/tasks/debug-application-cluster/monitor-node-health/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/debug-application-cluster/monitor-node-health/</guid>
+      <description>节点问题探测器 是一个 DaemonSet 用来监控节点健康。它从各种守护进程收集节点问题，并以NodeCondition 和 [Event](/docs/reference/generated/kubernetes-api/. param &amp;ldquo;version&amp;rdquo; &amp;gt;}}/#event-v1-core) 的形式报告给 apiserver 。
+它现在支持一些已知的内核问题检测，并将随着时间的推移，检测更多节点问题。
+目前，Kubernetes 不会对节点问题检测器监测到的节点状态和事件采取任何操作。将来可能会引入一个补救系统来处理这些节点问题。
+更多信息请参阅 这里。
+. heading &amp;ldquo;prerequisites&amp;rdquo; %}} . include &amp;ldquo;task-tutorial-prereqs.md&amp;rdquo; &amp;gt;}} . version-check &amp;gt;}}
+局限性  节点问题检测器的内核问题检测现在只支持基于文件类型的内核日志。 它不支持像 journald 这样的命令行日志工具。   节点问题检测器的内核问题检测对内核日志格式有一定要求，现在它只适用于 Ubuntu 和 Debian。但是，将其扩展为 支持其它日志格式 也很容易。  在 GCE 集群中启用/禁用 节点问题检测器在 gce 集群中以集群插件的形式默认启用。
+您可以在运行 kube-up.sh 之前，以设置环境变量 KUBE_ENABLE_NODE_PROBLEM_DETECTOR 的形式启用/禁用它。
+在其它环境中使用 要在 GCE 之外的其他环境中启用节点问题检测器，您可以使用 kubectl 或插件 pod。
+Kubectl 这是在 GCE 之外启动节点问题检测器的推荐方法。它的管理更加灵活，例如覆盖默认配置以使其适合您的环境或检测自定义节点问题。
+ 步骤 1: node-problem-detector.yaml:  .</description>
+    </item>
+    
+    <item>
+      <title>获取正在运行容器的 Shell</title>
+      <link>https://lijun.in/tasks/debug-application-cluster/get-shell-running-container/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/debug-application-cluster/get-shell-running-container/</guid>
+      <description>本文介绍怎样使用 kubectl exec 命令获取正在运行容器的 Shell。
+.% heading &amp;ldquo;prerequisites&amp;rdquo; %}} . include &amp;ldquo;task-tutorial-prereqs.md&amp;rdquo; &amp;gt;}} . version-check &amp;gt;}}
+获取容器的 Shell 在本练习中，你将创建包含一个容器的 Pod。容器运行 nginx 镜像。下面是 Pod 的配置文件：
+. codenew file=&amp;quot;application/shell-demo.yaml&amp;rdquo; &amp;gt;}}
+创建 Pod：
+kubectl create -f https://k8s.io/examples/application/shell-demo.yaml 检查容器是否运行正常：
+kubectl get pod shell-demo 获取正在运行容器的 Shell：
+kubectl exec -it shell-demo -- /bin/bash . note &amp;gt;}}
+双破折号 &amp;ldquo;&amp;ndash;&amp;rdquo; 用于将要传递给命令的参数与 kubectl 的参数分开。 note &amp;gt;}}
+在 shell 中，打印根目录：
+root@shell-demo:/# ls / 在 shell 中，实验其他命令。下面是一些示例：
+root@shell-demo:/# ls / root@shell-demo:/# cat /proc/mounts root@shell-demo:/# cat /proc/1/maps root@shell-demo:/# apt-get update root@shell-demo:/# apt-get install -y tcpdump root@shell-demo:/# tcpdump root@shell-demo:/# apt-get install -y lsof root@shell-demo:/# lsof root@shell-demo:/# apt-get install -y procps root@shell-demo:/# ps aux root@shell-demo:/# ps aux | grep nginx 编写 nginx 的 根页面 在看一下 Pod 的配置文件。该 Pod 有个 emptyDir 卷，容器将该卷挂载到了 /usr/share/nginx/html。</description>
+    </item>
+    
+    <item>
+      <title>调试 Init 容器</title>
+      <link>https://lijun.in/tasks/debug-application-cluster/debug-init-containers/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/debug-application-cluster/debug-init-containers/</guid>
+      <description>此页显示如何核查与 init 容器执行相关的问题。 下面的示例命令行将 Pod 称为 &amp;lt;pod-name&amp;gt;，而 init 容器称为 &amp;lt;init-container-1&amp;gt; 和 &amp;lt;init-container-2&amp;gt;。
+. heading &amp;ldquo;prerequisites&amp;rdquo; %}} . include &amp;ldquo;task-tutorial-prereqs.md&amp;rdquo; &amp;gt;}} . version-check &amp;gt;}}
+ 您应该熟悉 Init 容器的基础知识。 您应该已经配置好一个 Init 容器。  检查 Init 容器的状态 显示你的 Pod 的状态：
+kubectl get pod &amp;lt;pod-name&amp;gt; 例如，状态 Init:1/2 表明两个 Init 容器中的一个已经成功完成：
+NAME READY STATUS RESTARTS AGE &amp;lt;pod-name&amp;gt; 0/1 Init:1/2 0 7s 更多状态值及其含义请参考了解 Pod 的状态。
+获取 Init 容器详情 查看 Init 容器运行的更多详情：
+kubectl describe pod &amp;lt;pod-name&amp;gt; 例如，对于包含两个 Init 容器的 Pod 应该显示如下信息：</description>
+    </item>
+    
+    <item>
+      <title>调试 Pods 和 Replication Controllers</title>
+      <link>https://lijun.in/tasks/debug-application-cluster/debug-pod-replication-controller/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/debug-application-cluster/debug-pod-replication-controller/</guid>
+      <description>此页面告诉您如何调试 Pod 和 ReplicationController。
+. heading &amp;ldquo;prerequisites&amp;rdquo; %}} . include &amp;ldquo;task-tutorial-prereqs.md&amp;rdquo; &amp;gt;}} . version-check &amp;gt;}}
+ 您应该先熟悉 Pods 和 Pod Lifecycle 的基础概念。  调试 Pod 调试一个 pod 的第一步是观察它。使用下面的命令检查这个 pod 的当前状态和最近事件：
+kubectl describe pods ${POD_NAME} 看看 pod 中的容器的状态。他们都是 Running 吗？有最近重启了吗？
+根据 pod 的状态继续调试。
+我的 Pod 卡在 Pending 如果一个 pod 被卡在 Pending 状态，就意味着它不能调度在某个节点上。一般来说，这是因为某种类型的资源不足而 阻止调度。 看看上面的命令 kubectl describe ... 的输出。调度器的消息中应该会包含无法调度 Pod 的原因。 原因包括：
+资源不足 您可能已经耗尽了集群中供应的 CPU 或内存。在这个情况下你可以尝试几件事情：
+  添加更多节点 到集群。
+  终止不需要的 pod 为 pending 中的 pod 提供空间。</description>
+    </item>
+    
+    <item>
+      <title>调试 Service</title>
+      <link>https://lijun.in/tasks/debug-application-cluster/debug-service/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/debug-application-cluster/debug-service/</guid>
+      <description>对于新安装的 Kubernetes，经常出现的一个问题是 Service 没有正常工作。如果您已经运行了 Deployment 并创建了一个 Service，但是当您尝试访问它时没有得到响应，希望这份文档能帮助您找出问题所在。
+约定 在整个文档中，您将看到各种可以运行的命令。有些命令需要在 Pod 中运行，有些命令需要在 Kubernetes Node 上运行，还有一些命令可以在您拥有 kubectl 和集群凭证的任何地方运行。为了明确预期的效果，本文档将使用以下约定。
+如果命令 &amp;ldquo;COMMAND&amp;rdquo; 期望在 Pod 中运行，并且产生 &amp;ldquo;OUTPUT&amp;rdquo;：
+u@pod$ COMMAND OUTPUT 如果命令 &amp;ldquo;COMMAND&amp;rdquo; 期望在 Node 上运行，并且产生 &amp;ldquo;OUTPUT&amp;rdquo;：
+u@node$ COMMAND OUTPUT 如果命令是 &amp;ldquo;kubectl ARGS&amp;rdquo;：
+$ kubectl ARGS OUTPUT 在 pod 中运行命令 对于这里的许多步骤，您可能希望知道运行在集群中的 Pod 看起来是什么样的。最简单的方法是运行一个交互式的 busybox Pod：
+$ kubectl run -it --rm --restart=Never busybox --image=busybox sh 如果你没有看到命令提示符，请尝试按 Enter 键。 / # 如果您已经有了您喜欢使用的正在运行的 Pod，则可以运行一下命令去使用：
+$ kubectl exec &amp;lt;POD-NAME&amp;gt; -c &amp;lt;CONTAINER-NAME&amp;gt; -- &amp;lt;COMMAND&amp;gt; 设置 为了完成本次演练的目的，我们先运行几个 Pod。因为可能正在调试您自己的 Service，所以，您可以使用自己的详细信息进行替换，或者，您也可以跟随并开始下面的步骤来获得第二个数据点。</description>
+    </item>
+    
+    <item>
+      <title>调试StatefulSet</title>
+      <link>https://lijun.in/tasks/debug-application-cluster/debug-stateful-set/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/debug-application-cluster/debug-stateful-set/</guid>
+      <description>此任务展示如何调试StatefulSet。
+. heading &amp;ldquo;prerequisites&amp;rdquo; %}}  你需要有一个Kubernetes集群，通过必要的配置使kubectl命令行工具与您的集群进行通信。 你应该有一个运行中的StatefulSet，以便用于调试。  调试StatefulSet 由于StatefulSet在创建时设置了app=myapp标签，列出仅属于该StatefulSet的所有pod时，可以使用以下命令：
+kubectl get pods -l app=myapp 如果您发现列出的任何Pods长时间处于Unknown 或Terminating状态，关于如何处理它们的说明任务,请参阅删除 StatefulSet Pods。您可以参考调试 Pods指南来调试StatefulSet中的各个Pod。
+StatefulSets提供调试机制，可以使用注解来暂停所有控制器在Pod上的操作。在任何StatefulSet Pod上设置pod.alpha.kubernetes.io/initialized注解为&amp;quot;false&amp;quot;将暂停 StatefulSet的所有操作。暂停时，StatefulSet将不执行任何伸缩操作。一旦调试钩子设置完成后，就可以在StatefulSet pod的容器内执行命令，而不会造成伸缩操作的干扰。您可以通过执行以下命令将注解设置为&amp;quot;false&amp;quot;：
+kubectl annotate pods &amp;lt;pod-name&amp;gt; pod.alpha.kubernetes.io/initialized=&amp;#34;false&amp;#34; --overwrite 当注解设置为&amp;quot;false&amp;quot;时，StatefulSet在其Pods变得不健康或不可用时将不会响应。StatefulSet不会创建副本Pod直到每个Pod上删除注解或将注解设置为&amp;quot;true&amp;quot;。
+逐步初始化 创建StatefulSet之前，您可以通过使用和上文相同的注解，即将yaml文件中.spec.template.metadata.annotations里的pod.alpha.kubernetes.io/initialized字段设置为&amp;quot;false&amp;quot;，对竞态条件的StatefulSet进行调试。
+apiVersion: apps/v1beta1 kind: StatefulSet metadata: name: my-app spec: serviceName: &amp;#34;my-app&amp;#34; replicas: 3 template: metadata: labels: app: my-app annotations: pod.alpha.kubernetes.io/initialized: &amp;#34;false&amp;#34; ... ... ... 设置注解后，如果创建了StatefulSet，您可以等待每个Pod来验证它是否正确初始化。StatefulSet将不会创建任何后续的Pods，直到在已经创建的每个Pod上将调试注解设置为&amp;quot;true&amp;quot; (或删除)。 您可以通过执行以下命令将注解设置为&amp;quot;true&amp;quot;：
+kubectl annotate pods &amp;lt;pod-name&amp;gt; pod.alpha.kubernetes.io/initialized=&amp;#34;true&amp;#34; --overwrite . heading &amp;ldquo;whatsnext&amp;rdquo; %}} 点击链接调试init-container，了解更多信息。</description>
+    </item>
+    
+    <item>
+      <title>资源指标管道</title>
+      <link>https://lijun.in/tasks/debug-application-cluster/resource-metrics-pipeline/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/debug-application-cluster/resource-metrics-pipeline/</guid>
+      <description>从 Kubernetes 1.8开始，资源使用指标，例如容器 CPU 和内存使用率，可通过 Metrics API 在 Kubernetes 中获得。这些指标可以直接被用户访问，比如使用kubectl top命令行，或者这些指标由集群中的控制器使用，例如，Horizontal Pod Autoscaler，使用这些指标来做决策。
+Metrics API 通过 Metrics API，您可以获得指定节点或 pod 当前使用的资源量。此 API 不存储指标值，因此想要获取某个指定节点10分钟前的资源使用量是不可能的。
+此 API 与其他 API 没有区别：
+ 此 API 和其它 Kubernetes API 一起位于同一端点（endpoint）之下，是可发现的，路径为/apis/metrics.k8s.io/ 它提供相同的安全性、可扩展性和可靠性保证  Metrics API 在k8s.io/metrics 仓库中定义。您可以在那里找到有关 Metrics API 的更多信息。
+. note &amp;gt;}} Metrics API 需要在集群中部署 Metrics Server。否则它将不可用。 . /note &amp;gt;}}
+Metrics Server Metrics Server是集群范围资源使用数据的聚合器。 从 Kubernetes 1.8开始，它作为 Deployment 对象，被默认部署在由kube-up.sh脚本创建的集群中。 如果您使用不同的 Kubernetes 安装方法，则可以使用提供的deployment yamls来部署。它在 Kubernetes 1.7+中得到支持（详见下文）。
+Metric server 从每个节点上的 Kubelet 公开的 Summary API 中采集指标信息。</description>
+    </item>
+    
+    <item>
+      <title>资源监控工具</title>
+      <link>https://lijun.in/tasks/debug-application-cluster/resource-usage-monitoring/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/debug-application-cluster/resource-usage-monitoring/</guid>
+      <description>要扩展应用程序并提供可靠的服务，您需要了解应用程序在部署时的行为。 您可以通过检测容器检查 Kubernetes 集群中的应用程序性能，pods, 服务和整个集群的特征。 Kubernetes 在每个级别上提供有关应用程序资源使用情况的详细信息。 此信息使您可以评估应用程序的性能，以及在何处可以消除瓶颈以提高整体性能。
+在 Kubernetes 中，应用程序监控不依赖单个监控解决方案。 在新集群上，您可以使用资源度量或完整度量管道来收集监视统计信息。
+资源度量管道 资源指标管道提供了一组与集群组件，例如[Horizontal Pod Autoscaler]控制器(/docs/tasks/run-application/horizontal-pod-autoscale)，以及 kubectl top 实用程序相关的有限度量。 这些指标是由轻量级的、短期内存度量服务器收集的，通过 metrics.k8s.io 公开。
+度量服务器发现集群中的所有节点，并且查询每个节点的kubelet以获取 CPU 和内存使用情况。 Kubelet 充当 Kubernetes 主节点与节点之间的桥梁，管理机器上运行的 Pod 和容器。 kubelet 将每个 pod 转换为其组成的容器，并在容器运行时通过容器运行时界面获取各个容器使用情况统计信息。 kubelet 从集成的 cAdvisor 获取此信息，以进行旧式 Docker 集成。 然后，它通过 metrics-server Resource Metrics API 公开聚合的 pod 资源使用情况统计信息。 该 API 在 kubelet 的经过身份验证和只读的端口上的/metrics/resource/v1beta1中提供。
+完整度量管道 一个完整度量管道可以让您访问更丰富的度量。 Kubernetes 还可以根据集群的当前状态，使用 Pod 水平自动扩缩器等机制，通过自动调用扩展或调整集群来响应这些度量。 监控管道从 kubelet 获取度量，然后通过适配器将它们公开给 Kubernetes，方法是实现 custom.metrics.k8s.io 或 external.metrics.k8s.io API。
+Prometheus，一个 CNCF 项目，可以原生监控 Kubernetes、节点和 Prometheus 本身。 完整度量管道项目不属于 CNCF 的一部分，不在 Kubernetes 文档的范围之内。</description>
+    </item>
+    
+    <item>
+      <title>集群故障排查</title>
+      <link>https://lijun.in/tasks/debug-application-cluster/debug-cluster/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/tasks/debug-application-cluster/debug-cluster/</guid>
+      <description>本篇文档是介绍集群故障排查的；我们假设对于你碰到的问题，你已经排除了是由应用程序造成的。 对于应用的调试，请参阅应用故障排查指南。 你也可以访问troubleshooting document来获取更多的信息。
+显示出集群的节点列表 调试的第一步是查看所有的节点是否都正确的注册。
+运行
+kubectl get nodes 接下来，验证你的所有节点都能够显示出来，并且都处于Ready状态。
+查看logs 现在，挖掘出集群更深层的信息就需要登录到相关的机器上。下面是相关log文件所在的位置。 (注意，对于基于systemd的系统，你可能需要使用journalctl)
+Master  /var/log/kube-apiserver.log - API Server, 提供API服务 /var/log/kube-scheduler.log - Scheduler, 负责调度决策 /var/log/kube-controller-manager.log - 管理replication controllers的控制器  Worker Nodes  /var/log/kubelet.log - Kubelet, 管控节点上运行的容器 /var/log/kube-proxy.log - Kube Proxy, 负责服务的负载均衡  集群故障模式的概述 下面是一个不完整的列表，列举了一些可能出错的场景，以及通过调整集群配置来解决相关问题的方法。
+根本原因：
+ VM(s)关机 集群之间，或者集群和用户之间网络分裂 Kubernetes软件本身崩溃了 数据丢失或者持久化存储不可用(如:GCE PD 或 AWS EBS卷) 操作错误，如：Kubernetes或者应用程序配置错误  具体情况:
+  Apiserver所在的VM关机或者apiserver崩溃
+ 结果  不能停止，更新，或者启动新的pods，services，replication controller 现有的pods和services在不依赖Kubernetes API的情况下应该能继续正常工作      Apiserver 后端存储丢失</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -23,10 +23,10 @@ for database debugging.
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-* {{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+* . include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 <!--
 * Install [redis-cli](http://redis.io/topics/rediscli).
@@ -55,14 +55,14 @@ for database debugging.
     查看输出是否成功，以验证是否成功创建 deployment：
 
         deployment.apps/redis-master created
-    
+
 <!--
     View the pod status to check that it is ready:
 -->
     查看 pod 状态，检查其是否准备就绪：
 
         kubectl get pods
-    
+
 <!--
     The output displays the pod created:
 -->
@@ -227,7 +227,7 @@ local workstation to debug the database that is running in the pod.
 
 与本地 7000 端口建立的连接将转发到运行 Redis 服务器的 pod 的 6379 端口。通过此连接，您可以使用本地工作站来调试在 pod 中运行的数据库。
 
-{{< warning >}}
+. warning >}}
 <!--
 Due to known limitations, port forward today only works for TCP protocol.
 The support to UDP protocol is being tracked in
@@ -235,12 +235,12 @@ The support to UDP protocol is being tracked in
 -->
 **警告：** 由于已知的限制，目前的端口转发仅适用于 TCP 协议。
 在 [issue 47862](https://github.com/kubernetes/kubernetes/issues/47862) 中正在跟踪对 UDP 协议的支持。
-{{< /warning >}}
+. /warning >}}
 
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 <!--
 Learn more about [kubectl port-forward](/docs/reference/generated/kubectl/kubectl-commands/#port-forward).

@@ -19,7 +19,7 @@ content_type: task
 
 <!-- overview -->
 
-{{< feature-state for_k8s_version="1.5" state="alpha" >}}
+. feature-state for_k8s_version="1.5" state="alpha" >}}
 <!--
 You can replicate Kubernetes masters in `kube-up` or `kube-down` scripts for Google Compute Engine.
 This document describes how to use kube-up/down scripts to manage highly available (HA) masters and how HA masters are implemented for use with GCE.
@@ -31,10 +31,10 @@ This document describes how to use kube-up/down scripts to manage highly availab
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 

@@ -10,10 +10,10 @@ content_type: task
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 
@@ -26,7 +26,7 @@ content_type: task
 在这个练习中，你会创建一个包含两个容器的 Pod。两个容器共享一个卷用于他们之间的通信。
 Pod 的配置文件如下：
 
-{{< codenew file="pods/two-container-pod.yaml" >}}
+. codenew file="pods/two-container-pod.yaml" >}}
 
 在配置文件中，你可以看到 Pod 有一个共享卷，名为 `shared-data`。
 
@@ -59,7 +59,7 @@ Pod 的配置文件如下：
     spec:
       ...
       containerStatuses:
-
+    
       - containerID: docker://c1d8abd1 ...
         image: debian
         ...
@@ -68,7 +68,7 @@ Pod 的配置文件如下：
             ...
         name: debian-container
         ...
-
+    
       - containerID: docker://96c1ff2c5bb ...
         image: nginx
         ...
@@ -141,7 +141,7 @@ Pod 能有多个容器的主要原因是为了支持辅助应用（helper applic
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 
@@ -158,10 +158,10 @@ Pod 能有多个容器的主要原因是为了支持辅助应用（helper applic
 * 参见 [配置一个使用存储卷的 Pod](/docs/tasks/configure-pod-container/configure-volume-storage/)。
 
 
-* 参见 [卷](/docs/api-reference/{{< param "version" >}}/#volume-v1-core)。
+* 参见 [卷](/docs/api-reference/. param "version" >}}/#volume-v1-core)。
 
 
-* 参见 [Pod](/docs/api-reference/{{< param "version" >}}/#pod-v1-core).
+* 参见 [Pod](/docs/api-reference/. param "version" >}}/#pod-v1-core).
 
 
 

@@ -29,7 +29,7 @@ This page shows how to delete Pods which are part of a stateful set, and explain
 本文介绍了如何删除 StatefulSet 管理的部分 pods，并且解释了这样操作时需要记住的注意事项。
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
 <!--
@@ -149,7 +149,7 @@ Always perform force deletion of StatefulSet Pods carefully and with complete kn
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 <!--

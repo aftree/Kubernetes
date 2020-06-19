@@ -25,10 +25,10 @@ scheduling and evicting Pods.
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 
@@ -87,7 +87,7 @@ memory request, both equal to 200 MiB. The Container has a CPU limit and a CPU r
 容器设置了内存请求和内存限制，值都是 200 MiB。
 容器设置了 CPU 请求和 CPU 限制，值都是 700 milliCPU：
 
-{{< codenew file="pods/qos/qos-pod.yaml" >}}
+. codenew file="pods/qos/qos-pod.yaml" >}}
 
 <!--
 Create the Pod:
@@ -133,7 +133,7 @@ spec:
   qosClass: Guaranteed
 ```
 
-{{< note >}}
+. note >}}
 <!--
 If a Container specifies its own memory limit, but does not specify a memory request, Kubernetes
 automatically assigns a memory request that matches the limit. Similarly, if a Container specifies its own
@@ -143,7 +143,7 @@ the limit.
 
 如果容器指定了自己的内存限制，但没有指定内存请求，Kubernetes 会自动为它指定与内存限制匹配的内存请求。
 同样，如果容器指定了自己的 CPU 限制，但没有指定 CPU 请求，Kubernetes 会自动为它指定与 CPU 限制匹配的 CPU 请求。
-{{< /note >}}
+. /note >}}
 
 <!--
 Delete your Pod:
@@ -177,7 +177,7 @@ and a memory request of 100 MiB.
 下面是包含一个容器的 Pod 配置文件。
 容器设置了内存限制 200 MiB 和内存请求 100 MiB。
 
-{{< codenew file="pods/qos/qos-pod-2.yaml" >}}
+. codenew file="pods/qos/qos-pod-2.yaml" >}}
 
 <!--
 Create the Pod:
@@ -249,7 +249,7 @@ limits or requests:
 
 
 
-{{< codenew file="pods/qos/qos-pod-3.yaml" >}}
+. codenew file="pods/qos/qos-pod-3.yaml" >}}
 
 <!--
 Create the Pod:
@@ -310,7 +310,7 @@ request of 200 MiB. The other Container does not specify any requests or limits.
 另外一个容器没有指定任何请求和限制。
 
 
-{{< codenew file="pods/qos/qos-pod-4.yaml" >}}
+. codenew file="pods/qos/qos-pod-4.yaml" >}}
 
 <!--
 Notice that this Pod meets the criteria for QoS class Burstable. That is, it does not meet the
@@ -385,7 +385,7 @@ kubectl delete namespace qos-example
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 

@@ -15,7 +15,7 @@ content_type: task
 本文介绍如何弹缩StatefulSet.
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
 * StatefulSets仅适用于Kubernetes1.5及以上版本.
@@ -82,7 +82,7 @@ StatefulSet的扩容/缩容操作. 一些分布式数据库在节点加入和同
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 了解更多 [deleting a StatefulSet](/docs/tasks/manage-stateful-set/deleting-a-statefulset/).

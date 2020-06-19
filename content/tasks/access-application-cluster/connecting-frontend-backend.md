@@ -15,7 +15,7 @@ content_type: tutorial
 
 
 
-## {{% heading "objectives" %}}
+## . heading "objectives" %}}
 
 
 
@@ -28,10 +28,10 @@ content_type: tutorial
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-* {{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+* . include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 * 本任务使用 [外部负载均衡服务](/docs/tasks/access-application-cluster/create-external-load-balancer/)，
@@ -48,7 +48,7 @@ content_type: tutorial
 
 后端是一个简单的 hello 欢迎微服务应用。这是后端应用的 Deployment 配置文件：
 
-{{< codenew file="service/access/hello.yaml" >}}
+. codenew file="service/access/hello.yaml" >}}
 
 创建后端 Deployment：
 
@@ -95,7 +95,7 @@ Events:
 
 首先，浏览 Service 的配置文件：
 
-{{< codenew file="service/access/hello-service.yaml" >}}
+. codenew file="service/access/hello-service.yaml" >}}
 
 
 配置文件中，你可以看到 Service 将流量路由到包含 `app: hello` 和 `tier: backend` 标签的 Pod。
@@ -118,12 +118,12 @@ DNS 名是 "hello"，也就是 Service 配置文件中 `name` 字段的值。
 前端 Deployment 中的 Pods 运行一个 nginx 镜像，这个已经配置好镜像去寻找后端的 hello Service。
 只是 nginx 的配置文件：
 
-{{< codenew file="service/access/frontend.conf" >}}
+. codenew file="service/access/frontend.conf" >}}
 
 与后端类似，前端用包含一个 Deployment 和一个 Service。Service 的配置文件包含了 `type: LoadBalancer`，
 也就是说，Service 会使用你的云服务商的默认负载均衡设备。
 
-{{< codenew file="service/access/frontend.yaml" >}}
+. codenew file="service/access/frontend.yaml" >}}
 
 创建前端 Deployment 和 Service：
 
@@ -185,7 +185,7 @@ curl http://<EXTERNAL-IP>
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 

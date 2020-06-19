@@ -337,7 +337,7 @@ See the [list of add-ons](/docs/concepts/cluster-administration/addons/) to expl
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 <!--

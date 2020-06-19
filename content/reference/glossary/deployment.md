@@ -39,7 +39,7 @@ tags:
 <!--more--> 
 
 <!--
-Each replica is represented by a {{< glossary_tooltip term_id="pod" >}}, and the Pods are distributed among the nodes of a cluster.
+Each replica is represented by a . glossary_tooltip term_id="pod" >}}, and the Pods are distributed among the nodes of a cluster.
 -->
 
-应用的每个副本就是一个 {{< glossary_tooltip term_id="pod" >}}，并且这些 Pod 会分散运行在集群的节点上。
+应用的每个副本就是一个 . glossary_tooltip term_id="pod" >}}，并且这些 Pod 会分散运行在集群的节点上。

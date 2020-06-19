@@ -9,7 +9,7 @@ content_type: task
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
 
@@ -70,7 +70,7 @@ kubectl annotate pods <pod-name> pod.alpha.kubernetes.io/initialized="true" --ov
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 点击链接[调试init-container](/docs/tasks/troubleshoot/debug-init-containers/)，了解更多信息。

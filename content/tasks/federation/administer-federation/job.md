@@ -12,9 +12,9 @@ content_type: task
 
 <!-- overview -->
 
-{{< deprecationfilewarning >}}
-{{< include "federation-deprecation-warning-note.md" >}}
-{{< /deprecationfilewarning >}}
+. deprecationfilewarning >}}
+. include "federation-deprecation-warning-note.md" >}}
+. /deprecationfilewarning >}}
 
 <!--
 This guide explains how to use jobs in the federation control plane.
@@ -32,10 +32,10 @@ parallelism and completions exist across the registered clusters.
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-* {{< include "federated-task-tutorial-prereqs.md" >}}
+* . include "federated-task-tutorial-prereqs.md" >}}
 * 你需要具备基本的 [Kubernetes 的工作知识](/docs/tutorials/kubernetes-basics/)，特别是 [job](/docs/concepts/workloads/controllers/jobs-run-to-completion/)。
 
 <!--
@@ -116,14 +116,14 @@ if you have 3 registered clusters and you create a federated job with
 `spec.parallelism = 9` and `spec.completions = 18`, then each job in the 3 clusters has
 `spec.parallelism = 3` and `spec.completions = 6`.
 To modify the number of parallelism and completions in each cluster, you can specify
-[ReplicaAllocationPreferences](https://github.com/kubernetes/federation/blob/{{< param "githubbranch" >}}/apis/federation/types.go)
+[ReplicaAllocationPreferences](https://github.com/kubernetes/federation/blob/. param "githubbranch" >}}/apis/federation/types.go)
 as an annotation with key `federation.kubernetes.io/job-preferences`
 on the federated job.
 -->
 默认情况下，并行性和完成数在所有底层集群中平均分布。例如：
 如果你有 3 个已注册的集群，并且创建了一个联邦 job
 `spec.parallelism = 9` 和 `spec.completions = 18`，那么 3 个集群中的每个 job 都有 `spec.parallelism = 3` 和 `spec.completions = 6`。
-要修改每个集群中的并行性和完成数，可以指定 [ReplicaAllocationPreferences](https://github.com/kubernetes/federation/blob/{{< param "githubbranch" >}}/apis/federation/types.go)
+要修改每个集群中的并行性和完成数，可以指定 [ReplicaAllocationPreferences](https://github.com/kubernetes/federation/blob/. param "githubbranch" >}}/apis/federation/types.go)
 作为 `federation.kubernetes.io/job-preferences` 联邦 job 上的 key 的注释。
 
 <!--
@@ -174,7 +174,7 @@ For example, with kubectl:
 kubectl --context=federation-cluster delete job myjob
 ```
 
-{{< note >}}
+. note >}}
 
 <!--
 Deleting a federated job will not delete the
@@ -184,7 +184,7 @@ You must delete the underlying jobs manually.
 删除联邦作业不会从基础集群中删除相应的 job。
 您必须手动删除基础 job。
 
-{{< /note >}}
+. /note >}}
 
 
 

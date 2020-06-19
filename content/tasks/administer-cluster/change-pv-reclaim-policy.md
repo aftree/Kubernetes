@@ -9,10 +9,10 @@ content_type: task
 本文展示了如何更改 Kubernetes PersistentVolume 的回收策略。
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 
@@ -69,7 +69,7 @@ content_type: task
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 * 了解更多关于 [PersistentVolumes](/docs/concepts/storage/persistent-volumes/)的信息。
@@ -78,10 +78,10 @@ content_type: task
 
 ### 参考
 
-* [PersistentVolume](/docs/api-reference/{{< param "version" >}}/#persistentvolume-v1-core)
-* [PersistentVolumeClaim](/docs/api-reference/{{< param "version" >}}/#persistentvolumeclaim-v1-core)
+* [PersistentVolume](/docs/api-reference/. param "version" >}}/#persistentvolume-v1-core)
+* [PersistentVolumeClaim](/docs/api-reference/. param "version" >}}/#persistentvolumeclaim-v1-core)
 
-* 查阅  [PersistentVolumeSpec](/docs/api-reference/{{< param "version" >}}/#persistentvolumeclaim-v1-core) 的 `persistentVolumeReclaimPolicy` 字段。
+* 查阅  [PersistentVolumeSpec](/docs/api-reference/. param "version" >}}/#persistentvolumeclaim-v1-core) 的 `persistentVolumeReclaimPolicy` 字段。
 
 
 

@@ -40,10 +40,10 @@ Init Containers. The example command lines below refer to the Pod as
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 <!--
 * You should be familiar with the basics of

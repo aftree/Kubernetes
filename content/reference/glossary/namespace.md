@@ -27,7 +27,7 @@ tags:
 -->
 
 <!--
- An abstraction used by Kubernetes to support multiple virtual clusters on the same physical {{< glossary_tooltip text="cluster" term_id="cluster" >}}.
+ An abstraction used by Kubernetes to support multiple virtual clusters on the same physical . glossary_tooltip text="cluster" term_id="cluster" >}}.
 -->
 
 命名空间是 Kubernetes 为了在同一物理集群上支持多个虚拟集群而使用的一种抽象。

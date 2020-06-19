@@ -9,17 +9,17 @@ reviewers:
 - dchen1107
 content_type: task
 title: Monitor Node Health
---- 
+---
 -->
 
 <!-- overview -->
 
-*节点问题探测器* 是一个 [DaemonSet](/docs/concepts/workloads/controllers/daemonset/) 用来监控节点健康。它从各种守护进程收集节点问题，并以[NodeCondition](/docs/concepts/architecture/nodes/#condition) 和 [Event](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#event-v1-core) 的形式报告给 apiserver 。 
+*节点问题探测器* 是一个 [DaemonSet](/docs/concepts/workloads/controllers/daemonset/) 用来监控节点健康。它从各种守护进程收集节点问题，并以[NodeCondition](/docs/concepts/architecture/nodes/#condition) 和 [Event](/docs/reference/generated/kubernetes-api/. param "version" >}}/#event-v1-core) 的形式报告给 apiserver 。 
 <!-- 
 *Node problem detector* is a [DaemonSet](/docs/concepts/workloads/controllers/daemonset/) monitoring the
 node health. It collects node problems from various daemons and reports them
 to the apiserver as [NodeCondition](/docs/concepts/architecture/nodes/#condition)
-and [Event](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#event-v1-core). 
+and [Event](/docs/reference/generated/kubernetes-api/. param "version" >}}/#event-v1-core). 
 -->
 
 <!-- 
@@ -43,10 +43,10 @@ See more information
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 
@@ -116,7 +116,7 @@ customized node problems.
 -->
 * **步骤 1:** `node-problem-detector.yaml`:
 
-{{< codenew file="debug/node-problem-detector.yaml" >}}
+. codenew file="debug/node-problem-detector.yaml" >}}
 
 
 <!-- 
@@ -180,7 +180,7 @@ node-problem-detector-config --from-file=config/`.
 * **步骤 2:** 使用 `kubectl create configmap node-problem-detector-config --from-file=config/` 创建 `node-problem-detector-config` 。
 * **步骤 3:** 更改 `node-problem-detector.yaml` 以使用 ConfigMap:
 
-{{< codenew file="debug/node-problem-detector-configmap.yaml" >}}
+. codenew file="debug/node-problem-detector-configmap.yaml" >}}
 
 
 <!-- 

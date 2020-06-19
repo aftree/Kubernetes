@@ -44,9 +44,9 @@ kubeadm bootstraps the etcd cluster statically. Read the etcd [Clustering Guide]
 for more details.
 -->
 
-{{< note >}}
+. note >}}
 kubeadm 静态引导 etcd 集群。 阅读 etcd [集群指南](https://github.com/etcd-io/etcd/blob/release-3.4/Documentation/op-guide/clustering.md#static)以获得更多详细信息。
-{{< /note >}}
+. /note >}}
 
 
 
@@ -140,7 +140,7 @@ A minimum of three hosts for control plane nodes and three hosts for etcd nodes 
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 <!--

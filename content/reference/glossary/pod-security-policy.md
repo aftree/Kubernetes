@@ -29,7 +29,7 @@ tags:
 -->
 
 <!--
- Enables fine-grained authorization of {{< glossary_tooltip term_id="pod" >}} creation and updates.
+ Enables fine-grained authorization of . glossary_tooltip term_id="pod" >}} creation and updates.
 -->
 
 为 Pod 的创建和更新操作启用细粒度的授权。

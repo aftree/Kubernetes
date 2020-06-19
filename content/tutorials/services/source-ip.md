@@ -11,10 +11,10 @@ Kubernetes 集群中运行的应用通过 Service 抽象来互相查找、通信
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 ## 术语表
@@ -44,7 +44,7 @@ deployment.apps/source-ip-app created
 
 
 
-## {{% heading "objectives" %}}
+## . heading "objectives" %}}
 
 
 
@@ -372,7 +372,7 @@ __跨平台支持__
 
 
 
-## {{% heading "cleanup" %}}
+## . heading "cleanup" %}}
 
 
 
@@ -391,7 +391,7 @@ $ kubectl delete deployment source-ip-app
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 * 学习更多关于 [通过 services 连接应用](/zh/docs/concepts/services-networking/connect-applications-service/)

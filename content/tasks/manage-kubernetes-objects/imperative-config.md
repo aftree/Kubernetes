@@ -21,7 +21,7 @@ This document explains how to define and manage objects using configuration file
 本文档说明了如何使用配置文件定义和管理对象。
 
 
-## {{% heading "prerequisites" %}}
+## heading "prerequisites" %}}
 
 
 <!--
@@ -29,7 +29,7 @@ Install [`kubectl`](/docs/tasks/tools/install-kubectl/).
 -->
 安装  [`kubectl`](/docs/tasks/tools/install-kubectl/) 。
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+ include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 
@@ -67,11 +67,11 @@ for a discussion of the advantages and disadvantage of each kind of object manag
 
 <!--
 You can use `kubectl create -f` to create an object from a configuration file.
-Refer to the [kubernetes API reference](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/)
+Refer to the [kubernetes API reference](/docs/reference/generated/kubernetes-api/. param "version" >}}/)
 for details.
 -->
 您可以使用 `kubectl create -f` 从配置文件创建一个对象。
-请参考 [kubernetes API 参考](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/) 有关详细信息。
+请参考 [kubernetes API 参考](/docs/reference/generated/kubernetes-api/. param "version" >}}/) 有关详细信息。
 
 * `kubectl create -f <filename|url>`
 
@@ -80,7 +80,7 @@ for details.
 -->
 ## 如何更新对象
 
-{{< warning >}}
+. warning >}}
 <!--
 Updating objects with the `replace` command drops all
 parts of the spec not specified in the configuration file.  This
@@ -93,7 +93,7 @@ file to prevent `replace` from dropping them.
 使用 `replace` 命令更新对象会删除所有未在配置文件中指定的规范的某些部分。
 不应将其规范由集群部分管理的对象使用，比如类型为 `LoadBalancer` 的服务，其中 `externalIPs` 字段独立于配置文件进行管理。
 必须将独立管理的字段复制到配置文件中，以防止 `replace` 删除它们。
-{{< /warning >}}
+. /warning >}}
 
 <!--
 You can use `kubectl replace -f` to update a live object according to a
@@ -229,12 +229,12 @@ several manual steps.
 -->
 ## 定义控制器选择器和 PodTemplate 标签
 
-{{< warning >}}
+. warning >}}
 <!--
 Updating selectors on controllers is strongly discouraged.
 -->
 不建议在控制器上更新选择器。
-{{< /warning >}}
+. /warning >}}
 
 <!--
 The recommended approach is to define a single, immutable PodTemplate label
@@ -259,19 +259,19 @@ template:
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 <!--
 * [Managing Kubernetes Objects Using Imperative Commands](/docs/tasks/manage-kubernetes-objects/imperative-command/)
 * [Managing Kubernetes Objects Using Object Configuration (Declarative)](/docs/tasks/manage-kubernetes-objects/declarative-config/)
 * [Kubectl Command Reference](/docs/reference/generated/kubectl/kubectl/)
-* [Kubernetes API Reference](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/)
+* [Kubernetes API Reference](/docs/reference/generated/kubernetes-api/. param "version" >}}/)
 -->
 * [使用命令式命令管理 Kubernetes 对象](/docs/tasks/manage-kubernetes-objects/imperative-command/)
 * [使用对象配置管理 Kubernetes 对象 (声明式)](/docs/tasks/manage-kubernetes-objects/declarative-config/)
 * [Kubectl 命令参考](/docs/reference/generated/kubectl/kubectl/)
-* [Kubernetes API 参考](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/)
+* [Kubernetes API 参考](/docs/reference/generated/kubernetes-api/. param "version" >}}/)
 
 
 

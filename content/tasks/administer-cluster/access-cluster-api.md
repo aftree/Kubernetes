@@ -11,10 +11,10 @@ content_type: task
 本页展示了如何使用 Kubernetes API 访问集群
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 <!-- steps -->
@@ -47,10 +47,10 @@ or someone else setup the cluster and provided you with credentials and a locati
 kubectl config view
 ```
 
-<!-- Many of the [examples](https://github.com/kubernetes/examples/tree/{{< param "githubbranch" >}}/) provide an introduction to using
+<!-- Many of the [examples](https://github.com/kubernetes/examples/tree/. param "githubbranch" >}}/) provide an introduction to using
 kubectl. Complete documentation is found in the [kubectl manual](/docs/reference/kubectl/overview/). -->
 
-许多[样例](https://github.com/kubernetes/examples/tree/{{< param "githubbranch" >}}/)提供了使用 kubectl 的介绍。完整文档请见 [kubectl 手册](/docs/reference/kubectl/overview/)。
+许多[样例](https://github.com/kubernetes/examples/tree/. param "githubbranch" >}}/)提供了使用 kubectl 的介绍。完整文档请见 [kubectl 手册](/docs/reference/kubectl/overview/)。
 
 <!-- ### Directly accessing the REST API -->
 

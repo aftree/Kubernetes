@@ -12,6 +12,7 @@ card:
 ---
 title: Kubernetes API Overview
 reviewers:
+
 - erictune
 - lavalamp
 - jbeda
@@ -38,7 +39,7 @@ This page provides an overview of the Kubernetes API.
 <!--
 The REST API is the fundamental fabric of Kubernetes. All operations and communications between components, and external user commands are REST API calls that the API Server handles. Consequently, everything in the Kubernetes
 platform is treated as an API object and has a corresponding entry in the
-[API](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/).
+[API](/docs/reference/generated/kubernetes-api/. param "version" >}}/).
 
 Most operations can be performed through the
 [kubectl](/docs/reference/kubectl/overview/) command-line interface or other
@@ -50,7 +51,7 @@ if you are writing an application using the Kubernetes API.
 -->
 
 REST API 是 Kubernetes 的基础架构。组件之间的所有操作和通信，以及外部用户命令都是 API Server 处理的 REST API 调用。因此，Kubernetes 平台中的所有资源被视为 API 对象，并且在
-[API](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/) 中都有对应的定义项。
+[API](/docs/reference/generated/kubernetes-api/. param "version" >}}/) 中都有对应的定义项。
 
 大多数操作可以通过 [kubectl](/docs/reference/kubectl/overview/) 命令行界面或其他命令行工具执行，例如 [kubeadm](/docs/reference/setup-tools/kubeadm/kubeadm/)，它们本身也使用 API。但是，您也可以使用 REST 调用直接访问 API。
 
@@ -86,9 +87,9 @@ The API versioning and software versioning are indirectly related.  The [API and
 versioning proposal](https://git.k8s.io/community/contributors/design-proposals/release/versioning.md) describes the relationship between API versioning and software versioning.
 -->
 
-{{< note >}}
+. note >}}
 API 版本和软件版本是间接相关的。[API 和发布版本建议](https://git.k8s.io/community/contributors/design-proposals/release/versioning.md) 描述了 API 版本和软件版本之间的关系。
-{{< /note >}}
+. /note >}}
 
 <!--
 Different API versions indicate different levels of stability and support. You can find more information about the criteria for each level in the [API Changes documentation](https://git.k8s.io/community/contributors/devel/sig-architecture/api_changes.md#alpha-beta-and-stable-versions).
@@ -128,7 +129,7 @@ Here's a summary of each level:
   - 在随后的 Beta 或稳定版本中，对象的模式和/或语义可能会以不兼容的方式更改。发生这种情况时，将提供迁移说明。迁移时可能需要删除、编辑和重新创建 API 对象。编辑过程可能需要一些思考。对于依赖该功能的应用程序，可能需要停机。
   - 该软件仅建议用于非关键业务用途，因为在后续版本中可能会发生不兼容的更改。如果您有多个可以独立升级的群集，则可以放宽此限制。
 
- {{< note >}}
+ . note >}}
 
 <!--
 Try the beta features and provide feedback. After the features exit beta, it may not be practical to make more changes.
@@ -136,7 +137,7 @@ Try the beta features and provide feedback. After the features exit beta, it may
 
 请试用 Beta 版功能并提供反馈。功能结束 Beta 版之后，再进行变更可能是不切实际的。
 
- {{< /note >}}
+ . /note >}}
 
 <!--
 - Stable:
@@ -197,7 +198,7 @@ The flag accepts comma separated set of key=value pairs describing runtime confi
  - 要启用 `batch/2alpha1`，请配置`--runtime-config=batch/v2alpha1`
 该标志接受描述 apiserver 的运行时配置的以逗号分隔的`key=value` 对集合。
 
-{{< note >}}
+. note >}}
 
 <!--
 When you enable or disable groups or resources, you need to restart the apiserver and controller-manager
@@ -205,7 +206,7 @@ to pick up the `--runtime-config` changes.
 -->
 启用或禁用组或资源时，需要重新启动 apiserver 和控制器管理器以刷新 `--runtime-config` 的更改。
 
-{{< /note >}}
+. /note >}}
 
 <!--
 ## Enabling specific resources in the extensions/v1beta1 group
@@ -220,13 +221,13 @@ For example: to enable deployments and daemonsets, set
 在 `extensions/v1beta1` API 组中，DaemonSets，Deployments，StatefulSet, NetworkPolicies, PodSecurityPolicies 和 ReplicaSets 是默认禁用的。
 例如：要启用 deployments 和 daemonsets，请设置 `--runtime-config=extensions/v1beta1/deployments=true,extensions/v1beta1/daemonsets=true`。
 
-{{< note >}}
+. note >}}
 
 <!--
 Individual resource enablement/disablement is only supported in the `extensions/v1beta1` API group for legacy reasons.
 -->
 出于遗留原因，仅在 `extensions / v1beta1` API 组中支持各个资源的启用/禁用。
 
-{{< /note >}}
+. /note >}}
 
 

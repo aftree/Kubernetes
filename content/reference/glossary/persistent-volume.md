@@ -29,7 +29,7 @@ tags:
 -->
 
 <!--
- An API object that represents a piece of storage in the cluster. Available as a general, pluggable resource that persists beyond the lifecycle of any individual {{< glossary_tooltip text="Pod" term_id="pod" >}}.
+ An API object that represents a piece of storage in the cluster. Available as a general, pluggable resource that persists beyond the lifecycle of any individual . glossary_tooltip text="Pod" term_id="pod" >}}.
 -->
 
 持久卷是代表集群中一块存储空间的 API 对象。 它是通用的、可插拔的、并且不受单个 Pod 生命周期约束的持久化资源。

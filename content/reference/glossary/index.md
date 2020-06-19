@@ -2,7 +2,7 @@
 approvers:
 - chenopis
 - abiogenesis-now
-title: 标准化词汇表
+title: 😍 - 标准化词汇表
 layout: glossary
 noedit: true
 default_active_tag: fundamental

@@ -11,8 +11,8 @@ tags:
 - architecture
 - fundamental
 ---
-  日志是 {{< glossary_tooltip text="集群" term_id="cluster" >}} 或应用程序记录的事件列表。
-  
+  日志是 . glossary_tooltip text="集群" term_id="cluster" >}} 或应用程序记录的事件列表。
+
 <!--
 ---
 title: Logging
@@ -27,7 +27,7 @@ tags:
 - architecture
 - fundamental
 ---
- Logs are the list of events that are logged by {{< glossary_tooltip text="cluster" term_id="cluster" >}} or application.
+ Logs are the list of events that are logged by . glossary_tooltip text="cluster" term_id="cluster" >}} or application.
 -->
 
 <!--more--> 

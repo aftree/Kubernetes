@@ -23,7 +23,7 @@ content_type: task
 
 <!-- overview -->
 
-{{< feature-state state="alpha" >}}
+. feature-state state="alpha" >}}
 
 <!--
 An increasing number of systems leverage a combination of CPUs and hardware accelerators to support latency-critical execution and high-throughput parallel computation. These include workloads in fields such as telecommunications, scientific computing, machine learning, financial services and data analytics. Such hybrid systems comprise a high performance environment.
@@ -45,10 +45,10 @@ _拓扑管理器（Topology Manager）_ 是一个 Kubelet 的一部分，旨在�
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 

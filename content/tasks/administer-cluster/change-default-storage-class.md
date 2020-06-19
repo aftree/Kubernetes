@@ -10,10 +10,10 @@ content_type: task
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 
@@ -56,9 +56,9 @@ content_type: task
 
 
       默认 StorageClass 的注解 `storageclass.kubernetes.io/is-default-class` 设置为 `true`。注解的其它任意值或者缺省值将被解释为 `false`。
-
+    
       要标记一个 StorageClass 为非默认的，您需要改变它的值为 `false`： 
-   
+       
       ```bash
       kubectl patch storageclass <your-class-name> -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"false"}}}'
       ```
@@ -71,11 +71,11 @@ content_type: task
 
 
       和前面的步骤类似，您需要添加/设置注解 `storageclass.kubernetes.io/is-default-class=true`。
-
+    
       ```bash
       kubectl patch storageclass <your-class-name> -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
       ```
-
+    
       请注意，最多只能有一个 StorageClass 能够被标记为默认。如果它们中有两个或多个被标记为默认，Kubernetes 将忽略这个注解，也就是它将表现为没有默认 StorageClass。
 
 
@@ -95,7 +95,7 @@ content_type: task
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 * 了解更多关于  [StorageClasses](/docs/concepts/storage/persistent-volumes/)。

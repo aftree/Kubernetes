@@ -21,10 +21,10 @@ well as any provider specific details that may be necessary.
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 
@@ -112,7 +112,7 @@ You can add a firewall with the `gcloud` command line tool:
 gcloud compute firewall-rules create my-rule --allow=tcp:<port>
 ```
 
-{{< note >}}
+. note >}}
 <!--
 GCE firewalls are defined per-vm, rather than per-ip address. This means that
 when you open a firewall for a service's ports, anything that serves on that
@@ -158,6 +158,6 @@ the wilds of the internet.
 -->
 因此请务必小心，在谷歌计算引擎或者谷歌云原生引擎中打开防火墙时，可能无意间把其他服务也暴露给了互联网。
 
-{{< /note >}}
+. /note >}}
 
 

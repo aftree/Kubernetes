@@ -204,8 +204,8 @@ For further details, see [Kubernetes Audit Events][falco_ka_docs] in the Falco d
 <!--
 [kube-apiserver]: /docs/admin/kube-apiserver
 [auditing-proposal]: https://github.com/kubernetes/community/blob/master/contributors/design-proposals/api-machinery/auditing.md
-[auditing-api]: https://github.com/kubernetes/kubernetes/blob/{{< param "githubbranch" >}}/staging/src/k8s.io/apiserver/pkg/apis/audit/v1/types.go
-[gce-audit-profile]: https://github.com/kubernetes/kubernetes/blob/{{< param "githubbranch" >}}/cluster/gce/gci/configure-helper.sh#L735
+[auditing-api]: https://github.com/kubernetes/kubernetes/blob/. param "githubbranch" >}}/staging/src/k8s.io/apiserver/pkg/apis/audit/v1/types.go
+[gce-audit-profile]: https://github.com/kubernetes/kubernetes/blob/. param "githubbranch" >}}/cluster/gce/gci/configure-helper.sh#L735
 [kubeconfig]: /docs/tasks/access-application-cluster/configure-access-multiple-clusters/
 [fluentd]: http://www.fluentd.org/
 [fluentd_install_doc]: https://docs.fluentd.org/v1.0/articles/quickstart#step-1:-installing-fluentd
@@ -221,8 +221,8 @@ For further details, see [Kubernetes Audit Events][falco_ka_docs] in the Falco d
 -->
 [kube-apiserver]: /docs/admin/kube-apiserver
 [auditing-proposal]: https://github.com/kubernetes/community/blob/master/contributors/design-proposals/api-machinery/auditing.md
-[auditing-api]: https://github.com/kubernetes/kubernetes/blob/{{< param "githubbranch" >}}/staging/src/k8s.io/apiserver/pkg/apis/audit/v1/types.go
-[gce-audit-profile]: https://github.com/kubernetes/kubernetes/blob/{{< param "githubbranch" >}}/cluster/gce/gci/configure-helper.sh#L735
+[auditing-api]: https://github.com/kubernetes/kubernetes/blob/. param "githubbranch" >}}/staging/src/k8s.io/apiserver/pkg/apis/audit/v1/types.go
+[gce-audit-profile]: https://github.com/kubernetes/kubernetes/blob/. param "githubbranch" >}}/cluster/gce/gci/configure-helper.sh#L735
 [kubeconfig]: /docs/tasks/access-application-cluster/configure-access-multiple-clusters/
 [fluentd]: http://www.fluentd.org/
 [fluentd_install_doc]: https://docs.fluentd.org/v1.0/articles/quickstart#step-1:-installing-fluentd

@@ -45,7 +45,7 @@ card:
 source <(kubectl completion bash) # setup autocomplete in bash into the current shell, bash-completion package should be installed first.
 echo "source <(kubectl completion bash)" >> ~/.bashrc # add autocomplete permanently to your bash shell.
 ``` -->
-```bash
+​```bash
 source <(kubectl completion bash) # 在 bash 中设置当前 shell 的自动补全，要先安装 bash-completion 包。
 echo "source <(kubectl completion bash)" >> ~/.bashrc # 在您的 bash shell 中永久的添加自动补全
 ```
@@ -64,7 +64,7 @@ complete -F __start_kubectl k
 source <(kubectl completion zsh)  # setup autocomplete in zsh into the current shell
 echo "if [ $commands[kubectl] ]; then source <(kubectl completion zsh); fi" >> ~/.zshrc # add autocomplete permanently to your zsh shell
 ``` -->
-```bash
+​```bash
 source <(kubectl completion zsh)  # 在 zsh 中设置当前 shell 的自动补全
 echo "if [ $commands[kubectl] ]; then source <(kubectl completion zsh); fi" >> ~/.zshrc # 在您的 zsh shell 中永久的添加自动补全
 ```
@@ -103,10 +103,10 @@ kubectl config set-context --current --namespace=ggckad-s2
 # set a context utilizing a specific username and namespace.
 kubectl config set-context gce --user=cluster-admin --namespace=foo \
   && kubectl config use-context gce
- 
+
 kubectl config unset users.foo                       # delete user foo
 ``` -->
-```bash
+​```bash
 kubectl config view # 显示合并的 kubeconfig 配置。
 
 # 同时使用多个 kubeconfig 文件并查看合并的配置
@@ -186,7 +186,7 @@ data:
 EOF
 
 ``` -->
-```bash
+​```bash
 kubectl apply -f ./my-manifest.yaml           # 创建资源
 kubectl apply -f ./my1.yaml -f ./my2.yaml     # 使用多个文件创建
 kubectl apply -f ./dir                        # 从目录下的全部配置文件创建资源
@@ -297,7 +297,7 @@ kubectl get pods -o json | jq '.items[].spec.containers[].env[]?.valueFrom.secre
 # List Events sorted by timestamp
 kubectl get events --sort-by=.metadata.creationTimestamp
 ``` -->
-```bash
+​```bash
 # 使用 get 命令获取基本输出
 kubectl get services                          # 列出当前命名空间下的所有 services
 kubectl get pods --all-namespaces             # 列出所有命名空间下的全部的 pods
@@ -390,7 +390,7 @@ kubectl label pods my-pod new-label=awesome                      # Add a Label
 kubectl annotate pods my-pod icon-url=http://goo.gl/XXBTWq       # Add an annotation
 kubectl autoscale deployment foo --min=2 --max=10                # Auto scale a deployment "foo"
 ``` -->
-```bash
+​```bash
 kubectl set image deployment/frontend www=image:v2               # 滚动更新 "frontend" deployment 的 "www" 容器镜像
 kubectl rollout history deployment/frontend                      # 检查部署的历史记录，包括版本 
 kubectl rollout undo deployment/frontend                         # 回滚到上次部署版本
@@ -437,7 +437,7 @@ kubectl patch deployment valid-deployment  --type json   -p='[{"op": "remove", "
 # Add a new element to a positional array 
 kubectl patch sa default --type='json' -p='[{"op": "add", "path": "/secrets/1", "value": {"name": "whatever" } }]'
 ``` -->
-```bash
+​```bash
 kubectl patch node k8s-node-1 -p '{"spec":{"unschedulable":true}}' # 部分更新 node
 
 #更新容器的镜像；spec.containers[*].name 是必须的。因为它是一个合并 key。
@@ -462,7 +462,7 @@ kubectl patch sa default --type='json' -p='[{"op": "add", "path": "/secrets/1", 
 kubectl edit svc/docker-registry                      # Edit the service named docker-registry
 KUBE_EDITOR="nano" kubectl edit svc/docker-registry   # Use an alternative editor
 ``` -->
-```bash
+​```bash
 kubectl edit svc/docker-registry                      # 编辑名为 docker-registry 的 service
 KUBE_EDITOR="nano" kubectl edit svc/docker-registry   # 使用其他编辑器
 ```
@@ -476,7 +476,7 @@ kubectl scale --replicas=3 -f foo.yaml                            # Scale a reso
 kubectl scale --current-replicas=2 --replicas=3 deployment/mysql  # If the deployment named mysql's current size is 2, scale mysql to 3
 kubectl scale --replicas=5 rc/foo rc/bar rc/baz                   # Scale multiple replication controllers
 ``` -->
-```bash
+​```bash
 kubectl scale --replicas=3 rs/foo                                 # 将名为 'foo' 的副本集伸缩到 3 副本
 kubectl scale --replicas=3 -f foo.yaml                            # 将在 "foo.yaml" 中的特定资源伸缩到 3 个副本
 kubectl scale --current-replicas=2 --replicas=3 deployment/mysql  # 如果名为 mysql 的 deployment 的副本当前是 2，那么将它伸缩到 3
@@ -495,7 +495,7 @@ kubectl -n my-ns delete po,svc --all                                      # Dele
 # Delete all pods matching the awk pattern1 or pattern2
 kubectl get pods  -n mynamespace --no-headers=true | awk '/pattern1|pattern2/{print $1}' | xargs  kubectl delete -n mynamespace pod
 ``` -->
-```bash
+​```bash
 kubectl delete -f ./pod.json                                              # 删除在 pod.json 中指定的类型和名称的 pod
 kubectl delete pod,service baz foo                                        # 删除名称为 "baz" 和 "foo" 的 pod 和 service
 kubectl delete pods,services -l name=myLabel                              # 删除包含 name=myLabel 标签的 pods 和 services
@@ -525,7 +525,7 @@ kubectl exec my-pod -- ls /                         # Run command in existing po
 kubectl exec my-pod -c my-container -- ls /         # Run command in existing pod (multi-container case)
 kubectl top pod POD_NAME --containers               # Show metrics for a given pod and its containers
 ``` -->
-```bash
+​```bash
 kubectl logs my-pod                                 # 获取 pod 日志(标准输出)
 kubectl logs -l name=myLabel                        # 获取 pod label name=myLabel 日志(标准输出)
 kubectl logs my-pod --previous                      # 获取上个容器实例的 pod 日志(标准输出)
@@ -558,7 +558,7 @@ kubectl cluster-info dump --output-directory=/path/to/cluster-state   # Dump cur
 # If a taint with that key and effect already exists, its value is replaced as specified.
 kubectl taint nodes foo dedicated=special-user:NoSchedule
 ``` -->
-```bash
+​```bash
 kubectl cordon my-node                                                # 设置 my-node 节点为不可调度
 kubectl drain my-node                                                 # 对 my-node 节点进行驱逐操作，为节点维护做准备
 kubectl uncordon my-node                                              # 设置 my-node 节点为可以调度
@@ -592,7 +592,7 @@ kubectl api-resources -o wide                # All resources with expanded (aka 
 kubectl api-resources --verbs=list,get       # All resources that support the "list" and "get" request verbs
 kubectl api-resources --api-group=extensions # All resources in the "extensions" API group
 ``` -->
-```bash
+​```bash
 kubectl api-resources --namespaced=true      # 所有在命名空间中的资源
 kubectl api-resources --namespaced=false     # 所有不在命名空间中的资源
 kubectl api-resources -o name                # 输出简单的所有资源（只是资源名称）
@@ -659,7 +659,7 @@ Kubectl 日志输出详细程度是通过 `-v` 或者 `--v` 来控制的，参�
 
 
 
-## {{% heading "whatsnext" %}}
+## whatsnext
 
 
 <!-- * Learn more about [Overview of kubectl](/docs/reference/kubectl/overview/).

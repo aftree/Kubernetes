@@ -17,7 +17,7 @@ content_type: task
 
 <!-- overview -->
 
-{{< feature-state for_k8s_version="v1.11" state="beta" >}}
+. feature-state for_k8s_version="v1.11" state="beta" >}}
 
 <!--
 [Dynamic Kubelet Configuration](https://github.com/kubernetes/enhancements/issues/281)
@@ -27,7 +27,7 @@ cluster by deploying a ConfigMap and configuring each Node to use it.
 [动态Kubelet配置](https://github.com/kubernetes/enhancements/issues/281)
 引导你在一个运行的 Kubernetes 集群上更改每一个 Kubelet 的配置，通过部署 ConfigMap 并配置每个节点来使用它。
 
-{{< warning >}}
+. warning >}}
 <!--
 All Kubelet configuration parameters can be changed dynamically,
 but this is unsafe for some parameters. Before deciding to change a parameter
@@ -40,11 +40,11 @@ fields is available in the inline `KubeletConfiguration`
 **警告**：所有Kubelet配置参数都可以动态地更改，但这对某些参数来说是不安全的。在决定动态更改参数之前，你需要深刻理解这种变化将如何影响你的集群的行为。
 在把一组节点推广到集群范围之前，都要仔细地测试这些节点上的配置变化。与配置相关的建议可以在具体的文件下找到，内联 `KubeletConfiguration`
 [类型文档](https://github.com/kubernetes/kubernetes/blob/release-1.11/pkg/kubelet/apis/kubeletconfig/v1beta1/types.go)。
-{{< /warning >}}
+. /warning >}}
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 <!--
 - Kubernetes v1.11 or higher on both the Master and the Nodes
@@ -126,7 +126,7 @@ mind that it is also valid for multiple Nodes to consume the same ConfigMap.
 -->
 这个文档仅仅讲述了在单节点上使用每一个 ConfigMap。请注意对于多个节点使用相同的 ConfigMap 也是有效的。
 
-{{< warning >}}
+. warning >}}
 <!--
 While it is *possible* to change the configuration by
 updating the ConfigMap in-place, this causes all Kubelets configured with
@@ -136,7 +136,7 @@ and incrementally roll out updates to `Node.Spec.ConfigSource`.
 -->
 **警告**：通过更新本地的 ConfigMap *有可能* 会改变配置信息，这样会导致所有 Kubelets 所配置的 ConfigMap 同步更新。
 它是更安全的去处理 ConfigMap 按照惯例不变，借助于 `kubectl`'s `--append-hash` 选项，并逐步把更新推广到 `Node.Spec.ConfigSource`。
-{{< /warning >}}
+. /warning >}}
 
 <!-- ### Automatic RBAC rules for Node Authorizer -->
 ### 节点授权器的自动RBAC规则
@@ -228,13 +228,13 @@ installed, but you can adapt the tasks if you prefer to extract the
       NODE_NAME="the-name-of-the-node-you-are-reconfiguring"; curl -sSL "http://localhost:8001/api/v1/nodes/${NODE_NAME}/proxy/configz" | jq '.kubeletconfig|.kind="KubeletConfiguration"|.apiVersion="kubelet.config.k8s.io/v1beta1"' > kubelet_configz_${NODE_NAME}
  ```
 
-{{< note >}}
+. note >}}
 
 **注意**：You need to manually add the `kind` and `apiVersion` to the downloaded
 object，because they are not reported by the `configz` endpoint。
 您需要手动将 `kind` 和 `apiVersion` 添加到下载对象中，因为它们不是由 `configz` 端点报出的。
 
-{{< /note >}}
+. /note >}}
 
 <!-- #### Edit the configuration file -->
 #### 修改配置文件

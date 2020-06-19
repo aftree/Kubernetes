@@ -18,17 +18,17 @@ content_type: task
 <!-- overview -->
 
 <!--
-{{< glossary_definition term_id="etcd" length="all" prepend="etcd is a ">}}
+. glossary_definition term_id="etcd" length="all" prepend="etcd is a ">}}
 -->
-{{< glossary_definition term_id="etcd" length="all" prepend="etcd 是一个">}}
+. glossary_definition term_id="etcd" length="all" prepend="etcd 是一个">}}
 
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 
@@ -63,6 +63,7 @@ content_type: task
 
 * 在生产中运行的 etcd 的最低推荐版本是 `3.2.10+`。
   
+
 <!--
 ## Resource requirements
 
@@ -200,9 +201,9 @@ For example, consider key pairs `k8sclient.key` and `k8sclient.cert` that are tr
 
 Once etcd is configured correctly, only clients with valid certificates can access it. To give Kubernetes API server the access, configure it with the flags `--etcd-certfile=k8sclient.cert`,`--etcd-keyfile=k8sclient.key` and `--etcd-cafile=ca.cert`.
 
-{{< note >}}
+. note >}}
 etcd authentication is not currently supported by Kubernetes. For more information, see the related issue [Support Basic Auth for Etcd v2](https://github.com/kubernetes/kubernetes/issues/23398).
-{{< /note >}}
+. /note >}}
 -->
 ### 限制 etcd 集群的访问
 
@@ -213,9 +214,9 @@ etcd authentication is not currently supported by Kubernetes. For more informati
 
 一旦正确配置了 etcd，只有具有有效证书的客户端才能访问它。要让 Kubernetes API 服务器访问，可以使用参数 `--etcd-certfile=k8sclient.cert`,`--etcd-keyfile=k8sclient.key` 和 `--etcd-cafile=ca.cert` 配置它。
 
-{{< note >}}
+. note >}}
 Kubernetes 目前不支持 etcd 身份验证。想要了解更多信息，请参阅相关的问题[支持 etcd v2 的基本认证](https://github.com/kubernetes/kubernetes/issues/23398)。
-{{< /note >}}
+. /note >}}
 
 <!--
 ## Replacing a failed etcd member

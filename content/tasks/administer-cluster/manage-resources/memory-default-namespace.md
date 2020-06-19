@@ -8,6 +8,7 @@ weight: 10
 ---
 title: Configure Default Memory Requests and Limits for a Namespace
 content_type: task
+
 weight: 10
 ---
 -->
@@ -25,10 +26,10 @@ Kubernetes assigns a default memory request under certain conditions that are ex
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 <!--
 Each node in your cluster must have at least 2 GiB of memory.
@@ -70,7 +71,7 @@ a default memory request and a default memory limit.
 
 这里给出了一个限制范围对象的配置文件。该配置声明了一个默认的内存请求和一个默认的内存限制。
 
-{{< codenew file="admin/resource/memory-defaults.yaml" >}}
+. codenew file="admin/resource/memory-defaults.yaml" >}}
 
 <!--
 Create the LimitRange in the default-mem-example namespace:
@@ -94,7 +95,7 @@ does not specify a memory request and limit.
 
 现在，如果在 default-mem-example 命名空间创建容器，并且该容器没有声明自己的内存请求和限制值，它将被指定一个默认的内存请求256 MiB和一个默认的内存限制512 Mib。
 
-{{< codenew file="admin/resource/memory-defaults-pod.yaml" >}}
+. codenew file="admin/resource/memory-defaults-pod.yaml" >}}
 
 <!--
 Create the Pod.
@@ -158,7 +159,7 @@ specifies a memory limit, but not a request:
 
 这里给出了包含一个容器的 Pod 的配置文件。该容器声明了内存限制，而没有声明内存请求：
 
-{{< codenew file="admin/resource/memory-defaults-pod-2.yaml" >}}
+. codenew file="admin/resource/memory-defaults-pod-2.yaml" >}}
 
 <!--
 Create the Pod:
@@ -208,7 +209,7 @@ specifies a memory request, but not a limit:
 
 这里给出了一个包含一个容器的 Pod 的配置文件。该容器声明了内存请求，但没有内存限制：
 
-{{< codenew file="admin/resource/memory-defaults-pod-3.yaml" >}}
+. codenew file="admin/resource/memory-defaults-pod-3.yaml" >}}
 
 <!--
 Create the Pod:
@@ -277,7 +278,7 @@ it can be allowed to run in a namespace that is restricted by a quota.
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 <!--

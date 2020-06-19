@@ -29,9 +29,9 @@ tags:
 -->
 
 <!--
- Manages authorization decisions, allowing admins to dynamically configure access policies through the {{< glossary_tooltip text="Kubernetes API" term_id="kubernetes-api" >}}.
+ Manages authorization decisions, allowing admins to dynamically configure access policies through the . glossary_tooltip text="Kubernetes API" term_id="kubernetes-api" >}}.
 -->
-管理授权决策，允许管理员通过 {{< glossary_tooltip text="Kubernetes API" term_id="kubernetes-api" >}} 动态配置访问策略。
+管理授权决策，允许管理员通过 . glossary_tooltip text="Kubernetes API" term_id="kubernetes-api" >}} 动态配置访问策略。
 
 <!--more--> 
 

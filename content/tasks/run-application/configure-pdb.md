@@ -21,7 +21,7 @@ nodes. -->
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
 <!-- * You are the owner of an application running on a Kubernetes cluster that requires
@@ -165,13 +165,13 @@ It can be either an absolute number or a percentage. -->
 * `.spec.maxUnavailable` （Kubernetes 1.7 及更高的版本中可用）表示驱逐后允许不可用的 pod 的最大数量。
 其值可以是绝对值或是百分比。
 
-{{< note >}}
+. note >}}
 <!-- For versions 1.8 and earlier: When creating a `PodDisruptionBudget`
 object using the `kubectl` command line tool, the `minAvailable` field has a
 default value of 1 if neither `minAvailable` nor `maxUnavailable` is specified. -->
 对于1.8及更早的版本：当你用 `kubectl` 命令行工具创建 `PodDisruptionBudget`对象时，如果既未指定 `minAvailable` 也未指定 `maxUnavailable`，
 则 `minAvailable` 字段有一个默认值1。
-{{< /note >}}
+. /note >}}
 
 <!-- You can specify only one of `maxUnavailable` and `minAvailable` in a single `PodDisruptionBudget`. 
 `maxUnavailable` can only be used to control the eviction of pods 
@@ -202,7 +202,7 @@ of the desired replicas are unhealthy.
 a controller—for example, the pods in a single ReplicaSet or StatefulSet.  -->
 在典型用法中，中断预算会被用于一个控制器管理的一组 pod 中——例如：一个 ReplicaSet 或 StatefulSet 中的 pod。
 
-{{< note >}}
+. note >}}
 <!-- A disruption budget does not truly guarantee that the specified
 number/percentage of pods will always be up.  For example, a node that hosts a
 pod from the collection may fail when the collection is at the minimum size
@@ -212,7 +212,7 @@ voluntary evictions, not all causes of unavailability. -->
 注意：中断预算并不能真正保证指定数量/百分比的 pod 一直处于运行状态。例如： 当 pod 集合的
 规模处于预算指定的最小值时，承载集合中某个 pod 的节点发生了故障，这样就导致集合中可用 pod 的
 数量低于预算指定值。预算只能够针对自发的驱逐提供保护，而不能针对所有 pod 不可用的诱因。
-{{< /note >}}
+. /note >}}
 
 <!-- A `maxUnavailable` of 0% (or 0) or a `minAvailable` of 100% (or equal to the
 number of replicas) may block node drains entirely. This is permitted as per the 
@@ -227,12 +227,12 @@ semantics of `PodDisruptionBudget`. -->
 <!-- Example PDB Using minAvailable: -->
 使用 minAvailable 的PDB 示例：
 
-{{< codenew file="policy/zookeeper-pod-disruption-budget-minavailable.yaml" >}}
+. codenew file="policy/zookeeper-pod-disruption-budget-minavailable.yaml" >}}
 
 <!-- Example PDB Using maxUnavailable (Kubernetes 1.7 or higher): -->
 使用 maxUnavailable 的 PDB 示例（Kubernetes 1.7 或更高的版本）：
 
-{{< codenew file="policy/zookeeper-pod-disruption-budget-maxunavailable.yaml" >}}
+. codenew file="policy/zookeeper-pod-disruption-budget-maxunavailable.yaml" >}}
 
 <!-- For example, if the above `zk-pdb` object selects the pods of a StatefulSet of size 3, both
 specifications have the exact same meaning. The use of `maxUnavailable` is recommended as it

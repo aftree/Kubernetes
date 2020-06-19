@@ -32,11 +32,11 @@ on general patterns for running stateful applications in Kubernetes. -->
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-<!-- * {{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
-* {{< include "default-storage-class-prereqs.md" >}}
+<!-- * . include "task-tutorial-prereqs.md" >}} . version-check >}}
+* . include "default-storage-class-prereqs.md" >}}
 * This tutorial assumes you are familiar with
   [PersistentVolumes](/docs/concepts/storage/persistent-volumes/)
   and [StatefulSets](/docs/concepts/workloads/controllers/statefulset/),
@@ -45,8 +45,8 @@ on general patterns for running stateful applications in Kubernetes. -->
   [ConfigMaps](/docs/tasks/configure-pod-container/configure-pod-configmap/).
 * Some familiarity with MySQL helps, but this tutorial aims to present
   general patterns that should be useful for other systems. -->
-* {{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
-* {{< include "default-storage-class-prereqs.md" >}}
+* . include "task-tutorial-prereqs.md" >}} . version-check >}}
+* . include "default-storage-class-prereqs.md" >}}
 * 本教程假定您熟悉
   [PersistentVolumes](/docs/concepts/storage/persistent-volumes/)
   与 [StatefulSets](/docs/concepts/workloads/controllers/statefulset/),
@@ -57,7 +57,7 @@ on general patterns for running stateful applications in Kubernetes. -->
 
 
 
-## {{% heading "objectives" %}}
+## . heading "objectives" %}}
 
 
 <!-- * Deploy a replicated MySQL topology with a StatefulSet controller.
@@ -85,7 +85,7 @@ and a StatefulSet. -->
 <!-- Create the ConfigMap from the following YAML configuration file: -->
 从以下的 YAML 配置文件创建 ConfigMap ：
 
-{{< codenew file="application/mysql/mysql-configmap.yaml" >}}
+. codenew file="application/mysql/mysql-configmap.yaml" >}}
 
 ```shell
 kubectl apply -f https://k8s.io/examples/application/mysql/mysql-configmap.yaml
@@ -111,7 +111,7 @@ ConfigMap 本身没有什么特别之处，它可以使不同部分应用于不�
 <!-- Create the Services from the following YAML configuration file: -->
 从以下 YAML 配置文件创建服务：
 
-{{< codenew file="application/mysql/mysql-services.yaml" >}}
+. codenew file="application/mysql/mysql-services.yaml" >}}
 
 ```shell
 kubectl apply -f https://k8s.io/examples/application/mysql/mysql-services.yaml
@@ -141,7 +141,7 @@ writes. -->
 <!-- Finally, create the StatefulSet from the following YAML configuration file: -->
 最后，从以下 YAML 配置文件创建 StatefulSet：
 
-{{< codenew file="application/mysql/mysql-statefulset.yaml" >}}
+. codenew file="application/mysql/mysql-statefulset.yaml" >}}
 
 ```shell
 kubectl apply -f https://k8s.io/examples/application/mysql/mysql-statefulset.yaml
@@ -594,7 +594,7 @@ kubectl delete pvc data-mysql-4
 
 
 
-## {{% heading "cleanup" %}}
+## . heading "cleanup" %}}
 
 
 <!-- 1. Cancel the `SELECT @@server_id` loop by pressing **Ctrl+C** in its terminal,
@@ -647,7 +647,7 @@ kubectl delete pvc data-mysql-4
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 <!-- * Look in the [Helm Charts repository](https://github.com/kubernetes/charts)

@@ -17,7 +17,7 @@ weight: 10
 ---
 -->
 <!-- overview -->
-{{< feature-state for_k8s_version="v1.6" state="stable" >}}
+. feature-state for_k8s_version="v1.6" state="stable" >}}
 <!--
 To run containers in Pods, Kubernetes uses a container runtime. Here are
 the installation instructions for various runtimes.
@@ -29,7 +29,7 @@ Kubernetes 使用容器运行时来实现在 pod 中运行容器。
 
 <!-- body -->
 
-{{< caution >}}
+. caution >}}
 <!--
 A flaw was found in the way runc handled system file descriptors when running containers.
 A malicious container could use this flaw to overwrite contents of the runc binary and
@@ -42,21 +42,21 @@ Please refer to this link for more information about this issue
 恶意容器可以利用此漏洞覆盖 runc 二进制文件的内容，并以此在主机系统的容器上运行任意的命令。
 
 请参考此链接以获取有关此问题的更多信息 [cve-2019-5736 : runc vulnerability ] (https://access.redhat.com/security/cve/cve-2019-5736)
-{{< /caution >}}
+. /caution >}}
 
 <!--
 ### Applicability
 -->
 ### 适用性
 
-{{< note >}}
+. note >}}
 <!--
 This document is written for users installing CRI onto Linux. For other operating
 systems, look for documentation specific to your platform
 -->
 本文档是为在 Linux 上安装 CRI 的用户编写的。
 对于其他操作系统，请查找特定于您平台的文档。
-{{< /note >}}
+. /note >}}
 
 <!--
 You should execute all the commands in this guide as `root`. For example, prefix commands
@@ -102,7 +102,7 @@ stabilized the system. Please note the `native.cgroupdriver=systemd` option in t
 更改设置，令容器运行时和 kubelet 使用 `systemd` 作为 cgroup 驱动，以此使系统更为稳定。
 请注意在 docker  下设置 `native.cgroupdriver=systemd` 选项。
 
-{{< caution >}}
+. caution >}}
 <!--
 Changing the cgroup driver of a Node that has joined a cluster is highly unrecommended.
 If the kubelet has created Pods using the semantics of one cgroup driver, changing the container
@@ -114,7 +114,7 @@ is to drain the Node from its workloads, remove it from the cluster and re-join 
 如果 kubelet 已经使用某 cgroup 驱动的语义创建了 pod，尝试更改运行时以使用别的 cgroup 驱动，为现有 Pods 重新创建 PodSandbox 时会产生错误。
 重启 kubelet 也可能无法解决此类问题。
 推荐将工作负载逐出节点，之后将节点从集群中删除并重新加入。
-{{< /caution >}}
+. /caution >}}
 
 <!--
 ## Docker
@@ -133,8 +133,8 @@ Use the following commands to install Docker on your system:
 
 使用以下命令在您的系统上安装 Docker：
 
-{{< tabs name="tab-cri-docker-installation" >}}
-{{< tab name="Ubuntu 16.04+" codelang="bash" >}}
+. tabs name="tab-cri-docker-installation" >}}
+. tab name="Ubuntu 16.04+" codelang="bash" >}}
 <!--
 # Install Docker CE
 ## Set up the repository:
@@ -212,8 +212,8 @@ systemctl restart docker
 # 重启 docker.
 systemctl daemon-reload
 systemctl restart docker
-{{< /tab >}}
-{{< tab name="CentOS/RHEL 7.4+" codelang="bash" >}}
+. /tab >}}
+. tab name="CentOS/RHEL 7.4+" codelang="bash" >}}
 
 <!--
 # Install Docker CE
@@ -293,8 +293,8 @@ systemctl restart docker
 # 重启 Docker
 systemctl daemon-reload
 systemctl restart docker
-{{< /tab >}}
-{{< /tabs >}}
+. /tab >}}
+. /tabs >}}
 
 <!--
 Refer to the [official Docker installation guides](https://docs.docker.com/engine/installation/)
@@ -348,8 +348,8 @@ EOF
 sysctl --system
 ```
 
-{{< tabs name="tab-cri-cri-o-installation" >}}
-{{< tab name="Ubuntu 16.04" codelang="bash" >}}
+. tabs name="tab-cri-cri-o-installation" >}}
+. tab name="Ubuntu 16.04" codelang="bash" >}}
 
 <!--
 # Install prerequisites
@@ -372,8 +372,8 @@ apt-get update
 # 安装 CRI-O
 apt-get install cri-o-1.15
 
-{{< /tab >}}
-{{< tab name="CentOS/RHEL 7.4+" codelang="bash" >}}
+. /tab >}}
+. tab name="CentOS/RHEL 7.4+" codelang="bash" >}}
 
 <!--
 # Install prerequisites
@@ -388,8 +388,8 @@ yum-config-manager --add-repo=https://cbs.centos.org/repos/paas7-crio-115-releas
 # 安装 CRI-O
 yum install --nogpgcheck cri-o
 
-{{< /tab >}}
-{{< /tabs >}}
+. /tab >}}
+. /tabs >}}
 
 <!--
 ### Start CRI-O
@@ -470,8 +470,8 @@ sysctl --system
 -->
 ### 安装 containerd
 
-{{< tabs name="tab-cri-containerd-installation" >}}
-{{< tab name="Ubuntu 16.04" codelang="bash" >}}
+. tabs name="tab-cri-containerd-installation" >}}
+. tab name="Ubuntu 16.04" codelang="bash" >}}
 <!--
 # Install containerd
 ## Set up the repository
@@ -521,8 +521,8 @@ systemctl restart containerd
 -->
 # 重启 containerd
 systemctl restart containerd
-{{< /tab >}}
-{{< tab name="CentOS/RHEL 7.4+" codelang="bash" >}}
+. /tab >}}
+. tab name="CentOS/RHEL 7.4+" codelang="bash" >}}
 <!--
 # Install containerd
 ## Set up the repository
@@ -564,8 +564,8 @@ systemctl restart containerd
 -->
 # 重启 containerd
 systemctl restart containerd
-{{< /tab >}}
-{{< /tabs >}}
+. /tab >}}
+. /tabs >}}
 
 <!--
 ### systemd

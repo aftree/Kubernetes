@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>😍 - 命令行工具参考 on Hugo 主题的 Learn 文档</title>
+    <link>https://lijun.in/reference/command-line-tools-reference/</link>
+    <description>Recent content in 😍 - 命令行工具参考 on Hugo 主题的 Learn 文档</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://lijun.in/reference/command-line-tools-reference/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>特性门控</title>
+      <link>https://lijun.in/reference/command-line-tools-reference/feature-gates/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/reference/command-line-tools-reference/feature-gates/</guid>
+      <description>本页详述了管理员可以在不同的 Kubernetes 组件上指定的各种特性门控。
+关于特性各个阶段的说明，请参见特性阶段。
+概述 特性门控是描述 Kubernetes 特性的一组键值对。您可以在 Kubernetes 的每一个组件中使用 --feature-gates flag 来启用或禁用这些特性。
+每个 Kubernetes 组件都支持启用或禁用与该组件相关的一组特性门控。 使用 -h 参数来查看所有组件支持的完整特性门控。 要为诸如 kubelet 之类的组件设置特性门控，请使用 --feature-gates 参数，并向其传递一组特性：
+--feature-gates=&amp;#34;...,DynamicKubeletConfig=true&amp;#34; 下表总结了在不同的 Kubernetes 组件上可以设置的特性门控。
+ 引入特性或更改其发布阶段后，&amp;ldquo;Since&amp;rdquo; 列将包含 Kubernetes 版本。 &amp;ldquo;Until&amp;rdquo; 列（如果不为空）包含最后一个 Kubernetes 版本，您仍可以在其中使用特性门控。 如果某个特性处于 Alpha 或 Beta 状态，您可以在 Alpha 和 Beta 特性门控表中找到该特性。 如果某个特性处于稳定状态，您可以在毕业和废弃特性门控表.中找到该特性的所有阶段。 毕业和废弃特性门控表 还列出了废弃的和已被移除的特性。  Alpha 和 Beta 的特性门控 . table caption=&amp;quot;处于 Alpha 或 Beta 状态的特性门控&amp;rdquo; &amp;gt;}}
+   特性 默认值 状态 开始(Since) 结束(Until)     APIListChunking false Alpha 1.</description>
+    </item>
+    
+    <item>
+      <title>kube-scheduler</title>
+      <link>https://lijun.in/reference/command-line-tools-reference/kube-scheduler/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/reference/command-line-tools-reference/kube-scheduler/</guid>
+      <description>. heading &amp;ldquo;synopsis&amp;rdquo; %}} Kubernetes 调度器是一个策略丰富、拓扑感知、工作负载特定的功能，调度器显著影响可用性、性能和容量。调度器需要考虑个人和集体的资源要求、服务质量要求、硬件/软件/政策约束、亲和力和反亲和力规范、数据局部性、负载间干扰、完成期限等。工作负载特定的要求必要时将通过 API 暴露。
+kube-scheduler [flags] . heading &amp;ldquo;options&amp;rdquo; %}} &amp;lt;tr&amp;gt; &amp;lt;td colspan=&amp;quot;2&amp;quot;&amp;gt;--add-dir-header&amp;lt;/td&amp;gt; &amp;lt;/tr&amp;gt; &amp;lt;tr&amp;gt; &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;td style=&amp;quot;line-height: 130%; word-wrap: break-word;&amp;quot;&amp;gt; &amp;lt;!-- If true, adds the file directory to the header --&amp;gt; 如果为 true，则将文件目录添加到标题中 &amp;lt;/td&amp;gt; &amp;lt;/tr&amp;gt; &amp;lt;tr&amp;gt; &amp;lt;td colspan=&amp;quot;2&amp;quot;&amp;gt; &amp;lt;!-- --address string&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;Default: &amp;quot;0.0.0.0&amp;quot; --&amp;gt; --address string&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;默认: &amp;quot;0.0.0.0&amp;quot; &amp;lt;/td&amp;gt; &amp;lt;/tr&amp;gt; &amp;lt;tr&amp;gt; &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;td style=&amp;quot;line-height: 130%; word-wrap: break-word;&amp;quot;&amp;gt; &amp;lt;!-- DEPRECATED: the IP address on which to listen for the --port port (set to 0.</description>
+    </item>
+    
+    <item>
+      <title>kubelet</title>
+      <link>https://lijun.in/reference/command-line-tools-reference/kubelet/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/reference/command-line-tools-reference/kubelet/</guid>
+      <description>. heading &amp;ldquo;synopsis&amp;rdquo; %}} kubelet 是在每个 Node 节点上运行的主要 “节点代理”。它向 apiserver 注册节点时可以使用主机名（hostname）；可以提供用于覆盖主机名的参数；还可以执行特定于某云服务商的逻辑。
+kubelet 是基于 PodSpec 来工作的。每个 PodSpec 是一个描述 Pod 的 YAML 或 JSON 对象。kubelet 接受通过各种机制（主要是通过 apiserver）提供的一组 PodSpec，并确保这些 PodSpec 中描述的容器处于运行状态且运行状况良好。kubelet 不管理不是由 Kubernetes 创建的容器。
+除了来自 apiserver 的 PodSpec 之外，还可以通过以下三种方式将容器清单（manifest）提供给 kubelet。
+File（文件）：利用命令行参数给定路径。kubelet 周期性地监视此路径下的文件是否有更新。监视周期默认为 20s，且可通过参数进行配置。
+HTTP endpoint（HTTP 端点）：利用命令行参数指定 HTTP 端点。此端点每 20 秒被检查一次（也可以使用参数进行配置）。
+HTTP server（HTTP 服务器）：kubelet 还可以侦听 HTTP 并响应简单的 API（当前未经过规范）来提交新的清单。
+kubelet [flags] . heading &amp;ldquo;options&amp;rdquo; %}} </description>
+    </item>
+    
+    <item>
+      <title>kube-proxy</title>
+      <link>https://lijun.in/reference/command-line-tools-reference/kube-proxy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/reference/command-line-tools-reference/kube-proxy/</guid>
+      <description>. heading &amp;ldquo;synopsis&amp;rdquo; %}} Kubernetes 网络代理在每个节点上运行。网络代理反映了每个节点上 Kubernetes API 中定义的服务，并且可以执行简单的 TCP、UDP 和 SCTP 流转发，或者在一组后端进行循环 TCP、UDP 和 SCTP 转发。当前可通过 Docker-links-compatible 环境变量找到服务集群 IP 和端口，这些环境变量指定了服务代理打开的端口。有一个可选的插件，可以为这些集群 IP 提供集群 DNS。用户必须使用 apiserver API 创建服务才能配置代理。
+kube-proxy [flags] . heading &amp;ldquo;options&amp;rdquo; %}} </description>
+    </item>
+    
+    <item>
+      <title>kube-apiserver</title>
+      <link>https://lijun.in/reference/command-line-tools-reference/kube-apiserver/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/reference/command-line-tools-reference/kube-apiserver/</guid>
+      <description>kube-apiserver 概要 Kubernetes API server 为 api 对象验证并配置数据，包括 pods、 services、 replicationcontrollers 和其它 api 对象。API Server 提供 REST 操作和到集群共享状态的前端，所有其他组件通过它进行交互。
+kube-apiserver 选项  --admission-control stringSlice 控制资源进入集群的准入控制插件的顺序列表。逗号分隔的 NamespaceLifecycle 列表。（默认值 [AlwaysAdmit]） --admission-control-config-file string 包含准入控制配置的文件。 --advertise-address ip 向集群成员通知 apiserver 消息的 IP 地址。这个地址必须能够被集群中其他成员访问。如果 IP 地址为空，将会使用 --bind-address，如果未指定 --bind-address，将会使用主机的默认接口地址。 --allow-privileged 如果为 true, 将允许特权容器。 --anonymous-auth 启用到 API server 的安全端口的匿名请求。未被其他认证方法拒绝的请求被当做匿名请求。匿名请求的用户名为 system:anonymous，用户组名为 system:unauthenticated。（默认值 true） --apiserver-count int 集群中运行的 apiserver 数量，必须为正数。（默认值 1） --audit-log-maxage int 基于文件名中的时间戳，旧审计日志文件的最长保留天数。 --audit-log-maxbackup int 旧审计日志文件的最大保留个数。 --audit-log-maxsize int 审计日志被轮转前的最大兆字节数。 --audit-log-path string 如果设置该值，所有到 apiserver 的请求都将会被记录到这个文件。&#39;-&#39; 表示记录到标准输出。 --audit-policy-file string 定义审计策略配置的文件的路径。需要打开 &#39;AdvancedAuditing&#39; 特性开关。AdvancedAuditing 需要一个配置来启用审计功能。 --audit-webhook-config-file string 一个具有 kubeconfig 格式文件的路径，该文件定义了审计的 webhook 配置。需要打开 &#39;AdvancedAuditing&#39; 特性开关。 --audit-webhook-mode string 发送审计事件的策略。 Blocking 模式表示正在发送事件时应该阻塞服务器的响应。 Batch 模式使 webhook 异步缓存和发送事件。 Known 模式为 batch,blocking。（默认值 &amp;quot;batch&amp;quot;) --authentication-token-webhook-cache-ttl duration 从 webhook 令牌认证者获取的响应的缓存时长。( 默认值 2m0s) --authentication-token-webhook-config-file string 包含 webhook 配置的文件，用于令牌认证，具有 kubeconfig 格式。API server 将查询远程服务来决定对 bearer 令牌的认证。 --authorization-mode string 在安全端口上进行权限验证的插件的顺序列表。以逗号分隔的列表，包括：AlwaysAllow,AlwaysDeny,ABAC,Webhook,RBAC,Node.</description>
+    </item>
+    
+    <item>
+      <title>kube-controller-manager</title>
+      <link>https://lijun.in/reference/command-line-tools-reference/kube-controller-manager/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/reference/command-line-tools-reference/kube-controller-manager/</guid>
+      <description>kube-controller-manager 概述 Kubernetes 控制器管理器是一个守护进程，嵌入了 Kubernetes 附带的核心控制循环。 在机器人和自动化的应用中，控制回路是一个永不休止的循环，用于调节系统状态。 在 Kubernetes 中，控制器是一个控制循环，它通过 apiserver 监视集群的共享状态，并尝试进行更改以将当前状态转为所需状态。现今，Kubernetes 自带的控制器包括副本控制器，节点控制器，命名空间控制器和serviceaccounts 控制器。
+kube-controller-manager [flags] 选项 &amp;lt;tr&amp;gt; &amp;lt;td colspan=&amp;quot;2&amp;quot;&amp;gt;--allocate-node-cidrs&amp;lt;/td&amp;gt; &amp;lt;/tr&amp;gt; &amp;lt;tr&amp;gt; &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;td style=&amp;quot;line-height: 130%; word-wrap: break-word;&amp;quot;&amp;gt;Should CIDRs for Pods be allocated and set on the cloud provider.&amp;lt;/td&amp;gt; &amp;lt;/tr&amp;gt; &amp;lt;tr&amp;gt; &amp;lt;td colspan=&amp;quot;2&amp;quot;&amp;gt;--alsologtostderr&amp;lt;/td&amp;gt; &amp;lt;/tr&amp;gt; &amp;lt;tr&amp;gt; &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;td style=&amp;quot;line-height: 130%; word-wrap: break-word;&amp;quot;&amp;gt;log to standard error as well as files&amp;lt;/td&amp;gt; &amp;lt;/tr&amp;gt; &amp;lt;tr&amp;gt; &amp;lt;td colspan=&amp;quot;2&amp;quot;&amp;gt;--attach-detach-reconcile-sync-period duration&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;Default: 1m0s&amp;lt;/td&amp;gt; &amp;lt;/tr&amp;gt; &amp;lt;tr&amp;gt; &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;td style=&amp;quot;line-height: 130%; word-wrap: break-word;&amp;quot;&amp;gt;The reconciler sync wait time between volume attach detach.</description>
+    </item>
+    
+    <item>
+      <title>Kubelet authentication/authorization</title>
+      <link>https://lijun.in/reference/command-line-tools-reference/kubelet-authentication-authorization/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/reference/command-line-tools-reference/kubelet-authentication-authorization/</guid>
+      <description>. toc &amp;gt;}}
+Overview A kubelet&amp;rsquo;s HTTPS endpoint exposes APIs which give access to data of varying sensitivity, and allow you to perform operations with varying levels of power on the node and within containers.
+This document describes how to authenticate and authorize access to the kubelet&amp;rsquo;s HTTPS endpoint.
+Kubelet authentication By default, requests to the kubelet&amp;rsquo;s HTTPS endpoint that are not rejected by other configured authentication methods are treated as anonymous requests, and given a username of system:anonymous and a group of system:unauthenticated.</description>
+    </item>
+    
+    <item>
+      <title>TLS bootstrapping</title>
+      <link>https://lijun.in/reference/command-line-tools-reference/kubelet-tls-bootstrapping/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/reference/command-line-tools-reference/kubelet-tls-bootstrapping/</guid>
+      <description>. toc &amp;gt;}}
+Overview This document describes how to set up TLS client certificate bootstrapping for kubelets. Kubernetes 1.4 introduced an API for requesting certificates from a cluster-level Certificate Authority (CA). The original intent of this API is to enable provisioning of TLS client certificates for kubelets. The proposal can be found here and progress on the feature is being tracked as feature #43.
+kube-apiserver configuration The API server should be configured with an authenticator that can authenticate tokens as a user in the system:bootstrappers group.</description>
+    </item>
+    
+  </channel>
+</rss>

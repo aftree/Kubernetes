@@ -103,12 +103,12 @@ spec:
       kubernetes.io/os: windows
 ```
 
-{{< note >}}
+. note >}}
 <!--
 Port mapping is also supported, but for simplicity in this example the container port 80 is exposed directly to the service.
 -->
 端口映射也是支持的，但为简单起见，在此示例中容器端口 80 直接暴露给服务。
-{{< /note >}}
+. /note >}}
 
 <!--
 1. Check that all nodes are healthy:
@@ -163,12 +163,12 @@ Port mapping is also supported, but for simplicity in this example the container
     * 入站连接，从 Linux 主服务器或集群外部的计算机 `curl` NodePort
     * 出站连接，使用 kubectl exec 从 Pod 内部 curl 外部 IP
 
-{{< note >}}
+. note >}}
 <!--
 Windows container hosts are not able to access the IP of services scheduled on them due to current platform limitations of the Windows networking stack. Only Windows pods are able to access service IPs.
 -->
 由于当前平台对 Windows 网络堆栈的限制，Windows 容器主机无法访问在其上调度的服务的 IP。只有 Windows pods 才能访问服务 IP。
-{{< /note >}}
+. /note >}}
 
 <!--
 ## Using configurable Container usernames

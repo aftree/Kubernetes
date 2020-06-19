@@ -1,5 +1,5 @@
 ---
-title: O - Kubernetes Concepts
+title: 😊 - Kubernetes Concepts
 main_menu: true
 content_type: concept
 weight: 40

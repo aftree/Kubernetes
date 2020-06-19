@@ -105,7 +105,7 @@ This may be caused by a number of problems. The most common are:
   There are two common ways to fix the cgroup driver problem:
 
  1. Install Docker again following instructions
-  [here](/docs/setup/production-environment/container-runtimes/#docker).
+    [here](/docs/setup/production-environment/container-runtimes/#docker).
 
  1. Change the kubelet config to match the Docker cgroup driver manually, you can refer to
     [Configure cgroup driver used by kubelet on Master Node](/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#configure-cgroup-driver-used-by-kubelet-on-master-node)
@@ -481,13 +481,13 @@ CoreDNS 处于 `CrashLoopBackOff` 时的另一个原因是当 Kubernetes 中部�
 到环路时。[有许多解决方法](https://github.com/coredns/coredns/tree/master/plugin/loop#troubleshooting-loops-in-kubernetes-clusters)
 可以避免在每次 CoreDNS 监测到循环并退出时，Kubernetes 尝试重启 CoreDNS Pod 的情况。
 
-{{< warning >}}
+. warning >}}
 <!--
 Disabling SELinux or setting `allowPrivilegeEscalation` to `true` can compromise
 the security of your cluster.
 -->
 **警告**：禁用 SELinux 或设置 `allowPrivilegeEscalation` 为 `true` 可能会损害集群的安全性。
-{{< /warning >}}
+. /warning >}}
 
 <!--
 ## etcd pods restart continually

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>💖 - 最佳实践 on Hugo 主题的 Learn 文档</title>
+    <link>https://lijun.in/setup/best-practices/</link>
+    <description>Recent content in 💖 - 最佳实践 on Hugo 主题的 Learn 文档</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://lijun.in/setup/best-practices/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>创建大型集群</title>
+      <link>https://lijun.in/setup/best-practices/cluster-large/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/setup/best-practices/cluster-large/</guid>
+      <description>支持 在 . param &amp;ldquo;version&amp;rdquo; &amp;gt;}} 版本中， Kubernetes 支持的最大节点数为 5000。更具体地说，我们支持满足以下所有条件的配置：
+ 节点数不超过 5000 Pod 总数不超过 150000 容器总数不超过 300000 每个节点的 pod 数量不超过 100  . toc &amp;gt;}}
+设定 集群是一组运行着 Kubernetes 代理的节点（物理机或者虚拟机），这些节点由主控节点（集群级控制面）控制。
+通常，集群中的节点数由特定于云平台的配置文件 config-default.sh（可以参考 [GCE 平台的 config-default.sh](http://releases.k8s.io/. param &amp;ldquo;githubbranch&amp;rdquo; &amp;gt;}}/cluster/gce/config-default.sh)）中的 NUM_NODES 参数控制。
+但是，在许多云供应商的平台上，仅将该值更改为非常大的值，可能会导致安装脚本运行失败。例如，在 GCE，由于配额问题，集群会启动失败。
+因此，在创建大型 Kubernetes 集群时，必须考虑以下问题。
+配额问题 为了避免遇到云供应商配额问题，在创建具有大规模节点的集群时，请考虑：
+ 增加诸如 CPU，IP 等资源的配额。  例如，在 GCE，您需要增加以下资源的配额：  CPUs VM 实例 永久磁盘总量 使用中的 IP 地址 防火墙规则 转发规则 路由 目标池     由于某些云供应商会对虚拟机的创建进行流控，因此需要对设置脚本进行更改，使其以较小的批次启动新的节点，并且之间有等待时间。  Etcd 存储 为了提高大规模集群的性能，我们将事件存储在专用的 etcd 实例中。</description>
+    </item>
+    
+    <item>
+      <title>校验节点设置</title>
+      <link>https://lijun.in/setup/best-practices/node-conformance/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/setup/best-practices/node-conformance/</guid>
+      <description>. toc &amp;gt;}}
+节点一致性测试 节点一致性测试 是一个容器化的测试框架，提供了针对节点的系统验证和功能测试。
+该测试主要检测节点是否满足 Kubernetes 的最低要求，通过检测的节点有资格加入 Kubernetes 集群。
+限制 在 Kubernetes 1.5 版中，节点一致性测试具有以下限制：
+ 节点一致性测试只支持 Docker 作为容器运行时环境。  节点的前提条件 要运行节点一致性测试，节点必须满足与标准 Kubernetes 节点相同的前提条件。节点至少应安装以下守护程序：
+ 容器运行时 (Docker) Kubelet  运行节点一致性测试 要运行节点一致性测试，请执行以下步骤：
+ 因为测试框架会启动一个本地的 master 来测试 Kubelet，所以将 Kubelet 指向本机 `&amp;ndash;api-servers=&amp;quot;http://localhost:8080&amp;rdquo;。 还有一些其他 Kubelet 参数可能需要注意：   --pod-cidr： 如果使用 kubenet， 需要为 Kubelet 任意指定一个 CIDR， 例如 --pod-cidr=10.180.0.0/24。 --cloud-provider： 如果使用 --cloud-provider=gce，需要移除这个参数来运行测试。  使用以下命令运行节点一致性测试：  # $CONFIG_DIR is the pod manifest path of your Kubelet. # $LOG_DIR is the test output path.</description>
+    </item>
+    
+    <item>
+      <title>PKI 证书和要求</title>
+      <link>https://lijun.in/setup/best-practices/certificates/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/setup/best-practices/certificates/</guid>
+      <description>Kubernetes 需要 PKI 证书才能进行基于 TLS 的身份验证。如果您是使用 kubeadm 安装的 Kubernetes，则会自动生成集群所需的证书。您还可以生成自己的证书。例如，不将私钥存储在 API 服务器上，可以让私钥更加安全。此页面说明了集群必需的证书。
+集群是如何使用证书的 Kubernetes 需要 PKI 才能执行以下操作：
+ Kubelet 的客户端证书，用于 API 服务器身份验证 API 服务器端点的证书 集群管理员的客户端证书，用于 API 服务器身份认证 API 服务器的客户端证书，用于和 Kubelet 的会话 API 服务器的客户端证书，用于和 etcd 的会话 控制器管理器的客户端证书/kubeconfig，用于和 API server 的会话 调度器的客户端证书/kubeconfig，用于和 API server 的会话 前端代理 的客户端及服务端证书  . note &amp;gt;}}
+只有当您运行 kube-proxy 并要支持扩展 API 服务器时，才需要 front-proxy 证书 . /note &amp;gt;}}
+etcd 还实现了双向 TLS 来对客户端和对其他对等节点进行身份验证。
+证书存放的位置 如果你是通过 kubeadm 安装的 Kubernetes，所有证书都存放在 /etc/kubernetes/pki 目录下。本文所有相关的路径都是基于该路径的相对路径。
+手动配置证书 如果你不想通过 kubeadm 生成这些必需的证书，你可以通过下面两种方式之一来手动创建他们。</description>
+    </item>
+    
+  </channel>
+</rss>

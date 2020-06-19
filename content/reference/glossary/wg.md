@@ -27,7 +27,7 @@ tags:
 -->
 
 <!--
- Facilitates the discussion and/or implementation of a short-lived, narrow, or decoupled project for a committee, {{< glossary_tooltip text="SIG" term_id="sig" >}}, or cross-SIG effort.
+ Facilitates the discussion and/or implementation of a short-lived, narrow, or decoupled project for a committee, . glossary_tooltip text="SIG" term_id="sig" >}}, or cross-SIG effort.
 -->
 
 工作组是为了方便讨论和（或）推进执行一些短周期、窄范围、或者从委员会和 SIG 分离出来的项目、以及跨 SIG 的活动。

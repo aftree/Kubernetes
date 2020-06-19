@@ -24,11 +24,11 @@ from a task queue, completes it, deletes it from the queue, and exits.
 Here is an overview of the steps in this example:
 
 1. **Start a message queue service.**  In this example, we use RabbitMQ, but you could use another
-  one.  In practice you would set up a message queue service once and reuse it for many jobs.
+    one.  In practice you would set up a message queue service once and reuse it for many jobs.
 1. **Create a queue, and fill it with messages.**  Each message represents one task to be done.  In
-  this example, a message is just an integer that we will do a lengthy computation on.
+    this example, a message is just an integer that we will do a lengthy computation on.
 1. **Start a Job that works on tasks from the queue**.  The Job starts several pods.  Each pod takes
-  one task from the message queue, processes it, and repeats until the end of the queue is reached.
+    one task from the message queue, processes it, and repeats until the end of the queue is reached.
 -->
 
 本例中，我们会运行包含多个并行工作进程的 Kubernetes Job。
@@ -46,7 +46,7 @@ Here is an overview of the steps in this example:
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
 <!--
@@ -56,7 +56,7 @@ non-parallel, use of [Job](/docs/concepts/jobs/run-to-completion-finite-workload
 
 要熟悉 Job 基本用法（非并行的），请参考 [Job](/docs/concepts/jobs/run-to-completion-finite-workloads/)。
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 
@@ -311,7 +311,7 @@ example program:
 
 我们将用 `amqp-consume` 来从队列中读取消息并实际运行我们的程序。这里给出一个非常简单的示例程序：
 
-{{< codenew language="python" file="application/job/rabbitmq/worker.py" >}}
+. codenew language="python" file="application/job/rabbitmq/worker.py" >}}
 
 <!--
 Now, build an image.  If you are working in the source
@@ -366,7 +366,7 @@ image to match the name you used, and call it `./job.yaml`.
 
 这里给出一个 Job 定义 yaml文件。你需要拷贝一份并编辑镜像以匹配你使用的名称，保存为 `./job.yaml`。
 
-{{< codenew file="application/job/rabbitmq/job.yaml" >}}
+. codenew file="application/job/rabbitmq/job.yaml" >}}
 
 <!--
 In this example, each pod works on one item from the queue and then exits.

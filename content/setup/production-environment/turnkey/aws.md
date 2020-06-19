@@ -25,7 +25,7 @@ This page describes how to install a Kubernetes cluster on AWS.
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 <!--
 To create a Kubernetes cluster on AWS, you will need an Access Key ID and a Secret Access Key from AWS.
@@ -111,17 +111,17 @@ For more information, please read [kubeconfig files](/docs/tasks/access-applicat
 
 See [a simple nginx example](/docs/tasks/run-application/run-stateless-application-deployment/) to try out your new cluster.
 
-The "Guestbook" application is another popular example to get started with Kubernetes: [guestbook example](https://github.com/kubernetes/examples/tree/{{< param "githubbranch" >}}/guestbook/)
+The "Guestbook" application is another popular example to get started with Kubernetes: [guestbook example](https://github.com/kubernetes/examples/tree/. param "githubbranch" >}}/guestbook/)
 
-For more complete applications, please look in the [examples directory](https://github.com/kubernetes/examples/tree/{{< param "githubbranch" >}}/)
+For more complete applications, please look in the [examples directory](https://github.com/kubernetes/examples/tree/. param "githubbranch" >}}/)
 -->
 ### 示例
 
 请参阅[一个简单的 nginx 示例](/docs/tasks/run-application/run-stateless-application-deployment/)试用您的新集群。
 
-“Guestbook” 应用程序是另一个入门 Kubernetes 的流行示例：[guestbook 示例](https://github.com/kubernetes/examples/tree/{{< param "githubbranch" >}}/guestbook/)。
+“Guestbook” 应用程序是另一个入门 Kubernetes 的流行示例：[guestbook 示例](https://github.com/kubernetes/examples/tree/. param "githubbranch" >}}/guestbook/)。
 
-有关更完整的应用程序，请查看[示例目录](https://github.com/kubernetes/examples/tree/{{< param "githubbranch" >}}/)。
+有关更完整的应用程序，请查看[示例目录](https://github.com/kubernetes/examples/tree/. param "githubbranch" >}}/)。
 
 <!--
 ## Scaling the cluster

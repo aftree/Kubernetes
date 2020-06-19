@@ -24,10 +24,10 @@ but is not allowed to use more memory than its limit.
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 <!--
 Each node in your cluster must have at least 300 MiB of memory.
@@ -110,7 +110,7 @@ for the Pod:
 容器将会请求 100 MiB 内存，并且内存会被限制在 200 MiB 以内。
 这是 Pod 的配置文件：
 
-{{< codenew file="pods/resource/memory-request-limit.yaml" >}}
+. codenew file="pods/resource/memory-request-limit.yaml" >}}
 
 <!--
 The `args` section in the configuration file provides arguments for the Container when it starts.
@@ -215,7 +215,7 @@ memory request of 50 MiB and a memory limit of 100 MiB:
 在本练习中，您将创建一个 Pod，尝试分配超出其限制的内存。
 这是一个 Pod 的配置文件，其拥有一个容器，该容器的内存请求为 50 MiB，内存限制为 100 MiB：
 
-{{< codenew file="pods/resource/memory-request-limit-2.yaml" >}}
+. codenew file="pods/resource/memory-request-limit-2.yaml" >}}
 
 <!--
 In the `args` section of the configuration file, you can see that the Container
@@ -374,7 +374,7 @@ Pod 的调度基于请求。只有当节点拥有足够满足 Pod 内存请求�
 在本练习中，你将创建一个 Pod，其内存请求超过了您集群中的任意一个节点所拥有的内存。
 这是该 Pod 的配置文件，其拥有一个请求 1000 GiB 内存的容器，这应该超过了您集群中任何节点的容量。
 
-{{< codenew file="pods/resource/memory-request-limit-3.yaml" >}}
+. codenew file="pods/resource/memory-request-limit-3.yaml" >}}
 
 <!--
 Create the Pod:
@@ -466,14 +466,14 @@ could use all of the memory available on the Node where it is running which in t
 
 * The Container is running in a namespace that has a default memory limit, and the
 Container is automatically assigned the default limit. Cluster administrators can use a
-[LimitRange](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#limitrange-v1-core)
+[LimitRange](/docs/reference/generated/kubernetes-api/. param "version" >}}/#limitrange-v1-core)
 to specify a default value for the memory limit.
 -->
 * 容器可无限制地使用内存。容器可以使用其所在节点所有的可用内存，进而可能导致该节点调用 OOM Killer。
 此外，如果发生 OOM Kill，没有资源限制的容器将被杀掉的可行性更大。
 
 * 运行的容器所在命名空间有默认的内存限制，那么该容器会被自动分配默认限制。
-集群管理员可用使用 [LimitRange](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#limitrange-v1-core)
+集群管理员可用使用 [LimitRange](/docs/reference/generated/kubernetes-api/. param "version" >}}/#limitrange-v1-core)
 来指定默认的内存限制。
 
 <!--
@@ -510,7 +510,7 @@ kubectl delete namespace mem-example
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 ### 应用开发者扩展阅读

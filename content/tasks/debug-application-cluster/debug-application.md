@@ -5,7 +5,7 @@ title: 应用故障排查
 本指南帮助用户来调试kubernetes上那些没有正常运行的应用。
 本指南*不能*调试集群。如果想调试集群的话，请参阅[这里](/docs/admin/cluster-troubleshooting)。
 
-{{< toc >}}
+. toc >}}
 
 ## 诊断问题
 

@@ -15,7 +15,7 @@ This command initializes a Kubernetes worker node and joins it to the cluster.
 
 
 <!-- body -->
-{{< include "generated/kubeadm_join.md" >}}
+. include "generated/kubeadm_join.md" >}}
 
 <!--
 ### The joining workflow
@@ -357,10 +357,10 @@ These commands should be run after `kubeadm init` but before `kubeadm join`.
 
 ### 使用带有配置文件的 kubeadm join
 
-{{< caution >}}
+. caution >}}
 <!--The config file is still considered alpha and may change in future versions.-->
 配置文件目前是 alpha 功能，在将来的版本中可能会变动。
-{{< /caution >}}
+. /caution >}}
 
 <!--
 It's possible to configure `kubeadm join` with a configuration file instead of command
@@ -387,7 +387,7 @@ For details on individual fields in `JoinConfiguration` see [the godoc](https://
 要了解 `JoinConfiguration` 中各个字段的详细信息请参考 [godoc](https://godoc.org/k8s.io/kubernetes/cmd/kubeadm/app/apis/kubeadm#JoinConfiguration)。
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 <!--
 * [kubeadm init](/docs/reference/setup-tools/kubeadm/kubeadm-init/) to bootstrap a Kubernetes master node

@@ -33,10 +33,10 @@ More information can be found on the Kompose website at [http://kompose.io](http
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 
@@ -411,13 +411,13 @@ INFO OpenShift file "foo-imagestream.yaml" created
 INFO OpenShift file "foo-buildconfig.yaml" created
 ```
 
-{{< note >}}
+. note >}}
 <!--
 If you are manually pushing the Openshift artifacts using ``oc create -f``, you need to ensure that you push the imagestream artifact before the buildconfig artifact, to workaround this Openshift issue: https://github.com/openshift/origin/issues/4518 .
 -->
 
 如果使用 ``oc create -f`` 手动推送 Openshift 工件，则需要确保在构建配置工件之前推送 imagestream 工件，以解决 Openshift 的这个问题：https://github.com/openshift/origin/issues/4518 。
-{{< /note >}}
+. /note >}}
 
 ## `kompose up`
 
@@ -755,12 +755,12 @@ The currently supported options are:
 | kompose.service.expose| true / hostname |
 
 
-{{< note >}}
+. note >}}
 <!--
 The `kompose.service.type` label should be defined with `ports` only, otherwise `kompose` will fail.
 -->
 `kompose.service.type` 标签应该只用`ports`来定义，否则 `kompose` 会失败。
-{{< /note >}}
+. /note >}}
 
 <!--
 ## Restart
@@ -789,12 +789,12 @@ If you want to create normal pods without controllers you can use `restart` cons
 
 
 
-{{< note >}}
+. note >}}
 <!--
 The controller object could be `deployment` or `replicationcontroller`, etc.
 -->
 控制器对象可以是 `deployment` 或 `replicationcontroller` 等。
-{{< /note >}}
+. /note >}}
 
 <!--
 For e.g. `pival` service will become pod down here. This container calculated value of `pi`.

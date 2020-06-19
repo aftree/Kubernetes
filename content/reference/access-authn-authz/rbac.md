@@ -25,7 +25,7 @@ Role-based access control (RBAC) is a method of regulating access to computer or
 
 <!-- body -->
 <!--
-`RBAC` uses the `rbac.authorization.k8s.io` {{< glossary_tooltip text="API Group" term_id="api-group" >}}
+`RBAC` uses the `rbac.authorization.k8s.io` . glossary_tooltip text="API Group" term_id="api-group" >}}
 to drive authorization decisions, allowing admins to dynamically configure policies
 through the Kubernetes API.
 
@@ -33,7 +33,7 @@ As of 1.8, RBAC mode is stable and backed by the rbac.authorization.k8s.io/v1 AP
 
 To enable RBAC, start the apiserver with `--authorization-mode=RBAC`.
 -->
-`RBAC` 使用 `rbac.authorization.k8s.io` {{< glossary_tooltip text="API 组" term_id="api-group" >}}
+`RBAC` 使用 `rbac.authorization.k8s.io` . glossary_tooltip text="API 组" term_id="api-group" >}}
 来驱动鉴权操作，允许管理员通过 Kubernetes API 动态配置策略。
 
 在 1.8 版本中，RBAC 模式是稳定的并通过 rbac.authorization.k8s.io/v1 API 提供支持。
@@ -576,7 +576,7 @@ rules:
 
 Only the `rules` section is shown in the following examples.
 
-Allow reading the resource "pods" in the core {{< glossary_tooltip text="API Group" term_id="api-group" >}}:
+Allow reading the resource "pods" in the core . glossary_tooltip text="API Group" term_id="api-group" >}}:
 
 ```yaml
 rules:
@@ -608,7 +608,7 @@ rules:
 #### 角色示例
 
 在以下示例中，我们仅截取展示了 `rules` 对应部分，
-允许读取在核心 {{< glossary_tooltip text="API 组" term_id="api-group" >}}下的 Pods:
+允许读取在核心 . glossary_tooltip text="API 组" term_id="api-group" >}}下的 Pods:
 
 ```yaml
 rules:
@@ -1865,9 +1865,9 @@ In order from most secure to least secure, the approaches are:
 
     If an application does not specify a `serviceAccountName`, it uses the "default" service account.
 
-    {{< note >}}Permissions given to the "default" service
+    . note >}}Permissions given to the "default" service
     account are available to any pod in the namespace that does not
-    specify a `serviceAccountName`.{{< /note >}}
+    specify a `serviceAccountName`.. /note >}}
 
     For example, grant read-only permission within "my-namespace" to the "default" service account:
 
@@ -1881,9 +1881,9 @@ In order from most secure to least secure, the approaches are:
     Many [add-ons](/docs/concepts/cluster-administration/addons/) currently run as the "default" service account in the `kube-system` namespace.
     To allow those add-ons to run with super-user access, grant cluster-admin permissions to the "default" service account in the `kube-system` namespace.
 
-    {{< note >}}Enabling this means the `kube-system`
+    . note >}}Enabling this means the `kube-system`
     namespace contains secrets that grant super-user access to the
-    API.{{< /note >}}
+    API.. /note >}}
 
     ```shell
     kubectl create clusterrolebinding add-on-cluster-admin \
@@ -1920,24 +1920,24 @@ In order from most secure to least secure, the approaches are:
 
     如果一个应用没有指定 `serviceAccountName`，那么它将使用 "default" 服务账号。
 
-    {{< note >}}不指定 `serviceAccountName` 的话，
-	"default" 服务账号的权限会授予给命名空间中所有未指定 `serviceAccountName` 的 Pods。{{< /note >}}
+    . note >}}不指定 `serviceAccountName` 的话，
+	"default" 服务账号的权限会授予给命名空间中所有未指定 `serviceAccountName` 的 Pods。. /note >}}
 
 
     例如，在命名空间 "my-namespace" 中授予服务账号 "default" 只读权限：
-
+    
     ```shell
     kubectl create rolebinding default-view \
       --clusterrole=view \
       --serviceaccount=my-namespace:default \
       --namespace=my-namespace
     ```
-
+    
     许多附加组件 [add-ons](/docs/concepts/cluster-administration/addons/) 目前在 `kube-system` 命名空间以 "default" 服务账号运行。
     要允许这些附加组件以超级用户权限运行，需要将集群的 cluster-admin 权限授予 `kube-system` 命名空间中的 "default" 服务账号。
-
-    {{< note >}}启用这一配置意味着在 `kube-system` 命名空间中包含以超级用户账号来访问 API 的 Secrets。{{< /note >}}
-
+    
+    . note >}}启用这一配置意味着在 `kube-system` 命名空间中包含以超级用户账号来访问 API 的 Secrets。. /note >}}
+    
     ```shell
     kubectl create clusterrolebinding add-on-cluster-admin \
       --clusterrole=cluster-admin \
@@ -1975,11 +1975,11 @@ In order from most secure to least secure, the approaches are:
 
     If you don't care about partitioning permissions at all, you can grant super-user access to all service accounts.
 
-    {{< warning >}}
+    . warning >}}
     This allows any user with read access
     to secrets or the ability to create a pod to access super-user
     credentials.
-    {{< /warning >}}
+    . /warning >}}
 
     ```shell
     kubectl create clusterrolebinding serviceaccounts-cluster-admin \
@@ -2018,9 +2018,9 @@ In order from most secure to least secure, the approaches are:
 
     如果你不关心如何区分权限，你可以将超级用户访问权限授予所有服务账号。
 
-    {{< warning >}}
+    . warning >}}
 	这将允许所有能够读取 Secrets 和创建 Pods 的用户访问超级用户的私密信息。
-    {{< /warning >}}
+    . /warning >}}
 
     ```shell
     kubectl create clusterrolebinding serviceaccounts-cluster-admin \
@@ -2099,7 +2099,7 @@ RBAC 鉴权器将首先尝试对请求进行鉴权。如果它拒绝 API 请求�
 
 You can replicate a permissive policy using RBAC role bindings.
 
-{{< warning >}}
+. warning >}}
 The following policy allows **ALL** service accounts to act as cluster administrators.
 Any application running in a container receives service account credentials automatically,
 and could perform any action against the API, including viewing secrets and modifying permissions.
@@ -2112,7 +2112,7 @@ kubectl create clusterrolebinding permissive-binding \
   --user=kubelet \
   --group=system:serviceaccounts
 ```
-{{< /warning >}}
+. /warning >}}
 
 -->
 
@@ -2120,7 +2120,7 @@ kubectl create clusterrolebinding permissive-binding \
 
 可以使用 RBAC 角色绑定在多个场合使用宽松的策略。
 
-{{< warning >}}
+. warning >}}
 下面的策略允许 **所有** 服务帐户充当集群管理员。
 容器中运行的所有应用程序都会自动收到服务帐户的凭据，
 可以对 API 执行任何操作，包括查看 Secrets 和修改权限。
@@ -2133,6 +2133,6 @@ kubectl create clusterrolebinding permissive-binding \
   --user=kubelet \
   --group=system:serviceaccounts
 ```
-{{< /warning >}}
+. /warning >}}
 
 

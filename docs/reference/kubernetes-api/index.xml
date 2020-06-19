@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>😍 - API 参考 on Hugo 主题的 Learn 文档</title>
+    <link>https://lijun.in/reference/kubernetes-api/</link>
+    <description>Recent content in 😍 - API 参考 on Hugo 主题的 Learn 文档</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://lijun.in/reference/kubernetes-api/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>v1.17</title>
+      <link>https://lijun.in/reference/kubernetes-api/api-index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/reference/kubernetes-api/api-index/</guid>
+      <description>Kubernetes API v1.17</description>
+    </item>
+    
+    <item>
+      <title>知名标签（Label）、注解（Annotation）和 Taints</title>
+      <link>https://lijun.in/reference/kubernetes-api/labels-annotations-taints/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/reference/kubernetes-api/labels-annotations-taints/</guid>
+      <description>Kubernetes 保留了 kubernetes.io 命名空间下的所有标签和注解。
+本文既作为这些标签和注解的参考，也就这些标签和注解的赋值进行了说明。
+kubernetes.io/arch 示例：kubernetes.io/arch=amd64
+用于：Node
+Kubelet 用 Go 中定义的 runtime.GOARCH 值来填充该标签。这在诸如混用 arm 和 x86 节点的情况下很有用。
+kubernetes.io/os 示例：kubernetes.io/os=linux
+用于：Node
+Kubelet 用该 Go 中定义的 runtime.GOOS 值来填充该标签。这在集群中存在不同操作系统的节点时很有用（例如：混合 Linux 和 Windows 操作系统的节点）。
+beta.kubernetes.io/arch (已弃用) 该标签已被弃用。请使用 kubernetes.io/arch。
+beta.kubernetes.io/os (已弃用) 该标签已被弃用。请使用 kubernetes.io/arch。
+kubernetes.io/hostname 示例：kubernetes.io/hostname=ip-172-20-114-199.ec2.internal
+用于：Node
+Kubelet 用 hostname 值来填充该标签。注意：可以通过向 kubelet 传入 --hostname-override 参数对 “真正的” hostname 进行修改。
+beta.kubernetes.io/instance-type (已弃用) . note &amp;gt;}}
+从 kubernetes 1.17 版本开始，不推荐使用此标签，而推荐使用node.kubernetes.io/instance-type。 . /note &amp;gt;}}
+node.kubernetes.io/instance-type 示例：node.kubernetes.io/instance-type=m3.medium
+用于：Node
+Kubelet 用 cloudprovider 中定义的实例类型来填充该标签。未使用 cloudprovider 时不会设置该标签。该标签在想要将某些负载定向到特定实例类型的节点上时会很有用，但通常用户更希望依赖 Kubernetes 调度器来执行基于资源的调度，所以用户应该致力于基于属性而不是实例类型来进行调度(例如：需要一个 GPU，而不是 g2.</description>
+    </item>
+    
+  </channel>
+</rss>

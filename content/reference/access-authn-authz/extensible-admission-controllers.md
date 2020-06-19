@@ -50,9 +50,9 @@ validating admission webhooks are invoked and can reject requests to enforce cus
 Admission webhooks that need to guarantee they see the final state of the object in order to enforce policy
 should use a validating admission webhook, since objects can be modified after being seen by mutating webhooks.
 -->
-{{< note >}}
+. note >}}
 如果 admission webhook 需要保证它们所看到的是对象的最终状态以实施某种策略。则应使用 validating admission webhook，因为对象被 mutating webhook 看到之后仍然可能被修改。
-{{< /note >}}
+. /note >}}
 
 
 <!--
@@ -135,12 +135,12 @@ how to [authenticate apiservers](#authenticate-apiservers).
 
 <!--
 The webhook server in the e2e test is deployed in the Kubernetes cluster, via
-the [deployment API](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#deployment-v1-apps).
-The test also creates a [service](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#service-v1-core)
+the [deployment API](/docs/reference/generated/kubernetes-api/. param "version" >}}/#deployment-v1-apps).
+The test also creates a [service](/docs/reference/generated/kubernetes-api/. param "version" >}}/#service-v1-core)
 as the front-end of the webhook server. See
 [code](https://github.com/kubernetes/kubernetes/blob/v1.15.0/test/e2e/apimachinery/webhook.go#L301).
 -->
-e2e 测试中的 webhook 服务器通过 [deployment API](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#deployment-v1-apps) 部署在 Kubernetes 集群中。该测试还将创建一个 [service](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#service-v1-core) 作为 webhook 服务器的前端。参见[相关代码](https://github.com/kubernetes/kubernetes/blob/v1.15.0/test/e2e/apimachinery/webhook.go#L301)。
+e2e 测试中的 webhook 服务器通过 [deployment API](/docs/reference/generated/kubernetes-api/. param "version" >}}/#deployment-v1-apps) 部署在 Kubernetes 集群中。该测试还将创建一个 [service](/docs/reference/generated/kubernetes-api/. param "version" >}}/#service-v1-core) 作为 webhook 服务器的前端。参见[相关代码](https://github.com/kubernetes/kubernetes/blob/v1.15.0/test/e2e/apimachinery/webhook.go#L301)。
 
 <!--
 You may also deploy your webhooks outside of the cluster. You will need to update
@@ -156,19 +156,19 @@ your webhook configurations accordingly.
 <!--
 You can dynamically configure what resources are subject to what admission
 webhooks via
-[ValidatingWebhookConfiguration](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#validatingwebhookconfiguration-v1-admissionregistration-k8s-io)
+[ValidatingWebhookConfiguration](/docs/reference/generated/kubernetes-api/. param "version" >}}/#validatingwebhookconfiguration-v1-admissionregistration-k8s-io)
 or
-[MutatingWebhookConfiguration](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#mutatingwebhookconfiguration-v1-admissionregistration-k8s-io).
+[MutatingWebhookConfiguration](/docs/reference/generated/kubernetes-api/. param "version" >}}/#mutatingwebhookconfiguration-v1-admissionregistration-k8s-io).
 -->
-您可以通过 [ValidatingWebhookConfiguration](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#validatingwebhookconfiguration-v1-admissionregistration-k8s-io) 或者 [MutatingWebhookConfiguration](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#mutatingwebhookconfiguration-v1-admissionregistration-k8s-io) 动态配置哪些资源要被哪些 admission webhook 处理。
+您可以通过 [ValidatingWebhookConfiguration](/docs/reference/generated/kubernetes-api/. param "version" >}}/#validatingwebhookconfiguration-v1-admissionregistration-k8s-io) 或者 [MutatingWebhookConfiguration](/docs/reference/generated/kubernetes-api/. param "version" >}}/#mutatingwebhookconfiguration-v1-admissionregistration-k8s-io) 动态配置哪些资源要被哪些 admission webhook 处理。
 <!--
 The following is an example `ValidatingWebhookConfiguration`, a mutating webhook configuration is similar.
 See the [webhook configuration](#webhook-configuration) section for details about each config field.
 -->
 以下是一个 `ValidatingWebhookConfiguration` 示例，mutating webhook 配置与此类似。有关每个配置字段的详细信息，请参阅 [webhook 配置](#webhook-configuration) 部分。
 
-{{< tabs name="ValidatingWebhookConfiguration_example_1" >}}
-{{% tab name="admissionregistration.k8s.io/v1" %}}
+. tabs name="ValidatingWebhookConfiguration_example_1" >}}
+. tab name="admissionregistration.k8s.io/v1" %}}
 ```yaml
 apiVersion: admissionregistration.k8s.io/v1
 kind: ValidatingWebhookConfiguration
@@ -191,8 +191,8 @@ webhooks:
   sideEffects: None
   timeoutSeconds: 5
 ```
-{{% /tab %}}
-{{% tab name="admissionregistration.k8s.io/v1beta1" %}}
+. /tab %}}
+. tab name="admissionregistration.k8s.io/v1beta1" %}}
 ```yaml
 # 1.16 中被淘汰，推荐使用 admissionregistration.k8s.io/v1
 apiVersion: admissionregistration.k8s.io/v1beta1
@@ -215,8 +215,8 @@ webhooks:
   admissionReviewVersions: ["v1beta1"]
   timeoutSeconds: 5
 ```
-{{% /tab %}}
-{{< /tabs >}}
+. /tab %}}
+. /tabs >}}
 
 <!--
 The scope field specifies if only cluster-scoped resources ("Cluster") or namespace-scoped
@@ -228,9 +228,9 @@ scope 字段指定是仅集群范围的资源（Cluster）还是命名空间范�
 When using `clientConfig.service`, the server cert must be valid for
 `<svc_name>.<svc_namespace>.svc`.
 -->
-{{< note >}}
+. note >}}
 当使用 `clientConfig.service` 时，服务器证书必须对 `<svc_name>.<svc_namespace>.svc` 有效。
-{{< /note >}}
+. /note >}}
 
 <!--
 Default timeout for a webhook call is 10 seconds for webhooks registered created using `admissionregistration.k8s.io/v1`,
@@ -239,10 +239,10 @@ can set the timeout and it is encouraged to use a small timeout for webhooks.
 If the webhook call times out, the request is handled according to the webhook's
 failure policy.
 -->
-{{< note >}}
+. note >}}
 对于使用 `admissionregistration.k8s.io/v1` 创建的 webhook 而言，其 webhook 调用的默认超时是 10 秒；对于使用 `admissionregistration.k8s.io/v1beta1` 创建的 webhook 而言，其默认超时是 30 秒。从 kubernetes 1.14 开始，可以设置超时。建议对 webhooks 设置较短的超时时间。
 如果 webhook 调用超时，则根据 webhook 的失败策略处理请求。
-{{< /note >}}
+. /note >}}
 
 <!--
 When an apiserver receives a request that matches one of the `rules`, the
@@ -291,8 +291,8 @@ the webhooks. There are three steps to complete the configuration.
 -->
 
 
-{{< tabs name="admissionconfiguration_example1" >}}
-{{% tab name="apiserver.config.k8s.io/v1" %}}
+. tabs name="admissionconfiguration_example1" >}}
+. tab name="apiserver.config.k8s.io/v1" %}}
 ```yaml
 apiVersion: apiserver.config.k8s.io/v1
 kind: AdmissionConfiguration
@@ -308,8 +308,8 @@ plugins:
     kind: WebhookAdmissionConfiguration
     kubeConfigFile: "<path-to-kubeconfig-file>"
 ```
-{{% /tab %}}
-{{% tab name="apiserver.k8s.io/v1alpha1" %}}
+. /tab %}}
+. tab name="apiserver.k8s.io/v1alpha1" %}}
 ```yaml
 # 1.17 中被淘汰，推荐使用 apiserver.config.k8s.io/v1
 apiVersion: apiserver.k8s.io/v1alpha1
@@ -328,8 +328,8 @@ plugins:
     kind: WebhookAdmission
     kubeConfigFile: "<path-to-kubeconfig-file>"
 ```
-{{% /tab %}}
-{{< /tabs >}}
+. /tab %}}
+. /tabs >}}
 
 <!--
 For more information about `AdmissionConfiguration`, see the
@@ -410,8 +410,8 @@ with the `admissionReviewVersions` field in their configuration:
 
 Webhook 可以在配置中的 `admissionReviewVersions` 字段指定可接受的 `AdmissionReview` 对象版本：
 
-{{< tabs name="ValidatingWebhookConfiguration_admissionReviewVersions" >}}
-{{% tab name="admissionregistration.k8s.io/v1" %}}
+. tabs name="ValidatingWebhookConfiguration_admissionReviewVersions" >}}
+. tab name="admissionregistration.k8s.io/v1" %}}
 ```yaml
 apiVersion: admissionregistration.k8s.io/v1
 kind: ValidatingWebhookConfiguration
@@ -430,8 +430,8 @@ version understood by the current and previous API server.
 -->
 创建 `admissionregistration.k8s.io/v1` webhook 配置时，`admissionReviewVersions` 是必填字段。
 Webhook 必须支持至少一个当前和以前的 apiserver 都可以解析的 `AdmissionReview` 版本。
-{{% /tab %}}
-{{% tab name="admissionregistration.k8s.io/v1beta1" %}}
+. /tab %}}
+. tab name="admissionregistration.k8s.io/v1beta1" %}}
 ```yaml
 # v1.16 中被淘汰，推荐使用 admissionregistration.k8s.io/v1
 apiVersion: admissionregistration.k8s.io/v1beta1
@@ -448,8 +448,8 @@ If no `admissionReviewVersions` are specified, the default when creating
 `admissionregistration.k8s.io/v1beta1` webhook configurations is `v1beta1`.
 -->
 如果未指定 `admissionReviewVersions`，则创建 `admissionregistration.k8s.io/v1beta1` Webhook 配置时的默认值为 `v1beta1`。
-{{% /tab %}}
-{{< /tabs >}}
+. /tab %}}
+. /tabs >}}
 
 <!--
 API servers send the first `AdmissionReview` version in the `admissionReviewVersions` list they support.
@@ -466,8 +466,8 @@ API 服务器将发送的是 `admissionReviewVersions` 列表中所支持的第�
 
 此示例显示了 `AdmissionReview` 对象中包含的数据，该数据用于请求更新 `apps/v1` `Deployment` 的 `scale` 子资源：
 
-{{< tabs name="AdmissionReview_request" >}}
-{{% tab name="admission.k8s.io/v1" %}}
+. tabs name="AdmissionReview_request" >}}
+. tab name="admission.k8s.io/v1" %}}
 ```yaml
 {
   "apiVersion": "admission.k8s.io/v1",
@@ -532,8 +532,8 @@ API 服务器将发送的是 `admissionReviewVersions` 列表中所支持的第�
   }
 }
 ```
-{{% /tab %}}
-{{% tab name="admission.k8s.io/v1beta1" %}}
+. /tab %}}
+. tab name="admission.k8s.io/v1beta1" %}}
 ```yaml
 {
   # v1.16 中被废弃，推荐使用 admission.k8s.io/v1
@@ -603,8 +603,8 @@ API 服务器将发送的是 `admissionReviewVersions` 列表中所支持的第�
   }
 }
 ```
-{{% /tab %}}
-{{< /tabs >}}
+. /tab %}}
+. /tabs >}}
 <!--
 ### Response
 -->
@@ -635,8 +635,8 @@ Example of a minimal response from a webhook to forbid a request:
 -->
 Webhook 禁止请求的最简单响应示例：
 
-{{< tabs name="AdmissionReview_response_allow" >}}
-{{% tab name="admission.k8s.io/v1" %}}
+. tabs name="AdmissionReview_response_allow" >}}
+. tab name="admission.k8s.io/v1" %}}
 ```json
 {
   "apiVersion": "admission.k8s.io/v1",
@@ -647,8 +647,8 @@ Webhook 禁止请求的最简单响应示例：
   }
 }
 ```
-{{% /tab %}}
-{{% tab name="admission.k8s.io/v1beta1" %}}
+. /tab %}}
+. tab name="admission.k8s.io/v1beta1" %}}
 ```json
 {
   "apiVersion": "admission.k8s.io/v1beta1",
@@ -659,16 +659,16 @@ Webhook 禁止请求的最简单响应示例：
   }
 }
 ```
-{{% /tab %}}
-{{< /tabs >}}
+. /tab %}}
+. /tabs >}}
 
 <!--
 Example of a minimal response from a webhook to forbid a request:
 -->
 Webhook 禁止请求的最简单响应示例：
 
-{{< tabs name="AdmissionReview_response_forbid_minimal" >}}
-{{% tab name="admission.k8s.io/v1" %}}
+. tabs name="AdmissionReview_response_forbid_minimal" >}}
+. tab name="admission.k8s.io/v1" %}}
 ```json
 {
   "apiVersion": "admission.k8s.io/v1",
@@ -679,8 +679,8 @@ Webhook 禁止请求的最简单响应示例：
   }
 }
 ```
-{{% /tab %}}
-{{% tab name="admission.k8s.io/v1beta1" %}}
+. /tab %}}
+. tab name="admission.k8s.io/v1beta1" %}}
 ```json
 {
   "apiVersion": "admission.k8s.io/v1beta1",
@@ -691,8 +691,8 @@ Webhook 禁止请求的最简单响应示例：
   }
 }
 ```
-{{% /tab %}}
-{{< /tabs >}}
+. /tab %}}
+. /tabs >}}
 <!--
 When rejecting a request, the webhook can customize the http code and message returned to the user using the `status` field.
 The specified status object is returned to the user.
@@ -703,8 +703,8 @@ Example of a response to forbid a request, customizing the HTTP status code and 
 有关状态类型的详细信息，请参见 [API 文档](/docs/reference/generated/kubernetes-api/v1.14/#status-v1-meta)。
 禁止请求的响应示例，它定制了向用户显示的 HTTP 状态码和消息：
 
-{{< tabs name="AdmissionReview_response_forbid_details" >}}
-{{% tab name="admission.k8s.io/v1" %}}
+. tabs name="AdmissionReview_response_forbid_details" >}}
+. tab name="admission.k8s.io/v1" %}}
 ```json
 {
   "apiVersion": "admission.k8s.io/v1",
@@ -719,8 +719,8 @@ Example of a response to forbid a request, customizing the HTTP status code and 
   }
 }
 ```
-{{% /tab %}}
-{{% tab name="admission.k8s.io/v1beta1" %}}
+. /tab %}}
+. tab name="admission.k8s.io/v1beta1" %}}
 ```json
 {
   "apiVersion": "admission.k8s.io/v1beta1",
@@ -735,8 +735,8 @@ Example of a response to forbid a request, customizing the HTTP status code and 
   }
 }
 ```
-{{% /tab %}}
-{{< /tabs >}}
+. /tab %}}
+. /tabs >}}
 
 <!--
 When allowing a request, a mutating admission webhook may optionally modify the incoming object as well.
@@ -764,8 +764,8 @@ Base64-encoded, this would be `W3sib3AiOiAiYWRkIiwgInBhdGgiOiAiL3NwZWMvcmVwbGljY
 So a webhook response to add that label would be:
 -->
 因此，添加该标签的 webhook 响应为：
-{{< tabs name="AdmissionReview_response_modify" >}}
-{{% tab name="admission.k8s.io/v1" %}}
+. tabs name="AdmissionReview_response_modify" >}}
+. tab name="admission.k8s.io/v1" %}}
 ```json
 {
   "apiVersion": "admission.k8s.io/v1",
@@ -778,8 +778,8 @@ So a webhook response to add that label would be:
   }
 }
 ```
-{{% /tab %}}
-{{% tab name="admission.k8s.io/v1beta1" %}}
+. /tab %}}
+. tab name="admission.k8s.io/v1beta1" %}}
 ```json
 {
   "apiVersion": "admission.k8s.io/v1beta1",
@@ -792,8 +792,8 @@ So a webhook response to add that label would be:
   }
 }
 ```
-{{% /tab %}}
-{{< /tabs >}}
+. /tab %}}
+. /tabs >}}
 <!--
 ## Webhook configuration
 -->
@@ -868,8 +868,8 @@ Match `CREATE` or `UPDATE` requests to `apps/v1` and `apps/v1beta1` `deployments
 
 匹配针对 `apps/v1` 和 `apps/v1beta1` 组中 `deployments` 和 `replicasets` 资源的 `CREATE` 或 `UPDATE` 请求：
 
-{{< tabs name="ValidatingWebhookConfiguration_rules_1" >}}
-{{% tab name="admissionregistration.k8s.io/v1" %}}
+. tabs name="ValidatingWebhookConfiguration_rules_1" >}}
+. tab name="admissionregistration.k8s.io/v1" %}}
 ```yaml
 apiVersion: admissionregistration.k8s.io/v1
 kind: ValidatingWebhookConfiguration
@@ -884,8 +884,8 @@ webhooks:
     scope: "Namespaced"
   ...
 ```
-{{% /tab %}}
-{{% tab name="admissionregistration.k8s.io/v1beta1" %}}
+. /tab %}}
+. tab name="admissionregistration.k8s.io/v1beta1" %}}
 ```yaml
 # v1.16 中被废弃，推荐使用 admissionregistration.k8s.io/v1
 apiVersion: admissionregistration.k8s.io/v1beta1
@@ -901,16 +901,16 @@ webhooks:
     scope: "Namespaced"
   ...
 ```
-{{% /tab %}}
-{{< /tabs >}}
+. /tab %}}
+. /tabs >}}
 
 <!--
 Match create requests for all resources (but not subresources) in all API groups and versions:
 -->
 匹配所有 API 组和版本中的所有资源（但不包括子资源）的创建请求：
 
-{{< tabs name="ValidatingWebhookConfiguration_rules_2" >}}
-{{% tab name="admissionregistration.k8s.io/v1" %}}
+. tabs name="ValidatingWebhookConfiguration_rules_2" >}}
+. tab name="admissionregistration.k8s.io/v1" %}}
 ```yaml
 apiVersion: admissionregistration.k8s.io/v1
 kind: ValidatingWebhookConfiguration
@@ -925,8 +925,8 @@ webhooks:
     scope: "*"
   ...
 ```
-{{% /tab %}}
-{{% tab name="admissionregistration.k8s.io/v1beta1" %}}
+. /tab %}}
+. tab name="admissionregistration.k8s.io/v1beta1" %}}
 ```yaml
 # v1.16 中被废弃，推荐使用 admissionregistration.k8s.io/v1
 apiVersion: admissionregistration.k8s.io/v1beta1
@@ -942,16 +942,16 @@ webhooks:
     scope: "*"
   ...
 ```
-{{% /tab %}}
-{{< /tabs >}}
+. /tab %}}
+. /tabs >}}
 
 <!--
 Match update requests for all `status` subresources in all API groups and versions:
 -->
 匹配所有 API 组和版本中所有 `status` 子资源的更新请求：
 
-{{< tabs name="ValidatingWebhookConfiguration_rules_2" >}}
-{{% tab name="admissionregistration.k8s.io/v1" %}}
+. tabs name="ValidatingWebhookConfiguration_rules_2" >}}
+. tab name="admissionregistration.k8s.io/v1" %}}
 ```yaml
 apiVersion: admissionregistration.k8s.io/v1
 kind: ValidatingWebhookConfiguration
@@ -966,8 +966,8 @@ webhooks:
     scope: "*"
   ...
 ```
-{{% /tab %}}
-{{% tab name="admissionregistration.k8s.io/v1beta1" %}}
+. /tab %}}
+. tab name="admissionregistration.k8s.io/v1beta1" %}}
 ```yaml
 # v1.16 中被废弃，推荐使用 admissionregistration.k8s.io/v1
 apiVersion: admissionregistration.k8s.io/v1beta1
@@ -983,8 +983,8 @@ webhooks:
     scope: "*"
   ...
 ```
-{{% /tab %}}
-{{< /tabs >}}
+. /tab %}}
+. /tabs >}}
 
 <!--
 ### Matching requests: objectSelector
@@ -1016,8 +1016,8 @@ This example shows a mutating webhook that would match a `CREATE` of any resourc
 -->
 这个例子展示了一个 mutating webhook，它将匹配带有标签 `foo:bar` 的任何资源的 `CREATE` 的操作：
 
-{{< tabs name="objectSelector_example" >}}
-{{% tab name="admissionregistration.k8s.io/v1" %}}
+. tabs name="objectSelector_example" >}}
+. tab name="admissionregistration.k8s.io/v1" %}}
 ```yaml
 apiVersion: admissionregistration.k8s.io/v1
 kind: MutatingWebhookConfiguration
@@ -1035,8 +1035,8 @@ webhooks:
     scope: "*"
   ...
 ```
-{{% /tab %}}
-{{% tab name="admissionregistration.k8s.io/v1beta1" %}}
+. /tab %}}
+. tab name="admissionregistration.k8s.io/v1beta1" %}}
 ```yaml
 # v1.16 中被废弃，推荐使用 admissionregistration.k8s.io/v1
 apiVersion: admissionregistration.k8s.io/v1beta1
@@ -1055,8 +1055,8 @@ webhooks:
     scope: "*"
   ...
 ```
-{{% /tab %}}
-{{< /tabs >}}
+. /tab %}}
+. /tabs >}}
 <!--
 See https://kubernetes.io/docs/concepts/overview/working-with-objects/labels for more examples of label selectors.
 -->
@@ -1088,8 +1088,8 @@ that does not have a "runlevel" label of "0" or "1":
 -->
 本例给出的 mutating webhook 将匹配到对命名空间中具命名空间的资源的 `CREATE` 请求，前提是这些资源不含值为 "0" 或 "1" 的 "runlevel" 标签：
 
-{{< tabs name="MutatingWebhookConfiguration_namespaceSelector_1" >}}
-{{% tab name="admissionregistration.k8s.io/v1" %}}
+. tabs name="MutatingWebhookConfiguration_namespaceSelector_1" >}}
+. tab name="admissionregistration.k8s.io/v1" %}}
 ```yaml
 apiVersion: admissionregistration.k8s.io/v1
 kind: MutatingWebhookConfiguration
@@ -1109,8 +1109,8 @@ webhooks:
     scope: "Namespaced"
   ...
 ```
-{{% /tab %}}
-{{% tab name="admissionregistration.k8s.io/v1beta1" %}}
+. /tab %}}
+. tab name="admissionregistration.k8s.io/v1beta1" %}}
 ```yaml
 # v1.16 中被废弃，推荐使用 admissionregistration.k8s.io/v1
 apiVersion: admissionregistration.k8s.io/v1beta1
@@ -1131,16 +1131,16 @@ webhooks:
     scope: "Namespaced"
   ...
 ```
-{{% /tab %}}
-{{< /tabs >}}
+. /tab %}}
+. /tabs >}}
 
 <!--
 This example shows a validating webhook that matches a `CREATE` of any namespaced resource inside a namespace
 that is associated with the "environment" of "prod" or "staging":
 -->
 此示例显示了一个 validating webhook，它将匹配到对某命名空间中的任何具命名空间的资源的 `CREATE` 请求，前提是该命名空间具有值为 "prod" 或 "staging" 的 "environment" 标签：
-{{< tabs name="ValidatingWebhookConfiguration_namespaceSelector_2" >}}
-{{% tab name="admissionregistration.k8s.io/v1" %}}
+. tabs name="ValidatingWebhookConfiguration_namespaceSelector_2" >}}
+. tab name="admissionregistration.k8s.io/v1" %}}
 ```yaml
 apiVersion: admissionregistration.k8s.io/v1
 kind: ValidatingWebhookConfiguration
@@ -1160,8 +1160,8 @@ webhooks:
     scope: "Namespaced"
   ...
 ```
-{{% /tab %}}
-{{% tab name="admissionregistration.k8s.io/v1beta1" %}}
+. /tab %}}
+. tab name="admissionregistration.k8s.io/v1beta1" %}}
 ```yaml
 # v1.16 中被废弃，推荐使用 admissionregistration.k8s.io/v1
 apiVersion: admissionregistration.k8s.io/v1beta1
@@ -1182,8 +1182,8 @@ webhooks:
     scope: "Namespaced"
   ...
 ```
-{{% /tab %}}
-{{< /tabs >}}
+. /tab %}}
+. /tabs >}}
 <!--
 See https://kubernetes.io/docs/concepts/overview/working-with-objects/labels for more examples of label selectors.
 -->
@@ -1255,8 +1255,8 @@ and is always sent an `apps/v1` `Deployment` object:
 此示例显示了一个 validating webhook，该 Webhook 拦截对 Deployment 的修改（无论 API 组或版本是什么），
 始终会发送一个 `apps/v1` 版本的 Deployment 对象：
 
-{{< tabs name="ValidatingWebhookConfiguration_matchPolicy" >}}
-{{% tab name="admissionregistration.k8s.io/v1" %}}
+. tabs name="ValidatingWebhookConfiguration_matchPolicy" >}}
+. tab name="admissionregistration.k8s.io/v1" %}}
 ```yaml
 apiVersion: admissionregistration.k8s.io/v1
 kind: ValidatingWebhookConfiguration
@@ -1278,8 +1278,8 @@ Admission webhooks created using `admissionregistration.k8s.io/v1` default to `E
 -->
 使用 `admissionregistration.k8s.io/v1` 创建的 admission webhhok 默认为 `Equivalent`。
 
-{{% /tab %}}
-{{% tab name="admissionregistration.k8s.io/v1beta1" %}}
+. /tab %}}
+. tab name="admissionregistration.k8s.io/v1beta1" %}}
 ```yaml
 # v1.16 中被废弃，推荐使用 admissionregistration.k8s.io/v1
 apiVersion: admissionregistration.k8s.io/v1beta1
@@ -1301,8 +1301,8 @@ webhooks:
 Admission webhooks created using `admissionregistration.k8s.io/v1beta1` default to `Exact`.
 -->
 使用 `admissionregistration.k8s.io/v1beta1` 创建的 admission webhhok 默认为 `Exact`。
-{{% /tab %}}
-{{< /tabs >}}
+. /tab %}}
+. /tabs >}}
 
 <!--
 ### Contacting the webhook
@@ -1370,8 +1370,8 @@ Here is an example of a mutating webhook configured to call a URL
 --> 
 这是配置为调用 URL 的 mutating Webhook 的示例（并且期望使用系统信任根证书来验证 TLS 证书，因此不指定 caBundle）：
 
-{{< tabs name="MutatingWebhookConfiguration_url" >}}
-{{% tab name="admissionregistration.k8s.io/v1" %}}
+. tabs name="MutatingWebhookConfiguration_url" >}}
+. tab name="admissionregistration.k8s.io/v1" %}}
 ```yaml
 apiVersion: admissionregistration.k8s.io/v1
 kind: MutatingWebhookConfiguration
@@ -1382,8 +1382,8 @@ webhooks:
     url: "https://my-webhook.example.com:9443/my-webhook-path"
   ...
 ```
-{{% /tab %}}
-{{% tab name="admissionregistration.k8s.io/v1beta1" %}}
+. /tab %}}
+. tab name="admissionregistration.k8s.io/v1beta1" %}}
 ```yaml
 # v1.16 中被废弃，推荐使用 admissionregistration.k8s.io/v1
 apiVersion: admissionregistration.k8s.io/v1beta1
@@ -1395,8 +1395,8 @@ webhooks:
     url: "https://my-webhook.example.com:9443/my-webhook-path"
   ...
 ```
-{{% /tab %}}
-{{< /tabs >}}
+. /tab %}}
+. /tabs >}}
 
 <!--
 #### Service reference
@@ -1418,8 +1418,8 @@ at the subpath "/my-path", and to verify the TLS connection against the ServerNa
 -->
 这是一个 mutating Webhook 的示例，该 mutating Webhook 配置为在子路径 "/my-path" 端口 "1234" 上调用服务，并使用自定义 CA 包针对 ServerName  `my-service-name.my-service-namespace.svc` 验证 TLS 连接：
 
-{{< tabs name="MutatingWebhookConfiguration_service" >}}
-{{% tab name="admissionregistration.k8s.io/v1" %}}
+. tabs name="MutatingWebhookConfiguration_service" >}}
+. tab name="admissionregistration.k8s.io/v1" %}}
 ```yaml
 apiVersion: admissionregistration.k8s.io/v1
 kind: MutatingWebhookConfiguration
@@ -1435,8 +1435,8 @@ webhooks:
       port: 1234
   ...
 ```
-{{% /tab %}}
-{{% tab name="admissionregistration.k8s.io/v1beta1" %}}
+. /tab %}}
+. tab name="admissionregistration.k8s.io/v1beta1" %}}
 ```yaml
 # v1.16 中被废弃，推荐使用 admissionregistration.k8s.io/v1
 apiVersion: admissionregistration.k8s.io/v1beta1
@@ -1453,8 +1453,8 @@ webhooks:
       port: 1234
   ...
 ```
-{{% /tab %}}
-{{< /tabs >}}
+. /tab %}}
+. /tabs >}}
 <!--
 ### Side effects
 -->
@@ -1518,8 +1518,8 @@ Here is an example of a validating webhook indicating it has no side effects on 
 -->
 这是一个 validating webhook 的示例，表明它对 `dryRun: true` 请求没有副作用：
 
-{{< tabs name="ValidatingWebhookConfiguration_sideEffects" >}}
-{{% tab name="admissionregistration.k8s.io/v1" %}}
+. tabs name="ValidatingWebhookConfiguration_sideEffects" >}}
+. tab name="admissionregistration.k8s.io/v1" %}}
 ```yaml
 apiVersion: admissionregistration.k8s.io/v1
 kind: ValidatingWebhookConfiguration
@@ -1529,8 +1529,8 @@ webhooks:
   sideEffects: NoneOnDryRun
   ...
 ```
-{{% /tab %}}
-{{% tab name="admissionregistration.k8s.io/v1beta1" %}}
+. /tab %}}
+. tab name="admissionregistration.k8s.io/v1beta1" %}}
 ```yaml
 # v1.16 中被废弃，推荐使用 admissionregistration.k8s.io/v1
 apiVersion: admissionregistration.k8s.io/v1beta1
@@ -1541,8 +1541,8 @@ webhooks:
   sideEffects: NoneOnDryRun
   ...
 ```
-{{% /tab %}}
-{{< /tabs >}}
+. /tab %}}
+. /tabs >}}
 
 <!--
 ### Timeouts
@@ -1571,8 +1571,8 @@ Here is an example of a validating webhook with a custom timeout of 2 seconds:
 
 这是一个自定义超时设置为 2 秒的 validating Webhook 的示例：
 
-{{< tabs name="ValidatingWebhookConfiguration_timeoutSeconds" >}}
-{{% tab name="admissionregistration.k8s.io/v1" %}}
+. tabs name="ValidatingWebhookConfiguration_timeoutSeconds" >}}
+. tab name="admissionregistration.k8s.io/v1" %}}
 ```yaml
 apiVersion: admissionregistration.k8s.io/v1
 kind: ValidatingWebhookConfiguration
@@ -1587,8 +1587,8 @@ webhooks:
 Admission webhooks created using `admissionregistration.k8s.io/v1` default timeouts to 10 seconds.
 -->
 使用 `admissionregistration.k8s.io/v1` 创建的 admission webhook 默认超时为 10 秒。
-{{% /tab %}}
-{{% tab name="admissionregistration.k8s.io/v1beta1" %}}
+. /tab %}}
+. tab name="admissionregistration.k8s.io/v1beta1" %}}
 ```yaml
 # v1.16 中被废弃，推荐使用 admissionregistration.k8s.io/v1
 apiVersion: admissionregistration.k8s.io/v1beta1
@@ -1604,8 +1604,8 @@ webhooks:
 Admission webhooks created using `admissionregistration.k8s.io/v1beta1` default timeouts to 30 seconds.
 -->
 使用 `admissionregistration.k8s.io/v1beta1` 创建的 admission webhook 默认超时为 30 秒。
-{{% /tab %}}
-{{< /tabs >}}
+. /tab %}}
+. /tabs >}}
 
 <!--
 ### Reinvocation policy
@@ -1661,8 +1661,8 @@ Here is an example of a mutating webhook opting into being re-invoked if later a
 -->
 这是一个 mutating webhook 的示例，该 Webhook 在以后的准入插件修改对象时被重新调用：
 
-{{< tabs name="MutatingWebhookConfiguration_reinvocationPolicy" >}}
-{{% tab name="admissionregistration.k8s.io/v1" %}}
+. tabs name="MutatingWebhookConfiguration_reinvocationPolicy" >}}
+. tab name="admissionregistration.k8s.io/v1" %}}
 ```yaml
 apiVersion: admissionregistration.k8s.io/v1
 kind: MutatingWebhookConfiguration
@@ -1672,8 +1672,8 @@ webhooks:
   reinvocationPolicy: IfNeeded
   ...
 ```
-{{% /tab %}}
-{{% tab name="admissionregistration.k8s.io/v1beta1" %}}
+. /tab %}}
+. tab name="admissionregistration.k8s.io/v1beta1" %}}
 ```yaml
 # v1.16 中被废弃，推荐使用 admissionregistration.k8s.io/v1
 apiVersion: admissionregistration.k8s.io/v1beta1
@@ -1684,8 +1684,8 @@ webhooks:
   reinvocationPolicy: IfNeeded
   ...
 ```
-{{% /tab %}}
-{{< /tabs >}}
+. /tab %}}
+. /tabs >}}
 
 <!--
 Mutating webhooks must be [idempotent](#idempotence), able to successfully process an object they have already admitted
@@ -1715,8 +1715,8 @@ Here is a mutating webhook configured to reject an API request if errors are enc
 
 这是一个 mutating webhook，配置为在调用准入 Webhook 遇到错误时拒绝 API 请求：
 
-{{< tabs name="MutatingWebhookConfiguration_failurePolicy" >}}
-{{% tab name="admissionregistration.k8s.io/v1" %}}
+. tabs name="MutatingWebhookConfiguration_failurePolicy" >}}
+. tab name="admissionregistration.k8s.io/v1" %}}
 ```yaml
 apiVersion: admissionregistration.k8s.io/v1
 kind: MutatingWebhookConfiguration
@@ -1732,8 +1732,8 @@ Admission webhooks created using `admissionregistration.k8s.io/v1` default `fail
 -->
 使用 `admissionregistration.k8s.io/v1beta1` 创建的 admission webhook 将 `failurePolicy` 默认设置为 `Ignore`。
 
-{{% /tab %}}
-{{% tab name="admissionregistration.k8s.io/v1beta1" %}}
+. /tab %}}
+. tab name="admissionregistration.k8s.io/v1beta1" %}}
 ```yaml
 # v1.16 中被废弃，推荐使用 admissionregistration.k8s.io/v1
 apiVersion: admissionregistration.k8s.io/v1beta1
@@ -1748,8 +1748,8 @@ webhooks:
 Admission webhooks created using `admissionregistration.k8s.io/v1beta1` default `failurePolicy` to `Ignore`.
 -->
 使用 `admissionregistration.k8s.io/v1beta1` 创建的 admission webhook 将 `failurePolicy` 默认设置为 `Ignore`。
-{{% /tab %}}
-{{< /tabs >}}
+. /tab %}}
+. /tabs >}}
 
 <!--
 ## Monitoring admission webhooks
@@ -2150,7 +2150,7 @@ If side effects are required during the admission evaluation, they must be suppr
 set to `NoneOnDryRun`. See [Side effects](#side-effects) for more detail.
 -->
 ### Side Effects
- 
+
 建议 admission webhook 应尽可能避免副作用，这意味着该 admission webhook 仅对发送给他们的 `AdmissionReview` 的内容起作用，并且不要进行额外更改。
 如果 Webhook 没有任何副作用，则 `.webhooks[].sideEffects` 字段应设置为 `None`。
 

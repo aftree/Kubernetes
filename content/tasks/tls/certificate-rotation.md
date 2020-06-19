@@ -10,7 +10,7 @@ content_type: task
 本文展示如何在 kubelet 中启用并配置证书轮换。
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
 * 要求 Kubernetes 1.8.0 或更高的版本

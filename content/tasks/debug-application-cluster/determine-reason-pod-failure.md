@@ -35,10 +35,10 @@ you put in a termination message should also be written to the general
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 
@@ -58,7 +58,7 @@ the container starts.
 在本练习中，您将创建运行一个容器的 Pod。
 配置文件指定在容器启动时要运行的命令。
 
-{{< codenew file="debug/termination.yaml" >}}
+. codenew file="debug/termination.yaml" >}}
 
 1. <!--Create a Pod based on the YAML configuration file:-->基于 YAML 配置文件创建 Pod：
 
@@ -154,17 +154,17 @@ is empty and the container exited with an error. The log output is limited to
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 <!--
 * See the `terminationMessagePath` field in
-  [Container](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#container-v1-core).
+  [Container](/docs/reference/generated/kubernetes-api/. param "version" >}}/#container-v1-core).
 * Learn about [retrieving logs](/docs/concepts/cluster-administration/logging/).
 * Learn about [Go templates](https://golang.org/pkg/text/template/).
 -->
 
-* 参考[容器](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#container-v1-core)的 `terminationMessagePath` 字段。
+* 参考[容器](/docs/reference/generated/kubernetes-api/. param "version" >}}/#container-v1-core)的 `terminationMessagePath` 字段。
 * 了解[接收日志](/docs/concepts/cluster-administration/logging/)。
 * 了解 [Go 模版](https://golang.org/pkg/text/template/)。
 

@@ -1,6 +1,6 @@
 ---
 no_issue: true
-title: 入门
+title: 💖 - 入门
 main_menu: true
 weight: 20
 content_type: concept

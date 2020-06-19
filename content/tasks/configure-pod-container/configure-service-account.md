@@ -34,7 +34,7 @@ A service account provides an identity for processes that run in a Pod.
 *本文是服务账户的用户使用介绍。您也可以参考[集群管理指南之服务账户](/docs/reference/access-authn-authz/service-accounts-admin/)。*
 
 
-{{< note >}}
+. note >}}
 <!--
 This document describes how service accounts behave in a cluster set up
 as recommended by the Kubernetes project.  Your cluster administrator may have
@@ -45,7 +45,7 @@ not apply.
 本文档描述 Kubernetes 项目推荐的集群中服务帐户的行为。
 集群管理员也可能已经定制了服务账户在集群中的属性，在这种情况下，本文档可能并不适用。
 
-{{< /note >}}
+. /note >}}
 
 <!--
 When you (a human) access the cluster (for example, using `kubectl`), you are
@@ -62,10 +62,10 @@ Pod 内的容器中的进程也可以与 api 服务器接触。
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 
@@ -270,12 +270,12 @@ namespace:      7 bytes
 token:          ...
 ```
 
-{{< note >}}
+. note >}}
 <!--
 The content of `token` is elided here.
 -->
 这里省略了 `token` 的内容。
-{{< /note >}}
+. /note >}}
 
 <!--
 ## Add ImagePullSecrets to a service account
@@ -370,9 +370,9 @@ TODO: Test and explain how to use additional non-K8s secrets with an existing se
 
 ## 服务帐户令牌卷投影
 
-{{< feature-state for_k8s_version="v1.12" state="beta" >}}
+. feature-state for_k8s_version="v1.12" state="beta" >}}
 
-{{< note >}}
+. note >}}
 <!--
 This ServiceAccountTokenVolumeProjection is __beta__ in 1.12 and
 enabled by passing all of the following flags to the API server:
@@ -388,7 +388,7 @@ ServiceAccountTokenVolumeProjection 在 1.12 版本中是 __beta__ 阶段，可�
 * `--service-account-signing-key-file`
 * `--service-account-api-audiences`
 
-{{< /note >}}
+. /note >}}
 
 <!--
 The kubelet can also project a service account token into a Pod. You can

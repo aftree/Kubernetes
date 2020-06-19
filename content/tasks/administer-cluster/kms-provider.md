@@ -17,10 +17,10 @@ content_type: task
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-* {{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+* . include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 <!-- * Kubernetes version 1.10.0 or later is required -->
 
@@ -30,7 +30,7 @@ content_type: task
 
 * 需要 etcd v3 或更新版本
 
-{{< feature-state for_k8s_version="v1.12" state="beta" >}}
+. feature-state for_k8s_version="v1.12" state="beta" >}}
 
 
 

@@ -19,7 +19,7 @@ This task shows you how to delete a StatefulSet.
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
 <!--
@@ -122,7 +122,7 @@ If you find that some pods in your StatefulSet are stuck in the 'Terminating' or
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 <!--

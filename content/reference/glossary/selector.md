@@ -35,8 +35,8 @@ tags:
 <!--more--> 
 
 <!--
-Selectors are applied when querying lists of resources to filter them by {{< glossary_tooltip text="Labels" term_id="label" >}}.
+Selectors are applied when querying lists of resources to filter them by . glossary_tooltip text="Labels" term_id="label" >}}.
 -->
 
-在查询资源列表时，选择算符可以通过 {{< glossary_tooltip text="标签" term_id="label" >}} 对资源进行过滤筛选。
+在查询资源列表时，选择算符可以通过 . glossary_tooltip text="标签" term_id="label" >}} 对资源进行过滤筛选。
 

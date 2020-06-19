@@ -10,7 +10,7 @@ content_type: tutorial
 
 
 
-## {{% heading "objectives" %}}
+## . heading "objectives" %}}
 
 
 * 创建一个nginx deployment.
@@ -20,10 +20,10 @@ content_type: tutorial
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 
@@ -34,7 +34,7 @@ content_type: tutorial
 
 你可以通过创建一个Kubernetes Deployment对象来运行一个应用, 可以在一个YAML文件中描述Deployment. 例如, 下面这个YAML文件描述了一个运行nginx:1.7.9 Docker镜像的Deployment:
 
-{{< codenew file="application/deployment.yaml" >}}
+. codenew file="application/deployment.yaml" >}}
 
 
 1. 通过YAML文件创建一个Deployment:
@@ -44,7 +44,7 @@ content_type: tutorial
 1. 展示Deployment相关信息:
 
        kubectl describe deployment nginx-deployment
-
+    
         user@computer:~/website$ kubectl describe deployment nginx-deployment
         Name:     nginx-deployment
         Namespace:    default
@@ -77,7 +77,7 @@ content_type: tutorial
 1. 列出deployment创建的pods:
 
        kubectl get pods -l app=nginx
-
+    
         NAME                                READY     STATUS    RESTARTS   AGE
         nginx-deployment-1771418926-7o5ns   1/1       Running   0          16h
         nginx-deployment-1771418926-r18az   1/1       Running   0          16h
@@ -92,7 +92,7 @@ content_type: tutorial
 
 你可以通过更新一个新的YAML文件来更新deployment. 下面的YAML文件指定该deployment镜像更新为nginx 1.8.
 
-{{< codenew file="application/deployment-update.yaml" >}}
+. codenew file="application/deployment-update.yaml" >}}
 
 1. 应用新的YAML:
 
@@ -106,7 +106,7 @@ content_type: tutorial
 
 你可以通过应用新的YAML文件来增加Deployment中pods的数量. 该YAML文件将`replicas`设置为4, 指定该Deployment应有4个pods:
 
-{{< codenew file="application/deployment-scale.yaml" >}}
+. codenew file="application/deployment-scale.yaml" >}}
 
 1. 应用新的YAML文件:
 
@@ -137,7 +137,7 @@ content_type: tutorial
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 * 了解更多 [Deployment objects](/docs/concepts/workloads/controllers/deployment/).

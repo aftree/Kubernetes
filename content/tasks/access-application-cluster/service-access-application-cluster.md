@@ -24,15 +24,15 @@ provides load balancing for an application that has two running instances.
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 
 
-## {{% heading "objectives" %}}
+## . heading "objectives" %}}
 
 
 <!--
@@ -58,7 +58,7 @@ Here is the configuration file for the application Deployment:
 
 这是应用程序部署的配置文件：
 
-{{< codenew file="service/access/hello-application.yaml" >}}
+. codenew file="service/access/hello-application.yaml" >}}
 <!--
 1. Run a Hello World application in your cluster:
    Create the application Deployment using the file above:
@@ -80,7 +80,7 @@ Here is the configuration file for the application Deployment:
    kubectl apply -f https://k8s.io/examples/service/access/hello-application.yaml
    ```
    上面的命令创建一个 [Deployment](/docs/concepts/workloads/controllers/deployment/) 对象和一个关联的 [ReplicaSet](/docs/concepts/workloads/controllers/replicaset/) 对象。这个 ReplicaSet 有两个 [Pod](/docs/concepts/workloads/pods/pod/)，每个 Pod 都运行着 Hello World 应用。
-  
+
 <!--
 1. Display information about the Deployment:
 -->
@@ -208,7 +208,7 @@ to create a Service.
 
 
 
-## {{% heading "cleanup" %}}
+## . heading "cleanup" %}}
 
 
 <!--
@@ -229,7 +229,7 @@ the Hello World application, enter this command:
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 <!--

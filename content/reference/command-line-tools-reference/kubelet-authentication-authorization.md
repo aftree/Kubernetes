@@ -4,7 +4,7 @@ approvers:
 title: Kubelet authentication/authorization
 ---
 
-{{< toc >}}
+. toc >}}
 
 ## Overview
 

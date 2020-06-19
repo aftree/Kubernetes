@@ -8,6 +8,7 @@ weight: 30
 ---
 title: Configure Minimum and Maximum Memory Constraints for a Namespace
 content_type: task
+
 weight: 30
 ---
 -->
@@ -17,20 +18,20 @@ weight: 30
 <!--
 This page shows how to set minimum and maximum values for memory used by Containers
 running in a namespace. You specify minimum and maximum memory values in a
-[LimitRange](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#limitrange-v1-core)
+[LimitRange](/docs/reference/generated/kubernetes-api/. param "version" >}}/#limitrange-v1-core)
 object. If a Pod does not meet the constraints imposed by the LimitRange,
 it cannot be created in the namespace.
 -->
 
-此页面介绍如何设置在命名空间中运行的容器使用的内存的最小值和最大值。 您可以在 [LimitRange](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#limitrange-v1-core)对象中指定最小和最大内存值。 如果 Pod 不满足 LimitRange 施加的约束，则无法在命名空间中创建它。
+此页面介绍如何设置在命名空间中运行的容器使用的内存的最小值和最大值。 您可以在 [LimitRange](/docs/reference/generated/kubernetes-api/. param "version" >}}/#limitrange-v1-core)对象中指定最小和最大内存值。 如果 Pod 不满足 LimitRange 施加的约束，则无法在命名空间中创建它。
 
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 <!--
 Each node in your cluster must have at least 1 GiB of memory.
@@ -69,7 +70,7 @@ Here's the configuration file for a LimitRange:
 下面是 LimitRange 的配置文件：
 
 
-{{< codenew file="admin/resource/memory-constraints.yaml" >}}
+. codenew file="admin/resource/memory-constraints.yaml" >}}
 
 <!--
 Create the LimitRange:
@@ -138,7 +139,7 @@ minimum and maximum memory constraints imposed by the LimitRange.
 
 这里给出了包含一个 Container 的 Pod 配置文件。Container 声明了600 MiB 的内存请求和800 MiB 的内存限制， 这些满足了 LimitRange 施加的最小和最大内存约束。
 
-{{< codenew file="admin/resource/memory-constraints-pod.yaml" >}}
+. codenew file="admin/resource/memory-constraints-pod.yaml" >}}
 
 <!--
 Create the Pod:
@@ -206,7 +207,7 @@ memory request of 800 MiB and a memory limit of 1.5 GiB.
 
 这里给出了包含一个容器的 Pod 的配置文件。容器声明了800 MiB 的内存请求和1.5 GiB 的内存限制。
 
-{{< codenew file="admin/resource/memory-constraints-pod-2.yaml" >}}
+. codenew file="admin/resource/memory-constraints-pod-2.yaml" >}}
 
 <!--
 Attempt to create the Pod:
@@ -241,7 +242,7 @@ memory request of 100 MiB and a memory limit of 800 MiB.
 
 这里给出了包含一个容器的 Pod 的配置文件。容器声明了100 MiB 的内存请求和800 MiB 的内存限制。
 
-{{< codenew file="admin/resource/memory-constraints-pod-3.yaml" >}}
+. codenew file="admin/resource/memory-constraints-pod-3.yaml" >}}
 
 <!--
 Attempt to create the Pod:
@@ -276,7 +277,7 @@ specify a memory request, and it does not specify a memory limit.
 
 这里给出了包含一个容器的 Pod 的配置文件。容器没有声明内存请求，也没有声明内存限制。
 
-{{< codenew file="admin/resource/memory-constraints-pod-4.yaml" >}}
+. codenew file="admin/resource/memory-constraints-pod-4.yaml" >}}
 
 <!--
 Create the Pod:
@@ -390,7 +391,7 @@ kubectl delete namespace constraints-mem-example
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 <!--

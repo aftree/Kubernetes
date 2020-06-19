@@ -8,6 +8,7 @@ weight: 130
 ---
 title: Configure Pod Initialization
 content_type: task
+
 weight: 130
 ---
 -->
@@ -20,10 +21,10 @@ application Container runs.
 本文介绍在应用容器运行前，怎样利用 Init 容器初始化 Pod。
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 
@@ -45,7 +46,7 @@ Here is the configuration file for the Pod:
 
 下面是 Pod 的配置文件：
 
-{{< codenew file="pods/init-containers.yaml" >}}
+. codenew file="pods/init-containers.yaml" >}}
 
 <!--
 In the configuration file, you can see that the Pod has a Volume that the init
@@ -120,7 +121,7 @@ The output shows that nginx is serving the web page that was written by the init
 
     <!Doctype html>
     <html id="home">
-
+    
     <head>
     ...
     "url": "http://kubernetes.io/"}</script>
@@ -132,7 +133,7 @@ The output shows that nginx is serving the web page that was written by the init
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 <!--

@@ -12,7 +12,7 @@ reviewers:
 - zihongz
 title: Customizing DNS Service
 content_type: task
---- 
+---
 -->
 
 <!-- overview -->
@@ -27,15 +27,15 @@ and [Using CoreDNS for Service Discovery](/docs/tasks/administer-cluster/coredns
 and [使用 CoreDNS 进行服务发现](/docs/tasks/administer-cluster/coredns/)。
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 <!-- 
-* {{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+* . include "task-tutorial-prereqs.md" >}} . version-check >}}
 * Kubernetes version 1.6 or later. To work with CoreDNS, version 1.9 or later.
 * The appropriate add-on: kube-dns or CoreDNS. To install with kubeadm,
 see [the kubeadm reference documentation](/docs/reference/setup-tools/kubeadm/kubeadm-alpha/#cmd-phase-addon). 
 -->
-* {{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+* . include "task-tutorial-prereqs.md" >}} . version-check >}}
 * Kubernetes 版本 1.6 或更新。如果与 CoreDNS 匹配，版本 1.9 或更新。
 * 合适的 add-on 插件: kube-dns 或 CoreDNS. 使用 kubeadm 安装，请参见 [kubeadm 帮助文档](/docs/reference/setup-tools/kubeadm/kubeadm-alpha/#cmd-phase-addon). 
 
@@ -50,9 +50,9 @@ see [the kubeadm reference documentation](/docs/reference/setup-tools/kubeadm/ku
 <!-- 
 DNS is a built-in Kubernetes service launched automatically
 using the addon manager
-[cluster add-on](http://releases.k8s.io/{{< param "githubbranch" >}}/cluster/addons/README.md). 
+[cluster add-on](http://releases.k8s.io/. param "githubbranch" >}}/cluster/addons/README.md). 
 -->
-DNS 是使用插件管理器[集群 add-on](http://releases.k8s.io/{{< param "githubbranch" >}}/cluster/addons/README.md)自动启动的内置的 Kubernetes 服务。
+DNS 是使用插件管理器[集群 add-on](http://releases.k8s.io/. param "githubbranch" >}}/cluster/addons/README.md)自动启动的内置的 Kubernetes 服务。
 
 <!-- 
 As of Kubernetes v1.12, CoreDNS is the recommended DNS Server, replacing kube-dns. However, kube-dns may still be installed by
@@ -152,7 +152,7 @@ data:
         reload
         loadbalance
     }
-``` 
+```
 <!-- 
 The Corefile configuration includes the following [plugins](https://coredns.io/plugins/) of CoreDNS: 
 -->
@@ -228,7 +228,7 @@ To explicitly force all non-cluster DNS lookups to go through a specific nameser
 
 ```
 proxy .  172.16.0.1
-``` 
+```
 
 <!-- 
 The final ConfigMap along with the default `Corefile` configuration looks like: 
@@ -433,7 +433,7 @@ Options for the kube-dns `kube-system:kube-dns` ConfigMap:
 | Field | Format | Description |
 | ----- | ------ | ----------- |
 | `stubDomains` (optional) | A JSON map using a DNS suffix key such as “acme.local”, and a value consisting of a JSON array of DNS IPs. | The target nameserver can itself be a Kubernetes Service. For instance, you can run your own copy of dnsmasq to export custom DNS names into the ClusterDNS namespace. |
-| `upstreamNameservers` (optional) | A JSON array of DNS IPs. | If specified, the values replace the nameservers taken by default from the node’s `/etc/resolv.conf`. Limits: a maximum of three upstream nameservers can be specified. | 
+| `upstreamNameservers` (optional) | A JSON array of DNS IPs. | If specified, the values replace the nameservers taken by default from the node’s `/etc/resolv.conf`. Limits: a maximum of three upstream nameservers can be specified. |
 -->
 kube-dns `kube-system:kube-dns` 的 ConfigMap 选项：
 
@@ -458,7 +458,7 @@ cluster administrator creates the following ConfigMap:
 
 在此示例中，用户具有他们想与 kube-dns 集成的 Consul DNS 服务发现系统。 consul 域服务器位于 10.150.0.1，所有领事名称均带有后缀 `.consul.local`。 要配置 Kubernetes，集群管理员将创建以下 ConfigMap：
 
-​```yaml
+```yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:

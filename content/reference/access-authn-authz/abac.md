@@ -102,7 +102,7 @@ properties:
         - `/foo/*` 匹配 `/foo/` 的所有子路径。
   - `readonly`，键入布尔值，如果为 true，则表示该策略仅适用于 get、list 和 watch 操作。
 
-{{< note >}}
+. note >}}
 
 <!--
 An unset property is the same as a property set to the zero value for its type
@@ -116,7 +116,7 @@ REST interface.
 
 在将来，策略可能以 JSON 格式表示，并通过 REST 界面进行管理。
 
-{{< /note >}}
+. /note >}}
 
 <!--
 ## Authorization Algorithm
@@ -213,7 +213,7 @@ Kubectl 使用 api-server 的 `/api` 和 `/apis` 端点来发现服务资源类�
     {"apiVersion": "abac.authorization.kubernetes.io/v1beta1", "kind": "Policy", "spec": {"user": "kubelet", "namespace": "*", "resource": "events"}}
     ```
  -->
- 
+
 ## 例子 {#examples}
 
 1. Alice 可以对所有资源做任何事情：
@@ -258,7 +258,7 @@ Kubectl 使用 api-server 的 `/api` 和 `/apis` 端点来发现服务资源类�
     ```
 
 <!--
-[Complete file example](http://releases.k8s.io/{{< param "githubbranch" >}}/pkg/auth/authorizer/abac/example_policy_file.jsonl)
+[Complete file example](http://releases.k8s.io/. param "githubbranch" >}}/pkg/auth/authorizer/abac/example_policy_file.jsonl)
 
 ## A quick note on service accounts
 
@@ -270,7 +270,7 @@ system:serviceaccount:<namespace>:<serviceaccountname>
 
 -->
 
-[完整文件示例](http://releases.k8s.io/{{< param "githubbranch" >}}/pkg/auth/authorizer/abac/example_policy_file.jsonl)
+[完整文件示例](http://releases.k8s.io/. param "githubbranch" >}}/pkg/auth/authorizer/abac/example_policy_file.jsonl)
 
 ## 服务帐户的快速说明
 

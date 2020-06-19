@@ -92,11 +92,11 @@ Example:
 * `kube-apiserver` 版本号如果是 **1.13**
 * `kubelet` 只能是 **1.13** 、 **1.12** 和 **1.11**
 
-{{< note >}}
+. note >}}
 <!--
 If version skew exists between `kube-apiserver` instances in an HA cluster, this narrows the allowed `kubelet` versions.-->如果
 HA集群中多个 `kube-apiserver` 实例版本号不一致，相应的 `kubelet` 版本号可选范围也要减小。
-{{</ note >}}
+./ note >}}
 
 <!--
 Example:
@@ -128,11 +128,11 @@ Example:
 * 如果 `kube-apiserver` 版本号为 **1.13**
 * `kube-controller-manager`、`kube-scheduler` 和 `cloud-controller-manager` 版本支持 **1.13** 和 **1.12**
 
-{{< note >}}
+. note >}}
 <!--
 If version skew exists between `kube-apiserver` instances in an HA cluster, and these components can communicate with any `kube-apiserver` instance in the cluster (for example, via a load balancer), this narrows the allowed versions of these components.-->如果在 HA 集群中，多个 `kube-apiserver` 实例版本号不一致，他们也可以跟任意一个 `kube-apiserver` 实例通信（例如，通过 load balancer），
 但 `kube-controller-manager`、`kube-scheduler` 和 `cloud-controller-manager` 版本可用范围会相应的减小。
-{{< /note >}}
+. /note >}}
 
 <!--
 Example:
@@ -165,11 +165,11 @@ Example:
 * 如果 `kube-apiserver` 当前是 **1.13** 版本
 * `kubectl` 则支持 **1.14** 、**1.13** 和 **1.12**
 
-{{< note >}}
+. note >}}
 <!--
 If version skew exists between `kube-apiserver` instances in an HA cluster, this narrows the supported `kubectl` versions.-->
 如果 HA 集群中的多个 `kube-apiserver` 实例版本号不一致，相应的 `kubectl` 可用版本范围也会减小。
-{{< /note >}}
+. /note >}}
 
 <!--
 Example:
@@ -223,14 +223,14 @@ Upgrade `kube-apiserver` to **1.(n+1)**
 -->
 升级 `kube-apiserver` 到 **1.(n+1)**
 
-{{< note >}}
+. note >}}
 <!--
 Project policies for [API deprecation](/docs/reference/using-api/deprecation-policy/) and
 [API change guidelines](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api_changes.md)
 require `kube-apiserver` to not skip minor versions when upgrading, even in single-instance clusters.-->跟据 [API deprecation](/docs/reference/using-api/deprecation-policy/) 和 [API change guidelines](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api_changes.md) 规则，
 `kube-apiserver` 不能跨小版本号升级，即使是单实例集群也不可以。
 
-{{< /note >}}
+. /note >}}
 
 ### kube-controller-manager, kube-scheduler, and cloud-controller-manager
 
@@ -263,7 +263,7 @@ Optionally upgrade `kubelet` instances to **1.(n+1)** (or they can be left at **
 
 `kubelet` 可以升级到 **1.(n+1)**（或者停留在 **1.n** 或 **1.(n-1)**）
 
-{{< warning >}}
+. warning >}}
 <!--
 Running a cluster with `kubelet` instances that are persistently two minor versions behind `kube-apiserver` is not recommended:
 -->集群中 `kubelet` 版本号不建议比 `kube-apiserver` 低两个版本号：
@@ -274,4 +274,4 @@ Running a cluster with `kubelet` instances that are persistently two minor versi
 -->
 * 他们必须升级到与 `kube-apiserver` 相差不超过1个小版本，才可以升级其他控制面组件
 * 有可能使用低于3个在维护的小版本
-{{</ warning >}}
+./ warning >}}

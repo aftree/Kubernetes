@@ -27,10 +27,10 @@ tags:
 -->
 
 <!--
-A {{< glossary_tooltip text="pod" term_id="pod" >}} managed directly by the kubelet
+A . glossary_tooltip text="pod" term_id="pod" >}} managed directly by the kubelet
  daemon on a specific node,
 -->
-由特定节点上的 kubelet 守护进程直接管理的 {{< glossary_tooltip text="pod" term_id="pod" >}}，
+由特定节点上的 kubelet 守护进程直接管理的 . glossary_tooltip text="pod" term_id="pod" >}}，
 <!--more-->
 
 <!--

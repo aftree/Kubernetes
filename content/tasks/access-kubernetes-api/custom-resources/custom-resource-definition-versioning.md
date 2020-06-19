@@ -21,18 +21,18 @@ weight: 30
 <!-- overview -->
 <!--
 This page explains how to add versioning information to
-[CustomResourceDefinitions](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#customresourcedefinition-v1beta1-apiextensions), to indicate the stability
+[CustomResourceDefinitions](/docs/reference/generated/kubernetes-api/. param "version" >}}/#customresourcedefinition-v1beta1-apiextensions), to indicate the stability
 level of your CustomResourceDefinitions or advance your API to a new version with conversion between API representations. It also describes how to upgrade an object from one version to another.
 -->
 
-本页介绍了如何添加版本信息到 [CustomResourceDefinitions](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#customresourcedefinition-v1beta1-apiextensions)，如何表示 CustomResourceDefinitions 的稳定水平或者用 API 之间的表征的转换提高您的 API 到一个新的版本。它还描述了如何将对象从一个版本升级到另一个版本。
+本页介绍了如何添加版本信息到 [CustomResourceDefinitions](/docs/reference/generated/kubernetes-api/. param "version" >}}/#customresourcedefinition-v1beta1-apiextensions)，如何表示 CustomResourceDefinitions 的稳定水平或者用 API 之间的表征的转换提高您的 API 到一个新的版本。它还描述了如何将对象从一个版本升级到另一个版本。
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 <!--
 * Make sure your Kubernetes cluster has a master version of 1.16.0 or higher for `apiextensions.k8s.io/v1`, or 1.11.0 or higher for `apiextensions.k8s.io/v1beta1`.
@@ -54,7 +54,7 @@ level of your CustomResourceDefinitions or advance your API to a new version wit
 -->
 ## 概览
 
-{{< feature-state state="stable" for_kubernetes_version="1.16" >}}
+. feature-state state="stable" for_kubernetes_version="1.16" >}}
 
 <!--
 The CustomResourceDefinition API provides a workflow for introducing and upgrading
@@ -164,13 +164,13 @@ CustomResourceDefinition API 提供了用于引入和升级的工作流程到 Cu
 CustomResourceDefinition API 的`versions`字段可用于支持您自定义资源的多个版本已经开发的。版本可以具有不同的架构，并且转换 Webhooks 可以在版本之间转换自定义资源。
 在适用的情况下，Webhook 转换应遵循 [Kubernetes API](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md)。
 
-{{< note >}}
+. note >}}
 In `apiextensions.k8s.io/v1beta1`, there was a `version` field instead of `versions`. The
 `version` field is deprecated and optional, but if it is not empty, it must
 match the first item in the `versions` field.
 
 
-{{< /note >}}
+. /note >}}
 
 <!--
 This example shows a CustomResourceDefinition with two versions. For the first
@@ -179,8 +179,8 @@ between them. The comments in the YAML provide more context.
 -->
 
 此示例显示了两个版本的 CustomResourceDefinition。第一个例子，假设所有的版本共享相同的模式而它们之间没有转换。YAML 中的评论提供了更多背景信息。
-{{< tabs name="CustomResourceDefinition_versioning_example_1" >}}
-{{% tab name="apiextensions.k8s.io/v1" %}}
+. tabs name="CustomResourceDefinition_versioning_example_1" >}}
+. tab name="apiextensions.k8s.io/v1" %}}
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1
@@ -237,8 +237,8 @@ spec:
     shortNames:
     - ct
 ```
-{{% /tab %}}
-{{% tab name="apiextensions.k8s.io/v1beta1" %}}
+. /tab %}}
+. tab name="apiextensions.k8s.io/v1beta1" %}}
 ```yaml
 # Deprecated in v1.16 in favor of apiextensions.k8s.io/v1
 apiVersion: apiextensions.k8s.io/v1beta1
@@ -286,8 +286,8 @@ spec:
     shortNames:
     - ct
 ```
-{{% /tab %}}
-{{< /tabs >}}
+. /tab %}}
+. /tabs >}}
 
 <!--
 You can save the CustomResourceDefinition in a YAML file, then use
@@ -394,11 +394,11 @@ Webhook conversion is introduced in Kubernetes 1.13 as an alpha feature. To use 
 `CustomResourceWebhookConversion` feature should be enabled. Please refer to the [feature gate](/docs/reference/command-line-tools-reference/feature-gates/) documentation for more information.
 -->
 
-{{< note >}}
+. note >}}
 
 Webhook 转换在 Kubernetes 1.13 中作为 alpha 功能引入。要使用它，应启用`CustomResourceWebhookConversion`功能。请参阅 [feature gate](/docs/reference/command-line-tools-reference/feature-gates/) 文档以获得更多信息。
 
-{{< /note >}}
+. /note >}}
 
 <!--
 The above example has a None conversion between versions which only sets the `apiVersion` field
@@ -448,7 +448,7 @@ mutual TLS or other ways to authenticate the clients, see
 how to [authenticate API servers](/docs/reference/access-authn-authz/extensible-admission-controllers/#authenticate-apiservers).
 -->
 
-{{< note >}}
+. note >}}
 
 示例转换 webhook 服务器留下`ClientAuth`字段 [empty](https://github.com/kubernetes/kubernetes/tree/v1.13.0/test/images/crd-conversion-webhook/config.go#L47-L48)，默认为`NoClientCert`。
 
@@ -456,7 +456,7 @@ how to [authenticate API servers](/docs/reference/access-authn-authz/extensible-
 
 如果您需要相互 TLS 或者其他方式来验证客户端，请参阅如何 [验证 API 服务](/docs/reference/access-authn-authz/extensible-admission-controllers/#authenticate-apiservers)。
 
-{{< /note >}}
+. /note >}}
 
 <!--
 ### Deploy the conversion webhook service
@@ -477,10 +477,10 @@ itself can have an arbitrary port but the service object should map it to port 4
 The communication between the API server and the webhook service may fail
 if a different port is used for the service.
 -->
-{{< note >}}
+. note >}}
 当 webhook 服务器作为一个部署到 Kubernetes 集群中的服务器时，它必须通过端口443上的服务器公开(服务器本身可以有一个任意端口，但是服务器对象应该将它映射到端口443)。
 如果为服务器使用不同的端口，则 apiserver 和 webhook 服务器之间的通信可能会失败。
-{{< /note >}}
+. /note >}}
 
 <!--
 ### Configure CustomResourceDefinition to use conversion webhooks
@@ -493,8 +493,8 @@ section of the `spec`:
 -->
 通过修改`spec`中的`conversion`部分，可以扩展`None`转换示例来使用转换 webhook。
 
-{{< tabs name="CustomResourceDefinition_versioning_example_2" >}}
-{{% tab name="apiextensions.k8s.io/v1" %}}
+. tabs name="CustomResourceDefinition_versioning_example_2" >}}
+. tab name="apiextensions.k8s.io/v1" %}}
 ```yaml
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
@@ -558,8 +558,8 @@ spec:
     shortNames:
     - ct
 ```
-{{% /tab %}}
-{{% tab name="apiextensions.k8s.io/v1beta1" %}}
+. /tab %}}
+. tab name="apiextensions.k8s.io/v1beta1" %}}
 ```yaml
 # Deprecated in v1.16 in favor of apiextensions.k8s.io/v1
 apiVersion: apiextensions.k8s.io/v1beta1
@@ -621,8 +621,8 @@ spec:
     shortNames:
     - ct
 ```
-{{% /tab %}}
-{{< /tabs >}}
+. /tab %}}
+. /tabs >}}
 
 <!--
 You can save the CustomResourceDefinition in a YAML file, then use
@@ -699,8 +699,8 @@ Here is an example of a conversion webhook configured to call a URL
 
 这是配置为调用 URL 的转换 Webhook 的示例（并且期望使用系统信任根来验证 TLS 证书，因此不指定 caBundle）：
 
-{{< tabs name="CustomResourceDefinition_versioning_example_3" >}}
-{{% tab name="apiextensions.k8s.io/v1" %}}
+. tabs name="CustomResourceDefinition_versioning_example_3" >}}
+. tab name="apiextensions.k8s.io/v1" %}}
 ```yaml
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
@@ -714,8 +714,8 @@ spec:
         url: "https://my-webhook.example.com:9443/my-webhook-path"
 ...
 ```
-{{% /tab %}}
-{{% tab name="apiextensions.k8s.io/v1beta1" %}}
+. /tab %}}
+. tab name="apiextensions.k8s.io/v1beta1" %}}
 ```yaml
 # Deprecated in v1.16 in favor of apiextensions.k8s.io/v1
 apiVersion: apiextensions.k8s.io/v1beta1
@@ -729,8 +729,8 @@ spec:
       url: "https://my-webhook.example.com:9443/my-webhook-path"
 ...
 ```
-{{% /tab %}}
-{{< /tabs >}}
+. /tab %}}
+. /tabs >}}
 
 <!--
 ### Service Reference
@@ -754,8 +754,8 @@ at the subpath "/my-path", and to verify the TLS connection against the ServerNa
 这是一个配置为在端口`1234`上调用服务的 Webhook 的示例在子路径`/my-path`下，并针对 ServerName 验证 TLS 连接
 使用自定义 CA 捆绑包的`my-service-name.my-service-namespace.svc`。
 
-{{< tabs name="CustomResourceDefinition_versioning_example_4" >}}
-{{% tab name="apiextensions.k8s.io/v1" %}}
+. tabs name="CustomResourceDefinition_versioning_example_4" >}}
+. tab name="apiextensions.k8s.io/v1" %}}
 ```yaml
 apiVersion: apiextensions.k8s.io/v1b
 kind: CustomResourceDefinition
@@ -774,8 +774,8 @@ spec:
         caBundle: "Ci0tLS0tQk...<base64-encoded PEM bundle>...tLS0K"
 ...
 ```
-{{% /tab %}}
-{{% tab name="apiextensions.k8s.io/v1beta1" %}}
+. /tab %}}
+. tab name="apiextensions.k8s.io/v1beta1" %}}
 ```yaml
 # Deprecated in v1.16 in favor of apiextensions.k8s.io/v1
 apiVersion: apiextensions.k8s.io/v1beta1
@@ -794,8 +794,8 @@ spec:
       caBundle: "Ci0tLS0tQk...<base64-encoded PEM bundle>...tLS0K"
 ...
 ```
-{{% /tab %}}
-{{< /tabs >}}
+. /tab %}}
+. /tabs >}}
 <!--
 ## Webhook request and response
 
@@ -817,8 +817,8 @@ with the `conversionReviewVersions` field in their CustomResourceDefinition:
 
 Webhooks 可以指定他们接受的`ConversionReview`对象的版本在其 CustomResourceDefinition 中使用`conversionReviewVersions`字段：
 
-{{< tabs name="conversionReviewVersions" >}}
-{{% tab name="apiextensions.k8s.io/v1" %}}
+. tabs name="conversionReviewVersions" >}}
+. tab name="apiextensions.k8s.io/v1" %}}
 ```yaml
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
@@ -842,8 +842,8 @@ version understood by the current and previous API server.
 创建时，`conversionReviewVersions`是必填字段`apiextensions.k8s.io/v1`自定义资源定义。
 需要 Webhooks 支持至少一个`ConversionReview`当前和以前的 apiserver 可以理解的版本。
 
-{{% /tab %}}
-{{% tab name="apiextensions.k8s.io/v1beta1" %}}
+. /tab %}}
+. tab name="apiextensions.k8s.io/v1beta1" %}}
 ```yaml
 # Deprecated in v1.16 in favor of apiextensions.k8s.io/v1
 apiVersion: apiextensions.k8s.io/v1beta1
@@ -862,8 +862,8 @@ If no `conversionReviewVersions` are specified, the default when creating
 -->
 
 如果未指定`conversionReviewVersions`，则创建时的默认值 apiextensions.k8s.io/v1beta1 自定义资源定义为 v1beta1。
-{{% /tab %}}
-{{< /tabs >}}
+. /tab %}}
+. /tabs >}}
 
 API servers send the first `ConversionReview` version in the `conversionReviewVersions` list they support.
 If none of the versions in the list are supported by the API server, the custom resource definition will not be allowed to be created.
@@ -877,8 +877,8 @@ for a request to convert `CronTab` objects to `example.com/v1`:
 
 此示例显示了包含在`ConversionReview`对象中的数据请求将`CronTab`对象转换为`example.com/v1`：
 
-{{< tabs name="ConversionReview_request" >}}
-{{% tab name="apiextensions.k8s.io/v1" %}}
+. tabs name="ConversionReview_request" >}}
+. tab name="apiextensions.k8s.io/v1" %}}
 ```yaml
 {
   "apiVersion": "apiextensions.k8s.io/v1",
@@ -920,8 +920,8 @@ for a request to convert `CronTab` objects to `example.com/v1`:
   }
 }
 ```
-{{% /tab %}}
-{{% tab name="apiextensions.k8s.io/v1beta1" %}}
+. /tab %}}
+. tab name="apiextensions.k8s.io/v1beta1" %}}
 ```yaml
 {
   # Deprecated in v1.16 in favor of apiextensions.k8s.io/v1
@@ -964,8 +964,8 @@ for a request to convert `CronTab` objects to `example.com/v1`:
   }
 }
 ```
-{{% /tab %}}
-{{< /tabs >}}
+. /tab %}}
+. /tabs >}}
 <!--
 ### Response
 
@@ -992,8 +992,8 @@ Webhooks 响应是以 200 HTTP 状态代码，`Content-Type:application/json`，
 
 Webhook 的最简单成功响应示例：
 
-{{< tabs name="ConversionReview_response_success" >}}
-{{% tab name="apiextensions.k8s.io/v1" %}}
+. tabs name="ConversionReview_response_success" >}}
+. tab name="apiextensions.k8s.io/v1" %}}
 ```yaml
 {
   "apiVersion": "apiextensions.k8s.io/v1",
@@ -1038,8 +1038,8 @@ Webhook 的最简单成功响应示例：
   }
 }
 ```
-{{% /tab %}}
-{{% tab name="apiextensions.k8s.io/v1beta1" %}}
+. /tab %}}
+. tab name="apiextensions.k8s.io/v1beta1" %}}
 ```yaml
 {
   # Deprecated in v1.16 in favor of apiextensions.k8s.io/v1
@@ -1085,8 +1085,8 @@ Webhook 的最简单成功响应示例：
   }
 }
 ```
-{{% /tab %}}
-{{< /tabs >}}
+. /tab %}}
+. /tabs >}}
 <!--
 If conversion fails, a webhook should return a `response` stanza containing the following fields:
 * `uid`, copied from the `request.uid` sent to the webhook
@@ -1097,7 +1097,7 @@ If conversion fails, a webhook should return a `response` stanza containing the 
 *`uid`，从发送到 webhook 的`request.uid`复制而来
 *`result`，设置为`{"status":"Failed"}`
 
-{{< warning >}}
+. warning >}}
 <!--
 Failing conversion can disrupt read and write access to the custom resources,
 including the ability to update or delete the resources. Conversion failures 
@@ -1107,7 +1107,7 @@ should be avoided whenever possible, and should not be used to enforce validatio
 
 转换失败会破坏对自定义资源的读写访问，包括更新或删除资源的能力。转换失败应尽可能避免使用，并且不应用于强制验证
  约束（改用验证模式 或 Webhook admission）。
-{{< /warning >}}
+. /warning >}}
 
 <!--
 Example of a response from a webhook indicating a conversion request failed, with an optional message:
@@ -1115,8 +1115,8 @@ Example of a response from a webhook indicating a conversion request failed, wit
 
 来自 Webhook 的响应示例，指示转换请求失败，并带有可选消息：
 
-{{< tabs name="ConversionReview_response_failure" >}}
-{{% tab name="apiextensions.k8s.io/v1" %}}
+. tabs name="ConversionReview_response_failure" >}}
+. tab name="apiextensions.k8s.io/v1" %}}
 ```yaml
 {
   "apiVersion": "apiextensions.k8s.io/v1",
@@ -1130,8 +1130,8 @@ Example of a response from a webhook indicating a conversion request failed, wit
   }
 }
 ```
-{{% /tab %}}
-{{% tab name="apiextensions.k8s.io/v1beta1" %}}
+. /tab %}}
+. tab name="apiextensions.k8s.io/v1beta1" %}}
 ```yaml
 {
   # Deprecated in v1.16 in favor of apiextensions.k8s.io/v1
@@ -1146,8 +1146,8 @@ Example of a response from a webhook indicating a conversion request failed, wit
   }
 }
 ```
-{{% /tab %}}
-{{< /tabs >}}
+. /tab %}}
+. /tabs >}}
 
 <!--
 ## Writing, reading, and updating versioned CustomResourceDefinition objects

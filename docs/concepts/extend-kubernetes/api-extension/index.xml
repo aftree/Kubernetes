@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>扩展 Kubernetes API on Hugo 主题的 Learn 文档</title>
+    <link>https://lijun.in/concepts/extend-kubernetes/api-extension/</link>
+    <description>Recent content in 扩展 Kubernetes API on Hugo 主题的 Learn 文档</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://lijun.in/concepts/extend-kubernetes/api-extension/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>通过聚合层扩展 Kubernetes API</title>
+      <link>https://lijun.in/concepts/extend-kubernetes/api-extension/apiserver-aggregation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lijun.in/concepts/extend-kubernetes/api-extension/apiserver-aggregation/</guid>
+      <description>聚合层允许 Kubernetes 通过额外的 API 进行扩展，而不局限于 Kubernetes 核心 API 提供的功能。
+概述 聚合层使您的集群可以安装其他 Kubernetes 风格的 API。这些 API 可以是预编译的、第三方的解决方案提供的例如service-catalog、或者用户创建的类似apiserver-builder一样的API可以帮助你上手。
+聚合层在 kube-apiserver 进程内运行。在扩展资源注册之前，聚合层不做任何事情。要注册 API，用户必须添加一个 APIService 对象，用它来申领 Kubernetes API 中的 URL 路径。自此以后，聚合层将会把发给该 API 路径的所有内容（例如 /apis/myextension.mycompany.io/v1/…）代理到已注册的 APIService。
+正常情况下，APIService 会实现为运行于集群中某 Pod 内的 extension-apiserver。如果需要对增加的资源进行动态管理，extension-apiserver 经常需要和一个或多个控制器一起使用。因此，apiserver-builder 同时提供用来管理新资源的 API 框架和控制器框架。另外一个例子，当安装了 service-catalog 时，它会为自己提供的服务提供 extension-apiserver 和控制器。
+extension-apiserver 与 kube-apiserver 之间的连接应具有低延迟。 特别是，发现请求需要在五秒钟或更短的时间内从 kube-apiserver 往返。 如果您的部署无法实现此目的，则应考虑如何进行更改。目前，在 kube-apiserver 上设置 EnableAggregatedDiscoveryTimeout=false 功能开关将禁用超时限制。它将在将来的版本中被删除。
+ 阅读配置聚合层 文档，了解如何在自己的环境中启用聚合器（aggregator）。 然后安装扩展的 api-server 来开始使用聚合层。 也可以学习怎样 使用自定义资源定义扩展 Kubernetes API。  </description>
+    </item>
+    
+  </channel>
+</rss>

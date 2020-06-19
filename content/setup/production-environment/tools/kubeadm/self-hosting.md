@@ -47,35 +47,35 @@ To create a self-hosted cluster see the
 -->
 #### 警告
 
-{{< caution >}}
+. caution >}}
 <!--
 This feature pivots your cluster into an unsupported state, rendering kubeadm unable
 to manage you cluster any longer. This includes `kubeadm upgrade`.
 -->
 此功能将您的集群设置为不受支持的状态，从而使 kubeadm 无法再管理您的集群。
 这包括 `kubeadm 升级` 。
-{{< /caution >}}
+. /caution >}}
 
 <!--
 1. Self-hosting in 1.8 and later has some important limitations. In particular, a
-  self-hosted cluster _cannot recover from a reboot of the control-plane node_
-  without manual intervention.
+    self-hosted cluster _cannot recover from a reboot of the control-plane node_
+    without manual intervention.
 -->
 1. 1.8及更高版本中的自托管功能有一些重要限制。
 特别是，自托管集群在没有人工干预的情况下_无法从控制平面节点的重新启动中恢复_ 。
 
 <!--
 1. By default, self-hosted control plane Pods rely on credentials loaded from
-  [`hostPath`](/docs/concepts/storage/volumes/#hostpath)
-  volumes. Except for initial creation, these credentials are not managed by
-  kubeadm.
+    [`hostPath`](/docs/concepts/storage/volumes/#hostpath)
+    volumes. Except for initial creation, these credentials are not managed by
+    kubeadm.
 -->
 1. 默认情况下，自托管的控制平面 Pod 依赖于从  [`hostPath`](/docs/concepts/storage/volumes/#hostpath) 卷加载的凭据。
 除初始创建外，这些凭据不由 kubeadm 管理。
 
 <!--
 1. The self-hosted portion of the control plane does not include etcd,
-  which still runs as a static Pod.
+    which still runs as a static Pod.
 -->
 1. 控制平面的自托管部分不包括 etcd，后者仍作为静态 Pod 运行。
 
@@ -97,12 +97,14 @@ In summary, `kubeadm alpha selfhosting` works as follows:
 
 <!--
   1. Waits for this bootstrap static control plane to be running and
+
     healthy. This is identical to the `kubeadm init` process without self-hosting.
 -->
   1. 等待此引导静态控制平面运行且良好。
      这与没有自我托管的 `kubeadm init` 过程相同。
 <!--
   1. Uses the static control plane Pod manifests to construct a set of
+
     DaemonSet manifests that will run the self-hosted control plane.
     It also modifies these manifests where necessary, for example adding new volumes
     for secrets.
@@ -126,6 +128,7 @@ In summary, `kubeadm alpha selfhosting` works as follows:
 
 <!--
   1. When the original static control plane stops, the new self-hosted control
+
     plane is able to bind to listening ports and become active.
 -->
   1. 当原始静态控制平面停止时，新的自托管控制平面能够绑定到侦听端口并变为活动状态。

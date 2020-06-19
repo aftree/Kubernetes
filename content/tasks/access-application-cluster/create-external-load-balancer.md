@@ -19,12 +19,12 @@ This page shows how to create an External Load Balancer.
 -->
 本文展示如何创建一个外部负载均衡器。
 
-{{< note >}}
+. note >}}
 <!-- 
 This feature is only available for cloud providers or environments which support external load balancers. 
 -->
 此功能仅适用于支持外部负载均衡器的云提供商或环境。
-{{< /note >}}
+. /note >}}
 
 <!--
 When creating a service, you have the option of automatically creating a
@@ -45,10 +45,10 @@ documentation.
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-* {{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+* . include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 
@@ -154,12 +154,12 @@ The IP address is listed next to `LoadBalancer Ingress`.
 -->
 IP 地址列在 `LoadBalancer Ingress` 旁边。
 
-{{< note >}}
+. note >}}
 <!--
 If you are running your service on Minikube, you can find the assigned IP address and port with:
 -->
 **注意：** 如果您在 Minikube 上运行服务，您可以通过以下命令找到分配的 IP 地址和端口：
-{{< /note >}}
+. /note >}}
 ```bash
 minikube service example-service --url
 ```

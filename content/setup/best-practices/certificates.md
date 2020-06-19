@@ -57,12 +57,12 @@ Kubernetes 需要 PKI 才能执行以下操作：
 * 调度器的客户端证书/kubeconfig，用于和 API server 的会话
 * [前端代理][proxy] 的客户端及服务端证书
 
-{{< note >}}
+. note >}}
 <!--
 `front-proxy` certificates are required only if you run kube-proxy to support [an extension API server](/docs/tasks/access-kubernetes-api/setup-extension-api-server/).
 -->
 只有当您运行 kube-proxy 并要支持[扩展 API 服务器](/docs/tasks/access-kubernetes-api/setup-extension-api-server/)时，才需要 `front-proxy` 证书
-{{< /note >}}
+. /note >}}
 
 <!--
 etcd also implements mutual TLS to authenticate clients and peers.
@@ -162,14 +162,14 @@ where `kind` maps to one or more of the [x509 key usage][usage] types:
 | client | 数字签名、密钥加密、客户端认证                                                       |
 
 
-{{< note >}}
+. note >}}
 <!--
 Hosts/SAN listed above are the recommended ones for getting a working cluster; if required by a specific setup, it is possible to add additional SANs on all the server certificates.
 -->
 上面列出的 Hosts/SAN 是推荐的配置方式；如果需要特殊安装，则可以在所有服务器证书上添加其他 SAN。
-{{< /note >}}
+. /note >}}
 
-{{< note >}}
+. note >}}
 <!--
 For kubeadm users only:
 
@@ -182,7 +182,7 @@ For kubeadm users only:
 * 不使用私钥，将证书复制到集群 CA 的方案，在 kubeadm 文档中将这种方案称为外部 CA。
 * 如果将以上列表与 kubeadm 生成的 PKI 进行比较，你会注意到，如果使用外部 etcd，则不会生成 `kube-etcd`、`kube-etcd-peer` 和 `kube-etcd-healthcheck-client` 证书。
 
-{{< /note >}}
+. /note >}}
 
 <!--
 ### Certificate paths
@@ -236,12 +236,12 @@ You must manually configure these administrator account and service accounts:
 | controller-manager.conf | default-controller-manager | system:kube-controller-manager |                |
 | scheduler.conf          | default-scheduler          | system:kube-scheduler          |                |
 
-{{< note >}}
+. note >}}
 <!--
 The value of `<nodeName>` for `kubelet.conf` **must** match precisely the value of the node name provided by the kubelet as it registers with the apiserver. For further details, read the [Node Authorization](/docs/reference/access-authn-authz/node/).
 -->
 `kubelet.conf` 中 `<nodeName>` 的值 **必须** 与 kubelet 向 apiserver 注册时提供的节点名称的值完全匹配。有关更多详细信息，请阅读[节点授权](/docs/reference/access-authn-authz/node/)。
-{{< /note >}}
+. /note >}}
 
 <!--
 1. For each config, generate an x509 cert/key pair with the given CN and O.

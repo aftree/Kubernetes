@@ -7,11 +7,12 @@ weight: 28
 ---
 title: kube-scheduler
 content_template: templates/tool-reference
+
 weight: 28
 --- 
 -->
 
-## {{% heading "synopsis" %}}
+## . heading "synopsis" %}}
 
 
 
@@ -32,7 +33,7 @@ kube-scheduler [flags]
 
 
 
-## {{% heading "options" %}}
+## . heading "options" %}}
 
 
 <table style="width: 100%; table-layout: fixed;">
@@ -53,7 +54,7 @@ kube-scheduler [flags]
       如果为 true，则将文件目录添加到标题中
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">
       <!-- 
@@ -70,7 +71,7 @@ kube-scheduler [flags]
       弃用: 要监听 --port 端口的 IP 地址（对于所有 IPv4 接口设置为 0.0.0.0，对于所有 IPv6 接口设置为 ::）。 请参阅 --bind-address。
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">--algorithm-provider string</td>
     </tr>
@@ -82,7 +83,7 @@ kube-scheduler [flags]
       弃用: 要使用的调度算法，可选值：ClusterAutoscalerProvider | DefaultProvider
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">--alsologtostderr</td>
     </tr>
@@ -93,7 +94,7 @@ kube-scheduler [flags]
       -->
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">--authentication-kubeconfig string</td>
     </tr>
@@ -104,7 +105,7 @@ kube-scheduler [flags]
       -->
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">--authentication-skip-lookup</td>
     </tr>
@@ -116,7 +117,7 @@ kube-scheduler [flags]
       如果为 false，则 authentication-kubeconfig 将用于从集群中查找缺少的身份验证配置。
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">
       <!--
@@ -133,7 +134,7 @@ kube-scheduler [flags]
       缓存来自 Webhook 令牌身份验证器的响应的持续时间。
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">
       <!--
@@ -150,7 +151,7 @@ kube-scheduler [flags]
       如果为 true，则无法从集群中查找缺少的身份验证配置是致命的。请注意，这可能导致身份验证将所有请求视为匿名。
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">
       <!--
@@ -167,7 +168,7 @@ kube-scheduler [flags]
       在授权过程中跳过的 HTTP 路径列表，即在不联系 'core'  kubernetes 服务器的情况下被授权的 HTTP 路径。
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">--authorization-kubeconfig string</td>
     </tr>
@@ -179,7 +180,7 @@ kube-scheduler [flags]
       指向具有足够权限以创建 subjectaccessreviews.authorization.k8s.io 的 'core' kubernetes 服务器的 kubeconfig 文件。这是可选的。如果为空，则禁止所有未经授权跳过的请求。
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">
       <!--
@@ -196,7 +197,7 @@ kube-scheduler [flags]
       缓存来自 Webhook 授权者的 'authorized' 响应的持续时间。
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">
       <!--
@@ -213,7 +214,7 @@ kube-scheduler [flags]
       缓存来自 Webhook 授权者的 'unauthorized' 响应的持续时间。
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">--azure-container-registry-config string</td>
     </tr>
@@ -225,7 +226,7 @@ kube-scheduler [flags]
       包含 Azure 容器仓库配置信息的文件的路径。
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">
       <!--
@@ -242,7 +243,7 @@ kube-scheduler [flags]
       侦听 --secure-port 端口的 IP 地址。集群的其余部分以及 CLI/ Web 客户端必须可以访问关联的接口。如果为空，将使用所有接口（所有 IPv4 接口使用 0.0.0.0，所有 IPv6 接口使用 ::）。
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">--cert-dir string</td>
     </tr>
@@ -254,7 +255,7 @@ kube-scheduler [flags]
       TLS 证书所在的目录。如果提供了--tls-cert-file 和 --tls private-key-file，则将忽略此参数。
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">--client-ca-file string</td>
     </tr>
@@ -266,7 +267,7 @@ kube-scheduler [flags]
       如果已设置，由 client-ca-file 中的授权机构签名的客户端证书的任何请求都将使用与客户端证书的 CommonName 对应的身份进行身份验证。
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">--config string</td>
     </tr>
@@ -278,7 +279,7 @@ kube-scheduler [flags]
       配置文件的路径。标志会覆盖此文件中的值。
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">--contention-profiling</td>
     </tr>
@@ -290,7 +291,7 @@ kube-scheduler [flags]
       弃用: 如果启用了性能分析，则启用锁竞争分析
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">--feature-gates mapStringBool</td>
     </tr>
@@ -302,7 +303,7 @@ kube-scheduler [flags]
       一组 key=value 对，描述了 alpha/experimental 特征开关。选项包括：<br/>APIListChunking=true|false (BETA - 默认值=true)<br/>APIResponseCompression=true|false (BETA - 默认值=true)<br/>AllAlpha=true|false (ALPHA - 默认值=false)<br/>AppArmor=true|false (BETA - 默认值=true)<br/>AttachVolumeLimit=true|false (BETA - 默认值=true)<br/>BalanceAttachedNodeVolumes=true|false (ALPHA - 默认值=false)<br/>BlockVolume=true|false (BETA - 默认值=true)<br/>BoundServiceAccountTokenVolume=true|false (ALPHA - 默认值=false)<br/>CPUManager=true|false (BETA - 默认值=true)<br/>CRIContainerLogRotation=true|false (BETA - 默认值=true)<br/>CSIBlockVolume=true|false (BETA - 默认值=true)<br/>CSIDriverRegistry=true|false (BETA - 默认值=true)<br/>CSIInlineVolume=true|false (BETA - 默认值=true)<br/>CSIMigration=true|false (ALPHA - 默认值=false)<br/>CSIMigrationAWS=true|false (ALPHA - 默认值=false)<br/>CSIMigrationAzureDisk=true|false (ALPHA - 默认值=false)<br/>CSIMigrationAzureFile=true|false (ALPHA - 默认值=false)<br/>CSIMigrationGCE=true|false (ALPHA - 默认值=false)<br/>CSIMigrationOpenStack=true|false (ALPHA - 默认值=false)<br/>CSINodeInfo=true|false (BETA - 默认值=true)<br/>CustomCPUCFSQuotaPeriod=true|false (ALPHA - 默认值=false)<br/>CustomResourceDefaulting=true|false (BETA - 默认值=true)<br/>DevicePlugins=true|false (BETA - 默认值=true)<br/>DryRun=true|false (BETA - 默认值=true)<br/>DynamicAuditing=true|false (ALPHA - 默认值=false)<br/>DynamicKubeletConfig=true|false (BETA - 默认值=true)<br/>EndpointSlice=true|false (ALPHA - 默认值=false)<br/>EphemeralContainers=true|false (ALPHA - 默认值=false)<br/>EvenPodsSpread=true|false (ALPHA - 默认值=false)<br/>ExpandCSIVolumes=true|false (BETA - 默认值=true)<br/>ExpandInUsePersistentVolumes=true|false (BETA - 默认值=true)<br/>ExpandPersistentVolumes=true|false (BETA - 默认值=true)<br/>ExperimentalHostUserNamespaceDefaulting=true|false (BETA - 默认值=false)<br/>HPAScaleToZero=true|false (ALPHA - 默认值=false)<br/>HyperVContainer=true|false (ALPHA - 默认值=false)<br/>IPv6DualStack=true|false (ALPHA - 默认值=false)<br/>KubeletPodResources=true|false (BETA - 默认值=true)<br/>LegacyNodeRoleBehavior=true|false (ALPHA - 默认值=true)<br/>LocalStorageCapacityIsolation=true|false (BETA - 默认值=true)<br/>LocalStorageCapacityIsolationFSQuotaMonitoring=true|false (ALPHA - 默认值=false)<br/>MountContainers=true|false (ALPHA - 默认值=false)<br/>NodeDisruptionExclusion=true|false (ALPHA - 默认值=false)<br/>NodeLease=true|false (BETA - 默认值=true)<br/>NonPreemptingPriority=true|false (ALPHA - 默认值=false)<br/>PodOverhead=true|false (ALPHA - 默认值=false)<br/>PodShareProcessNamespace=true|false (BETA - 默认值=true)<br/>ProcMountType=true|false (ALPHA - 默认值=false)<br/>QOSReserved=true|false (ALPHA - 默认值=false)<br/>RemainingItemCount=true|false (BETA - 默认值=true)<br/>RemoveSelfLink=true|false (ALPHA - 默认值=false)<br/>RequestManagement=true|false (ALPHA - 默认值=false)<br/>ResourceLimitsPriorityFunction=true|false (ALPHA - 默认值=false)<br/>ResourceQuotaScopeSelectors=true|false (BETA - 默认值=true)<br/>RotateKubeletClientCertificate=true|false (BETA - 默认值=true)<br/>RotateKubeletServerCertificate=true|false (BETA - 默认值=true)<br/>RunAsGroup=true|false (BETA - 默认值=true)<br/>RuntimeClass=true|false (BETA - 默认值=true)<br/>SCTPSupport=true|false (ALPHA - 默认值=false)<br/>ScheduleDaemonSetPods=true|false (BETA - 默认值=true)<br/>ServerSideApply=true|false (BETA - 默认值=true)<br/>ServiceLoadBalancerFinalizer=true|false (BETA - 默认值=true)<br/>ServiceNodeExclusion=true|false (ALPHA - 默认值=false)<br/>StartupProbe=true|false (BETA - 默认值=true)<br/>StorageVersionHash=true|false (BETA - 默认值=true)<br/>StreamingProxyRedirects=true|false (BETA - 默认值=true)<br/>SupportNodePidsLimit=true|false (BETA - 默认值=true)<br/>SupportPodPidsLimit=true|false (BETA - 默认值=true)<br/>Sysctls=true|false (BETA - 默认值=true)<br/>TTLAfterFinished=true|false (ALPHA - 默认值=false)<br/>TaintBasedEvictions=true|false (BETA - 默认值=true)<br/>TaintNodesByCondition=true|false (BETA - 默认值=true)<br/>TokenRequest=true|false (BETA - 默认值=true)<br/>TokenRequestProjection=true|false (BETA - 默认值=true)<br/>TopologyManager=true|false (ALPHA - 默认值=false)<br/>ValidateProxyRedirects=true|false (BETA - 默认值=true)<br/>VolumePVCDataSource=true|false (BETA - 默认值=true)<br/>VolumeSnapshotDataSource=true|false (ALPHA - 默认值=false)<br/>VolumeSubpathEnvExpansion=true|false (BETA - 默认值=true)<br/>WatchBookmark=true|false (BETA - 默认值=true)<br/>WinDSR=true|false (ALPHA - 默认值=false)<br/>WinOverlay=true|false (ALPHA - 默认值=false)<br/>WindowsGMSA=true|false (BETA - 默认值=true)<br/>WindowsRunAsUserName=true|false (ALPHA - 默认值=false)
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">
       <!--
@@ -319,7 +320,7 @@ kube-scheduler [flags]
       弃用: RequiredDuringScheduling 亲和力不是对称的，但是存在与每个 RequiredDuringScheduling 关联性规则相对应的隐式 PreferredDuringScheduling 关联性规则 --hard-pod-affinity-symmetric-weight 代表隐式 PreferredDuringScheduling 关联性规则的权重。权重必须在 0-100 范围内。此选项已移至策略配置文件。
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">-h, --help</td>
     </tr>
@@ -331,7 +332,7 @@ kube-scheduler [flags]
        kube-scheduler 帮助命令
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">--http2-max-streams-per-connection int</td>
     </tr>
@@ -343,7 +344,7 @@ kube-scheduler [flags]
       服务器为客户端提供的 HTTP/2 连接最大限制。零表示使用 golang 的默认值。
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">
       <!--
@@ -360,7 +361,7 @@ kube-scheduler [flags]
       弃用: 与 kubernetes apiserver 通信时使用
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">
       <!--
@@ -377,7 +378,7 @@ kube-scheduler [flags]
       弃用: 发送到 apiserver 的请求的内容类型。
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">
       <!--
@@ -394,7 +395,7 @@ kube-scheduler [flags]
       弃用: 与 kubernetes apiserver 通信时要使用的 QPS
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">--kubeconfig string</td>
     </tr>
@@ -406,7 +407,7 @@ kube-scheduler [flags]
       弃用: 具有授权和主节点位置信息的 kubeconfig 文件的路径。
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">
       <!--
@@ -423,7 +424,7 @@ kube-scheduler [flags]
       在执行主循环之前，开始领导者选举并选出领导者。为实现高可用性，运行多副本的组件并选出领导者。
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">
       <!--
@@ -440,7 +441,7 @@ kube-scheduler [flags]
       非领导者候选人在观察到领导者更新后将等待直到试图获得领导但未更新的领导者职位的等待时间。这实际上是领导者在被另一位候选人替代之前可以停止的最大持续时间。该情况仅在启用了领导者选举的情况下才适用。
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">
       <!--
@@ -457,7 +458,7 @@ kube-scheduler [flags]
       </td>
       领导者尝试在停止领导之前更新领导职位的间隔时间。该时间必须小于或等于租赁期限。仅在启用了领导者选举的情况下才适用。
     </tr>
-
+    
     <tr>
       <td colspan="2">
       <!--
@@ -474,7 +475,7 @@ kube-scheduler [flags]
       在领导者选举期间用于锁定的资源对象的类型。支持的选项是端点（默认）和 `configmaps`
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">
       <!--
@@ -491,7 +492,7 @@ kube-scheduler [flags]
       在领导者选举期间用于锁定的资源对象的名称。
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">
       <!--
@@ -508,7 +509,7 @@ kube-scheduler [flags]
       在领导者选举期间用于锁定的资源对象的命名空间。
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">
       <!--
@@ -525,7 +526,7 @@ kube-scheduler [flags]
       客户应在尝试获取和更新领导之间等待的时间。仅在启用了领导者选举的情况下才适用。
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">
       <!--
@@ -542,7 +543,7 @@ kube-scheduler [flags]
       弃用: 定义锁对象的名称。将被删除以便使用 Leader-elect-resource-name
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">
       <!--
@@ -559,7 +560,7 @@ kube-scheduler [flags]
       弃用: 定义锁对象的命名空间。将被删除以便使用 leader-elect-resource-namespace。
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">
       <!--
@@ -576,7 +577,7 @@ kube-scheduler [flags]
       当记录命中行文件：N 时发出堆栈跟踪
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">--log-dir string</td>
     </tr>
@@ -588,7 +589,7 @@ kube-scheduler [flags]
       如果为非空，则在此目录中写入日志文件
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">--log-file string</td>
     </tr>
@@ -600,7 +601,7 @@ kube-scheduler [flags]
       如果为非空，请使用此日志文件
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">
       <!--
@@ -617,7 +618,7 @@ kube-scheduler [flags]
       定义日志文件可以增长到的最大值。单位为兆字节。如果值为0，则最大文件大小为无限制。
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">
       <!--
@@ -634,7 +635,7 @@ kube-scheduler [flags]
       两次日志刷新之间的最大秒数
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">
       <!--
@@ -651,7 +652,7 @@ kube-scheduler [flags]
       日志记录到标准错误而不是文件
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">--master string</td>
     </tr>
@@ -663,7 +664,7 @@ kube-scheduler [flags]
        Kubernetes API 服务器的地址（覆盖 kubeconfig 中的任何值）
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">--policy-config-file string</td>
     </tr>
@@ -675,7 +676,7 @@ kube-scheduler [flags]
       弃用：具有调度程序策略配置的文件。如果未提供 policy ConfigMap 或 --use-legacy-policy-config = true，则使用此文件
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">--policy-configmap string</td>
     </tr>
@@ -687,7 +688,7 @@ kube-scheduler [flags]
       弃用: 包含调度程序策略配置的 ConfigMap 对象的名称。如果 --use-legacy-policy-config = false，则它必须在调度程序初始化之前存在于系统命名空间中。必须将配置作为键为 'policy.cfg' 的 'Data' 映射中元素的值提供
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">
       <!--
@@ -704,7 +705,7 @@ kube-scheduler [flags]
       弃用: 策略 ConfigMap 所在的命名空间。如果未提供或为空，则将使用 kube-system 命名空间。
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">
       <!--
@@ -721,7 +722,7 @@ kube-scheduler [flags]
       弃用: 在没有身份验证和授权的情况下不安全地为 HTTP 服务的端口。如果为0，则根本不提供 HTTP。请参见--secure-port。
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">--profiling</td>
     </tr>
@@ -733,7 +734,7 @@ kube-scheduler [flags]
       弃用: 通过 Web 界面主机启用配置文件：port/debug/pprof/
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">--requestheader-allowed-names stringSlice</td>
     </tr>
@@ -745,7 +746,7 @@ kube-scheduler [flags]
       客户端证书通用名称列表允许在 --requestheader-username-headers 指定的头部中提供用户名。如果为空，则允许任何由权威机构 --requestheader-client-ca-file 验证的客户端证书。
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">--requestheader-client-ca-file string</td>
     </tr>
@@ -757,7 +758,7 @@ kube-scheduler [flags]
       在信任 --requestheader-username-headers 指定的头部中的用户名之前用于验证传入请求上的客户端证书的根证书包。警告：通常不依赖于传入请求已经完成的授权。
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">
       <!--
@@ -774,7 +775,7 @@ kube-scheduler [flags]
       要检查请求头部前缀列表。建议使用 X-Remote-Extra- 
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">
       <!--
@@ -791,7 +792,7 @@ kube-scheduler [flags]
       用于检查组的请求头部列表。建议使用 X-Remote-Group。
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">
       <!--
@@ -808,7 +809,7 @@ kube-scheduler [flags]
       用于检查用户名的请求头部列表。  X-Remote-User 很常见。
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">
       <!--
@@ -825,7 +826,7 @@ kube-scheduler [flags]
       弃用: 调度程序名称用于根据 Pod 的 "spec.schedulerName" 选择此调度程序将处理的 Pod。
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">
       <!--
@@ -842,7 +843,7 @@ kube-scheduler [flags]
       通过身份验证和授权为 HTTPS 服务的端口。如果为 0，则根本不提供 HTTPS。
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">--skip-headers</td>
     </tr>
@@ -854,7 +855,7 @@ kube-scheduler [flags]
       如果为 true，请在日志消息中避免头部前缀
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">--skip-log-headers</td>
     </tr>
@@ -866,7 +867,7 @@ kube-scheduler [flags]
       如果为true，则在打开日志文件时避免头部
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">
       <!--
@@ -883,7 +884,7 @@ kube-scheduler [flags]
       达到或超过此阈值的日志转到 stderr
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">--tls-cert-file string</td>
     </tr>
@@ -895,7 +896,7 @@ kube-scheduler [flags]
       包含默认的 HTTPS x509 证书的文件。（CA证书（如果有）在服务器证书之后并置）。如果启用了 HTTPS 服务，并且未提供 --tls-cert-file 和 --tls-private-key-file，则会为公共地址生成一个自签名证书和密钥，并将其保存到 --cert-dir 指定的目录中。
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">--tls-cipher-suites stringSlice</td>
     </tr>
@@ -908,7 +909,7 @@ kube-scheduler [flags]
       TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_RC4_128_SHA,TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_RC4_128_SHA,TLS_RSA_WITH_3DES_EDE_CBC_SHA,TLS_RSA_WITH_AES_128_CBC_SHA,TLS_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_128_GCM_SHA256,TLS_RSA_WITH_AES_256_CBC_SHA,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_RC4_128_SHA
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">--tls-min-version string</td>
     </tr>
@@ -920,7 +921,7 @@ kube-scheduler [flags]
       支持的最低 TLS 版本。可能的值：VersionTLS10, VersionTLS11, VersionTLS12, VersionTLS13
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">--tls-private-key-file string</td>
     </tr>
@@ -932,7 +933,7 @@ kube-scheduler [flags]
       包含与 --tls-cert-file 匹配的默认 x509 私钥的文件。
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">
       <!--
@@ -949,7 +950,7 @@ kube-scheduler [flags]
       一对 x509 证书和私钥文件路径，可选地后缀为完全限定域名的域模式列表，并可能带有前缀的通配符段。如果未提供域模式，则获取证书名称。非通配符匹配胜过通配符匹配，显式域模式胜过获取名称。 对于多个密钥/证书对，请多次使用 --tls-sni-cert-key。例如: "example.crt,example.key" 或者 "foo.crt,foo.key:*.foo.com,foo.com"。
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">--use-legacy-policy-config</td>
     </tr>
@@ -961,7 +962,7 @@ kube-scheduler [flags]
       弃用: 设置为 true 时，调度程序将忽略策略 ConfigMap 并使用策略配置文件
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">-v, --v Level</td>
     </tr>
@@ -973,7 +974,7 @@ kube-scheduler [flags]
       日志级别详细程度的数字
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">--version version[=true]</td>
     </tr>
@@ -985,7 +986,7 @@ kube-scheduler [flags]
       打印版本信息并退出
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">--vmodule moduleSpec</td>
     </tr>
@@ -997,7 +998,7 @@ kube-scheduler [flags]
       以逗号分隔的 pattern = N 设置列表，用于文件过滤的日志记录
       </td>
     </tr>
-
+    
     <tr>
       <td colspan="2">--write-config-to string</td>
     </tr>

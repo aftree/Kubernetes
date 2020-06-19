@@ -17,10 +17,10 @@ Kubernetes cluster.
 本页展示了如何在集群中启用和配置 DNS 服务的自动伸缩功能。
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-* {{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+* . include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 <!--
 * This guide assumes your nodes use the AMD64 or Intel 64 CPU architecture
@@ -42,7 +42,7 @@ Kubernetes cluster.
 <!--
 ## Determining whether DNS horizontal autoscaling is already enabled
 
-List the {{< glossary_tooltip text="Deployments" term_id="deployment" >}}
+List the . glossary_tooltip text="Deployments" term_id="deployment" >}}
 in your cluster in the kube-system namespace:
 
 ```shell
@@ -62,7 +62,7 @@ already enabled, and you can skip to
 -->
 ## 确定是否 DNS 水平 水平自动伸缩特性已经启用
 
-在 kube-system 命名空间中列出集群中的 {{< glossary_tooltip text="Deployments" term_id="deployment" >}} ：
+在 kube-system 命名空间中列出集群中的 . glossary_tooltip text="Deployments" term_id="deployment" >}} ：
 
 ```shell
 kubectl get deployment --namespace=kube-system
@@ -182,7 +182,7 @@ container based on the `cluster-proportional-autoscaler-amd64` image.
 
 Create a file named `dns-horizontal-autoscaler.yaml` with this content:
 
-{{< codenew file="admin/dns/dns-horizontal-autoscaler.yaml" >}}
+. codenew file="admin/dns/dns-horizontal-autoscaler.yaml" >}}
 
 In the file, replace `<SCALE_TARGET>` with your scale target.
 
@@ -205,7 +205,7 @@ DNS horizontal autoscaling is now enabled.
 
 创建文件 `dns-horizontal-autoscaler.yaml`，内容如下所示：
 
-{{< codenew file="admin/dns/dns-horizontal-autoscaler.yaml" >}}
+. codenew file="admin/dns/dns-horizontal-autoscaler.yaml" >}}
 
 在文件中，将 `<SCALE_TARGET>` 替换成 scale 目标。
 
@@ -224,7 +224,7 @@ DNS 水平自动伸缩在已经启用了。
 <!--
 ## Tuning autoscaling parameters
 
-Verify that the dns-autoscaler {{< glossary_tooltip text="ConfigMap" term_id="configmap" >}} exists:
+Verify that the dns-autoscaler . glossary_tooltip text="ConfigMap" term_id="configmap" >}} exists:
 
 ```shell
 kubectl get configmap --namespace=kube-system
@@ -267,7 +267,7 @@ There are other supported scaling patterns. For details, see
 -->
 ## 调优自动伸缩参数
 
-验证 dns-autoscaler {{< glossary_tooltip text="ConfigMap" term_id="configmap" >}} 是否存在：
+验证 dns-autoscaler . glossary_tooltip text="ConfigMap" term_id="configmap" >}} 是否存在：
 
 ```shell
 kubectl get configmap --namespace=kube-system
@@ -479,7 +479,7 @@ is under consideration as a future development.
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 <!--
 * Learn more about the

@@ -26,10 +26,10 @@ This page provides an overview of enabling Endpoint Slices in Kubernetes.
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-  {{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+  . include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 
@@ -54,10 +54,10 @@ resources instead of a single large Endpoints resource.
 ## Enabling Endpoint Slices
 -->
 ## 启用端点切片
-{{< feature-state for_k8s_version="v1.16" state="alpha" >}}
+. feature-state for_k8s_version="v1.16" state="alpha" >}}
 
 
-{{< note >}}
+. note >}}
 <!--
 Although Endpoint Slices may eventually replace Endpoints, many Kubernetes
 components still rely on Endpoints. For now, enabling Endpoint Slices should be
@@ -66,7 +66,7 @@ seen as an addition to Endpoints in a cluster, not a replacement for them.
 
 尽管端点切片最终可能会取代端点，但许多 Kubernetes 组件仍然依赖于端点。目前，启用端点切片应该被视为集群中端点的补充，而不是它们的替代。
 
-{{< /note >}}
+. /note >}}
 
 <!--
 As an alpha feature, Endpoint Slices are not enabled by default in Kubernetes.

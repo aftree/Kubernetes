@@ -17,7 +17,7 @@ content_type: task
 --->
 
 <!-- overview -->
-{{< feature-state for_k8s_version="v1.11" state="beta" >}}
+. feature-state for_k8s_version="v1.11" state="beta" >}}
 
 <!--
 This document describes how to configure and use kernel parameters within a
@@ -27,10 +27,10 @@ Kubernetes cluster using the sysctl interface.
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 
@@ -102,12 +102,12 @@ The following sysctls are supported in the _safe_ set:
 - `net.ipv4.ip_local_port_range`,
 - `net.ipv4.tcp_syncookies`.
 
-{{< note >}}
+. note >}}
 <!--
 The example `net.ipv4.tcp_syncookies` is not namespaced on Linux kernel version 4.4 or lower.
 --->
 **注意**: 示例中的 `net.ipv4.tcp_syncookies` 在Linux 内核 4.4 或更低的版本中是无命名空间的。
-{{< /note >}}
+. /note >}}
 
 <!--
 This list will be extended in future Kubernetes versions when the kubelet
@@ -200,13 +200,13 @@ the specification.
 --->
 此示例中，使用 Pod SecurityContext 来对一个安全的 sysctl 参数 `kernel.shm_rmid_forced` 以及两个非安全的 sysctl 参数 `net.core.somaxconn`和 `kernel.msgmax` 进行设置。在 Pod 规格中对 _安全的_ 和 _非安全的_ sysctl 参数不做区分。
 
-{{< warning >}}
+. warning >}}
 <!--
 Only modify sysctl parameters after you understand their effects, to avoid
 destabilizing your operating system.
 --->
 为了避免破坏操作系统的稳定性，请您在了解变更后果之后再修改 sysctl 参数。
-{{< /warning >}}
+. /warning >}}
 
 ```yaml
 apiVersion: v1
@@ -228,14 +228,14 @@ spec:
 
 <!-- discussion -->
 
-{{< warning >}}
+. warning >}}
 <!--
 Due to their nature of being _unsafe_, the use of _unsafe_ sysctls
 is at-your-own-risk and can lead to severe problems like wrong behavior of
 containers, resource shortage or complete breakage of a node.
 --->
 **警告**：由于 _非安全的_ sysctl 参数其本身具有不稳定性，在使用 _非安全的_ sysctl 参数时可能会导致一些严重问题，如容器的错误行为、机器资源不足或节点被完全破坏，用户需自行承担风险。
-{{< /warning >}}
+. /warning >}}
 
 <!--
 It is good practice to consider nodes with special sysctl settings as
@@ -301,7 +301,7 @@ given sysctl is both allowed and forbidden.
 --->
 `allowedUnsafeSysctls` 与 `forbiddenSysctls` 两字段的配置不能重叠，否则这就意味着存在某个 sysctl 参数既被启用又被禁用。
 
-{{< warning >}}
+. warning >}}
 <!--
 If you whitelist unsafe sysctls via the `allowedUnsafeSysctls` field
 in a PodSecurityPolicy, any pod using such a sysctl will fail to start
@@ -309,7 +309,7 @@ if the sysctl is not whitelisted via the `--allowed-unsafe-sysctls` kubelet
 flag as well on that node.
 --->
 **警告**：如果您通过 PodSecurityPolicy 中的 `allowedUnsafeSysctls` 字段将非安全的 sysctl 参数列入白名单，但该 sysctl 参数未通过 kubelet 命令行参数 `--allowed-unsafe-sysctls` 在节点上将其列入白名单，则设置了这个 sysctl 参数的 Pod 将会启动失败。
-{{< /warning >}}
+. /warning >}}
 
 <!--
 This example allows unsafe sysctls prefixed with `kernel.msg` to be set and

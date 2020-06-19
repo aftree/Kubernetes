@@ -21,7 +21,7 @@ content_type: task
 
 <!-- overview -->
 
-{{< feature-state for_k8s_version="v1.11" state="stable" >}}
+. feature-state for_k8s_version="v1.11" state="stable" >}}
 
 <!--
 `crictl` is a command-line interface for CRI-compatible container runtimes.
@@ -36,7 +36,7 @@ Kubernetes node. `crictl` and its source are hosted in the
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
 <!--
@@ -129,7 +129,7 @@ The following examples show some `crictl` commands and example output.
 
 ## crictl 命令示例
 
-{{< warning >}}
+. warning >}}
 
 <!--If you use `crictl` to create pod sandboxes or containers on a running
 Kubernetes cluster, the Kubelet will eventually delete them. `crictl` is not a
@@ -138,7 +138,7 @@ general purpose workflow tool, but a tool that is useful for debugging.-->
 如果使用 `crictl` 在正在运行的 Kubernetes 集群上创建 Pod 沙盒或容器，kubelet 最终将删除它们。
 `crictl`不是一个通用的工作流工具，而是一个对调试有用的工具。
 
-{{< /warning >}}
+. /warning >}}
 
 <!--
 ### List pods

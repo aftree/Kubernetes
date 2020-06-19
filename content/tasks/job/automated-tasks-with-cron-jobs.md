@@ -31,7 +31,7 @@ Cron jobs can also schedule individual tasks for a specific time, such as if you
 
 CronJobs 在创建周期性以及重复性的任务时很有帮助，例如执行备份操作或者发送邮件。CronJobs 也可以在特定时间调度单个任务，例如你想调度低活跃周期的任务。
 
-{{< note >}}
+. note >}}
 <!--
 CronJob resource in `batch/v2alpha1` API group has been deprecated starting from cluster version 1.8.
 You should switch to using `batch/v1beta1`, instead, which is enabled by default in the API server.
@@ -39,7 +39,7 @@ Examples in this document use `batch/v1beta1` in all examples.
 -->
 从集群版本1.8开始，`batch/v2alpha1` API 组中的 CronJob 资源已经被废弃。
 你应该切换到 API 服务器默认启用的 `batch/v1beta1` API 组。本文中的所有示例使用了`batch/v1beta1`。
-{{< /note >}}
+. /note >}}
 
 <!--
 Cron jobs have limitations and idiosyncrasies.
@@ -55,10 +55,10 @@ CronJobs 有一些限制和特点。
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-* {{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+* . include "task-tutorial-prereqs.md" >}} . version-check >}}
 <!--
 * You need a working Kubernetes cluster at version >= 1.8 (for CronJob). For previous versions of cluster (< 1.8)
 you need to explicitly enable `batch/v2alpha1` API by passing `--runtime-config=batch/v2alpha1=true` to
@@ -86,7 +86,7 @@ This example cron job config `.spec` file prints the current time and a hello me
 CronJob 需要一个配置文件。
 本例中 CronJob 的`.spec` 配置文件每分钟打印出当前时间和一个问好信息：
 
-{{< codenew file="application/job/cronjob.yaml" >}}
+. codenew file="application/job/cronjob.yaml" >}}
 
 <!--
 Run the example cron job by downloading the example file and then running this command:
@@ -210,12 +210,12 @@ A cron job config also needs a [`.spec` section](https://git.k8s.io/community/co
 
 CronJob 配置也需要包括[`.spec`](https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status).
 
-{{< note >}}
+. note >}}
 <!--
 All modifications to a cron job, especially its `.spec`, are applied only to the following runs.
 -->
 对 CronJob 的所有改动，特别是它的 `.spec`，只会影响将来的运行实例。
-{{< /note >}}
+. /note >}}
 
 <!--
 ### Schedule
@@ -247,12 +247,12 @@ The format also includes extended `vixie cron` step values. As explained in the 
 > 例如，`0-23/2` 可被用在小时域来声明命令在其他数值的小时数执行（ V7 标准中对应的方法是`0,2,4,6,8,10,12,14,16,18,20,22`）。
 > 步长也可以放在通配符后面，因此如果你想表达 "每两小时"，就用 `*/2` 。
 
-{{< note >}}
+. note >}}
 <!--
 A question mark (`?`) in the schedule has the same meaning as an asterisk `*`, that is, it stands for any of available value for a given field.
 -->
 调度中的问号 (`?`) 和星号  `*` 含义相同，表示给定域的任何可用值。
-{{< /note >}}
+. /note >}}
 
 <!--
 ### Job Template
@@ -338,13 +338,13 @@ Defaults to false.
 
 `.spec.suspend`域也是可选的。如果设置为 `true` ，后续发生的执行都会挂起。这个设置对已经开始的执行不起作用。默认是关闭的。
 
-{{< caution >}}
+. caution >}}
 <!--
 Executions that are suspended during their scheduled time count as missed jobs.
 When `.spec.suspend` changes from `true` to `false` on an existing cron job without a [starting deadline](#starting-deadline), the missed jobs are scheduled immediately.
 -->
 在调度时间内挂起的执行都会被统计为错过的任务。当 `.spec.suspend` 从 `true` 改为 `false` 时，且没有 [开始的最后期限](#starting-deadline)，错过的任务会被立即调度。
-{{< /caution >}}
+. /caution >}}
 
 <!--
 ### Jobs History Limits

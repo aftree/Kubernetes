@@ -9,11 +9,10 @@ content_type: task
 本文展示了如何连接 Kubernetes 集群上运行的服务。
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
-
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 <!-- steps -->
 

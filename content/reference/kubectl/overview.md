@@ -79,7 +79,7 @@ where `command`, `TYPE`, `NAME`, and `flags` are:
 
    When performing an operation on multiple resources, you can specify each resource by type and name or specify one or more files:
 -->
- 
+
 * `NAME`：指定资源的名称。名称区分大小写。如果省略名称，则显示所有资源的详细信息 `kubectl get pods`。 
 
   在对多个资源执行操作时，您可以按类型和名称指定每个资源，或指定一个或多个文件： 
@@ -92,7 +92,7 @@ where `command`, `TYPE`, `NAME`, and `flags` are:
         
       * To specify multiple resource types individually:  `TYPE1/name1 TYPE1/name2 TYPE2/name3 TYPE<#>/name<#>`.<br/>
       Example: `kubectl get pod/example-pod1 replicationcontroller/example-rc1`
-        
+      
    * To specify resources with one or more files:  `-f file1 -f file2 -f file<#>`
    
       * [Use YAML rather than JSON](/docs/concepts/configuration/overview/#general-config-tips) since YAML tends to be more user-friendly, especially for configuration files.<br/>
@@ -102,27 +102,27 @@ where `command`, `TYPE`, `NAME`, and `flags` are:
 -->
 
    * 要按类型和名称指定资源：
-   
+  
       * 要对所有类型相同的资源进行分组，请执行以下操作：`TYPE1 name1 name2 name<#>`。<br/>
       例子：`kubectl get pod example-pod1 example-pod2`
         
       * 分别指定多个资源类型：`TYPE1/name1 TYPE1/name2 TYPE2/name3 TYPE<#>/name<#>`。<br/>
       例子：`kubectl get pod/example-pod1 replicationcontroller/example-rc1`
-        
+      
    * 用一个或多个文件指定资源：`-f file1 -f file2 -f file<#>`
-   
+  
       * [使用 YAML 而不是 JSON](/docs/concepts/configuration/overview/#general-config-tips) 因为 YAML 更容易使用，特别是用于配置文件时。<br/>
      例子：`kubectl get pod -f ./pod.yaml`
 
 * `flags`: 指定可选的参数。例如，可以使用 `-s` 或 `-server` 参数指定 Kubernetes API 服务器的地址和端口。<br/>
 
-{{< caution >}}
+. caution >}}
 
 <!--
 Flags that you specify from the command line override default values and any corresponding environment variables.
 -->
 从命令行指定的参数会覆盖默认值和任何相应的环境变量。
-{{< /caution >}}
+. /caution >}}
 
 <!--
 If you need help, just run `kubectl help` from the terminal window.
@@ -634,7 +634,7 @@ kubectl describe pods <rc-name>
 kubectl describe pods --include-uninitialized=false
 ```
 
-{{< note >}}
+. note >}}
 
 <!--
 The `kubectl get` command is usually used for retrieving one or more
@@ -652,7 +652,7 @@ the pods running on it, the events generated for the node etc.
 `kubectl describe` 命令更侧重于描述指定资源的许多相关方面。它可以调用对 `API 服务器` 的多个 API 调用来为用户构建视图。
 例如，该 `kubectl describe node` 命令不仅检索有关节点的信息，还检索在其上运行的 pod 的摘要，为节点生成的事件等。
 
-{{< /note >}}
+. /note >}}
 
 <!--
 `kubectl delete` - Delete resources either from a file, stdin, or specifying label selectors, names, resource selectors, or resources.
@@ -911,7 +911,7 @@ To find out more about plugins, take a look at the [example cli plugin](https://
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 <!--

@@ -25,10 +25,10 @@ in this task demonstrate a strategic merge patch and a JSON merge patch.
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 
@@ -48,7 +48,7 @@ is a Pod that has one container:
 
 下面是具有两个副本的 Deployment 的配置文件。每个副本是一个 Pod，有一个容器：
 
-{{< codenew file="application/deployment-patch.yaml" >}}
+. codenew file="application/deployment-patch.yaml" >}}
 
 <!--
 Create the Deployment:
@@ -241,9 +241,9 @@ You can also see the patch strategy in the
 
 <!--
 And you can see the patch strategy in the
-[Kubernetes API documentation](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#podspec-v1-core).
+[Kubernetes API documentation](/docs/reference/generated/kubernetes-api/. param "version" >}}/#podspec-v1-core).
 -->
-您可以在 [Kubernetes API 文档](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#podspec-v1-core)
+您可以在 [Kubernetes API 文档](/docs/reference/generated/kubernetes-api/. param "version" >}}/#podspec-v1-core)
 中看到 patch 策略
 
 <!--
@@ -267,14 +267,14 @@ Patch your Deployment:
 patch Deployment：
 
 
-{{< tabs name="kubectl_patch_example" >}}
-{{{< tab name="Bash" codelang="bash" >}}
+. tabs name="kubectl_patch_example" >}}
+{. tab name="Bash" codelang="bash" >}}
 kubectl patch deployment patch-demo --patch "$(cat patch-file-containers.yaml)"
-{{< /tab >}}
-{{< tab name="PowerShell" codelang="posh" >}}
+. /tab >}}
+. tab name="PowerShell" codelang="posh" >}}
 kubectl patch deployment patch-demo --patch $(cat patch-file-containers.yaml)
-{{< /tab >}}}
-{{< /tabs >}}
+. /tab >}}}
+. /tabs >}}
 
 <!--
 View the patched Deployment:
@@ -509,7 +509,7 @@ and
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 <!--

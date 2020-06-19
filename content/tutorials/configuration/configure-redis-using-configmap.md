@@ -15,7 +15,7 @@ This page provides a real world example of how to configure Redis using a Config
 
 
 
-## {{% heading "objectives" %}}
+## . heading "objectives" %}}
 
 
 <!--
@@ -36,10 +36,10 @@ This page provides a real world example of how to configure Redis using a Config
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-* {{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+* . include "task-tutorial-prereqs.md" >}} . version-check >}}
 <!--
 * The example shown on this page works with `kubectl` 1.14 and above.
 * Understand [Configure Containers Using a ConfigMap](/docs/tasks/configure-pod-container/configure-pod-configmap/).
@@ -66,7 +66,7 @@ First create a `kustomization.yaml` containing a ConfigMap from the `redis-confi
 1. 根据`docs/user-guide/configmap/redis/redis-config`来创建一个ConfigMap：
 
 
-{{< codenew file="pods/config/redis-config" >}}
+. codenew file="pods/config/redis-config" >}}
 
 ```shell
 curl -OL https://k8s.io/examples/pods/config/redis-config
@@ -84,7 +84,7 @@ Add the pod resource config to the `kustomization.yaml`:
 -->
 将 pod 的资源配置添加到 `kustomization.yaml` 文件中：
 
-{{< codenew file="pods/config/redis-pod.yaml" >}}
+. codenew file="pods/config/redis-pod.yaml" >}}
 
 ```shell
 curl -OL https://raw.githubusercontent.com/kubernetes/website/master/content/en/examples/pods/config/redis-pod.yaml
@@ -155,7 +155,7 @@ kubectl delete pod redis
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 <!--

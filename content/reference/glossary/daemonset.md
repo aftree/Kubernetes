@@ -30,14 +30,14 @@ tags:
 ---
 -->
 <!--
- Ensures a copy of a {{< glossary_tooltip text="Pod" term_id="pod" >}} is running across a set of nodes in a {{< glossary_tooltip text="cluster" term_id="cluster" >}}.
+ Ensures a copy of a . glossary_tooltip text="Pod" term_id="pod" >}} is running across a set of nodes in a . glossary_tooltip text="cluster" term_id="cluster" >}}.
 -->
- 确保 {{< glossary_tooltip text="Pod" term_id="pod" >}} 的副本在{{< glossary_tooltip text="集群" term_id="cluster" >}}中的一组节点上运行。
+ 确保 . glossary_tooltip text="Pod" term_id="pod" >}} 的副本在. glossary_tooltip text="集群" term_id="cluster" >}}中的一组节点上运行。
 <!--more--> 
 
 <!--
-Used to deploy system daemons such as log collectors and monitoring agents that typically must run on every {{< glossary_tooltip term_id="node" >}}.
+Used to deploy system daemons such as log collectors and monitoring agents that typically must run on every . glossary_tooltip term_id="node" >}}.
 -->
 
-用来部署系统守护进程，例如日志搜集和监控代理，这些进程通常必须运行在每个{{< glossary_tooltip text="节点" term_id="node" >}}上。
+用来部署系统守护进程，例如日志搜集和监控代理，这些进程通常必须运行在每个. glossary_tooltip text="节点" term_id="node" >}}上。
 

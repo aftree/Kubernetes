@@ -11,7 +11,7 @@ content_type: tutorial
 
 <!-- overview -->
 
-{{< feature-state for_k8s_version="v1.4" state="beta" >}}
+. feature-state for_k8s_version="v1.4" state="beta" >}}
 
 
 <!-- AppArmor is a Linux kernel security module that supplements the standard Linux user and group based
@@ -26,7 +26,7 @@ Apparmor 是一个 Linux 内核安全模块，它补充了标准的基于 Linux 
 
 
 
-## {{% heading "objectives" %}}
+## . heading "objectives" %}}
 
 
 <!-- * See an example of how to load a profile on a node
@@ -42,7 +42,7 @@ Apparmor 是一个 Linux 内核安全模块，它补充了标准的基于 Linux 
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
 <!-- Make sure: -->
@@ -85,22 +85,22 @@ Apparmor 是一个 Linux 内核安全模块，它补充了标准的基于 Linux 
    If the Kubelet contains AppArmor support (>= v1.4), it will refuse to run a Pod with AppArmor
    options if the kernel module is not enabled.
 
-  {{< note >}}
+  . note >}}
   Ubuntu carries many AppArmor patches that have not been merged into the upstream Linux
   kernel, including patches that add additional hooks and features. Kubernetes has only been
   tested with the upstream version, and does not promise support for other features.
-  {{< /note >}} -->
+  . /note >}} -->
 2. AppArmor 内核模块已启用 -- 要使 Linux 内核强制执行 AppArmor 配置文件，必须安装并且启动 AppArmor 内核模块。默认情况下，有几个发行版支持该模块，如 Ubuntu 和 SUSE，还有许多发行版提供可选支持。要检查模块是否已启用，请检查
 `/sys/module/apparmor/parameters/enabled` 文件：
   ```shell
    cat /sys/module/apparmor/parameters/enabled
    Y
-   ```
+  ```
    如果 Kubelet 包含 AppArmor 支持(>=v1.4)，如果内核模块未启用，它将拒绝运行带有 AppArmor 选项的 Pod。
 
-  {{< note >}}
+  . note >}}
   Ubuntu 携带了许多没有合并到上游 Linux 内核中的 AppArmor 补丁，包括添加附加钩子和特性的补丁。Kubernetes 只在上游版本中测试过，不承诺支持其他特性。
-  {{< /note >}}
+  . /note >}}
 
 <!-- 3. Container runtime is Docker -- Currently the only Kubernetes-supported container runtime that
    also supports AppArmor is Docker. As more runtimes add AppArmor support, the options will be
@@ -184,12 +184,12 @@ gke-test-default-pool-239f5d02-xwux: kubelet is posting ready status. AppArmor e
 <!-- ## Securing a Pod -->
 ## 保护 Pod
 
-{{< note >}}
+. note >}}
 <!-- AppArmor is currently in beta, so options are specified as annotations. Once support graduates to
 general availability, the annotations will be replaced with first-class fields (more details in
 [Upgrade path to GA](#upgrade-path-to-general-availability)). -->
 AppArmor 目前处于测试阶段，因此选项被指定为注释。一旦 AppArmor 被授予支持通用，注释将替换为首要的字段(更多详情参见[升级到 GA 的途径](#upgrade-path-to-general-availability))。
-{{< /note >}}
+. /note >}}
 
 <!-- AppArmor profiles are specified *per-container*. To specify the AppArmor profile to run a Pod
 container with, add an annotation to the Pod's metadata: -->
@@ -287,7 +287,7 @@ done
 <!-- Next, we'll run a simple "Hello AppArmor" pod with the deny-write profile: -->
 接下来，我们将运行一个带有拒绝写入配置文件的简单 "Hello AppArmor" pod：
 
-{{< codenew file="pods/security/hello-apparmor.yaml" >}}
+. codenew file="pods/security/hello-apparmor.yaml" >}}
 
 ```shell
 kubectl create -f ./hello-apparmor.yaml
@@ -590,7 +590,7 @@ logs or through `journalctl`. More information is provided in
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 <!-- Additional resources: -->

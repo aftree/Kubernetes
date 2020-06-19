@@ -19,7 +19,7 @@ content_type: concept
 
 <!-- overview -->
 
-{{< feature-state state="beta" >}}
+. feature-state state="beta" >}}
 <!--
 Kubernetes v1.6 introduced a new binary called `cloud-controller-manager`. `cloud-controller-manager` is a daemon that embeds cloud-specific control loops. These cloud-specific control loops were originally in the `kube-controller-manager`. Since cloud providers develop and release at a different pace compared to the Kubernetes project, abstracting the provider-specific code to the `cloud-controller-manager` binary allows cloud vendors to evolve independently from the core Kubernetes code.
 
@@ -110,7 +110,7 @@ For cloud controller managers not in Kubernetes core, you can find the respectiv
 
 For providers already in Kubernetes core, you can run the in-tree cloud controller manager as a Daemonset in your cluster, use the following as a guideline:
 
-{{< codenew file="admin/cloud/ccm-example.yaml" >}}
+. codenew file="admin/cloud/ccm-example.yaml" >}}
 -->
 ## 示例
 
@@ -125,7 +125,7 @@ For providers already in Kubernetes core, you can run the in-tree cloud controll
 
 对于已经存在于 Kubernetes 内核中的提供商，您可以在集群中将 in-tree 云管理控制器作为守护进程运行。请使用如下指南：
 
-{{< codenew file="admin/cloud/ccm-example.yaml" >}}
+. codenew file="admin/cloud/ccm-example.yaml" >}}
 
 <!--
 ## Limitations

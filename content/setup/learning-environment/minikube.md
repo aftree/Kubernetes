@@ -345,7 +345,7 @@ Minikube also creates a "minikube" context, and sets it to default in kubectl.
 To switch back to this context, run this command: `kubectl config use-context minikube`.
 -->
 
-{{< note >}}
+. note >}}
 如果您启用了 web 代理，则需要将此信息传递给 `minikube start` 命令：
 
 ```shell
@@ -357,7 +357,7 @@ https_proxy=<my proxy> minikube start --docker-env http_proxy=<my proxy> --docke
 Minikube 还创建了一个 `minikube` 上下文，并将其设置为 kubectl 的默认上下文。
 
 要切换回此上下文，请运行以下命令：`kubectl config use-context minikube`。
-{{< /note >}}
+. /note >}}
 
 <!--
 #### Specifying the Kubernetes version
@@ -365,12 +365,12 @@ Minikube 还创建了一个 `minikube` 上下文，并将其设置为 kubectl �
 #### 指定 Kubernetes 版本
 
 <!--
-You can specify the version of Kubernetes for Minikube to use byadding the `--kubernetes-version` string to the `minikube start` command. Forexample, to run version {{< param "fullversion" >}}, you would run the following:
+You can specify the version of Kubernetes for Minikube to use byadding the `--kubernetes-version` string to the `minikube start` command. Forexample, to run version . param "fullversion" >}}, you would run the following:
 -->
-您可以通过将 `--kubernetes-version` 字符串添加到 `minikube start` 命令来指定要用于 Minikube 的 Kubernetes 版本。例如，要运行版本 {{< param "fullversion" >}}，您可以运行以下命令：
+您可以通过将 `--kubernetes-version` 字符串添加到 `minikube start` 命令来指定要用于 Minikube 的 Kubernetes 版本。例如，要运行版本 . param "fullversion" >}}，您可以运行以下命令：
 
 ```
-minikube start --kubernetes-version {{< param "fullversion" >}}
+minikube start --kubernetes-version . param "fullversion" >}}
 ```
 <!--
 #### Specifying the VM driver
@@ -411,9 +411,9 @@ Note that the IP below is dynamic and can change. It can be retrieved with `mini
 -->
 
 
- {{< note >}}
+ . note >}}
 有关支持的驱动程序以及如何安装插件的详细信息，请参阅[驱动程序](https://minikube.sigs.k8s.io/docs/drivers/)。
-{{< /note >}}
+. /note >}}
 
 * virtualbox
 * vmwarefusion
@@ -436,8 +436,8 @@ You can start Minikube on the following container runtimes.
 
 您可以通过以下容器运行时启动 Minikube。
 
-{{< tabs name="container_runtimes" >}}
-{{% tab name="containerd" %}}
+. tabs name="container_runtimes" >}}
+. tab name="containerd" %}}
 <!--
 To use [containerd](https://github.com/containerd/containerd) as the container runtime, run:
 -->
@@ -465,8 +465,8 @@ minikube start \
     --extra-config=kubelet.image-service-endpoint=unix:///run/containerd/containerd.sock \
     --bootstrapper=kubeadm
 ```
-{{% /tab %}}
-{{% tab name="CRI-O" %}}
+. /tab %}}
+. tab name="CRI-O" %}}
 <!--
 To use [CRI-O](https://github.com/kubernetes-incubator/cri-o) as the container runtime, run:
 -->
@@ -493,8 +493,8 @@ minikube start \
     --extra-config=kubelet.image-service-endpoint=/var/run/crio.sock \
     --bootstrapper=kubeadm
 ```
-{{% /tab %}}
-{{< /tabs >}}
+. /tab %}}
+. /tabs >}}
 
 <!--
 #### Use local images by re-using the Docker daemon
@@ -506,12 +506,12 @@ When using a single VM for Kubernetes, it's useful to reuse Minikube's built-in 
 -->
 当为 Kubernetes 使用单个 VM 时，重用 Minikube 的内置 Docker 守护程序非常有用。重用内置守护程序意味着您不必在主机上构建 Docker 镜像仓库并将镜像推入其中。相反，您可以在与 Minikube 相同的 Docker 守护进程内部构建，这可以加速本地实验。
 
-{{< note >}}
+. note >}}
 <!--
 Be sure to tag your Docker image with something other than latest and use that tag to pull the image. Because `:latest` is the default value, with a corresponding default image pull policy of `Always`, an image pull error (`ErrImagePull`) eventually results if you do not have the Docker image in the default Docker registry (usually DockerHub).
 -->
 一定要用非 `latest` 的标签来标记你的 Docker 镜像，并使用该标签来拉取镜像。因为 `:latest` 标记的镜像，其默认镜像拉取策略是 `Always`，如果在默认的 Docker 镜像仓库（通常是 DockerHub）中没有找到你的 Docker 镜像，最终会导致一个镜像拉取错误（`ErrImagePull`）。
-{{< /note >}}
+. /note >}}
 
 <!--
 To work with the Docker daemon on your Mac/Linux host, use the `docker-env command` in your shell:
@@ -531,7 +531,7 @@ You can now use Docker at the command line of your host Mac/Linux machine to com
 docker ps
 ```
 
-{{< note >}}
+. note >}}
 <!--
 On Centos 7, Docker may report the following error:
 -->
@@ -553,7 +553,7 @@ You can fix this by updating /etc/sysconfig/docker to ensure that Minikube's env
 >   DOCKER_CERT_PATH=/etc/docker
 > fi
 ```
-{{< /note >}}
+. /note >}}
 
 <!--
 ### Configuring Kubernetes
@@ -789,9 +789,9 @@ Some drivers will mount a host folder within the VM so that you can easily share
 Host folder sharing is not implemented in the KVM driver yet.
 -->
 
-{{< note >}}
+. note >}}
 KVM 驱动程序中尚未实现主机文件夹共享。
-{{< /note >}}
+. /note >}}
 
 | 驱动 | 操作系统 | 宿主机文件夹 | VM 文件夹 |
 | --- | --- | --- | --- |

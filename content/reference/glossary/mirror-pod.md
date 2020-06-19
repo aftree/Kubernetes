@@ -24,10 +24,10 @@ tags:
 -->
 
 <!--
- A {{< glossary_tooltip text="pod" term_id="pod" >}} object that a kubelet uses
- to represent a {{< glossary_tooltip text="static pod" term_id="static-pod" >}}
+ A . glossary_tooltip text="pod" term_id="pod" >}} object that a kubelet uses
+ to represent a . glossary_tooltip text="static pod" term_id="static-pod" >}}
 -->
- kubelet 使用一个对象 {{< glossary_tooltip text="pod" term_id="pod" >}} 来代表 {{< glossary_tooltip text="static pod" term_id="static-pod" >}}
+ kubelet 使用一个对象 . glossary_tooltip text="pod" term_id="pod" >}} 来代表 . glossary_tooltip text="static pod" term_id="static-pod" >}}
 
 <!--more-->
 <!--更多-->

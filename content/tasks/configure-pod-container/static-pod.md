@@ -10,55 +10,55 @@ content_type: task
 
 <!--
 *Static Pods* are managed directly by the kubelet daemon on a specific node,
-without the {{< glossary_tooltip text="API server" term_id="kube-apiserver" >}}
+without the . glossary_tooltip text="API server" term_id="kube-apiserver" >}}
 observing them.
 Unlike Pods that are managed by the control plane (for example, a
-{{< glossary_tooltip text="Deployment" term_id="deployment" >}});
+. glossary_tooltip text="Deployment" term_id="deployment" >}});
 instead, the kubelet watches each static Pod (and restarts it if it crashes).
 -->
 
-*静态 Pod* 在指定的节点上由 kubelet 守护进程直接管理，不需要 {{< glossary_tooltip text="API 服务" term_id="kube-apiserver" >}} 监管。
-不像 Pod 是由控制面管理的（例如，{{< glossary_tooltip text="Deployment" term_id="deployment" >}}）；相反 kubelet 监视每个静态 Pod（在它崩溃之后重新启动）。
+*静态 Pod* 在指定的节点上由 kubelet 守护进程直接管理，不需要 . glossary_tooltip text="API 服务" term_id="kube-apiserver" >}} 监管。
+不像 Pod 是由控制面管理的（例如，. glossary_tooltip text="Deployment" term_id="deployment" >}}）；相反 kubelet 监视每个静态 Pod（在它崩溃之后重新启动）。
 
 <!--
-Static Pods are always bound to one {{< glossary_tooltip term_id="kubelet" >}} on a specific node.
+Static Pods are always bound to one . glossary_tooltip term_id="kubelet" >}} on a specific node.
 
-The kubelet automatically tries to create a {{< glossary_tooltip text="mirror Pod" term_id="mirror-pod" >}}
+The kubelet automatically tries to create a . glossary_tooltip text="mirror Pod" term_id="mirror-pod" >}}
 on the Kubernetes API server for each static Pod.
 This means that the Pods running on a node are visible on the API server,
 but cannot be controlled from there.
 
-{{< note >}}
+. note >}}
 If you are running clustered Kubernetes and are using static
 Pods to run a Pod on every node, you should probably be using a
-{{< glossary_tooltip text="DaemonSet" term_id="daemonset" >}}
+. glossary_tooltip text="DaemonSet" term_id="daemonset" >}}
 instead.
-{{< /note >}}
+. /note >}}
 -->
 
-静态 Pod 永远都会绑定到一个指定节点上的 {{< glossary_tooltip term_id="kubelet" >}}。
+静态 Pod 永远都会绑定到一个指定节点上的 . glossary_tooltip term_id="kubelet" >}}。
 
-kubelet 会尝试通过 Kubernetes API 服务器为每个静态 Pod 自动创建一个 {{< glossary_tooltip text="镜像 Pod" term_id="mirror-pod" >}}。
+kubelet 会尝试通过 Kubernetes API 服务器为每个静态 Pod 自动创建一个 . glossary_tooltip text="镜像 Pod" term_id="mirror-pod" >}}。
 这意味着节点上运行的静态 Pod 对 API 服务来说是不可见的，但是不能通过 API 服务器来控制。
 
-{{< note >}}
-如果你在运行一个 Kubernetes 集群，并且在每个节点上都运行一个静态 Pod，就可能需要考虑使用 {{< glossary_tooltip text="DaemonSet" term_id="daemonset" >}} 替代这种方式。
-{{< /note >}}
+. note >}}
+如果你在运行一个 Kubernetes 集群，并且在每个节点上都运行一个静态 Pod，就可能需要考虑使用 . glossary_tooltip text="DaemonSet" term_id="daemonset" >}} 替代这种方式。
+. /note >}}
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 <!--
-This page assumes you're using {{< glossary_tooltip term_id="docker" >}} to run Pods,
+This page assumes you're using . glossary_tooltip term_id="docker" >}} to run Pods,
 and that your nodes are running the Fedora operating system.
 Instructions for other distributions or Kubernetes installations may vary.
 -->
 
-本文假定你在使用 {{< glossary_tooltip term_id="docker" >}} 来运行 Pod，并且你的节点是运行着 Fedora 操作系统。
+本文假定你在使用 . glossary_tooltip term_id="docker" >}} 来运行 Pod，并且你的节点是运行着 Fedora 操作系统。
 其它发行版或者 Kubernetes 部署版本上操作方式可能不一样。
 
 
@@ -101,7 +101,7 @@ For example, this is how to start a simple web server as a static Pod:
     ssh my-node1
     ```
 <!--
-2. Choose a directory, say `/etc/kubelet.d` and place a web server Pod definition there, e.g. `/etc/kubelet.d/static-web.yaml`:
+3. Choose a directory, say `/etc/kubelet.d` and place a web server Pod definition there, e.g. `/etc/kubelet.d/static-web.yaml`:
 
    ```shell
     # Run this command on the node where kubelet is running
@@ -122,7 +122,8 @@ For example, this is how to start a simple web server as a static Pod:
               containerPort: 80
               protocol: TCP
     EOF
--->
+   -->
+   ```
 
 1. 选择一个目录，比如在 `/etc/kubelet.d` 目录来保存 web 服务 Pod 的定义文件， `/etc/kubelet.d/static-web.yaml`：
 
@@ -292,22 +293,22 @@ NAME                       READY     STATUS    RESTARTS   AGE
 static-web-my-node1        1/1       Running   0          2m
 ```
 <!--
-{{< note >}}
+. note >}}
 Make sure the kubelet has permission to create the mirror Pod in the API server. If not, the creation request is rejected by the API server. See
 [PodSecurityPolicy](/docs/concepts/policy/pod-security-policy/).
-{{< /note >}}
+. /note >}}
 -->
 
-{{< note >}}
+. note >}}
 要确保 kubelet 在 API 服务上有创建镜像 Pod 的权限。如果没有，创建请求会被 API 服务拒绝。可以看[Pod安全策略](/docs/concepts/policy/pod-security-policy/)。
-{{< /note >}}
+. /note >}}
 
 <!--
-{{< glossary_tooltip term_id="label" text="Labels" >}} from the static Pod are
+. glossary_tooltip term_id="label" text="Labels" >}} from the static Pod are
 propagated into the mirror Pod. You can use those labels as normal via
-{{< glossary_tooltip term_id="selector" text="selectors" >}}, etc.
+. glossary_tooltip term_id="selector" text="selectors" >}}, etc.
 -->
-静态 Pod 上的{{< glossary_tooltip term_id="label" text="标签" >}} 被传到镜像 Pod。 你可以通过 {{< glossary_tooltip term_id="selector" text="选择算符" >}} 使用这些标签，比如。
+静态 Pod 上的. glossary_tooltip term_id="label" text="标签" >}} 被传到镜像 Pod。 你可以通过 . glossary_tooltip term_id="selector" text="选择算符" >}} 使用这些标签，比如。
 
 <!--
 If you try to use `kubectl` to delete the mirror Pod from the API server,

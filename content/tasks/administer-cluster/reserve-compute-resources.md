@@ -37,10 +37,10 @@ Kubernetes 的节点可以按照 `Capacity` 调度。默认情况下 pod 能够�
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 
@@ -244,7 +244,7 @@ exist. Kubelet will fail if an invalid cgroup is specified.
 ### Explicitly Reserved CPU List
 -->
 ### 明确保留的 CPU 列表
-{{< feature-state for_k8s_version="v1.17" state="stable" >}}
+. feature-state for_k8s_version="v1.17" state="stable" >}}
 
 - **Kubelet Flag**: `--reserved-cpus=0-3`
 

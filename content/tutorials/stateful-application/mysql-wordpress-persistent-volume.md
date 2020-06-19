@@ -26,26 +26,26 @@ This tutorial shows you how to deploy a WordPress site and a MySQL database usin
 [PersistentVolume](/zh/docs/concepts/storage/persistent-volumes/)（PV）是一块集群里由管理员手动提供，或 kubernetes 通过 [StorageClass](/zh/docs/concepts/storage/storage-classes) 动态创建的存储。
 [PersistentVolumeClaim](/zh/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims)（PVC）是一个满足对 PV 存储需要的请求。PersistentVolumes 和 PersistentVolumeClaims 是独立于 Pod 生命周期而在 Pod 重启，重新调度甚至删除过程中保存数据。
 
-{{< warning >}}
+. warning >}}
 <!--
  This deployment is not suitable for production use cases, as it uses single instance WordPress and MySQL Pods. Consider using [WordPress Helm Chart](https://github.com/kubernetes/charts/tree/master/stable/wordpress) to deploy WordPress in production.
  -->
 
 deployment 在生产场景中并不适合，它使用单实例 WordPress 和 MySQL Pods。考虑使用 [WordPress Helm Chart](https://github.com/kubernetes/charts/tree/master/stable/wordpress) 在生产场景中部署 WordPress。
-{{< /warning >}}
+. /warning >}}
 
-{{< note >}}
+. note >}}
 
 <!--
  The files provided in this tutorial are using GA Deployment APIs and are specific to kubernetes version 1.9 and later. If you wish to use this tutorial with an earlier version of Kubernetes, please update the API version appropriately, or reference earlier versions of this tutorial.
 -->
 
 本教程中提供的文件使用 GA Deployment API，并且特定于 kubernetes 1.9 或更高版本。如果您希望将本教程与 Kubernetes 的早期版本一起使用，请相应地更新 API 版本，或参考本教程的早期版本。
-{{< /note >}}
+. /note >}}
 
 
 
-## {{% heading "objectives" %}}
+## . heading "objectives" %}}
 
 <!--
 * Create PersistentVolumeClaims and PersistentVolumes
@@ -67,10 +67,10 @@ deployment 在生产场景中并不适合，它使用单实例 WordPress 和 MyS
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 <!--
 The example shown on this page works with `kubectl` 1.14 and above.
@@ -113,27 +113,27 @@ MySQL 和 Wordpress 都需要一个 PersistentVolume 来存储数据。他们的
 
 创建 PersistentVolumeClaim 时，将根据 StorageClass 配置动态设置 PersistentVolume。
 
-{{< warning >}}
+. warning >}}
 <!--
 In local clusters, the default StorageClass uses the `hostPath` provisioner.  `hostPath` volumes are only suitable for development and testing. With `hostPath` volumes, your data lives in `/tmp` on the node the Pod is scheduled onto and does not move between nodes. If a Pod dies and gets scheduled to another node in the cluster, or the node is rebooted, the data is lost.
 -->
 
 在本地群集中，默认的 StorageClass 使用`hostPath`供应器。 `hostPath`卷仅适用于开发和测试。使用 `hostPath` 卷，您的数据位于 Pod 调度到的节点上的`/tmp`中，并且不会在节点之间移动。如果 Pod 死亡并被调度到群集中的另一个节点，或者该节点重新启动，则数据将丢失。
-{{< /warning >}}
+. /warning >}}
 
-{{< note >}}
+. note >}}
 <!--
 If you are bringing up a cluster that needs to use the `hostPath` provisioner, the `--enable-hostpath-provisioner` flag must be set in the `controller-manager` component.
 -->
 
 如果要建立需要使用`hostPath`设置程序的集群，则必须在 controller-manager 组件中设置`--enable-hostpath-provisioner`标志。
-{{< /note >}}
+. /note >}}
 
-{{< note >}}
+. note >}}
 <!-- If you have a Kubernetes cluster running on Google Kubernetes Engine, please follow [this guide](https://cloud.google.com/kubernetes-engine/docs/tutorials/persistent-disk). -->
 
 如果你已经有运行在 Google Kubernetes Engine 的集群，请参考 [this guide](https://cloud.google.com/kubernetes-engine/docs/tutorials/persistent-disk)。
-{{< /note >}}
+. /note >}}
 
 <!--
 ## Create a kustomization.yaml
@@ -178,7 +178,7 @@ The following manifest describes a single-instance MySQL Deployment. The MySQL c
 
 以下 manifest 文件描述了单实例 MySQL 部署。MySQL 容器将 PersistentVolume 挂载在`/var/lib/mysql`。 `MYSQL_ROOT_PASSWORD`环境变量设置来自 Secret 的数据库密码。
 
-{{< codenew file="application/wordpress/mysql-deployment.yaml" >}}
+. codenew file="application/wordpress/mysql-deployment.yaml" >}}
 
 <!--
 The following manifest describes a single-instance WordPress Deployment. The WordPress container mounts the
@@ -188,7 +188,7 @@ the name of the MySQL Service defined above, and WordPress will access the datab
 -->
 
 以下 manifest 文件描述了单实例 WordPress 部署。WordPress 容器将网站数据文件位于`/var/www/html`的 PersistentVolume。`WORDPRESS_DB_HOST`环境变量集上面定义的 MySQL Service 的名称，WordPress 将通过 Service 访问数据库。`WORDPRESS_DB_PASSWORD`环境变量设置从 Secret kustomize 生成的数据库密码。
-{{< codenew file="application/wordpress/wordpress-deployment.yaml" >}}
+. codenew file="application/wordpress/wordpress-deployment.yaml" >}}
 
 <!--
 1. Download the MySQL deployment configuration file.
@@ -270,9 +270,9 @@ Now you can verify that all objects exist.
       kubectl get pvc
       ```
 
-      {{< note >}}
+      . note >}}
       It can take up to a few minutes for the PVs to be provisioned and bound.
-      {{< /note >}}
+      . /note >}}
 
       The response should be like this:
 
@@ -288,9 +288,9 @@ Now you can verify that all objects exist.
       kubectl get pods
       ```
 
-      {{< note >}}
+      . note >}}
       It can take up to a few minutes for the Pod's Status to be `RUNNING`.
-      {{< /note >}}
+      . /note >}}
 
       The response should be like this:
 
@@ -312,9 +312,9 @@ Now you can verify that all objects exist.
       wordpress   ClusterIP   10.0.0.89    <pending>     80:32406/TCP   4m
       ```
 
-      {{< note >}}
+      . note >}}
       Minikube can only expose Services through `NodePort`. The EXTERNAL-IP is always pending.
-      {{< /note >}}
+      . /note >}}
 
 5. Run the following command to get the IP Address for the WordPress Service:
 
@@ -362,9 +362,9 @@ kubectl apply -k ./
       kubectl get pvc
       ```
 
-      {{< note >}}
+      . note >}}
       设置和绑定 PV 可能要花费几分钟。
-      {{< /note >}}
+      . /note >}}
 
       响应应如下所示：
 
@@ -380,9 +380,9 @@ kubectl apply -k ./
       kubectl get pods
       ```
 
-      {{< note >}}
+      . note >}}
       等待 Pod 状态变成`RUNNING`可能会花费几分钟。
-      {{< /note >}}
+      . /note >}}
 
       响应应如下所示：
 
@@ -404,9 +404,9 @@ kubectl apply -k ./
       wordpress   ClusterIP   10.0.0.89    <pending>     80:32406/TCP   4m
       ```
 
-      {{< note >}}
+      . note >}}
       Minikube 只能通过 NodePort 公开服务。EXTERNAL-IP 始终处于挂起状态
-      {{< /note >}}
+      . /note >}}
 
 5. 运行以下命令以获取 WordPress 服务的 IP 地址：
 
@@ -428,15 +428,15 @@ kubectl apply -k ./
 
 
 
-{{< warning >}}
+. warning >}}
 <!--
 Do not leave your WordPress installation on this page. If another user finds it, they can set up a website on your instance and use it to serve malicious content. <br/><br/>Either install WordPress by creating a username and password or delete your instance.
 -->
 不要在此页面上保留 WordPress 安装。如果其他用户找到了它，他们可以在您的实例上建立一个网站并使用它来提供恶意内容。<br/><br/>通过创建用户名和密码来安装 WordPress 或删除您的实例。
 
-{{< /warning >}}
+. /warning >}}
 
-## {{% heading "cleanup" %}}
+## . heading "cleanup" %}}
 
 <!--
 1. Run the following command to delete your Secret, Deployments, Services and PersistentVolumeClaims:
@@ -454,7 +454,7 @@ Do not leave your WordPress installation on this page. If another user finds it,
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 <!--

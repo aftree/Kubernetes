@@ -7,10 +7,10 @@ content_type: task
 本文展示如何安全地将敏感数据（如密码和加密密钥）注入到 Pods 中。
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 
@@ -33,7 +33,7 @@ base-64 形式的密码为 `Mzk1MjgkdmRnN0pi`。
 
 这里是一个配置文件，可以用来创建存有用户名和密码的 Secret:
 
-{{< codenew file="pods/inject/secret.yaml" >}}
+. codenew file="pods/inject/secret.yaml" >}}
 
 1. 创建 Secret
 
@@ -41,9 +41,9 @@ base-64 形式的密码为 `Mzk1MjgkdmRnN0pi`。
     kubectl create -f https://k8s.io/examples/pods/inject/secret.yaml
     ```
 
-    {{< note >}}
+    . note >}}
     如果想要跳过 Base64 编码的步骤，可以使用 `kubectl create secret` 命令来创建 Secret：
-    {{< /note >}}
+    . /note >}}
 
     ```shell
     kubectl create secret generic test-secret --from-literal=username='my-app' --from-literal=password='39528$vdg7Jb'
@@ -84,7 +84,7 @@ base-64 形式的密码为 `Mzk1MjgkdmRnN0pi`。
 
 这里是一个可以用来创建 pod 的配置文件：
 
-{{< codenew file="pods/inject/secret-pod.yaml" >}}
+. codenew file="pods/inject/secret-pod.yaml" >}}
 
 1. 创建 Pod：
 
@@ -97,14 +97,14 @@ base-64 形式的密码为 `Mzk1MjgkdmRnN0pi`。
     ```shell
     kubectl get pod secret-test-pod
     ```
-													
+	
     输出：
 
     ```shell
     NAME              READY     STATUS    RESTARTS   AGE
     secret-test-pod   1/1       Running   0          42m
     ```
-											
+	
 1. 在 Pod 中运行的容器中获取一个 shell：
 
     ```shell
@@ -146,7 +146,7 @@ base-64 形式的密码为 `Mzk1MjgkdmRnN0pi`。
 
 这里是一个可以用来创建 pod 的配置文件：
 
-{{< codenew file="pods/inject/secret-envars-pod.yaml" >}}
+. codenew file="pods/inject/secret-envars-pod.yaml" >}}
 
 1. 创建 Pod：
 
@@ -190,7 +190,7 @@ base-64 形式的密码为 `Mzk1MjgkdmRnN0pi`。
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 * 了解更多关于 [Secrets](/docs/concepts/configuration/secret/)。
@@ -198,8 +198,8 @@ base-64 形式的密码为 `Mzk1MjgkdmRnN0pi`。
 
 ### 参考
 
-* [Secret](/docs/api-reference/{{< param "version" >}}/#secret-v1-core)
-* [Volume](/docs/api-reference/{{< param "version" >}}/#volume-v1-core)
-* [Pod](/docs/api-reference/{{< param "version" >}}/#pod-v1-core)
+* [Secret](/docs/api-reference/. param "version" >}}/#secret-v1-core)
+* [Volume](/docs/api-reference/. param "version" >}}/#volume-v1-core)
+* [Pod](/docs/api-reference/. param "version" >}}/#pod-v1-core)
 
 

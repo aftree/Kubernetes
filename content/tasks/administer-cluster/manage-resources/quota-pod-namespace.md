@@ -1,4 +1,4 @@
-﻿---
+---
 title: 配置命名空间下pod总数
 content_type: task
 weight: 60
@@ -13,10 +13,10 @@ weight: 60
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 
@@ -35,7 +35,7 @@ kubectl create namespace quota-pod-example
 
 下面是一个资源配额的配置文件：
 
-{{< codenew file="admin/resource/quota-pod.yaml" >}}
+. codenew file="admin/resource/quota-pod.yaml" >}}
 
 创建这个资源配额：
 
@@ -64,7 +64,7 @@ status:
 
 下面是一个Deployment的配置文件：
 
-{{< codenew file="admin/resource/quota-pod-deployment.yaml" >}}
+. codenew file="admin/resource/quota-pod-deployment.yaml" >}}
 
 在配置文件中， `replicas: 3` 告诉kubernetes尝试创建三个pods，且运行相同的应用。
 
@@ -105,7 +105,7 @@ kubectl delete namespace quota-pod-example
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 ### 对于集群管理

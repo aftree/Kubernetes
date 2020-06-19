@@ -1,5 +1,5 @@
 ---
-title: 教程
+title: 😎 - 教程
 main_menu: true
 weight: 60
 content_type: concept

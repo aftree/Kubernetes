@@ -19,10 +19,10 @@ This page shows how to use an HTTP proxy to access the Kubernetes API.
 本文说明如何使用 HTTP 代理访问 Kubernetes API。
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-* {{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+* . include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 <!--
 * If you do not already have an application running in your cluster, start
@@ -67,7 +67,7 @@ Get the API versions:
 获取 API 版本：
 
     curl http://localhost:8080/api/
-
+    
     {
       "kind": "APIVersions",
       "versions": [
@@ -87,7 +87,7 @@ Get a list of pods:
 获取 Pod 列表：
 
     curl http://localhost:8080/api/v1/namespaces/default/pods
-
+    
     {
       "kind": "PodList",
       "apiVersion": "v1",
@@ -112,7 +112,7 @@ Get a list of pods:
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 <!--
 Learn more about [kubectl proxy](/docs/reference/generated/kubectl/kubectl-commands#proxy).

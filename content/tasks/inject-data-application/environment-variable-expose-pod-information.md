@@ -8,16 +8,16 @@ content_type: task
 此页面显示了Pod如何使用环境变量把自己的信息呈现给pod中运行的容器。环境变量可以呈现pod的字段和容器字段。
 
 有两种方式可以将Pod和Container字段呈现给运行中的容器：
-环境变量 和[DownwardAPIVolumeFiles](/docs/resources-reference/{{< param "version" >}}/#downwardapivolumefile-v1-core).
+环境变量 和[DownwardAPIVolumeFiles](/docs/resources-reference/. param "version" >}}/#downwardapivolumefile-v1-core).
 这两种呈现Pod和Container字段的方式都称为*Downward API*。
 
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 
@@ -29,7 +29,7 @@ content_type: task
 有两种方式可以将Pod和Container字段呈现给运行中的容器：
 
 * 环境变量
-* [DownwardAPIVolumeFiles](/docs/resources-reference/{{< param "version" >}}/#downwardapivolumefile-v1-core)
+* [DownwardAPIVolumeFiles](/docs/resources-reference/. param "version" >}}/#downwardapivolumefile-v1-core)
 
 这两种呈现Pod和Container字段的方式都称为*Downward API*。
 
@@ -38,14 +38,14 @@ content_type: task
 
 在这个练习中，你将创建一个包含一个容器的pod。这是该pod的配置文件：
 
-{{< codenew file="pods/inject/dapi-envars-pod.yaml" >}}
+. codenew file="pods/inject/dapi-envars-pod.yaml" >}}
 
-这个配置文件中，你可以看到五个环境变量。`env`字段是一个[EnvVars](/docs/resources-reference/{{< param "version" >}}/#envvar-v1-core)类型的数组。
+这个配置文件中，你可以看到五个环境变量。`env`字段是一个[EnvVars](/docs/resources-reference/. param "version" >}}/#envvar-v1-core)类型的数组。
 数组中第一个元素指定`MY_NODE_NAME`这个环境变量从Pod的`spec.nodeName`字段获取变量值。同样，其它环境变量也是从Pod的字段获取它们的变量值。
 
-{{< note >}}
+. note >}}
 本示例中的字段是Pod字段，不是Pod中容器的字段。
-{{< /note >}}
+. /note >}}
 
 创建Pod：
 
@@ -106,9 +106,9 @@ MY_POD_NAME=dapi-envars-fieldref
 
 前面的练习中，你将Pod字段作为环境变量的值。接下来这个练习，你将用容器字段作为环境变量的值。这里是包含一个容器的pod的配置文件：
 
-{{< codenew file="pods/inject/dapi-envars-container.yaml" >}}
+. codenew file="pods/inject/dapi-envars-container.yaml" >}}
 
-这个配置文件中，你可以看到四个环境变量。`env`字段是一个[EnvVars](/docs/resources-reference/{{< param "version" >}}/#envvar-v1-core)
+这个配置文件中，你可以看到四个环境变量。`env`字段是一个[EnvVars](/docs/resources-reference/. param "version" >}}/#envvar-v1-core)
 类型的数组。数组中第一个元素指定`MY_CPU_REQUEST`这个环境变量从容器的`requests.cpu`字段获取变量值。同样，其它环境变量也是从容器的字段获取它们的变量值。
 
 创建Pod：
@@ -140,16 +140,16 @@ kubectl logs dapi-envars-resourcefieldref
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 * [给容器定义环境变量](/docs/tasks/configure-pod-container/define-environment-variable-container/)
-* [PodSpec](/docs/resources-reference/{{< param "version" >}}/#podspec-v1-core)
-* [Container](/docs/resources-reference/{{< param "version" >}}/#container-v1-core)
-* [EnvVar](/docs/resources-reference/{{< param "version" >}}/#envvar-v1-core)
-* [EnvVarSource](/docs/resources-reference/{{< param "version" >}}/#envvarsource-v1-core)
-* [ObjectFieldSelector](/docs/resources-reference/{{< param "version" >}}/#objectfieldselector-v1-core)
-* [ResourceFieldSelector](/docs/resources-reference/{{< param "version" >}}/#resourcefieldselector-v1-core)
+* [PodSpec](/docs/resources-reference/. param "version" >}}/#podspec-v1-core)
+* [Container](/docs/resources-reference/. param "version" >}}/#container-v1-core)
+* [EnvVar](/docs/resources-reference/. param "version" >}}/#envvar-v1-core)
+* [EnvVarSource](/docs/resources-reference/. param "version" >}}/#envvarsource-v1-core)
+* [ObjectFieldSelector](/docs/resources-reference/. param "version" >}}/#objectfieldselector-v1-core)
+* [ResourceFieldSelector](/docs/resources-reference/. param "version" >}}/#resourcefieldselector-v1-core)
 
 
 

@@ -9,9 +9,9 @@ weight: 20
 ## 支持
 
 <!--
-At {{< param "version" >}}, Kubernetes supports clusters with up to 5000 nodes. More specifically, we support configurations that meet *all* of the following criteria:
+At . param "version" >}}, Kubernetes supports clusters with up to 5000 nodes. More specifically, we support configurations that meet *all* of the following criteria:
 -->
-在 {{< param "version" >}} 版本中， Kubernetes 支持的最大节点数为 5000。更具体地说，我们支持满足以下*所有*条件的配置：
+在 . param "version" >}} 版本中， Kubernetes 支持的最大节点数为 5000。更具体地说，我们支持满足以下*所有*条件的配置：
 
 <!--
 * No more than 5000 nodes
@@ -27,7 +27,7 @@ At {{< param "version" >}}, Kubernetes supports clusters with up to 5000 nodes. 
 
 <br>
 
-{{< toc >}}
+. toc >}}
 
 <!--
 ## Setup
@@ -40,9 +40,9 @@ A cluster is a set of nodes (physical or virtual machines) running Kubernetes ag
 集群是一组运行着 Kubernetes 代理的节点（物理机或者虚拟机），这些节点由主控节点（集群级控制面）控制。
 
 <!--
-Normally the number of nodes in a cluster is controlled by the value `NUM_NODES` in the platform-specific `config-default.sh` file (for example, see [GCE's `config-default.sh`](http://releases.k8s.io/{{< param "githubbranch" >}}/cluster/gce/config-default.sh)).
+Normally the number of nodes in a cluster is controlled by the value `NUM_NODES` in the platform-specific `config-default.sh` file (for example, see [GCE's `config-default.sh`](http://releases.k8s.io/. param "githubbranch" >}}/cluster/gce/config-default.sh)).
 -->
-通常，集群中的节点数由特定于云平台的配置文件 `config-default.sh`（可以参考 [GCE 平台的 `config-default.sh`](http://releases.k8s.io/{{< param "githubbranch" >}}/cluster/gce/config-default.sh)）中的 `NUM_NODES` 参数控制。
+通常，集群中的节点数由特定于云平台的配置文件 `config-default.sh`（可以参考 [GCE 平台的 `config-default.sh`](http://releases.k8s.io/. param "githubbranch" >}}/cluster/gce/config-default.sh)）中的 `NUM_NODES` 参数控制。
 
 <!--
 Simply changing that value to something very large, however, may cause the setup script to fail for many cloud providers. A GCE deployment, for example, will run in to quota issues and fail to bring the cluster up.
@@ -155,7 +155,7 @@ And the sizes we use on AWS are
 * 251-500 个节点：c4.4xlarge
 * 超过 500 节点：c4.8xlarge
 
-{{< note >}}
+. note >}}
 <!--
 On Google Kubernetes Engine, the size of the master node adjusts automatically based on the size of your cluster. For more information, see [this blog post](https://cloudplatform.googleblog.com/2017/11/Cutting-Cluster-Management-Fees-on-Google-Kubernetes-Engine.html).
 -->
@@ -165,7 +165,7 @@ On Google Kubernetes Engine, the size of the master node adjusts automatically b
 On AWS, master node sizes are currently set at cluster startup time and do not change, even if you later scale your cluster up or down by manually removing or adding nodes or using a cluster autoscaler.
 -->
 在 AWS 上，主控节点的规格是在集群启动时设置的，并且，即使以后通过手动删除或添加节点的方式使集群缩容或扩容，主控节点的大小也不会更改。
-{{< /note >}}
+. /note >}}
 
 <!--
 ### Addon Resources
@@ -173,9 +173,9 @@ On AWS, master node sizes are currently set at cluster startup time and do not c
 ### 插件资源
 
 <!--
-To prevent memory leaks or other resource issues in [cluster addons](https://releases.k8s.io/{{< param "githubbranch" >}}/cluster/addons) from consuming all the resources available on a node, Kubernetes sets resource limits on addon containers to limit the CPU and Memory resources they can consume (See PR [#10653](http://pr.k8s.io/10653/files) and [#10778](http://pr.k8s.io/10778/files)).
+To prevent memory leaks or other resource issues in [cluster addons](https://releases.k8s.io/. param "githubbranch" >}}/cluster/addons) from consuming all the resources available on a node, Kubernetes sets resource limits on addon containers to limit the CPU and Memory resources they can consume (See PR [#10653](http://pr.k8s.io/10653/files) and [#10778](http://pr.k8s.io/10778/files)).
 -->
-为了防止内存泄漏或 [集群插件](https://releases.k8s.io/{{<param "githubbranch" >}}/cluster/addons) 中的其它资源问题导致节点上所有可用资源被消耗，Kubernetes 限制了插件容器可以消耗的 CPU 和内存资源（请参阅 PR [#10653](http://pr.k8s.io/10653/files) 和 [#10778](http://pr.k8s.io/10778/files)）。
+为了防止内存泄漏或 [集群插件](https://releases.k8s.io/.param "githubbranch" >}}/cluster/addons) 中的其它资源问题导致节点上所有可用资源被消耗，Kubernetes 限制了插件容器可以消耗的 CPU 和内存资源（请参阅 PR [#10653](http://pr.k8s.io/10653/files) 和 [#10778](http://pr.k8s.io/10778/files)）。
 
 例如：
 
@@ -201,24 +201,24 @@ To avoid running into cluster addon resource issues, when creating a cluster wit
 
 <!--
 * Scale memory and CPU limits for each of the following addons, if used, as you scale up the size of cluster (there is one replica of each handling the entire cluster so memory and CPU usage tends to grow proportionally with size/load on cluster):
-  * [InfluxDB and Grafana](http://releases.k8s.io/{{< param "githubbranch" >}}/cluster/addons/cluster-monitoring/influxdb/influxdb-grafana-controller.yaml)
-  * [kubedns, dnsmasq, and sidecar](http://releases.k8s.io/{{< param "githubbranch" >}}/cluster/addons/dns/kube-dns/kube-dns.yaml.in)
-  * [Kibana](http://releases.k8s.io/{{< param "githubbranch" >}}/cluster/addons/fluentd-elasticsearch/kibana-deployment.yaml)
+  * [InfluxDB and Grafana](http://releases.k8s.io/. param "githubbranch" >}}/cluster/addons/cluster-monitoring/influxdb/influxdb-grafana-controller.yaml)
+  * [kubedns, dnsmasq, and sidecar](http://releases.k8s.io/. param "githubbranch" >}}/cluster/addons/dns/kube-dns/kube-dns.yaml.in)
+  * [Kibana](http://releases.k8s.io/. param "githubbranch" >}}/cluster/addons/fluentd-elasticsearch/kibana-deployment.yaml)
 * Scale number of replicas for the following addons, if used, along with the size of cluster (there are multiple replicas of each so increasing replicas should help handle increased load, but, since load per replica also increases slightly, also consider increasing CPU/memory limits):
-  * [elasticsearch](http://releases.k8s.io/{{< param "githubbranch" >}}/cluster/addons/fluentd-elasticsearch/es-statefulset.yaml)
+  * [elasticsearch](http://releases.k8s.io/. param "githubbranch" >}}/cluster/addons/fluentd-elasticsearch/es-statefulset.yaml)
 * Increase memory and CPU limits slightly for each of the following addons, if used, along with the size of cluster (there is one replica per node but CPU/memory usage increases slightly along with cluster load/size as well):
-  * [FluentD with ElasticSearch Plugin](http://releases.k8s.io/{{< param "githubbranch" >}}/cluster/addons/fluentd-elasticsearch/fluentd-es-ds.yaml)
-  * [FluentD with GCP Plugin](http://releases.k8s.io/{{< param "githubbranch" >}}/cluster/addons/fluentd-gcp/fluentd-gcp-ds.yaml)
+  * [FluentD with ElasticSearch Plugin](http://releases.k8s.io/. param "githubbranch" >}}/cluster/addons/fluentd-elasticsearch/fluentd-es-ds.yaml)
+  * [FluentD with GCP Plugin](http://releases.k8s.io/. param "githubbranch" >}}/cluster/addons/fluentd-gcp/fluentd-gcp-ds.yaml)
 -->
 * 根据集群的规模，如果使用了以下插件，提高其内存和 CPU 上限（每个插件都有一个副本处理整个群集，因此内存和 CPU 使用率往往与集群的规模/负载成比例增长） ：
-  * [InfluxDB 和 Grafana](http://releases.k8s.io/{{< param "githubbranch" >}}/cluster/addons/cluster-monitoring/influxdb/influxdb-grafana-controller.yaml)
-  * [kubedns、dnsmasq 和 sidecar](http://releases.k8s.io/{{< param "githubbranch" >}}/cluster/addons/dns/kube-dns/kube-dns.yaml.in)
-  * [Kibana](http://releases.k8s.io/{{< param "githubbranch" >}}/cluster/addons/fluentd-elasticsearch/kibana-deployment.yaml)
+  * [InfluxDB 和 Grafana](http://releases.k8s.io/. param "githubbranch" >}}/cluster/addons/cluster-monitoring/influxdb/influxdb-grafana-controller.yaml)
+  * [kubedns、dnsmasq 和 sidecar](http://releases.k8s.io/. param "githubbranch" >}}/cluster/addons/dns/kube-dns/kube-dns.yaml.in)
+  * [Kibana](http://releases.k8s.io/. param "githubbranch" >}}/cluster/addons/fluentd-elasticsearch/kibana-deployment.yaml)
 * 根据集群的规模，如果使用了以下插件，调整其副本数量（每个插件都有多个副本，增加副本数量有助于处理增加的负载，但是，由于每个副本的负载也略有增加，因此也请考虑增加 CPU/内存限制）：
-  * [elasticsearch](http://releases.k8s.io/{{< param "githubbranch" >}}/cluster/addons/fluentd-elasticsearch/es-statefulset.yaml)
+  * [elasticsearch](http://releases.k8s.io/. param "githubbranch" >}}/cluster/addons/fluentd-elasticsearch/es-statefulset.yaml)
 * 根据集群的规模，如果使用了以下插件，限制其内存和 CPU 上限（这些插件在每个节点上都有一个副本，但是 CPU/内存使用量也会随集群负载/规模而略有增加）：
-  * [FluentD 和 ElasticSearch 插件](http://releases.k8s.io/{{< param "githubbranch" >}}/cluster/addons/fluentd-elasticsearch/fluentd-es-ds.yaml)
-  * [FluentD 和 GCP 插件](http://releases.k8s.io/{{< param "githubbranch" >}}/cluster/addons/fluentd-gcp/fluentd-gcp-ds.yaml)
+  * [FluentD 和 ElasticSearch 插件](http://releases.k8s.io/. param "githubbranch" >}}/cluster/addons/fluentd-elasticsearch/fluentd-es-ds.yaml)
+  * [FluentD 和 GCP 插件](http://releases.k8s.io/. param "githubbranch" >}}/cluster/addons/fluentd-gcp/fluentd-gcp-ds.yaml)
 
 <!--
 Heapster's resource limits are set dynamically based on the initial size of your cluster (see [#16185](http://issue.k8s.io/16185)

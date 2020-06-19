@@ -14,9 +14,9 @@ weight: 140
 
 <!-- overview -->
 
-{{< deprecationfilewarning >}}
-{{< include "federation-deprecation-warning-note.md" >}}
-{{< /deprecationfilewarning >}}
+. deprecationfilewarning >}}
+. include "federation-deprecation-warning-note.md" >}}
+. /deprecationfilewarning >}}
 
 <!-- This guide explains how to use Kubernetes Federated Services to deploy
 a common Service across multiple Kubernetes clusters. This makes it
@@ -54,12 +54,12 @@ different cluster if it does not. -->
 
 
 
-{{< toc >}}
+. toc >}}
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 
@@ -162,7 +162,7 @@ Session Affinity:       None
 Events:                 <none>
 ```
 
-<!-- {{< note >}}
+<!-- . note >}}
 The 'LoadBalancer Ingress' addresses of your Federated Service
 correspond with the 'LoadBalancer Ingress' addresses of all of the
 underlying Kubernetes services (once these have been allocated - this
@@ -172,10 +172,10 @@ need to have an externally visible IP address. [Service Type:
 Loadbalancer](/docs/concepts/services-networking/service/#loadbalancer)
 is typically used for this, although other options
 (for example [External IPs](/docs/concepts/services-networking/service/#external-ips)) exist.
-{{< /note >}} -->
-{{< note >}}
+. /note >}} -->
+. note >}}
 联合服务的 'LoadBalancer Ingress' 地址与所有基础 Kubernetes 服务的 'LoadBalancer Ingress' 地址相对应(一旦分配了这些地址，这可能需要几秒钟)。为了使服务分片之间的集群和云提供商之间的网络正常工作，您的服务需要具有一个外部可见的 IP 地址。[Service Type:Loadbalancer](/docs/concepts/services-networking/service/#loadbalancer)。尽管存在其他选项(例如 [外部 IP](/docs/concepts/services-networking/service/#external-ips)),但通常会使用 [Service 类型:Loadbalancer](/docs/concepts/services-networking/service/#loadbalancer)。
-{{< /note >}}
+. /note >}}
 
 <!-- Note also that we have not yet provisioned any backend Pods to receive
 the network traffic directed to these addresses (that is 'Service
@@ -262,7 +262,7 @@ nginx.mynamespace.myfederation.svc.europe-west1-d.example.com.  CNAME     180   
 ... etc.
 ```
 
-<!-- {{< note >}}
+<!-- . note >}}
 If your Federation is configured to use AWS Route53, you can use one of the equivalent AWS tools, for example:
 
 ``` shell
@@ -273,8 +273,8 @@ and
 ``` shell
 aws route53 list-resource-record-sets --hosted-zone-id Z3ECL0L9QLOVBX
 ```
-{{< /note >}} -->
-{{< note >}}
+. /note >}} -->
+. note >}}
 如果您的联邦配置为使用 AWS Route53，则可以使用类似的 AWS 工具，例如:
 
 ``` shell
@@ -285,7 +285,7 @@ aws route53 list-hosted-zones
 ``` shell
 aws route53 list-resource-record-sets --hosted-zone-id Z3ECL0L9QLOVBX
 ```
-{{< /note >}}
+. /note >}}
 
 <!-- Whatever DNS provider you use, any DNS query tool (for example 'dig'
 or 'nslookup') will of course also allow you to see the records

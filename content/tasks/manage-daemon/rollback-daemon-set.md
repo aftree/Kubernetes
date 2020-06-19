@@ -12,12 +12,11 @@ content_type: task
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
 * DaemonSet 滚动升级历史和 DaemonSet 回滚特性仅在 Kubernetes 1.7 及以后版本的 `kubectl` 中支持。
 * 确保您了解如何 [对 DaemonSet 执行滚动升级](/docs/tasks/manage-daemon/update-daemon-set/)。
-
 
 
 

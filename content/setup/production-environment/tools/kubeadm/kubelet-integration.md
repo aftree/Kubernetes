@@ -17,7 +17,7 @@ weight: 80
 
 <!-- overview -->
 
-{{< feature-state for_k8s_version="1.11" state="stable" >}}
+. feature-state for_k8s_version="1.11" state="stable" >}}
 
 <!--
 The lifecycle of the kubeadm CLI tool is decoupled from the

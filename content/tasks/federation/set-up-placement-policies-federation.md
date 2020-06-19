@@ -10,9 +10,9 @@ content_type: task
 
 <!-- overview -->
 
-{{< deprecationfilewarning >}}
-{{< include "federation-deprecation-warning-note.md" >}}
-{{< /deprecationfilewarning >}}
+. deprecationfilewarning >}}
+. include "federation-deprecation-warning-note.md" >}}
+. /deprecationfilewarning >}}
 
 <!--
 This page shows how to enforce policy-based placement decisions over Federated
@@ -22,7 +22,7 @@ resources using an external policy engine.
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
 <!--
@@ -61,7 +61,7 @@ Shown below is an example ConfigMap for the Admission Controller:
 -->
 下图是准入控制器的 ConfigMap 示例：
 
-{{< codenew file="federation/scheduling-policy-admission.yaml" >}}
+. codenew file="federation/scheduling-policy-admission.yaml" >}}
 
 <!--
 The ConfigMap contains three files:
@@ -148,7 +148,7 @@ Shown below is an example Service for OPA.
 -->
 下面显示的是 OPA 的示例服务。
 
-{{< codenew file="federation/policy-engine-service.yaml" >}}
+. codenew file="federation/policy-engine-service.yaml" >}}
 
 <!--
 Create a Deployment in the host cluster with the Federation control plane:
@@ -162,7 +162,7 @@ Shown below is an example Deployment for OPA.
 -->
 下面显示的是 OPA 的部署示例。
 
-{{< codenew file="federation/policy-engine-deployment.yaml" >}}
+. codenew file="federation/policy-engine-deployment.yaml" >}}
 
 <!--
 ## Configuring placement policies via ConfigMaps
@@ -310,7 +310,7 @@ Deploy a Federated ReplicaSet to test the placement policy.
 -->
 部署联邦副本来测试放置策略。
 
-{{< codenew file="federation/replicaset-example-policy.yaml" >}}
+. codenew file="federation/replicaset-example-policy.yaml" >}}
 
 <!--
 Shown below is the command to deploy a ReplicaSet that *does* match the policy.

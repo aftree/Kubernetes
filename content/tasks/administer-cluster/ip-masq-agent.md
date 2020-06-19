@@ -16,10 +16,10 @@ This page shows how to configure and enable the ip-masq-agent.
 此页面展示如何配置和启用 ip-masq-agent。
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 
@@ -159,7 +159,7 @@ In most cases, the default set of rules should be sufficient; however, if this i
 -->
 在大多数情况下，默认的规则集应该足够；但是，如果您的群集不是这种情况，则可以创建并应用 [ConfigMap](/docs/tasks/configure-pod-container/configure-pod-configmap/) 来自定义受影响的 IP 范围。 例如，要允许 ip-masq-agent 仅作用于 10.0.0.0/8，您可以一个名为 “config” 的文件中创建以下 [ConfigMap](/docs/tasks/configure-pod-container/configure-pod-configmap/) 。
 
-{{< note >}}
+. note >}}
 <!--
 It is important that the file is called config since, by default, that will be used as the key for lookup by the ip-masq-agent:
 -->
@@ -170,7 +170,7 @@ nonMasqueradeCIDRs:
   - 10.0.0.0/8
 resyncInterval: 60s
 ```
-{{< /note >}}
+. /note >}}
 
 <!--
 Run the following command to add the config map to your cluster:

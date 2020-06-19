@@ -10,7 +10,7 @@ reviewers:
 - bprashanth
 title: Debug Pods and ReplicationControllers
 content_type: task
---- 
+---
 -->
 
 <!-- overview -->
@@ -22,10 +22,10 @@ This page shows how to debug Pods and ReplicationControllers.
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 <!-- 
 * You should be familiar with the basics of
@@ -205,14 +205,14 @@ kubectl exec ${POD_NAME} -c ${CONTAINER_NAME} -- ${CMD} ${ARG1} ${ARG2} ... ${AR
 
 
 <!-- 
-{{< note >}}
+. note >}}
 `-c ${CONTAINER_NAME}` is optional. You can omit it for pods that
 only contain a single container.
-{{< /note >}} 
+. /note >}} 
 -->
-{{< note >}}
+. note >}}
 `-c ${CONTAINER_NAME}` 是可选的，对于只包含一个容器的 pod 可以省略。
-{{< /note >}} 
+. /note >}} 
 
 <!-- 
 As an example, to look at the logs from a running Cassandra pod, you might run: 

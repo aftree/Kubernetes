@@ -29,10 +29,10 @@ applications, such as key-value stores (such as Redis) and databases.
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 
@@ -51,7 +51,7 @@ Volume of type
 that lasts for the life of the Pod, even if the Container terminates and
 restarts. Here is the configuration file for the Pod:
 -->
-{{< codenew file="pods/storage/redis.yaml" >}}
+. codenew file="pods/storage/redis.yaml" >}}
 
 1. 创建 Pod:
 <!--
@@ -142,11 +142,11 @@ you will see something like this:
     redis     1/1       Running    1         6m
     ```
 
-此时，容器已经终止并重新启动。这是因为 Redis Pod 的 [restartPolicy](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#podspec-v1-core) 为 `Always`。
+此时，容器已经终止并重新启动。这是因为 Redis Pod 的 [restartPolicy](/docs/reference/generated/kubernetes-api/. param "version" >}}/#podspec-v1-core) 为 `Always`。
 <!--
 At this point, the Container has terminated and restarted. This is because the
 Redis Pod has a
-[restartPolicy](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#podspec-v1-core)
+[restartPolicy](/docs/reference/generated/kubernetes-api/. param "version" >}}/#podspec-v1-core)
 of `Always`.
 -->
 
@@ -181,19 +181,19 @@ of `Always`.
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
-* 参阅[卷](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#volume-v1-core)。
+* 参阅[卷](/docs/reference/generated/kubernetes-api/. param "version" >}}/#volume-v1-core)。
 
-* 参阅 [Pod](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#pod-v1-core)。
+* 参阅 [Pod](/docs/reference/generated/kubernetes-api/. param "version" >}}/#pod-v1-core)。
 
 * 除了 `emptyDir` 提供的本地磁盘存储外，Kubernetes 还支持许多不同的网络附加存储解决方案，包括 GCE 上的 PD 和 EC2 上的 EBS，它们是关键数据的首选，并将处理节点上的一些细节，例如安装和卸载设备。了解更多详情请参阅[卷](/docs/concepts/storage/volumes/)。
 
 <!--
-* See [Volume](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#volume-v1-core).
+* See [Volume](/docs/reference/generated/kubernetes-api/. param "version" >}}/#volume-v1-core).
 
-* See [Pod](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#pod-v1-core).
+* See [Pod](/docs/reference/generated/kubernetes-api/. param "version" >}}/#pod-v1-core).
 
 * In addition to the local disk storage provided by `emptyDir`, Kubernetes
 supports many different network-attached storage solutions, including PD on

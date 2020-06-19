@@ -18,7 +18,7 @@ reviewers:
 title: Webhook Mode
 content_type: concept
 weight: 95
---- 
+---
 -->
 
 <!-- overview -->
@@ -87,7 +87,7 @@ contexts:
     cluster: name-of-remote-authz-service
     user: name-of-api-server
   name: webhook
-``` 
+```
 -->
 ```yaml
 # Kubernetes API 版本
@@ -266,9 +266,9 @@ to the REST api.
 
 <!-- 
 For further documentation refer to the authorization.v1beta1 API objects and
-[webhook.go](https://github.com/kubernetes/kubernetes/blob/{{< param "githubbranch" >}}/staging/src/k8s.io/apiserver/plugin/pkg/authorizer/webhook/webhook.go). 
+[webhook.go](https://github.com/kubernetes/kubernetes/blob/. param "githubbranch" >}}/staging/src/k8s.io/apiserver/plugin/pkg/authorizer/webhook/webhook.go). 
 -->
-更多信息可以参考 authorization.v1beta1 API 对象和[webhook.go](https://github.com/kubernetes/kubernetes/blob/{{< param "githubbranch" >}}/staging/src/k8s.io/apiserver/plugin/pkg/authorizer/webhook/webhook.go)。
+更多信息可以参考 authorization.v1beta1 API 对象和[webhook.go](https://github.com/kubernetes/kubernetes/blob/. param "githubbranch" >}}/staging/src/k8s.io/apiserver/plugin/pkg/authorizer/webhook/webhook.go)。
 
 
 

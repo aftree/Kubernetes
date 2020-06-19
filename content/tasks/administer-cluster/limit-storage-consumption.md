@@ -26,10 +26,10 @@ and [PersistentVolumeClaim](/docs/concepts/storage/persistent-volumes/).
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-* {{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+* . include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 

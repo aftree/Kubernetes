@@ -1,5 +1,5 @@
 ---
-title: 使用 kubeadm 创建一个单主集群
+title: 💖 - 使用 kubeadm 创建一个单主集群
 content_type: task
 weight: 30
 ---
@@ -128,7 +128,7 @@ Kubernetes 发布的版本通常只维护支持九个月，在维护周期内，
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 <!--
 
@@ -166,14 +166,14 @@ Kubernetes 发布的版本通常只维护支持九个月，在维护周期内，
 
 See ["Installing kubeadm"](/docs/setup/independent/install-kubeadm/).
 
-{{< note >}}
+. note >}}
 **Note:** If you have already installed kubeadm, run `apt-get update &&
 apt-get upgrade` or `yum update` to get the latest version of kubeadm.
 
 When you upgrade, the kubelet restarts every few seconds as it waits in a crashloop for
 kubeadm to tell it what to do. This crashloop is expected and normal.
 After you initialize your master, the kubelet runs normally.
-{{< /note >}}-->
+. /note >}}-->
 
 ## 步骤
 
@@ -181,13 +181,13 @@ After you initialize your master, the kubelet runs normally.
 
 请查阅[安装 kubeadm](/docs/setup/independent/install-kubeadm/)。
 
-{{< note >}}
+. note >}}
 如果您的机器已经安装了 kubeadm, 请运行 `apt-get update &&
 apt-get upgrade` 或者 `yum update` 来升级至最新版本的 kubeadm.
 
 升级过程中，kubelet 会每隔几秒钟重启并陷入了不断循环等待 kubeadm 发布指令的状态。
 这个死循环的过程是正常的，当升级并初始化完成您的主节点之后，kubelet 才会正常运行。
-{{< /note >}}
+. /note >}}
 
 <!-- ### Initializing your master
 
@@ -215,7 +215,7 @@ Now run:
 
 ```bash
 kubeadm init <args>
-``` -->
+​``` -->
 
 
 1. 选择一个 Pod 网络插件，并检查是否在 kubeadm 初始化过程中需要传入什么参数。这个取决于
@@ -227,7 +227,7 @@ IPv6 的集群，则需要指定一个 IPv6 地址，比如 `--apiserver-adverti
 
 现在运行:
 
-```bash
+​```bash
 kubeadm init <args>
 ```
 
@@ -326,11 +326,11 @@ also part of the `kubeadm init` output:
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
-``` -->
+​``` -->
 
 如果需要让普通用户可以运行 kubectl，请运行如下命令，其实这也是 `kubeadm init` 输出的一部分：
 
-```bash
+​```bash
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
@@ -340,11 +340,11 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 ```bash
 export KUBECONFIG=/etc/kubernetes/admin.conf
-``` -->
+​``` -->
 
 或者，如果您是 `root` 用户，则可以运行：
 
-```bash
+​```bash
 export KUBECONFIG=/etc/kubernetes/admin.conf
 ```
 
@@ -365,18 +365,18 @@ created, and deleted with the `kubeadm token` command. See the
 
 <!-- ### Installing a Pod network add-on {#Pod-network}
 
-{{< caution >}}
+. caution >}}
 **Caution:** This section contains important information about installation and deployment order. Read it carefully before proceeding.
-{{< /caution >}}
+. /caution >}}
 
 You must install a Pod network add-on so that your Pods can communicate with
 each other. -->
 
 ### 安装 Pod 网络插件 {#Pod-network}
 
-{{< caution >}}
+. caution >}}
 **注意:** 这一节包含了安装和部署顺序的重要信息，执行之前请仔细阅读。
-{{< /caution >}}
+. /caution >}}
 
 您必须先安装 Pod 网络插件，以便您的 Pod 可以互相通信。
 
@@ -403,30 +403,30 @@ You can install a Pod network add-on with the following command:
 
 ```bash
 kubectl apply -f <add-on.yaml>
-``` -->
+​``` -->
 
 注意 kubeadm 默认会创建一个比较安全的集群并强制启用[RBAC](/docs/reference/access-authn-authz/rbac/)。
 请确保您的网络方案支持 RBAC。
 
 您可以使用下列命令安装网络插件：
 
-```bash
+​```bash
 kubectl apply -f <add-on.yaml>
 ```
 
 <!-- You can install only one Pod network per cluster.
 
-{{< tabs name="tabs-Pod-install" >}}
-{{% tab name="Choose one..." %}}
+. tabs name="tabs-Pod-install" >}}
+. tab name="Choose one..." %}}
 Please select one of the tabs to see installation instructions for the respective third-party Pod Network Provider.
-{{% /tab %}} -->
+. /tab %}} -->
 
 您仅可以给任何一个集群安装一个网络插件。
 
-{{< tabs name="tabs-Pod-install" >}}
-{{% tab name="Choose one..." %}}
+. tabs name="tabs-Pod-install" >}}
+. tab name="Choose one..." %}}
 请选择一个选项来查看对应的第三方网络插件驱动的安装向导。
-{{% /tab %}}
+. /tab %}}
 
 <!--
 For more information about using Calico, see [Quickstart for Calico on Kubernetes](https://docs.projectcalico.org/latest/getting-started/kubernetes/), [Installing Calico for policy and networking](https://docs.projectcalico.org/latest/getting-started/kubernetes/installation/calico), and other related resources.
@@ -438,7 +438,7 @@ kubectl apply -f https://docs.projectcalico.org/v3.8/manifests/calico.yaml
 ```
 -->
 
-{{% tab name="Calico" %}}
+. tab name="Calico" %}}
 想了解关于 Calico 的使用的更多信息, 请参阅[Kubernetes上的Calico快速实践](https://docs.projectcalico.org/latest/getting-started/kubernetes/)、[安装 Calico 实现网络策略](https://docs.projectcalico.org/latest/getting-started/kubernetes/installation/calico)和其他相关资源。
 
 为了 Calico 可以正确工作，您需要给 `kubeadm init` 传递 `--Pod-network-cidr=192.168.0.0/16` 这样的选项，
@@ -448,7 +448,7 @@ kubectl apply -f https://docs.projectcalico.org/v3.8/manifests/calico.yaml
 kubectl apply -f https://docs.projectcalico.org/v3.8/manifests/calico.yaml
 ```
 
-{{% /tab %}}
+. /tab %}}
 
 <!--
 Canal uses Calico for policy and Flannel for networking. Refer to the Calico documentation for the [official getting started guide](https://docs.projectcalico.org/latest/getting-started/kubernetes/installation/flannel).
@@ -460,7 +460,7 @@ kubectl apply -f https://docs.projectcalico.org/v3.8/manifests/canal.yaml
 ```
 -->
 
-{{% tab name="Canal" %}}
+. tab name="Canal" %}}
 Canal 使用 Calico 提供的网络策略和 Flannel 提供的网络功能。请查阅 Calico 的官方文档
 [入门指引](https://docs.projectcalico.org/latest/getting-started/kubernetes/installation/flannel)。
 
@@ -470,7 +470,7 @@ Canal 使用 Calico 提供的网络策略和 Flannel 提供的网络功能。请
 kubectl apply -f https://docs.projectcalico.org/v3.8/manifests/canal.yaml
 ```
 
-{{% /tab %}}
+. /tab %}}
 <!--
 For more information about using Cilium with Kubernetes, see [Quickstart for Cilium on Kubernetes](http://docs.cilium.io/en/v1.2/kubernetes/quickinstall/) and [Kubernetes Install guide for Cilium](http://docs.cilium.io/en/v1.2/kubernetes/install/).
 
@@ -497,7 +497,7 @@ kubectl create -f ./
 # Wait several minutes for Cilium, coredns and etcd Pods to converge to a working state
 ```
 -->
-{{% tab name="Cilium" %}}
+. tab name="Cilium" %}}
 想了解 Kubernetes 上使用 Cilium 的更多相关信息，请查参阅[Kubernetes 上 Cilium 的快速指南](http://docs.cilium.io/en/v1.2/kubernetes/quickinstall/) 和 [Kubernetes 上 Cilium 的安装向导](http://docs.cilium.io/en/v1.2/kubernetes/install/)。
 
 尽管这里并不要求给 `kubeadm init` 设置 `--Pod-network-cidr` 参数，但是这是一个高度推荐操作的步骤。
@@ -523,7 +523,7 @@ kubectl create -f ./
 # 等待几分钟，Cilium、coredns 和 etcd 的 Pods 会收敛到工作状态
 ```
 
-{{% /tab %}}
+. /tab %}}
 
 <!--
 
@@ -542,7 +542,7 @@ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/bc79dd1505b0c8
 For more information about `flannel`, see [the CoreOS flannel repository on GitHub
 ](https://github.com/coreos/flannel).-->
 
-{{% tab name="Flannel" %}}
+. tab name="Flannel" %}}
 
 为了让 `flannel` 能正确工作，您必须在运行 `kubeadm init` 时设置 `--Pod-network-cidr=10.244.0.0/16`。
 
@@ -557,7 +557,7 @@ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/bc79dd1505b0c8
 ```
 
 想了解更多关于 `flannel` 的信息,请查阅[ GitHub 上的 CoreOS flannel 仓库](https://github.com/coreos/flannel)。
-{{% /tab %}}
+. /tab %}}
 
 <!--
 Set `/proc/sys/net/bridge/bridge-nf-call-iptables` to `1` by running `sysctl net.bridge.bridge-nf-call-iptables=1`
@@ -571,7 +571,7 @@ Kube-router provides Pod networking, network policy, and high-performing IP Virt
 For information on setting up Kubernetes cluster with Kube-router using kubeadm, please see official [setup guide](https://github.com/cloudnativelabs/kube-router/blob/master/docs/kubeadm.md).
 -->
 
-{{% tab name="Kube-router" %}}
+. tab name="Kube-router" %}}
 通过运行 `sysctl net.bridge.bridge-nf-call-iptables=1` 将 `/proc/sys/net/bridge/bridge-nf-call-iptables` 设置成 `1`，
 确保桥接的 IPv4 流量会传递给 iptables。
 这是一部分 CNI 插件的运行条件。请查看[这篇文档](/docs/concepts/cluster-administration/network-plugins/#network-plugin-requirements)了解更详细的信息。
@@ -581,7 +581,7 @@ Kube-router 依赖于 kube-controller-manager 来给节点分配 CIDR， 因此�
 Kube-router 提供 Pod 间联网、网络策略和和高效的基于 IPVS/LVS 的服务代理功能。
 
 想了解关于使用 kubeadm 搭建 Kubernetes 和 Kube-router 的更多信息。请查看官方的[安装指引](https://github.com/cloudnativelabs/kube-router/blob/master/docs/kubeadm.md)。
-{{% /tab %}}
+. /tab %}}
 
 <!--
 Set `/proc/sys/net/bridge/bridge-nf-call-iptables` to `1` by running `sysctl net.bridge.bridge-nf-call-iptables=1`
@@ -597,7 +597,7 @@ kubectl apply -f https://raw.githubusercontent.com/romana/romana/master/containe
 ```
 -->
 
-{{% tab name="Romana" %}}
+. tab name="Romana" %}}
 通过运行 `sysctl net.bridge.bridge-nf-call-iptables=1` 将 `/proc/sys/net/bridge/bridge-nf-call-iptables` 设置成 `1`，
 确保桥接的 IPv4 流量会传递给 iptables。这是一部分 CNI 插件的运行条件。
 请查看[这篇文档](/docs/concepts/cluster-administration/network-plugins/#network-plugin-requirements)
@@ -610,7 +610,7 @@ kubectl apply -f https://raw.githubusercontent.com/romana/romana/master/containe
 ```shell
 kubectl apply -f https://raw.githubusercontent.com/romana/romana/master/containerize/specs/romana-kubeadm.yml
 ```
-{{% /tab %}}
+. /tab %}}
 
 <!--
 Set `/proc/sys/net/bridge/bridge-nf-call-iptables` to `1` by running `sysctl net.bridge.bridge-nf-call-iptables=1`
@@ -628,7 +628,7 @@ kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl versio
 ```
 -->
 
-{{% tab name="Weave Net" %}}
+. tab name="Weave Net" %}}
 
 通过运行 `sysctl net.bridge.bridge-nf-call-iptables=1` 将 `/proc/sys/net/bridge/bridge-nf-call-iptables` 设置成 `1`，
 将桥接的 IPv4 流量传递给 iptables。这是一部分 CNI 插件的运行条件。
@@ -643,7 +643,7 @@ Weave Net 默认启用 hairpin 模式，可以让 Pod 在不知道他们自己�
 ```shell
 kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
 ```
-{{% /tab %}}
+. /tab %}}
 
 <!--
 Provides overlay SDN solution, delivering multicloud networking, hybrid cloud networking,
@@ -655,15 +655,15 @@ There are multiple, flexible ways to install JuniperContrail/TungstenFabric CNI.
 Kindly refer to this quickstart: [TungstenFabric](https://tungstenfabric.github.io/website/)
 -->
 
-{{% tab name="JuniperContrail/TungstenFabric" %}}
+. tab name="JuniperContrail/TungstenFabric" %}}
 提供了支持 overlay 的 SDN 解决方案，支持多云环境和混合云环境的网络方案，同时支持 overlay 和 underlay、网络策略、
 网络隔离、服务链和灵活的负载均衡。
 
 安装 JuniperContrail/TungstenFabric CNI 有很多灵活的方式。
 
 请查阅这个[安装指引](https://tungstenfabric.github.io/website/)。
-{{% /tab %}}
-{{< /tabs >}}
+. /tab %}}
+. /tabs >}}
 
 <!-- Once a Pod network has been installed, you can confirm that it is working by
 checking that the CoreDNS Pod is Running in the output of `kubectl get Pods --all-namespaces`.
@@ -729,7 +729,7 @@ The nodes are where your workloads (containers and Pods, etc) run. To add new no
 
 ``` bash
 kubeadm join --token <token> <master-ip>:<master-port> --discovery-token-ca-cert-hash sha256:<hash>
-``` -->
+​``` -->
 
 ### 添加节点 {#join-nodes}
 
@@ -739,7 +739,7 @@ kubeadm join --token <token> <master-ip>:<master-port> --discovery-token-ca-cert
 * 成为 root 用户（比如 `sudo su -`）
 * 运行 `kubeadm init` 输出里的命令，即：
 
-``` bash
+​``` bash
 kubeadm join --token <token> <master-ip>:<master-port> --discovery-token-ca-cert-hash sha256:<hash>
 ```
 <!--
@@ -757,12 +757,12 @@ TOKEN                    TTL  EXPIRES              USAGES           DESCRIPTION 
                                                    signing          token generated by     bootstrappers:
                                                                     'kubeadm init'.        kubeadm:
                                                                                            default-node-token
-``` -->
+​``` -->
 
 
 如果您没有保存令牌的话，可以通过在主节点上执行下面的命令来获取：
 
-``` bash
+​``` bash
 kubeadm token list
 ```
 
@@ -800,11 +800,11 @@ The output is similar to this:
 
 ``` console
 8cb2de97839780a412b93877f8507ad6c94f73add17d5d7058e91741c9d5ec78
-``` -->
+​``` -->
 
 默认情况下，令牌会在 24 小时内过期。如果在令牌过期之后添加节点，您可以在主节点上执行下面的命令创建一个新令牌：
 
-``` bash
+​``` bash
 kubeadm token create
 ```
 
@@ -827,9 +827,9 @@ openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt | openssl rsa -pubin -outfor
 8cb2de97839780a412b93877f8507ad6c94f73add17d5d7058e91741c9d5ec78
 ```
 
-<!-- {{< note >}}
+<!-- . note >}}
 **Note:** To specify an IPv6 tuple for `<master-ip>:<master-port>`, IPv6 address must be enclosed in square brackets, for example: `[fd00::101]:2073`.
-{{< /note >}}
+. /note >}}
 
 The output should look something like:
 
@@ -849,9 +849,9 @@ Run 'kubectl get nodes' on the master to see this machine join.
 A few seconds later, you should notice this node in the output from `kubectl get
 nodes` when run on the master. -->
 
-{{< note >}}
+. note >}}
 若需为 `<master-ip>:<master-port>` 参数设定一个 IPv6 的元组，地址必须写在一对方括号里面，比如: `[fd00::101]:2073`。
-{{< /note >}}
+. /note >}}
 
 输出类似这样:
 
@@ -881,7 +881,7 @@ scp root@<master ip>:/etc/kubernetes/admin.conf .
 kubectl --kubeconfig ./admin.conf get nodes
 ```
 
-{{< note >}}
+. note >}}
 **Note:** The example above assumes SSH access is enabled for root. If that is not the
 case, you can copy the `admin.conf` file to be accessible by some other user
 and `scp` using that other user instead.
@@ -893,7 +893,7 @@ this with the `kubeadm alpha phase kubeconfig user --client-name <CN>`
 command. That command will print out a KubeConfig file to STDOUT which you
 should save to a file and distribute to your user. After that, whitelist
 privileges by using `kubectl create (cluster)rolebinding`.
-{{< /note >}} -->
+. /note >}} -->
 
 ### (可选) 在非主节点上控制集群
 
@@ -905,7 +905,7 @@ scp root@<master ip>:/etc/kubernetes/admin.conf .
 kubectl --kubeconfig ./admin.conf get nodes
 ```
 
-{{< note >}}
+. note >}}
 上面的例子生效的前提是 SSH 允许 root 用户连接登录。
 如果root 用户不能连接的话，您可以将 `admin.conf` 复制到允许其他用户访问的其他地方并将 `scp` 命令里的用户改成相对应的用户再复制。
 
@@ -913,7 +913,7 @@ kubectl --kubeconfig ./admin.conf get nodes
 更建议创建一个适用于白名单某些权限的验证文件。您可以通过这个命令来生成 `kubeadm alpha phase kubeconfig user --client-name <CN>`。
 这个命令会打印 KubeConfig 的内容到标准输出，然后您需要将它保存到一个文件里并分发给您的用户。然后再创建权限的白名单列表，
 命令如下： `kubectl create (cluster)rolebinding` 。
-{{< /note >}}
+. /note >}}
 
 <!-- ### (Optional) Proxying API Server to localhost
 

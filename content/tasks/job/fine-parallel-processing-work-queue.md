@@ -35,36 +35,36 @@ Here is an overview of the steps in this example:
 
 <!--
 1. **Start a storage service to hold the work queue.**  In this example, we use Redis to store
-  our work items.  In the previous example, we used RabbitMQ.  In this example, we use Redis and
-  a custom work-queue client library because AMQP does not provide a good way for clients to
-  detect when a finite-length work queue is empty.  In practice you would set up a store such
-  as Redis once and reuse it for the work queues of many jobs, and other things.
+    our work items.  In the previous example, we used RabbitMQ.  In this example, we use Redis and
+    a custom work-queue client library because AMQP does not provide a good way for clients to
+    detect when a finite-length work queue is empty.  In practice you would set up a store such
+    as Redis once and reuse it for the work queues of many jobs, and other things.
 -->
 
 1. **启动存储服务用于保存工作队列。** 在这个例子中，我们使用 Redis 来存储工作项。在上一个例子中，我们使用了 RabbitMQ。在这个例子中，由于 AMQP 不能为客户端提供一个良好的方法来检测一个有限长度的工作队列是否为空，我们使用了 Redis 和一个自定义的工作队列客户端库。在实践中，您可能会设置一个类似于 Redis 的存储库，并将其同时用于多项任务或其他事务的工作队列。
 
 <!--
 1. **Create a queue, and fill it with messages.**  Each message represents one task to be done.  In
-  this example, a message is just an integer that we will do a lengthy computation on.
+    this example, a message is just an integer that we will do a lengthy computation on.
 -->
 
 2. **创建一个队列，然后向其中填充消息。** 每个消息表示一个将要被处理的工作任务。在这个例子中，消息只是一个我们将用于进行长度计算的整数。
 
 <!--
 1. **Start a Job that works on tasks from the queue**.  The Job starts several pods.  Each pod takes
-  one task from the message queue, processes it, and repeats until the end of the queue is reached.
+    one task from the message queue, processes it, and repeats until the end of the queue is reached.
 -->
 
 3. **启动一个 Job 对队列中的任务进行处理**。这个 Job 启动了若干个 Pod 。每个 Pod 从消息队列中取出一个工作任务，处理它，然后重复，直到到达队列的尾部。
 
 
 
-{{< toc >}}
+. toc >}}
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 
@@ -219,7 +219,7 @@ client library to get work.  Here it is:
 -->
 Job 中每个 Pod 内的 “工作程序” 使用工作队列客户端库获取工作。如下：
 
-{{< codenew language="python" file="application/job/redis/worker.py" >}}
+. codenew language="python" file="application/job/redis/worker.py" >}}
 
 <!--
 If you are working from the source tree,
@@ -280,7 +280,7 @@ Here is the job definition:
 -->
 这是 job 定义：
 
-{{< codenew file="application/job/redis/job.yaml" >}}
+. codenew file="application/job/redis/job.yaml" >}}
 
 <!--
 Be sure to edit the job template to

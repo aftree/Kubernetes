@@ -19,6 +19,7 @@ short_description: >
 
 aka:
 tags:
+
 - networking
 ---
 -->
@@ -41,9 +42,9 @@ actual server's reply to the client.
 <!--
 [kube-proxy](/docs/reference/command-line-tools-reference/kube-proxy/) is a
 network proxy that runs on each node in your cluster, implementing part of
-the Kubernetes {{< glossary_tooltip term_id="service">}} concept.
+the Kubernetes . glossary_tooltip term_id="service">}} concept.
 -->
-[kube-proxy](/docs/reference/command-line-tools-reference/kube-proxy/) 是集群中每个节点上运行的网络代理，实现了部分 Kubernetes {{< glossary_tooltip term_id="service">}} 概念。
+[kube-proxy](/docs/reference/command-line-tools-reference/kube-proxy/) 是集群中每个节点上运行的网络代理，实现了部分 Kubernetes . glossary_tooltip term_id="service">}} 概念。
 
 <!--
 You can run kube-proxy as a plain userland proxy service. If your operating

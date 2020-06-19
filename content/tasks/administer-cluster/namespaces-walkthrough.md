@@ -7,6 +7,7 @@ content_type: task
 ---
 <!-- ---
 reviewers:
+
 - derekwaynecarr
 - janetkuo
 title: Namespaces Walkthrough
@@ -14,10 +15,10 @@ content_type: task
 --- -->
 
 <!-- overview -->
-<!-- Kubernetes {{< glossary_tooltip text="namespaces" term_id="namespace" >}}
+<!-- Kubernetes . glossary_tooltip text="namespaces" term_id="namespace" >}}
 help different projects, teams, or customers to share a Kubernetes cluster. -->
 
-Kubernetes {{< glossary_tooltip text="命名空间" term_id="namespace" >}}
+Kubernetes . glossary_tooltip text="命名空间" term_id="namespace" >}}
 有助于不同的项目、团队或客户去共享 Kubernetes 集群。
 
 <!-- It does this by providing the following:
@@ -41,10 +42,10 @@ Kubernetes {{< glossary_tooltip text="命名空间" term_id="namespace" >}}
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 
@@ -120,7 +121,7 @@ Pods, Services, and Deployments that run the production site. -->
 
 文件 [`namespace-dev.json`](/examples/admin/namespace-dev.json) 描述了 development 命名空间:
 
-{{< codenew language="json" file="admin/namespace-dev.json" >}}
+. codenew language="json" file="admin/namespace-dev.json" >}}
 
 <!-- Create the `development` namespace using kubectl. -->
 
@@ -134,7 +135,7 @@ kubectl create -f https://k8s.io/examples/admin/namespace-dev.json
 
 将下列的内容保存到文件 [`namespace-prod.json`](/examples/admin/namespace-prod.json) 中，这些内容是对 production 命名空间的描述：
 
-{{< codenew language="json" file="admin/namespace-prod.json" >}}
+. codenew language="json" file="admin/namespace-prod.json" >}}
 
 <!-- And then let's create the `production` namespace using kubectl. -->
 

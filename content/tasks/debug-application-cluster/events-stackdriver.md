@@ -49,7 +49,7 @@ Stackdriver Logging, where they can be processed and analyzed.
 
 本文描述了一个将 Kubernetes 事件导出为 Stackdriver Logging 的解决方案，在这里可以对它们进行处理和分析。
 
-{{< note >}}
+. note >}}
 <!--
 It is not guaranteed that all events happening in a cluster will be
 exported to Stackdriver. One possible scenario when events will not be
@@ -61,7 +61,7 @@ of the potential inaccuracy.
 不能保证集群中发生的所有事件都将导出到 Stackdriver。
 事件不能导出的一种可能情况是事件导出器没有运行（例如，在重新启动或升级期间）。
 在大多数情况下，可以将事件用于设置 [metrics][sdLogMetrics] 和 [alerts][sdAlerts] 等目的，但您应该注意潜在的不准确性。
-{{< /note >}}
+. /note >}}
 
 [sdLogMetrics]: https://cloud.google.com/logging/docs/view/logs_based_metrics
 [sdAlerts]: https://cloud.google.com/logging/docs/view/logs_based_metrics#creating_an_alerting_policy
@@ -126,7 +126,7 @@ requests. As mentioned earlier, 100Mb RAM and 100m CPU should be enough.
 为了确保事件导出器 Pod 不会从节点中退出，您可以另外设置资源请求。
 如前所述，100MB 内存和 100m CPU 应该就足够了。
 
-{{< codenew file="debug/event-exporter.yaml" >}}
+. codenew file="debug/event-exporter.yaml" >}}
 
 <!--
 ## User Guide
@@ -162,6 +162,6 @@ jsonPayload.source.component="default-scheduler"
 jsonPayload.involvedObject.name:"nginx-deployment"
 ```
 
-{{< figure src="/images/docs/stackdriver-event-exporter-filter.png" alt="Filtered events in the Stackdriver Logging interface" width="500" >}}
+. figure src="/images/docs/stackdriver-event-exporter-filter.png" alt="Filtered events in the Stackdriver Logging interface" width="500" >}}
 
 

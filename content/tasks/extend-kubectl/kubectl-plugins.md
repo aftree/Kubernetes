@@ -1,5 +1,5 @@
 ---
-title: 用插件扩展 kubectl
+title: 😝 - 用插件扩展 kubectl
 reviewers:
 - juanvallejo
 - soltysh
@@ -17,7 +17,7 @@ content_type: task
 
 <!-- overview -->
 
-{{< feature-state state="stable" >}}
+. feature-state state="stable" >}}
 
 <!--
 This guide demonstrates how to install and write extensions for [kubectl](/docs/reference/kubectl/kubectl/). By thinking of core `kubectl` commands as essential building blocks for interacting with a Kubernetes cluster, a cluster administrator can think
@@ -29,7 +29,7 @@ of plugins as a means of utilizing these building blocks to create more complex 
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
 <!--
@@ -37,14 +37,14 @@ You need to have a working `kubectl` binary installed.
 -->
 您需要安装一个工作的二进制 `kubectl`。
 
-{{< note >}}
+. note >}}
 
 <!--
 Plugins were officially introduced as an alpha feature in the v1.8.0 release. They have been re-worked in the v1.12.0 release to support a wider range of use-cases. So, while some parts of the plugins feature were already available in previous versions, a `kubectl` version of 1.12.0 or later is recommended if you are following these docs.
 -->
 插件在 v1.8.0 版本中正式作为 alpha 特性引入。它们已经在 v1.12.0 版本中工作，以支持更广泛的用例。因此，虽然在以前的版本中已经提供了部分插件特性，但如果您遵循这些文档，建议使用 1.12.0 或更高版本的 `kubectl`。
 
-{{< /note >}}
+. /note >}}
 
 
 
@@ -61,13 +61,13 @@ A plugin is nothing more than a standalone executable file, whose name begins wi
 -->
 插件只不过是一个独立的可执行文件，名称以 `kubectl-` 开头。要安装插件，只需将此可执行文件移动到路径上的任何位置。
 
-{{< note >}}
+. note >}}
 
 <!--
 Kubernetes does not provide a package manager or anything similar to install or update plugins. It is your responsibility to ensure that plugin executables have a filename that begins with `kubectl-`, and that they are placed somewhere on your PATH.
 -->
 Kubernetes 不提供包管理器或任何类似于安装或更新插件的东西。你有责任确保插件可执行文件的文件名以 `kubectl-` 开头，并将它们放在你路径的某个位置。
-{{< /note >}}
+. /note >}}
 
 <!--
 ### Discovering plugins
@@ -235,7 +235,7 @@ For example, a plugin that wishes to be invoked whenever the command `kubectl fo
 
 #### 参数和标记处理
 
-{{< note >}}
+. note >}}
 <!--
 Unlike previous versions of `kubectl`, the plugin mechanism will _not_ create any custom, plugin-specific values or environment variables to a plugin process.
 This means that environment variables such as `KUBECTL_PLUGINS_CURRENT_NAMESPACE` are no longer provided to a plugin. Plugins must parse all of the arguments passed to them by a user,
@@ -244,7 +244,7 @@ and handle flag validation as part of their own implementation. For plugins writ
 与以前版本的 `kubectl` 不同，插件机制不会为插件进程创建任何定制的、特定于插件的值或环境变量，这意味着像 `KUBECTL_PLUGINS_CURRENT_NAMESPACE` 这样的环境变量不再提供给插件。
 插件必须解析用户传递给它们的所有参数，并将参数验证作为它们自己实现的一部分处理。对于用 Go 编写的插件，在 [k8s.io/cli-runtime](https://github.com/kubernetes/cli-runtime) 下提供了一组实用程序来帮助实现这一点。
 
-{{< /note >}}
+. /note >}}
 
 <!--
 Taking our `kubectl-foo-bar-baz` plugin from the above scenario, we further explore additional cases where users invoke our plugin while providing additional flags and arguments.
@@ -496,7 +496,7 @@ See the [Sample CLI Plugin](https://github.com/kubernetes/sample-cli-plugin) for
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 <!--

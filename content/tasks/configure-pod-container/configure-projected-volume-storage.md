@@ -28,17 +28,17 @@ and `serviceAccountToken` volumes can be projected.
 本文介绍怎样通过[`投射`](/docs/concepts/storage/volumes/#projected) 卷将现有的多个卷资源挂载到相同的目录。
 当前，`secret`、`configMap`、`downwardAPI` 和 `serviceAccountToken` 卷可以被投射。
 
-{{< note >}}
+. note >}}
 <!--
 `serviceAccountToken` is not a volume type.
 -->
 `serviceAccountToken` 不是一种卷类型
-{{< /note >}}
+. /note >}}
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 
 <!-- steps -->
@@ -57,7 +57,7 @@ Here is the configuration file for the Pod:
 
 下面是 Pod 的配置文件：
 
-{{< codenew file="pods/storage/projected.yaml" >}}
+. codenew file="pods/storage/projected.yaml" >}}
 
 1. <!--Create the Secrets:-->创建 Secrets:
 ```shell
@@ -98,15 +98,15 @@ the Pod:-->确认 Pod 中的容器运行正常，然后监视 Pod 的变化：
 ```
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 <!--
 * Learn more about [`projected`](/docs/concepts/storage/volumes/#projected) volumes.
-* Read the [all-in-one volume](https://github.com/kubernetes/community/blob/{{< param "githubbranch" >}}/contributors/design-proposals/node/all-in-one-volume.md) design document.
+* Read the [all-in-one volume](https://github.com/kubernetes/community/blob/. param "githubbranch" >}}/contributors/design-proposals/node/all-in-one-volume.md) design document.
 -->
 
 * 进一步了解[`投射`](/docs/concepts/storage/volumes/#projected) 卷。
-* 阅读[一体卷](https://github.com/kubernetes/community/blob/{{< param "githubbranch" >}}/contributors/design-proposals/node/all-in-one-volume.md)设计文档。
+* 阅读[一体卷](https://github.com/kubernetes/community/blob/. param "githubbranch" >}}/contributors/design-proposals/node/all-in-one-volume.md)设计文档。
 
 

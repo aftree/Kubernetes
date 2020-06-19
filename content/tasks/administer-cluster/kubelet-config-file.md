@@ -16,7 +16,7 @@ content_type: task
 --->
 
 <!-- overview -->
-{{< feature-state state="beta" >}}
+. feature-state state="beta" >}}
 
 <!--
 A subset of the Kubelet's configuration parameters may be
@@ -33,7 +33,7 @@ it simplifies node deployment and configuration management.
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
 <!--
@@ -51,7 +51,7 @@ it simplifies node deployment and configuration management.
 ## 创建配置文件
 
 
-`KubeletConfiguration` 结构体定义了可以通过文件配置的 Kubelet 配置子集，该结构体在 [这里（v1beta1）](https://github.com/kubernetes/kubernetes/blob/{{< param "docsbranch" >}}/staging/src/k8s.io/kubelet/config/v1beta1/types.go) 可以找到, 配置文件必须是这个结构体中参数的 JSON 或 YAML 表现形式。
+`KubeletConfiguration` 结构体定义了可以通过文件配置的 Kubelet 配置子集，该结构体在 [这里（v1beta1）](https://github.com/kubernetes/kubernetes/blob/. param "docsbranch" >}}/staging/src/k8s.io/kubelet/config/v1beta1/types.go) 可以找到, 配置文件必须是这个结构体中参数的 JSON 或 YAML 表现形式。
 
 
 在单独的文件夹中创建一个名为 `kubelet` 的文件，并保证 Kubelet 可以读取该文件夹及文件。您应该在这个 `kubelet` 文件中编写 Kubelet 配置。

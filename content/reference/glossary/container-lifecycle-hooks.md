@@ -25,9 +25,9 @@ tags:
 ---
 -->
 
-  生命周期钩子暴露{{< glossary_tooltip text="容器" term_id="container" >}}管理生命周期中的事件，允许用户在事件发生时运行代码。
+  生命周期钩子暴露. glossary_tooltip text="容器" term_id="container" >}}管理生命周期中的事件，允许用户在事件发生时运行代码。
   <!--
-  The lifecycle hooks expose events in the {{< glossary_tooltip text="Container" term_id="container" >}}container management lifecycle and let the user run code when the events occur.
+  The lifecycle hooks expose events in the . glossary_tooltip text="Container" term_id="container" >}}container management lifecycle and let the user run code when the events occur.
   -->
 
 <!--more--> 

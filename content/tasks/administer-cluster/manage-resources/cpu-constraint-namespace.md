@@ -8,6 +8,7 @@ weight: 40
 ---
 title: Configure Minimum and Maximum CPU Constraints for a Namespace
 content_type: task
+
 weight: 40
 ---
 -->
@@ -17,20 +18,20 @@ weight: 40
 <!--
 This page shows how to set minimum and maximum values for the CPU resources used by Containers
 and Pods in a namespace. You specify minimum and maximum CPU values in a
-[LimitRange](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#limitrange-v1-core)
+[LimitRange](/docs/reference/generated/kubernetes-api/. param "version" >}}/#limitrange-v1-core)
 object. If a Pod does not meet the constraints imposed by the LimitRange, it cannot be created
 in the namespace.
 -->
 
-本章介绍命名空间中可以被容器和Pod使用的CPU资源的最小和最大值。你可以通过 [LimitRange](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#limitrange-v1-core) 对象声明 CPU 的最小和最大值. 如果 Pod 不能满足 LimitRange 的限制，它就不能在命名空间中创建。
+本章介绍命名空间中可以被容器和Pod使用的CPU资源的最小和最大值。你可以通过 [LimitRange](/docs/reference/generated/kubernetes-api/. param "version" >}}/#limitrange-v1-core) 对象声明 CPU 的最小和最大值. 如果 Pod 不能满足 LimitRange 的限制，它就不能在命名空间中创建。
 
 
 
 
-## {{% heading "prerequisites" %}}
+## . heading "prerequisites" %}}
 
 
-{{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
+. include "task-tutorial-prereqs.md" >}} . version-check >}}
 
 <!--
 Each node in your cluster must have at least 1 CPU.
@@ -68,7 +69,7 @@ Here's the configuration file for a LimitRange:
 
 这里给出了 LimitRange 的配置文件：
 
-{{< codenew file="admin/resource/cpu-constraints.yaml" >}}
+. codenew file="admin/resource/cpu-constraints.yaml" >}}
 
 <!--
 Create the LimitRange:
@@ -132,7 +133,7 @@ CPU request and limit to the Container.
 * 核查容器声明的 CPU 限制确保其小于或者等于800 millicpu。
 
 
-{{< note >}} 当创建 LimitRange 对象时，你也可以声明 huge-page 和 GPU 的限制。当这些资源同时声明了 'default' 和 ‘defaultRequest’ 参数时，两个参数值必须相同。 {{< /note >}}
+. note >}} 当创建 LimitRange 对象时，你也可以声明 huge-page 和 GPU 的限制。当这些资源同时声明了 'default' 和 ‘defaultRequest’ 参数时，两个参数值必须相同。 . /note >}}
 <!--
 When creating a `LimitRange` object, you can specify limits on huge-pages
 or GPUs as well. However, when both `default` and `defaultRequest` are specified
@@ -150,7 +151,7 @@ minimum and maximum CPU constraints imposed by the LimitRange.
 
 这里给出了包含一个容器的 Pod 的配置文件。该容器声明了500 millicpu的 CPU 请求和800 millicpu的 CPU 限制。这些参数满足了 LimitRange 对象规定的 CPU 最小和最大限制。
 
-{{< codenew file="admin/resource/cpu-constraints-pod.yaml" >}}
+. codenew file="admin/resource/cpu-constraints-pod.yaml" >}}
 
 <!--
 Create the Pod:
@@ -218,7 +219,7 @@ CPU request of 500 millicpu and a cpu limit of 1.5 cpu.
 
 这里给出了包含一个容器的 Pod 的配置文件。容器声明了500 millicpu的CPU请求和1.5 cpu的 CPU 限制。
 
-{{< codenew file="admin/resource/cpu-constraints-pod-2.yaml" >}}
+. codenew file="admin/resource/cpu-constraints-pod-2.yaml" >}}
 
 <!--
 Attempt to create the Pod:
@@ -253,7 +254,7 @@ CPU request of 100 millicpu and a CPU limit of 800 millicpu.
 
 这里给出了包含一个容器的 Pod 的配置文件。该容器声明了100 millicpu的 CPU 请求和800 millicpu的 CPU 限制。
 
-{{< codenew file="admin/resource/cpu-constraints-pod-3.yaml" >}}
+. codenew file="admin/resource/cpu-constraints-pod-3.yaml" >}}
 
 <!--
 Attempt to create the Pod:
@@ -288,7 +289,7 @@ specify a CPU request, and it does not specify a CPU limit.
 
 这里给出了包含一个容器的Pod的配置文件。该容器没有声明CPU请求和CPU限制。
 
-{{< codenew file="admin/resource/cpu-constraints-pod-4.yaml" >}}
+. codenew file="admin/resource/cpu-constraints-pod-4.yaml" >}}
 
 <!--
 Create the Pod:
@@ -404,7 +405,7 @@ kubectl delete namespace constraints-cpu-example
 
 
 
-## {{% heading "whatsnext" %}}
+## . heading "whatsnext" %}}
 
 
 <!--
